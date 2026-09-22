@@ -10,159 +10,188 @@
   content="width=device-width, initial-scale=1.0"
 >
 
-<title>ONE ERA — Order & Fulfillment</title>
+<title>ONE ERA — Order Test</title>
 
 <style>
 
 :root {
-  --obsidian:#11100F;
-  --bone:#E8DFD2;
-  --paper:#F5EFE7;
-  --line:rgba(17,16,15,.12);
-  --muted:#70685f;
-  --rose:#C88F9D;
+  --obsidian: #11100F;
+  --bone: #E8DFD2;
+  --paper: #F5EFE7;
+  --line: rgba(17,16,15,.12);
+  --muted: #70685F;
+  --rose: #C88F9D;
 }
 
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 body {
-  margin:0;
-  background:var(--bone);
-  color:var(--obsidian);
-  font-family:Arial,Helvetica,sans-serif;
+
+  margin: 0;
+
+  background: var(--bone);
+
+  color: var(--obsidian);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
 }
 
 header {
-  padding:24px 5vw;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+
+  padding: 24px 5vw;
+
+  border-bottom:
+    1px solid var(--line);
+
 }
 
 .logo {
-  font-family:Georgia,serif;
-  font-size:25px;
-  letter-spacing:.12em;
-}
 
-nav a {
-  color:inherit;
-  text-decoration:none;
-  margin-left:20px;
-  font-size:12px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+  font-family: Georgia, serif;
+
+  font-size: 25px;
+
+  letter-spacing: .12em;
+
 }
 
 main {
-  max-width:1000px;
-  margin:auto;
-  padding:70px 24px 100px;
+
+  max-width: 900px;
+
+  margin: auto;
+
+  padding:
+    80px 24px 100px;
+
 }
 
 .eyebrow {
-  font-size:11px;
-  letter-spacing:.2em;
-  color:var(--muted);
-  text-transform:uppercase;
+
+  font-size: 11px;
+
+  letter-spacing: .2em;
+
+  color: var(--muted);
+
+  text-transform: uppercase;
+
 }
 
 h1 {
-  font-family:Georgia,serif;
-  font-size:clamp(50px,8vw,90px);
-  font-weight:400;
-  line-height:.95;
-  margin:16px 0 45px;
+
+  font-family: Georgia, serif;
+
+  font-size:
+    clamp(50px, 9vw, 90px);
+
+  font-weight: 400;
+
+  line-height: .95;
+
+  margin:
+    18px 0 45px;
+
 }
 
 .card {
-  background:var(--paper);
-  border:1px solid var(--line);
-  padding:30px;
+
+  background: var(--paper);
+
+  border:
+    1px solid var(--line);
+
+  padding: 30px;
+
 }
 
 h2 {
-  font-family:Georgia,serif;
-  font-size:32px;
-  font-weight:400;
-  margin-top:0;
-}
 
-.flow {
-  display:grid;
-  gap:10px;
-  margin-top:30px;
-}
+  font-family: Georgia, serif;
 
-.step {
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.35);
-  padding:20px;
-}
+  font-size: 32px;
 
-.number {
-  font-size:11px;
-  color:var(--muted);
-  letter-spacing:.15em;
-}
+  font-weight: 400;
 
-.title {
-  font-family:Georgia,serif;
-  font-size:22px;
-  margin-top:6px;
-}
+  margin-top: 0;
 
-.description {
-  margin-top:8px;
-  color:var(--muted);
-  line-height:1.5;
-  font-size:14px;
-}
-
-.demo {
-  margin-top:40px;
-  padding-top:30px;
-  border-top:1px solid var(--line);
 }
 
 button {
-  padding:15px 20px;
-  border:0;
-  background:var(--obsidian);
-  color:var(--bone);
-  font:inherit;
-  cursor:pointer;
-  letter-spacing:.08em;
-  text-transform:uppercase;
+
+  width: 100%;
+
+  padding: 18px;
+
+  margin-top: 25px;
+
+  border: none;
+
+  background: var(--obsidian);
+
+  color: var(--bone);
+
+  font-size: 13px;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+}
+
+button:active {
+
+  transform: scale(.99);
+
 }
 
 #result {
-  margin-top:20px;
-  padding:18px;
-  background:white;
-  border:1px solid var(--line);
-  display:none;
-  line-height:1.6;
+
+  display: none;
+
+  margin-top: 25px;
+
+  padding: 20px;
+
+  background: white;
+
+  border:
+    1px solid var(--line);
+
+  line-height: 1.8;
+
 }
 
-@media(max-width:700px) {
-  header {
-    align-items:flex-start;
-  }
+.success {
 
-  nav {
-    display:none;
-  }
+  color: #315B45;
+
+  font-weight: bold;
+
 }
 
-footer {
-  padding:30px 5vw;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:12px;
+.test {
+
+  margin-top: 30px;
+
+  padding: 20px;
+
+  background:
+    rgba(200,143,157,.10);
+
+  border-left:
+    3px solid var(--rose);
+
+  line-height: 1.6;
+
 }
 
 </style>
@@ -172,208 +201,233 @@ footer {
 
 <body>
 
+
 <header>
 
 <div class="logo">
 ONE ERA
 </div>
 
-<nav>
-
-<a href="index.html">
-Home
-</a>
-
-<a href="shop.html">
-Shop
-</a>
-
-<a href="checkout.html">
-Checkout
-</a>
-
-</nav>
-
 </header>
 
 
 <main>
 
+
 <div class="eyebrow">
-ONE ERA · COMMERCE ARCHITECTURE
+ONE ERA · PHASE 4.4
 </div>
 
+
 <h1>
-From order<br>
-to your door.
+Order<br>
+Architecture.
 </h1>
 
 
 <section class="card">
 
+
 <h2>
-Order lifecycle
+Order System Test
 </h2>
 
 
-<div class="flow">
+<p>
 
+This is a standalone test of the
+ONE ERA order engine.
 
-<div class="step">
-
-<div class="number">
-01
-</div>
-
-<div class="title">
-Order Created
-</div>
-
-<div class="description">
-ONE ERA creates a unique order ID and records the customer's market, currency, products and delivery information.
-</div>
-
-</div>
-
-
-<div class="step">
-
-<div class="number">
-02
-</div>
-
-<div class="title">
-Payment Confirmed
-</div>
-
-<div class="description">
-The order becomes eligible for fulfillment after payment confirmation.
-</div>
-
-</div>
-
-
-<div class="step">
-
-<div class="number">
-03
-</div>
-
-<div class="title">
-Submitted to Fulfillment
-</div>
-
-<div class="description">
-Order information is prepared for the fulfillment partner.
-</div>
-
-</div>
-
-
-<div class="step">
-
-<div class="number">
-04
-</div>
-
-<div class="title">
-Fulfilled
-</div>
-
-<div class="description">
-The fulfillment partner prepares and dispatches the products.
-</div>
-
-</div>
-
-
-<div class="step">
-
-<div class="number">
-05
-</div>
-
-<div class="title">
-Shipped
-</div>
-
-<div class="description">
-Tracking information becomes available to the customer.
-</div>
-
-</div>
-
-
-<div class="step">
-
-<div class="number">
-06
-</div>
-
-<div class="title">
-Delivered
-</div>
-
-<div class="description">
-The order reaches the customer and the order lifecycle is complete.
-</div>
-
-</div>
-
-</div>
-
-
-<div class="demo">
-
-<h2>
-Architecture test
-</h2>
-
-<p class="description">
-This button creates a local demo order only. It does not charge money and does not send an order to CJ.
 </p>
 
-<button
-  type="button"
-  id="createOrder"
->
-Create test order
-</button>
 
-<div id="result"></div>
+<div class="test">
+
+<strong>
+TEST MODE
+</strong>
+
+<br>
+
+This test does not charge money,
+does not contact CJ and does not
+create a real customer order.
 
 </div>
 
+
+<button
+  id="createOrder"
+  type="button"
+>
+
+CREATE TEST ORDER
+
+</button>
+
+
+<div
+  id="result"
+>
+
+</div>
+
+
 </section>
+
 
 </main>
 
 
-<footer>
-ONE ERA · THE SPIRITUAL SOCIETY
-</footer>
-
-<script src="orders.js"></script>
-
-
 <script>
 
-document
-  .getElementById("createOrder")
-  .addEventListener(
+/* =====================================================
+   ONE ERA
+   PHASE 4.4
+   STANDALONE ORDER TEST
+   ===================================================== */
+
+
+(function () {
+
+
+  console.log(
+    "ONE ERA TEST: JavaScript loaded"
+  );
+
+
+  /* -----------------------------------------
+     Elements
+     ----------------------------------------- */
+
+  const button =
+    document.getElementById(
+      "createOrder"
+    );
+
+
+  const result =
+    document.getElementById(
+      "result"
+    );
+
+
+  /* -----------------------------------------
+     Safety check
+     ----------------------------------------- */
+
+  if (!button) {
+
+    console.error(
+      "ONE ERA TEST: Button not found"
+    );
+
+    return;
+
+  }
+
+
+  /* -----------------------------------------
+     Create Order ID
+     ----------------------------------------- */
+
+  function createOrderId() {
+
+    const date =
+      new Date()
+        .toISOString()
+        .slice(0, 10)
+        .replace(/-/g, "");
+
+
+    const random =
+      Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
+
+
+    return (
+      "OE-" +
+      date +
+      "-" +
+      random
+    );
+
+  }
+
+
+  /* -----------------------------------------
+     Button
+     ----------------------------------------- */
+
+  button.addEventListener(
+
     "click",
+
     function () {
 
-      const order =
-        window.ONEERA_ORDERS
-          .createTestOrder();
+
+      console.log(
+        "ONE ERA TEST: Button clicked"
+      );
 
 
-      const result =
-        document.getElementById(
-          "result"
+      const orderId =
+        createOrderId();
+
+
+      const order = {
+
+        order_id:
+          orderId,
+
+        market:
+          "TH",
+
+        currency:
+          "THB",
+
+        payment_status:
+          "paid",
+
+        fulfillment_status:
+          "pending"
+
+      };
+
+
+      /* ---------------------------------------
+         Save test order
+         --------------------------------------- */
+
+      try {
+
+        localStorage.setItem(
+
+          "oneera_test_order",
+
+          JSON.stringify(
+            order
+          )
+
         );
 
+      }
+
+      catch (error) {
+
+        console.error(
+          "Local storage error:",
+          error
+        );
+
+      }
+
+
+      /* ---------------------------------------
+         Show result
+         --------------------------------------- */
 
       result.style.display =
         "block";
@@ -381,43 +435,53 @@ document
 
       result.innerHTML =
 
-        "<strong>Test order created</strong>" +
+        '<div class="success">' +
 
-        "<br><br>" +
+        '✓ TEST ORDER CREATED' +
 
-        "Order ID: " +
+        '</div>' +
+
+        '<br>' +
+
+        '<strong>Order ID:</strong> ' +
 
         order.order_id +
 
-        "<br>" +
+        '<br>' +
 
-        "Market: " +
+        '<strong>Market:</strong> ' +
 
         order.market +
 
-        "<br>" +
+        '<br>' +
 
-        "Currency: " +
+        '<strong>Currency:</strong> ' +
 
         order.currency +
 
-        "<br>" +
+        '<br>' +
 
-        "Payment: " +
+        '<strong>Payment:</strong> ' +
 
         order.payment_status +
 
-        "<br>" +
+        '<br>' +
 
-        "Fulfillment: " +
+        '<strong>Fulfillment:</strong> ' +
 
         order.fulfillment_status;
+
 
     }
 
   );
 
+
+})();
+
 </script>
 
+
 </body>
+
 </html>
