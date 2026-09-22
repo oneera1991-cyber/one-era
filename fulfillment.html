@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>ONE ERA — Order & Fulfillment</title>
+
+<style>
+
+:root {
+  --obsidian:#11100F;
+  --bone:#E8DFD2;
+  --paper:#F5EFE7;
+  --line:rgba(17,16,15,.12);
+  --muted:#70685f;
+  --rose:#C88F9D;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:var(--bone);
+  color:var(--obsidian);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+header {
+  padding:24px 5vw;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo {
+  font-family:Georgia,serif;
+  font-size:25px;
+  letter-spacing:.12em;
+}
+
+nav a {
+  color:inherit;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+main {
+  max-width:1000px;
+  margin:auto;
+  padding:70px 24px 100px;
+}
+
+.eyebrow {
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+h1 {
+  font-family:Georgia,serif;
+  font-size:clamp(50px,8vw,90px);
+  font-weight:400;
+  line-height:.95;
+  margin:16px 0 45px;
+}
+
+.card {
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:30px;
+}
+
+h2 {
+  font-family:Georgia,serif;
+  font-size:32px;
+  font-weight:400;
+  margin-top:0;
+}
+
+.flow {
+  display:grid;
+  gap:10px;
+  margin-top:30px;
+}
+
+.step {
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.35);
+  padding:20px;
+}
+
+.number {
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.15em;
+}
+
+.title {
+  font-family:Georgia,serif;
+  font-size:22px;
+  margin-top:6px;
+}
+
+.description {
+  margin-top:8px;
+  color:var(--muted);
+  line-height:1.5;
+  font-size:14px;
+}
+
+.demo {
+  margin-top:40px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+}
+
+button {
+  padding:15px 20px;
+  border:0;
+  background:var(--obsidian);
+  color:var(--bone);
+  font:inherit;
+  cursor:pointer;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+#result {
+  margin-top:20px;
+  padding:18px;
+  background:white;
+  border:1px solid var(--line);
+  display:none;
+  line-height:1.6;
+}
+
+@media(max-width:700px) {
+  header {
+    align-items:flex-start;
+  }
+
+  nav {
+    display:none;
+  }
+}
+
+footer {
+  padding:30px 5vw;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<header>
+
+<div class="logo">
+ONE ERA
+</div>
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="shop.html">
+Shop
+</a>
+
+<a href="checkout.html">
+Checkout
+</a>
+
+</nav>
+
+</header>
+
+
+<main>
+
+<div class="eyebrow">
+ONE ERA · COMMERCE ARCHITECTURE
+</div>
+
+<h1>
+From order<br>
+to your door.
+</h1>
+
+
+<section class="card">
+
+<h2>
+Order lifecycle
+</h2>
+
+
+<div class="flow">
+
+
+<div class="step">
+
+<div class="number">
+01
+</div>
+
+<div class="title">
+Order Created
+</div>
+
+<div class="description">
+ONE ERA creates a unique order ID and records the customer's market, currency, products and delivery information.
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+02
+</div>
+
+<div class="title">
+Payment Confirmed
+</div>
+
+<div class="description">
+The order becomes eligible for fulfillment after payment confirmation.
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+03
+</div>
+
+<div class="title">
+Submitted to Fulfillment
+</div>
+
+<div class="description">
+Order information is prepared for the fulfillment partner.
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+04
+</div>
+
+<div class="title">
+Fulfilled
+</div>
+
+<div class="description">
+The fulfillment partner prepares and dispatches the products.
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+05
+</div>
+
+<div class="title">
+Shipped
+</div>
+
+<div class="description">
+Tracking information becomes available to the customer.
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+06
+</div>
+
+<div class="title">
+Delivered
+</div>
+
+<div class="description">
+The order reaches the customer and the order lifecycle is complete.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="demo">
+
+<h2>
+Architecture test
+</h2>
+
+<p class="description">
+This button creates a local demo order only. It does not charge money and does not send an order to CJ.
+</p>
+
+<button
+  type="button"
+  id="createOrder"
+>
+Create test order
+</button>
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+ONE ERA · THE SPIRITUAL SOCIETY
+</footer>
+
+
+<script src="commerce.js"></script>
+
+<script src="orders.js"></script>
+
+
+<script>
+
+document
+  .getElementById("createOrder")
+  .addEventListener(
+    "click",
+    function () {
+
+      const order =
+        window.ONEERA_ORDERS
+          .createDemoOrder({
+
+            customer: {
+              name:"ONE ERA Test Customer",
+              email:"test@example.com"
+            },
+
+            shipping_address: {
+              country:
+                localStorage.getItem(
+                  "oneera_country"
+                ) || "TH"
+            },
+
+            items: [
+              {
+                product_id:"TEST-001",
+                quantity:1
+              }
+            ],
+
+            subtotal:100,
+
+            shipping:20,
+
+            taxes:0,
+
+            duties:0,
+
+            total:120
+
+          });
+
+
+      const result =
+        document.getElementById(
+          "result"
+        );
+
+
+      result.style.display =
+        "block";
+
+
+      result.innerHTML =
+        "<strong>Test order created</strong><br>" +
+        "Order ID: " +
+        order.order_id +
+        "<br>" +
+        "Market: " +
+        order.market +
+        "<br>" +
+        "Currency: " +
+        order.currency +
+        "<br>" +
+        "Status: " +
+        order.fulfillment_status;
+
+    }
+  );
+
+</script>
+
+</body>
+</html>

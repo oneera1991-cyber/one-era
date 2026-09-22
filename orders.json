@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "order_id_format": "OE-{YYYYMMDD}-{RANDOM6}",
+  "statuses": [
+    "pending_payment",
+    "paid",
+    "processing",
+    "submitted_to_fulfillment",
+    "fulfilled",
+    "shipped",
+    "delivered",
+    "cancelled",
+    "refunded"
+  ],
+  "fulfillment": {
+    "provider": "CJ",
+    "mode": "external_fulfillment",
+    "tracking_supported": true
+  },
+  "customer_notifications": [
+    "order_confirmation",
+    "payment_confirmation",
+    "fulfillment_confirmation",
+    "shipment_confirmation",
+    "delivery_confirmation"
+  ],
+  "order_data": [
+    "order_id",
+    "created_at",
+    "market",
+    "currency",
+    "customer",
+    "shipping_address",
+    "items",
+    "subtotal",
+    "shipping",
+    "taxes",
+    "duties",
+    "total",
+    "payment_status",
+    "fulfillment_status",
+    "tracking_number"
+  ]
+}
