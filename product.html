@@ -1,22 +1,649 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Product — ONE ERA</title><link rel="stylesheet" href="styles.css">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Product — ONE ERA</title>
+
+<link rel="stylesheet" href="styles.css">
+
 <style>
-.pd{padding:70px 0}.pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}.pd-art{aspect-ratio:1/1;background:radial-gradient(circle at 50% 35%,rgba(200,143,157,.65),transparent 14%),linear-gradient(145deg,#d7c8bf,#1c2c28)}.pd-copy h1{font-size:clamp(42px,5vw,70px);margin:12px 0}.pd-copy .price{font-size:18px;margin:20px 0}.pd-copy p{line-height:1.8;color:#625b53}.pd-meta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:30px}.pd-meta div{padding:14px 0;border-bottom:1px solid var(--line);font-size:12px}.pd-meta b{display:block;font-size:8px;letter-spacing:.13em;text-transform:uppercase;opacity:.5;margin-bottom:4px}.pd-tabs{margin-top:80px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.pd-tab{border-top:1px solid var(--line);padding:22px}.pd-tab h3{font-size:27px}.pd-tab p{font-size:13px;line-height:1.8;color:#665f57}.notice{background:#f2eadf;padding:20px;font-size:12px;color:#665f57;margin-top:20px}.disabled{opacity:.5;pointer-events:none}
-@media(max-width:750px){.pd-grid,.pd-tabs{grid-template-columns:1fr}}
-</style></head>
-<body>
-<header class="site-header"><div class="container nav"><a class="wordmark" href="index.html">ONE ERA</a><nav class="nav-links"><a href="discover.html">Explore</a><a href="practice.html">Practice</a><a class="active-nav" href="shop.html">Shop</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a><a href="about.html">The Society</a></nav><div class="nav-icons"><span>⌕</span><a href="cart.html">Bag <span data-cart-count>0</span></a></div><span class="mobile-menu">☰</span></div></header>
-<main><section class="pd"><div class="container" id="productRoot"><p>Loading…</p></div></section></main>
-<footer class="footer"><div class="container"><div class="wordmark">ONE ERA</div><p>THE SPIRITUAL SOCIETY</p></div></footer>
-<script>
-async function loadProduct(){
- const params=new URLSearchParams(location.search);const slug=params.get('product')||'botanical-incense-open';
- const data=await (await fetch('products.json')).json();const p=data.products.find(x=>x.slug===slug)||data.products[0];
- document.title=p.name+' — ONE ERA';
- const root=document.getElementById('productRoot');
- root.innerHTML='<div class="pd-grid"><div class="pd-art"></div><div class="pd-copy"><div class="eyebrow">'+(p.collection||p.category)+'</div><h1>'+p.name+'</h1><p>'+((p.botanical)?p.botanical+' · ':'')+(p.ritual_state||'A ONE ERA object')+'</p><div class="price">$'+p.price_usd+' · £'+p.price_gbp+' · ฿'+p.price_thb+'</div><a class="btn btn-dark '+(p.status==='planned'||p.status==='concept'?'disabled':'')+'" href="cart.html">Add to bag</a><div class="notice">'+(p.status==='planned'||p.status==='concept'?'This is currently a planned/concept item. Final availability will follow supplier validation.':'Product specifications and availability should be confirmed before launch.')+'</div><div class="pd-meta"><div><b>Category</b>'+p.category+'</div><div><b>Collection</b>'+p.collection+'</div><div><b>State</b>'+(p.ritual_state||'—')+'</div><div><b>Status</b>'+p.status+'</div></div></div></div><div class="pd-tabs"><div class="pd-tab"><div class="eyebrow">What it is</div><h3>The object</h3><p>'+p.notes+'</p></div><div class="pd-tab"><div class="eyebrow">ONE ERA</div><h3>Why it belongs here</h3><p>Every product will eventually receive original ONE ERA editorial content covering the object, its context, relevant beliefs and a practical way to engage with it.</p></div></div>';
+.pd{
+  padding:70px 0;
 }
+
+.pd-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+}
+
+.pd-art{
+  aspect-ratio:1/1;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(200,143,157,.65),
+      transparent 14%
+    ),
+    linear-gradient(
+      145deg,
+      #d7c8bf,
+      #1c2c28
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#f5eee5;
+  letter-spacing:.16em;
+  font-size:11px;
+  text-transform:uppercase;
+}
+
+.pd-art span{
+  opacity:.7;
+}
+
+.pd-copy h1{
+  font-size:clamp(42px,5vw,70px);
+  margin:12px 0;
+}
+
+.pd-copy .price{
+  font-size:18px;
+  margin:20px 0;
+}
+
+.pd-copy p{
+  line-height:1.8;
+  color:#625b53;
+}
+
+.pd-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  margin-top:30px;
+}
+
+.pd-meta div{
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-size:12px;
+}
+
+.pd-meta b{
+  display:block;
+  font-size:8px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  opacity:.5;
+  margin-bottom:4px;
+}
+
+.pd-tabs{
+  margin-top:80px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.pd-tab{
+  border-top:1px solid var(--line);
+  padding:22px;
+}
+
+.pd-tab h3{
+  font-size:27px;
+}
+
+.pd-tab p{
+  font-size:13px;
+  line-height:1.8;
+  color:#665f57;
+}
+
+.notice{
+  background:#f2eadf;
+  padding:20px;
+  font-size:12px;
+  color:#665f57;
+  margin-top:20px;
+}
+
+.test-badge{
+  display:inline-block;
+  padding:7px 11px;
+  background:#ead8d2;
+  color:#604c46;
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:15px;
+}
+
+.disabled{
+  opacity:.5;
+  pointer-events:none;
+}
+
+.ritual-list{
+  padding-left:18px;
+  color:#665f57;
+  font-size:13px;
+  line-height:1.9;
+}
+
+@media(max-width:750px){
+
+  .pd-grid,
+  .pd-tabs{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="container nav">
+
+    <a class="wordmark" href="index.html">
+      ONE ERA
+    </a>
+
+    <nav class="nav-links">
+
+      <a href="discover.html">Explore</a>
+      <a href="practice.html">Practice</a>
+      <a class="active-nav" href="shop.html">Shop</a>
+      <a href="learn.html">Learn</a>
+      <a href="journal.html">Journal</a>
+      <a href="about.html">The Society</a>
+
+    </nav>
+
+    <div class="nav-icons">
+
+      <span>⌕</span>
+
+      <a href="cart.html">
+        Bag <span data-cart-count>0</span>
+      </a>
+
+    </div>
+
+    <span class="mobile-menu">☰</span>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<section class="pd">
+
+<div class="container" id="productRoot">
+
+  <p>Loading…</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="wordmark">
+      ONE ERA
+    </div>
+
+    <p>
+      THE SPIRITUAL SOCIETY
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+async function loadProduct(){
+
+  const root = document.getElementById("productRoot");
+
+  try{
+
+    /*
+      Support both:
+
+      product.html?id=one-era-green-fluorite
+
+      and
+
+      product.html?product=green-fluorite
+    */
+
+    const params = new URLSearchParams(location.search);
+
+    const requestedId =
+      params.get("id") ||
+      params.get("product");
+
+
+    /*
+      Load product database
+    */
+
+    const response = await fetch("products.json", {
+      cache: "no-store"
+    });
+
+    if(!response.ok){
+
+      throw new Error(
+        "products.json could not be loaded."
+      );
+
+    }
+
+
+    const data = await response.json();
+
+
+    /*
+      Product database format:
+      {
+        products: [...]
+      }
+    */
+
+    const products =
+      Array.isArray(data)
+        ? data
+        : data.products;
+
+
+    if(!Array.isArray(products)){
+
+      throw new Error(
+        "Invalid products.json structure."
+      );
+
+    }
+
+
+    /*
+      Find product by:
+
+      1. ID
+      2. slug
+    */
+
+    const product =
+      products.find(function(item){
+
+        return (
+          item.id === requestedId ||
+          item.slug === requestedId
+        );
+
+      }) || products[0];
+
+
+    if(!product){
+
+      throw new Error(
+        "No product found."
+      );
+
+    }
+
+
+    /*
+      Page title
+    */
+
+    document.title =
+      product.name + " — ONE ERA";
+
+
+    /*
+      Price
+    */
+
+    let priceDisplay =
+      product.price &&
+      product.price.display
+        ? product.price.display
+        : "TEST PRICE";
+
+
+    /*
+      Ritual instructions
+    */
+
+    let ritualHTML = "";
+
+    if(
+      product.ritual &&
+      Array.isArray(product.ritual.howToUse)
+    ){
+
+      ritualHTML =
+        "<ul class='ritual-list'>" +
+
+        product.ritual.howToUse
+          .map(function(step){
+            return "<li>" + step + "</li>";
+          })
+          .join("") +
+
+        "</ul>";
+
+    }
+
+
+    /*
+      Main Product Page
+    */
+
+    root.innerHTML = `
+
+      <div class="pd-grid">
+
+        <div class="pd-art">
+
+          <span>
+            ONE ERA · PRODUCT IMAGE
+          </span>
+
+        </div>
+
+
+        <div class="pd-copy">
+
+          <div class="test-badge">
+            TEST MODE
+          </div>
+
+
+          <div class="eyebrow">
+            ${product.collection || product.category || ""}
+          </div>
+
+
+          <h1>
+            ${product.name || ""}
+          </h1>
+
+
+          <p>
+            ${product.subtitle || product.shortDescription || ""}
+          </p>
+
+
+          <div class="price">
+            ${priceDisplay}
+          </div>
+
+
+          <a
+            class="btn btn-dark"
+            href="cart.html"
+          >
+            Add to bag
+          </a>
+
+
+          <div class="notice">
+
+            TEST MODE —
+            This product is connected to the
+            ONE ERA product system for testing.
+
+            No real payment,
+            customer order,
+            or CJ order will be created.
+
+          </div>
+
+
+          <div class="pd-meta">
+
+
+            <div>
+
+              <b>Category</b>
+
+              ${product.category || "—"}
+
+            </div>
+
+
+            <div>
+
+              <b>Collection</b>
+
+              ${product.collection || "—"}
+
+            </div>
+
+
+            <div>
+
+              <b>Material</b>
+
+              ${
+                product.specifications &&
+                product.specifications.material
+                  ? product.specifications.material
+                  : "—"
+              }
+
+            </div>
+
+
+            <div>
+
+              <b>Weight</b>
+
+              ${
+                product.specifications &&
+                product.specifications.weight
+                  ? product.specifications.weight
+                  : "—"
+              }
+
+            </div>
+
+
+            <div>
+
+              <b>Supplier</b>
+
+              ${
+                product.supplier &&
+                product.supplier.platform
+                  ? product.supplier.platform
+                  : "—"
+              }
+
+            </div>
+
+
+            <div>
+
+              <b>Status</b>
+
+              ${product.status || "TEST"}
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="pd-tabs">
+
+
+        <div class="pd-tab">
+
+          <div class="eyebrow">
+            WHAT IT IS
+          </div>
+
+          <h3>
+            The object
+          </h3>
+
+          <p>
+            ${
+              product.description ||
+              product.shortDescription ||
+              ""
+            }
+          </p>
+
+        </div>
+
+
+        <div class="pd-tab">
+
+          <div class="eyebrow">
+            ONE ERA
+          </div>
+
+          <h3>
+            Why it belongs here
+          </h3>
+
+          <p>
+            ${
+              product.story &&
+              product.story.body
+                ? product.story.body
+                : "A ONE ERA object for exploration, ritual and reflection."
+            }
+          </p>
+
+        </div>
+
+
+        <div class="pd-tab">
+
+          <div class="eyebrow">
+            RITUAL
+          </div>
+
+          <h3>
+            How to use
+          </h3>
+
+          ${
+            ritualHTML ||
+            "<p>Ritual instructions will be added.</p>"
+          }
+
+        </div>
+
+
+        <div class="pd-tab">
+
+          <div class="eyebrow">
+            SUPPLIER
+          </div>
+
+          <h3>
+            Test Mapping
+          </h3>
+
+          <p>
+
+            CJdropshipping SKU:
+            ${
+              product.supplier &&
+              product.supplier.sku
+                ? product.supplier.sku
+                : "—"
+            }
+
+            <br><br>
+
+            Fulfillment:
+            ${
+              product.fulfillment &&
+              product.fulfillment.mode
+                ? product.fulfillment.mode
+                : "TEST"
+            }
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+    `;
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    root.innerHTML = `
+
+      <div class="notice">
+
+        <strong>
+          PRODUCT SYSTEM ERROR
+        </strong>
+
+        <p>
+          ${error.message}
+        </p>
+
+        <p>
+          Check that products.json exists
+          in the same GitHub repository
+          as product.html.
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
 loadProduct();
-</script><script src="script.js"></script>
-</body></html>
+
+</script>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
