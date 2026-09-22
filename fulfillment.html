@@ -10,22 +10,38 @@
   content="width=device-width, initial-scale=1.0"
 >
 
-<title>ONE ERA — Order Test</title>
+<title>ONE ERA — Fulfillment</title>
+
 
 <style>
 
 :root {
+
   --obsidian: #11100F;
+
   --bone: #E8DFD2;
+
   --paper: #F5EFE7;
+
+  --white: #FFFFFF;
+
   --line: rgba(17,16,15,.12);
+
   --muted: #70685F;
+
   --rose: #C88F9D;
+
+  --green: #315B45;
+
 }
 
+
 * {
+
   box-sizing: border-box;
+
 }
+
 
 body {
 
@@ -42,6 +58,7 @@ body {
 
 }
 
+
 header {
 
   padding: 24px 5vw;
@@ -50,6 +67,7 @@ header {
     1px solid var(--line);
 
 }
+
 
 .logo {
 
@@ -61,6 +79,7 @@ header {
 
 }
 
+
 main {
 
   max-width: 900px;
@@ -68,9 +87,10 @@ main {
   margin: auto;
 
   padding:
-    80px 24px 100px;
+    70px 24px 100px;
 
 }
+
 
 .eyebrow {
 
@@ -83,6 +103,7 @@ main {
   text-transform: uppercase;
 
 }
+
 
 h1 {
 
@@ -100,6 +121,7 @@ h1 {
 
 }
 
+
 .card {
 
   background: var(--paper);
@@ -110,6 +132,7 @@ h1 {
   padding: 30px;
 
 }
+
 
 h2 {
 
@@ -123,13 +146,38 @@ h2 {
 
 }
 
+
+p {
+
+  line-height: 1.7;
+
+}
+
+
+.test {
+
+  margin-top: 25px;
+
+  padding: 20px;
+
+  background:
+    rgba(200,143,157,.10);
+
+  border-left:
+    3px solid var(--rose);
+
+  line-height: 1.7;
+
+}
+
+
 button {
 
   width: 100%;
 
   padding: 18px;
 
-  margin-top: 25px;
+  margin-top: 18px;
 
   border: none;
 
@@ -147,52 +195,109 @@ button {
 
 }
 
+
 button:active {
 
   transform: scale(.99);
 
 }
 
-#result {
+
+#result,
+
+#fulfillmentResult {
 
   display: none;
 
   margin-top: 25px;
 
-  padding: 20px;
+  padding: 22px;
 
-  background: white;
+  background: var(--white);
 
   border:
     1px solid var(--line);
 
   line-height: 1.8;
 
+  overflow-wrap: anywhere;
+
 }
+
 
 .success {
 
-  color: #315B45;
+  color: var(--green);
 
   font-weight: bold;
 
+  letter-spacing: .04em;
+
 }
 
-.test {
 
-  margin-top: 30px;
+.status {
 
-  padding: 20px;
+  display: inline-block;
+
+  padding:
+    5px 10px;
 
   background:
-    rgba(200,143,157,.10);
+    rgba(49,91,69,.10);
 
-  border-left:
-    3px solid var(--rose);
+  color: var(--green);
+
+  font-size: 12px;
+
+  letter-spacing: .08em;
+
+}
+
+
+pre {
+
+  margin-top: 15px;
+
+  padding: 18px;
+
+  background: var(--obsidian);
+
+  color: var(--bone);
+
+  overflow-x: auto;
+
+  font-size: 12px;
 
   line-height: 1.6;
 
+  white-space: pre-wrap;
+
+  word-break: break-word;
+
 }
+
+
+.divider {
+
+  height: 1px;
+
+  background: var(--line);
+
+  margin:
+    30px 0;
+
+}
+
+
+.small {
+
+  font-size: 13px;
+
+  color: var(--muted);
+
+}
+
 
 </style>
 
@@ -204,9 +309,9 @@ button:active {
 
 <header>
 
-<div class="logo">
-ONE ERA
-</div>
+  <div class="logo">
+    ONE ERA
+  </div>
 
 </header>
 
@@ -214,95 +319,141 @@ ONE ERA
 <main>
 
 
-<div class="eyebrow">
-ONE ERA · PHASE 4.4
-</div>
+  <div class="eyebrow">
+    ONE ERA · PHASE 4.5
+  </div>
 
 
-<h1>
-Order<br>
-Architecture.
-</h1>
+  <h1>
+    Order<br>
+    Fulfillment.
+  </h1>
 
 
-<section class="card">
+  <section class="card">
 
 
-<h2>
-Order System Test
-</h2>
+    <h2>
+      Order → Fulfillment → CJ
+    </h2>
 
 
-<p>
+    <p>
 
-This is a standalone test of the
-ONE ERA order engine.
+      This page tests the connection between
+      the ONE ERA order system and the
+      fulfillment layer.
 
-</p>
-
-
-<div class="test">
-
-<strong>
-TEST MODE
-</strong>
-
-<br>
-
-This test does not charge money,
-does not contact CJ and does not
-create a real customer order.
-
-</div>
+    </p>
 
 
-<button
-  id="createOrder"
-  type="button"
->
+    <div class="test">
 
-CREATE TEST ORDER
+      <strong>
+        TEST MODE
+      </strong>
 
-</button>
+      <br>
+
+      No real payment is processed.
+
+      <br>
+
+      No real CJ order is created.
+
+      <br>
+
+      No shipment is submitted.
+
+    </div>
 
 
-<div
-  id="result"
->
+    <!-- =========================================
+         STEP 1
+         CREATE TEST ORDER
+         ========================================= -->
 
-</div>
+
+    <button
+      id="createOrder"
+      type="button"
+    >
+
+      CREATE TEST ORDER
+
+    </button>
 
 
-</section>
+    <div
+      id="result"
+    >
+
+    </div>
+
+
+    <!-- =========================================
+         STEP 2
+         PREPARE FULFILLMENT
+         ========================================= -->
+
+
+    <button
+      id="prepareFulfillment"
+      type="button"
+    >
+
+      PREPARE CJ FULFILLMENT
+
+    </button>
+
+
+    <div
+      id="fulfillmentResult"
+    >
+
+    </div>
+
+
+  </section>
 
 
 </main>
 
 
+<!-- =============================================
+     PHASE 4.5 FULFILLMENT ENGINE
+     ============================================= -->
+
+<script src="fulfillment.js"></script>
+
+
 <script>
-
-/* =====================================================
-   ONE ERA
-   PHASE 4.4
-   STANDALONE ORDER TEST
-   ===================================================== */
-
 
 (function () {
 
 
+  "use strict";
+
+
   console.log(
-    "ONE ERA TEST: JavaScript loaded"
+    "ONE ERA Phase 4.5 interface loaded."
   );
 
 
-  /* -----------------------------------------
-     Elements
-     ----------------------------------------- */
+  /* =========================================
+     ELEMENTS
+     ========================================= */
 
-  const button =
+
+  const createButton =
     document.getElementById(
       "createOrder"
+    );
+
+
+  const prepareButton =
+    document.getElementById(
+      "prepareFulfillment"
     );
 
 
@@ -312,14 +463,21 @@ CREATE TEST ORDER
     );
 
 
-  /* -----------------------------------------
-     Safety check
-     ----------------------------------------- */
+  const fulfillmentResult =
+    document.getElementById(
+      "fulfillmentResult"
+    );
 
-  if (!button) {
+
+  /* =========================================
+     CHECK ELEMENTS
+     ========================================= */
+
+
+  if (!createButton) {
 
     console.error(
-      "ONE ERA TEST: Button not found"
+      "ONE ERA: createOrder button missing."
     );
 
     return;
@@ -327,107 +485,175 @@ CREATE TEST ORDER
   }
 
 
-  /* -----------------------------------------
-     Create Order ID
-     ----------------------------------------- */
+  if (!prepareButton) {
 
-  function createOrderId() {
-
-    const date =
-      new Date()
-        .toISOString()
-        .slice(0, 10)
-        .replace(/-/g, "");
-
-
-    const random =
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
-
-
-    return (
-      "OE-" +
-      date +
-      "-" +
-      random
+    console.error(
+      "ONE ERA: prepareFulfillment button missing."
     );
+
+    return;
 
   }
 
 
-  /* -----------------------------------------
-     Button
-     ----------------------------------------- */
+  /* =========================================
+     CREATE TEST ORDER
+     ========================================= */
 
-  button.addEventListener(
+
+  createButton.addEventListener(
 
     "click",
 
     function () {
 
 
-      console.log(
-        "ONE ERA TEST: Button clicked"
-      );
+      const date =
+
+        new Date()
+
+          .toISOString()
+
+          .slice(0, 10)
+
+          .replace(/-/g, "");
+
+
+      const random =
+
+        Math.random()
+
+          .toString(36)
+
+          .substring(2, 8)
+
+          .toUpperCase();
 
 
       const orderId =
-        createOrderId();
+
+        "OE-" +
+        date +
+        "-" +
+        random;
 
 
       const order = {
 
+
         order_id:
           orderId,
+
+
+        created_at:
+          new Date().toISOString(),
+
 
         market:
           "TH",
 
+
         currency:
           "THB",
+
+
+        customer: {
+
+          name:
+            "ONE ERA Test Customer",
+
+          email:
+            "test@example.com"
+
+        },
+
+
+        shipping_address: {
+
+          country:
+            "TH",
+
+          city:
+            "Bangkok",
+
+          postal_code:
+            "10110"
+
+        },
+
+
+        items: [
+
+          {
+
+            product_id:
+              "ONEERA-TEST-001",
+
+            sku:
+              "ONEERA-TEST-001",
+
+            quantity:
+              1,
+
+            price:
+              100
+
+          }
+
+        ],
+
+
+        subtotal:
+          100,
+
+
+        shipping:
+          20,
+
+
+        taxes:
+          0,
+
+
+        duties:
+          0,
+
+
+        total:
+          120,
+
 
         payment_status:
           "paid",
 
+
         fulfillment_status:
           "pending"
+
 
       };
 
 
-      /* ---------------------------------------
-         Save test order
-         --------------------------------------- */
-
-      try {
-
-        localStorage.setItem(
-
-          "oneera_test_order",
-
-          JSON.stringify(
-            order
-          )
-
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(
-          "Local storage error:",
-          error
-        );
-
-      }
+      /* =====================================
+         SAVE ORDER
+         ===================================== */
 
 
-      /* ---------------------------------------
-         Show result
-         --------------------------------------- */
+      localStorage.setItem(
+
+        "oneera_test_order",
+
+        JSON.stringify(
+          order
+        )
+
+      );
+
+
+      /* =====================================
+         DISPLAY
+         ===================================== */
+
 
       result.style.display =
         "block";
@@ -435,41 +661,300 @@ CREATE TEST ORDER
 
       result.innerHTML =
 
+
         '<div class="success">' +
 
         '✓ TEST ORDER CREATED' +
 
         '</div>' +
 
-        '<br>' +
 
-        '<strong>Order ID:</strong> ' +
+        '<div class="divider"></div>' +
+
+
+        '<strong>Order ID</strong><br>' +
 
         order.order_id +
 
-        '<br>' +
+        '<br><br>' +
 
-        '<strong>Market:</strong> ' +
+
+        '<strong>Market</strong><br>' +
 
         order.market +
 
-        '<br>' +
+        '<br><br>' +
 
-        '<strong>Currency:</strong> ' +
+
+        '<strong>Currency</strong><br>' +
 
         order.currency +
 
-        '<br>' +
+        '<br><br>' +
 
-        '<strong>Payment:</strong> ' +
+
+        '<strong>Payment</strong><br>' +
 
         order.payment_status +
 
-        '<br>' +
+        '<br><br>' +
 
-        '<strong>Fulfillment:</strong> ' +
+
+        '<strong>Fulfillment</strong><br>' +
 
         order.fulfillment_status;
+
+
+      console.log(
+        "ONE ERA TEST ORDER:",
+        order
+      );
+
+
+    }
+
+  );
+
+
+  /* =========================================
+     PREPARE CJ FULFILLMENT
+     ========================================= */
+
+
+  prepareButton.addEventListener(
+
+    "click",
+
+    function () {
+
+
+      fulfillmentResult.style.display =
+        "block";
+
+
+      /* =====================================
+         CHECK FULFILLMENT ENGINE
+         ===================================== */
+
+
+      if (
+        !window.ONEERA_FULFILLMENT
+      ) {
+
+
+        fulfillmentResult.innerHTML =
+
+          '<div class="error">' +
+
+          '<strong>ERROR</strong>' +
+
+          '<br><br>' +
+
+          'fulfillment.js could not be loaded.' +
+
+          '<br><br>' +
+
+          'Make sure fulfillment.js exists ' +
+
+          'in the same GitHub repository ' +
+
+          'and has been committed.'
+
+          +
+
+          '</div>';
+
+
+        return;
+
+      }
+
+
+      try {
+
+
+        /* ===================================
+           GET ORDER
+           =================================== */
+
+
+        const order =
+
+          window.ONEERA_FULFILLMENT
+            .getOrder();
+
+
+        if (!order) {
+
+
+          fulfillmentResult.innerHTML =
+
+            '<strong>NO ORDER FOUND</strong>' +
+
+            '<br><br>' +
+
+            'Please click ' +
+
+            '<strong>CREATE TEST ORDER</strong>' +
+
+            ' first.';
+
+
+          return;
+
+        }
+
+
+        /* ===================================
+           CREATE FULFILLMENT
+           =================================== */
+
+
+        const fulfillment =
+
+          window.ONEERA_FULFILLMENT
+
+            .createFulfillment(
+              order
+            );
+
+
+        /* ===================================
+           CREATE CJ PAYLOAD
+           =================================== */
+
+
+        const cjPayload =
+
+          window.ONEERA_FULFILLMENT
+
+            .createCJPayload(
+              fulfillment
+            );
+
+
+        /* ===================================
+           DISPLAY RESULT
+           =================================== */
+
+
+        fulfillmentResult.innerHTML =
+
+
+          '<div class="success">' +
+
+          '✓ FULFILLMENT READY' +
+
+          '</div>' +
+
+
+          '<div class="divider"></div>' +
+
+
+          '<strong>ONE ERA Order</strong>' +
+
+          '<br>' +
+
+          fulfillment.order_id +
+
+
+          '<br><br>' +
+
+
+          '<strong>Fulfillment ID</strong>' +
+
+          '<br>' +
+
+          fulfillment.fulfillment_id +
+
+
+          '<br><br>' +
+
+
+          '<strong>Status</strong>' +
+
+          '<br>' +
+
+
+          '<span class="status">' +
+
+          fulfillment.status +
+
+          '</span>' +
+
+
+          '<br><br>' +
+
+
+          '<strong>CJ Status</strong>' +
+
+          '<br>' +
+
+          fulfillment.cj.status +
+
+
+          '<br><br>' +
+
+
+          '<strong>CJ Payload</strong>' +
+
+
+          '<pre>' +
+
+          JSON.stringify(
+
+            cjPayload,
+
+            null,
+
+            2
+
+          ) +
+
+          '</pre>';
+
+
+        console.log(
+
+          "ONE ERA FULFILLMENT:",
+
+          fulfillment
+
+        );
+
+
+        console.log(
+
+          "ONE ERA CJ PAYLOAD:",
+
+          cjPayload
+
+        );
+
+
+      }
+
+
+      catch (error) {
+
+
+        console.error(
+          "ONE ERA Phase 4.5 error:",
+          error
+        );
+
+
+        fulfillmentResult.innerHTML =
+
+
+          '<strong>ERROR</strong>' +
+
+          '<br><br>' +
+
+          error.message;
+
+
+      }
 
 
     }
