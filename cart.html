@@ -1,49 +1,984 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cart — ONE ERA</title><meta name="description" content="ONE ERA — The Spiritual Society.">
-<link rel="stylesheet" href="styles.css">
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>Cart — ONE ERA</title>
+
+<meta
+  name="description"
+  content="ONE ERA — The Spiritual Society."
+>
+
+<link
+  rel="stylesheet"
+  href="styles.css"
+>
+
+<style>
+
+.cart-wrap{
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:50px;
+}
+
+.cart-items{
+  border-top:1px solid var(--line);
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:120px 1fr auto;
+  gap:25px;
+  padding:25px 0;
+  border-bottom:1px solid var(--line);
+  align-items:center;
+}
+
+.cart-image{
+  width:120px;
+  aspect-ratio:1;
+  background:
+    linear-gradient(
+      145deg,
+      #d7c8bf,
+      #1c2c28
+    );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#f2eadf;
+  font-family:Georgia,serif;
+  font-size:14px;
+  text-align:center;
+}
+
+.cart-info h3{
+  margin:5px 0 8px;
+  font-size:24px;
+}
+
+.cart-info p{
+  margin:0;
+  font-size:12px;
+  line-height:1.7;
+  color:#665f57;
+}
+
+.cart-meta{
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.55;
+}
+
+.cart-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:15px;
+}
+
+.cart-controls button{
+  width:30px;
+  height:30px;
+  border:1px solid var(--line);
+  background:transparent;
+  cursor:pointer;
+}
+
+.cart-controls span{
+  min-width:25px;
+  text-align:center;
+  font-size:13px;
+}
+
+.remove{
+  margin-left:10px;
+  border:0 !important;
+  width:auto !important;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  opacity:.55;
+}
+
+.cart-price{
+  text-align:right;
+  font-size:14px;
+}
+
+.cart-summary{
+  border:1px solid var(--line);
+  padding:25px;
+  height:max-content;
+}
+
+.cart-summary h3{
+  margin-top:0;
+  font-size:24px;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+}
+
+.summary-total{
+  font-size:18px;
+  padding-top:20px;
+  border-bottom:0;
+}
+
+.checkout-btn{
+  display:block;
+  width:100%;
+  margin-top:20px;
+  padding:16px;
+  background:#11100f;
+  color:white;
+  text-align:center;
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.checkout-btn:hover{
+  opacity:.85;
+}
+
+.empty-cart{
+  padding:60px 20px;
+  border-top:1px solid var(--line);
+  text-align:center;
+}
+
+.empty-cart h2{
+  font-family:Georgia,serif;
+  font-size:38px;
+  margin-bottom:15px;
+}
+
+.empty-cart p{
+  color:#665f57;
+  font-size:13px;
+  line-height:1.8;
+}
+
+.empty-cart a{
+  display:inline-block;
+  margin-top:20px;
+}
+
+.test-notice{
+  margin-top:25px;
+  padding:15px;
+  background:#f2eadf;
+  font-size:11px;
+  line-height:1.7;
+  color:#665f57;
+}
+
+@media(max-width:800px){
+
+  .cart-wrap{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .cart-item{
+    grid-template-columns:80px 1fr;
+  }
+
+  .cart-image{
+    width:80px;
+  }
+
+  .cart-price{
+    grid-column:2;
+    text-align:left;
+  }
+
+}
+
+</style>
+
 </head>
-<body class="">
+
+
+<body>
+
 
 <header class="site-header">
+
   <div class="container nav">
-    <a class="wordmark" href="index.html">ONE ERA</a>
+
+    <a
+      class="wordmark"
+      href="index.html"
+    >
+      ONE ERA
+    </a>
+
+
     <nav class="nav-links">
-      <a href="discover.html">Explore</a>
-      <a href="practice.html">Practice</a>
-      <a href="shop.html">Shop</a>
-      <a href="learn.html">Learn</a>
-      <a href="journal.html">Journal</a>
-      <a href="about.html">The Society</a>
+
+      <a href="discover.html">
+        Explore
+      </a>
+
+      <a href="practice.html">
+        Practice
+      </a>
+
+      <a href="shop.html">
+        Shop
+      </a>
+
+      <a href="learn.html">
+        Learn
+      </a>
+
+      <a href="journal.html">
+        Journal
+      </a>
+
+      <a href="about.html">
+        The Society
+      </a>
+
     </nav>
-    <div class="nav-icons"><span>⌕</span><a href="cart.html">Bag <span data-cart-count>0</span></a></div>
-    <span class="mobile-menu">☰</span>
+
+
+    <div class="nav-icons">
+
+      <span>⌕</span>
+
+      <a href="cart.html">
+
+        Bag
+        <span data-cart-count>0</span>
+
+      </a>
+
+    </div>
+
+
+    <span class="mobile-menu">
+      ☰
+    </span>
+
   </div>
+
 </header>
 
 
-<section class="page-hero"><div class="container"><div class="breadcrumb">Home / Bag</div><h1>Your ritual bag.</h1></div></section>
-<section class="section"><div class="container"><div data-cart class="order-box"></div></div></section>
+
+<section class="page-hero">
+
+  <div class="container">
+
+    <div class="breadcrumb">
+      Home / Bag
+    </div>
+
+    <h1>
+      Your ritual bag.
+    </h1>
+
+  </div>
+
+</section>
+
+
+
+<section class="section">
+
+  <div class="container">
+
+    <div
+      id="cartRoot"
+    ></div>
+
+  </div>
+
+</section>
+
 
 
 <footer class="footer">
+
   <div class="container">
+
     <div class="footer-grid">
+
       <div>
-        <div class="wordmark">ONE ERA</div>
-        <p style="margin-top:15px">THE SPIRITUAL SOCIETY</p>
-        <p>Natural, but supernatural.</p>
+
+        <div class="wordmark">
+          ONE ERA
+        </div>
+
+        <p style="margin-top:15px">
+          THE SPIRITUAL SOCIETY
+        </p>
+
+        <p>
+          Natural, but supernatural.
+        </p>
+
       </div>
-      <div><h4>Explore</h4><a href="discover.html">Discover</a><a href="practice.html">Practice</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a></div>
-      <div><h4>Shop</h4><a href="shop.html">All Objects</a><a href="collections.html">Collections</a><a href="shop.html">Crystals</a><a href="shop.html">Incense</a></div>
-      <div><h4>Society</h4><a href="about.html">About ONE ERA</a><a href="about.html">Our Philosophy</a><a href="checkout.html">Shipping</a><a href="about.html">Contact</a></div>
+
+
+      <div>
+
+        <h4>
+          Explore
+        </h4>
+
+        <a href="discover.html">
+          Discover
+        </a>
+
+        <a href="practice.html">
+          Practice
+        </a>
+
+        <a href="learn.html">
+          Learn
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Shop
+        </h4>
+
+        <a href="shop.html">
+          All Objects
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="shop.html">
+          Crystals
+        </a>
+
+        <a href="shop.html">
+          Incense
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Society
+        </h4>
+
+        <a href="about.html">
+          About ONE ERA
+        </a>
+
+        <a href="about.html">
+          Our Philosophy
+        </a>
+
+        <a href="checkout.html">
+          Shipping
+        </a>
+
+        <a href="about.html">
+          Contact
+        </a>
+
+      </div>
+
     </div>
-    <div class="footer-bottom"><span>© 2026 ONE ERA</span><span>UK · USD · THB &nbsp; | &nbsp; Instagram · Pinterest · YouTube</span></div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 ONE ERA
+      </span>
+
+      <span>
+        UK · USD · THB
+        &nbsp; | &nbsp;
+        Instagram · Pinterest · YouTube
+      </span>
+
+    </div>
+
   </div>
+
 </footer>
 
+
+
+<script>
+
+/*
+==================================================
+ONE ERA CART CORE
+==================================================
+
+Storage key:
+
+oneEraCart
+
+This is the single cart storage used by:
+
+Product Page
+Cart
+Checkout
+Order
+
+TEST MODE ONLY
+==================================================
+*/
+
+
+const CART_KEY = "oneEraCart";
+
+
+/* --------------------------------
+   GET CART
+-------------------------------- */
+
+function getCart(){
+
+  try{
+
+    const stored =
+      localStorage.getItem(
+        CART_KEY
+      );
+
+    if(!stored){
+
+      return [];
+
+    }
+
+    const cart =
+      JSON.parse(stored);
+
+    return Array.isArray(cart)
+      ? cart
+      : [];
+
+  }catch(error){
+
+    console.error(
+      "ONE ERA cart error:",
+      error
+    );
+
+    return [];
+
+  }
+
+}
+
+
+/* --------------------------------
+   SAVE CART
+-------------------------------- */
+
+function saveCart(cart){
+
+  localStorage.setItem(
+    CART_KEY,
+    JSON.stringify(cart)
+  );
+
+}
+
+
+/* --------------------------------
+   UPDATE BAG COUNT
+-------------------------------- */
+
+function updateBagCount(){
+
+  const cart =
+    getCart();
+
+
+  const count =
+    cart.reduce(
+      (total,item) =>
+        total +
+        Number(
+          item.quantity || 0
+        ),
+      0
+    );
+
+
+  document
+    .querySelectorAll(
+      "[data-cart-count]"
+    )
+    .forEach(
+      element => {
+
+        element.textContent =
+          count;
+
+      }
+    );
+
+}
+
+
+/* --------------------------------
+   PRICE DISPLAY
+-------------------------------- */
+
+function getPrice(item){
+
+  if(
+    item.price &&
+    item.price.display
+  ){
+
+    return item.price.display;
+
+  }
+
+
+  if(
+    item.price &&
+    item.price.amount !== undefined
+  ){
+
+    return (
+      item.price.currency +
+      " " +
+      item.price.amount
+    );
+
+  }
+
+
+  return "TEST PRICE";
+
+}
+
+
+/* --------------------------------
+   RENDER CART
+-------------------------------- */
+
+function renderCart(){
+
+  const root =
+    document.getElementById(
+      "cartRoot"
+    );
+
+
+  const cart =
+    getCart();
+
+
+  updateBagCount();
+
+
+  /* EMPTY */
+
+  if(cart.length === 0){
+
+    root.innerHTML = `
+
+      <div class="empty-cart">
+
+        <div class="eyebrow">
+          YOUR BAG
+        </div>
+
+        <h2>
+          Nothing here yet.
+        </h2>
+
+        <p>
+          Your ritual objects will appear here
+          when you choose something from the shop.
+        </p>
+
+        <a
+          class="btn btn-dark"
+          href="shop.html"
+        >
+          Explore the shop
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* TOTAL QUANTITY */
+
+  const totalQuantity =
+    cart.reduce(
+      (total,item) =>
+        total +
+        Number(
+          item.quantity || 0
+        ),
+      0
+    );
+
+
+  root.innerHTML = `
+
+    <div class="cart-wrap">
+
+
+      <div>
+
+        <div class="cart-items">
+
+          ${cart.map(
+            (item,index) => `
+
+              <div
+                class="cart-item"
+                data-index="${index}"
+              >
+
+
+                <div class="cart-image">
+
+                  ONE ERA
+
+                </div>
+
+
+                <div class="cart-info">
+
+                  <div class="cart-meta">
+
+                    ${
+                      item.category ||
+                      "Ritual Object"
+                    }
+
+                  </div>
+
+
+                  <h3>
+
+                    ${
+                      item.name ||
+                      "ONE ERA Object"
+                    }
+
+                  </h3>
+
+
+                  <p>
+
+                    ${
+                      item.slug ||
+                      ""
+                    }
+
+                  </p>
+
+
+                  <div class="cart-controls">
+
+
+                    <button
+                      type="button"
+                      onclick="changeQuantity(
+                        ${index},
+                        -1
+                      )"
+                    >
+                      −
+                    </button>
+
+
+                    <span>
+
+                      ${
+                        item.quantity || 1
+                      }
+
+                    </span>
+
+
+                    <button
+                      type="button"
+                      onclick="changeQuantity(
+                        ${index},
+                        1
+                      )"
+                    >
+                      +
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="remove"
+                      onclick="removeItem(
+                        ${index}
+                      )"
+                    >
+                      Remove
+                    </button>
+
+
+                  </div>
+
+                </div>
+
+
+                <div class="cart-price">
+
+                  ${
+                    getPrice(item)
+                  }
+
+                </div>
+
+
+              </div>
+
+            `
+          ).join("")}
+
+        </div>
+
+
+        <div class="test-notice">
+
+          <strong>
+            TEST MODE
+          </strong>
+
+          <br>
+
+          This bag is currently part of the
+          ONE ERA test environment.
+
+          No payment is taken and no supplier
+          order is created from this page.
+
+        </div>
+
+      </div>
+
+
+
+      <aside class="cart-summary">
+
+        <div class="eyebrow">
+          ORDER SUMMARY
+        </div>
+
+        <h3>
+          Your bag
+        </h3>
+
+
+        <div class="summary-row">
+
+          <span>
+            Items
+          </span>
+
+          <span>
+            ${totalQuantity}
+          </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <span>
+            TEST
+          </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>
+            Shipping
+          </span>
+
+          <span>
+            Calculated at checkout
+          </span>
+
+        </div>
+
+
+        <div class="summary-row summary-total">
+
+          <strong>
+            Total
+          </strong>
+
+          <strong>
+            TEST
+          </strong>
+
+        </div>
+
+
+        <a
+          href="checkout.html"
+          class="checkout-btn"
+        >
+
+          Continue to checkout
+
+        </a>
+
+      </aside>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* --------------------------------
+   CHANGE QUANTITY
+-------------------------------- */
+
+function changeQuantity(
+  index,
+  change
+){
+
+  const cart =
+    getCart();
+
+
+  if(!cart[index]){
+
+    return;
+
+  }
+
+
+  const current =
+    Number(
+      cart[index].quantity || 1
+    );
+
+
+  const next =
+    current + change;
+
+
+  if(next <= 0){
+
+    cart.splice(
+      index,
+      1
+    );
+
+  }else{
+
+    cart[index].quantity =
+      next;
+
+  }
+
+
+  saveCart(cart);
+
+  renderCart();
+
+}
+
+
+/* --------------------------------
+   REMOVE
+-------------------------------- */
+
+function removeItem(index){
+
+  const cart =
+    getCart();
+
+
+  cart.splice(
+    index,
+    1
+  );
+
+
+  saveCart(cart);
+
+  renderCart();
+
+}
+
+
+/* --------------------------------
+   START
+-------------------------------- */
+
+renderCart();
+
+</script>
+
+
+<!--
+  Keep the global script loaded for
+  the rest of the ONE ERA website.
+-->
 <script src="script.js"></script>
+
+
 </body>
+
 </html>
