@@ -1,180 +1,122 @@
-{
-  "categories": [
-    {
-      "slug": "crystals",
-      "name": "Crystals",
-      "description": "Minerals, stones and objects for reflection, ritual and personal symbolism."
+[
+  {
+    "id": "one-era-green-fluorite",
+    "slug": "green-fluorite",
+    "name": "Green Fluorite",
+    "title": "Green Fluorite",
+    "subtitle": "A natural stone for scent, space and reflection.",
+    "brand": "ONE ERA",
+
+    "category": "Crystals",
+    "collection": "The Unseen",
+    "type": "ritual-object",
+
+    "description": "Natural Green Fluorite selected as a tactile object for scent rituals, quiet spaces and personal reflection.",
+
+    "shortDescription": "A natural Green Fluorite stone for scent rituals and quiet spaces.",
+
+    "price": {
+      "amount": 0,
+      "currency": "THB",
+      "display": "TEST PRICE"
     },
-    {
-      "slug": "incense",
-      "name": "Incense",
-      "description": "Scent, smoke and ritual objects for transition, atmosphere and practice."
+
+    "testMode": true,
+    "available": true,
+
+    "inventory": {
+      "source": "CJdropshipping",
+      "status": "test",
+      "quantity": null
     },
-    {
-      "slug": "chakra",
-      "name": "Chakra",
-      "description": "Objects and guides inspired by chakra-based spiritual practice."
+
+    "supplier": {
+      "platform": "CJdropshipping",
+      "sku": "CJZS237829401AZ",
+      "sourceUrl": "https://cjdropshipping.com/product/crystal-rough-green-fluorite-cross-border-crystal-diffuser-rough-wool-aromatherapy-stone-black-tourmaline-crystal-crushed-stone-p-1923313316286001154.html?tabKey=customize"
     },
-    {
-      "slug": "reiki",
-      "name": "Reiki",
-      "description": "Tools for Reiki-inspired practice, space and presence."
+
+    "specifications": {
+      "material": "Natural Green Fluorite",
+      "weight": "100 g",
+      "size": "12 cm",
+      "packageSize": "20 × 20 × 10 mm"
     },
-    {
-      "slug": "meditation",
-      "name": "Meditation",
-      "description": "Objects that support stillness, breath and attention."
+
+    "ritual": {
+      "purpose": [
+        "Scent",
+        "Space",
+        "Reflection"
+      ],
+
+      "howToUse": [
+        "Place the stone in a quiet space.",
+        "Add a few drops of essential oil to the surface.",
+        "Allow the scent to diffuse naturally.",
+        "Use the moment as an invitation to pause and reflect."
+      ],
+
+      "note": "Natural stones vary in colour, shape and texture. Each piece is unique."
     },
-    {
-      "slug": "manifestation",
-      "name": "Manifestation",
-      "description": "Journaling, intention and ritual tools for focused reflection."
+
+    "story": {
+      "headline": "A stone for the space between scent and stillness.",
+      "body": "Green Fluorite brings together stone, scent and ritual in one simple object. Use it as a quiet sensory anchor while reading, meditating, journaling or simply slowing down."
     },
-    {
-      "slug": "protection",
-      "name": "Protection",
-      "description": "Objects and practices associated with boundaries, protection and energetic cleansing."
+
+    "images": [
+      {
+        "url": "https://cc-west-usa.oss-us-west-1.aliyuncs.com/",
+        "alt": "Green Fluorite natural crystal"
+      }
+    ],
+
+    "tags": [
+      "green fluorite",
+      "crystal",
+      "aromatherapy",
+      "ritual",
+      "meditation",
+      "natural stone",
+      "spiritual objects"
+    ],
+
+    "markets": {
+      "TH": {
+        "enabled": true,
+        "currency": "THB"
+      },
+      "US": {
+        "enabled": true,
+        "currency": "USD"
+      },
+      "UK": {
+        "enabled": true,
+        "currency": "GBP"
+      },
+      "AU": {
+        "enabled": false,
+        "currency": "AUD"
+      },
+      "SG": {
+        "enabled": false,
+        "currency": "SGD"
+      },
+      "HK": {
+        "enabled": true,
+        "currency": "HKD"
+      },
+      "ID": {
+        "enabled": false,
+        "currency": "IDR"
+      }
     },
-    {
-      "slug": "cleansing",
-      "name": "Cleansing",
-      "description": "Incense, smoke, sound and ritual tools used for reset and transition."
-    },
-    {
-      "slug": "tarot-oracle",
-      "name": "Tarot & Oracle",
-      "description": "Cards for reflection, symbolism, divination and questions."
-    },
-    {
-      "slug": "jewellery",
-      "name": "Spiritual Jewellery",
-      "description": "Wearable symbols and stones for personal meaning."
-    },
-    {
-      "slug": "candles",
-      "name": "Candles",
-      "description": "Light and scent for ritual atmosphere and intentional moments."
-    },
-    {
-      "slug": "aromatherapy",
-      "name": "Aromatherapy",
-      "description": "Scent-led objects for atmosphere and personal ritual."
-    },
-    {
-      "slug": "ritual-tools",
-      "name": "Ritual Tools",
-      "description": "Practical objects for building a personal ritual space."
-    },
-    {
-      "slug": "gifts",
-      "name": "Gifts",
-      "description": "Objects selected for spiritual beginnings, milestones and meaningful moments."
+
+    "fulfillment": {
+      "provider": "CJdropshipping",
+      "mode": "TEST",
+      "status": "not_connected"
     }
-  ],
-  "products": [
-    {
-      "id": "OE001",
-      "slug": "botanical-incense-open",
-      "name": "Botanical Incense — OPEN",
-      "category": "incense",
-      "collection": "ONE ERA Botanical Incense",
-      "price_usd": 18,
-      "price_gbp": 14,
-      "price_thb": 650,
-      "status": "planned",
-      "ritual_state": "OPEN",
-      "botanical": "พุทธรักษา",
-      "notes": "Thai botanical identity; final scent formula and supplier specification pending."
-    },
-    {
-      "id": "OE002",
-      "slug": "botanical-incense-clear",
-      "name": "Botanical Incense — CLEAR",
-      "category": "incense",
-      "collection": "ONE ERA Botanical Incense",
-      "price_usd": 18,
-      "price_gbp": 14,
-      "price_thb": 650,
-      "status": "planned",
-      "ritual_state": "CLEAR",
-      "botanical": "กาสะลอง",
-      "notes": "Thai botanical identity; final scent formula and supplier specification pending."
-    },
-    {
-      "id": "OE003",
-      "slug": "botanical-incense-soft",
-      "name": "Botanical Incense — SOFT",
-      "category": "incense",
-      "collection": "ONE ERA Botanical Incense",
-      "price_usd": 18,
-      "price_gbp": 14,
-      "price_thb": 650,
-      "status": "planned",
-      "ritual_state": "SOFT",
-      "botanical": "ราชาวดี",
-      "notes": "Thai botanical identity; final scent formula and supplier specification pending."
-    },
-    {
-      "id": "OE004",
-      "slug": "botanical-incense-return",
-      "name": "Botanical Incense — RETURN",
-      "category": "incense",
-      "collection": "ONE ERA Botanical Incense",
-      "price_usd": 18,
-      "price_gbp": 14,
-      "price_thb": 650,
-      "status": "planned",
-      "ritual_state": "RETURN",
-      "botanical": "ชมนาด",
-      "notes": "Thai botanical identity; final scent formula and supplier specification pending."
-    },
-    {
-      "id": "OE005",
-      "slug": "clear-quartz-point",
-      "name": "Clear Quartz Point",
-      "category": "crystals",
-      "collection": "Foundational Objects",
-      "price_usd": 16,
-      "price_gbp": 13,
-      "price_thb": 590,
-      "status": "example",
-      "notes": "Replace with verified supplier specification, weight, dimensions and grade before launch."
-    },
-    {
-      "id": "OE006",
-      "slug": "amethyst-cluster",
-      "name": "Amethyst Cluster",
-      "category": "crystals",
-      "collection": "Foundational Objects",
-      "price_usd": 24,
-      "price_gbp": 19,
-      "price_thb": 890,
-      "status": "example",
-      "notes": "Replace with verified supplier specification, weight, dimensions and grade before launch."
-    },
-    {
-      "id": "OE007",
-      "slug": "ritual-candle-set",
-      "name": "Ritual Candle Set",
-      "category": "candles",
-      "collection": "Ritual Objects",
-      "price_usd": 22,
-      "price_gbp": 18,
-      "price_thb": 790,
-      "status": "example",
-      "notes": "Placeholder product concept; supplier, materials and safety compliance must be verified."
-    },
-    {
-      "id": "OE008",
-      "slug": "intention-journal",
-      "name": "The Intention Journal",
-      "category": "manifestation",
-      "collection": "Practice Tools",
-      "price_usd": 20,
-      "price_gbp": 16,
-      "price_thb": 720,
-      "status": "concept",
-      "notes": "ONE ERA designed content product; final format and production method pending."
-    }
-  ]
-}
+  }
+]
