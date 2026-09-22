@@ -1,8 +1,9 @@
 /* =====================================================
    ONE ERA
-   PHASE 4.5
+   PHASE 4.8.1
+   PRODUCT MAPPING
    ORDER → FULFILLMENT → CJ
-   TEST / ARCHITECTURE VERSION
+   TEST MODE
    ===================================================== */
 
 (function () {
@@ -22,6 +23,53 @@
 
 
   /* =====================================================
+     ONE ERA → CJ PRODUCT MAPPING
+     ===================================================== */
+
+  const PRODUCT_MAPPING = {
+
+    "one-era-green-fluorite": {
+
+      oneEraProductId:
+        "one-era-green-fluorite",
+
+      slug:
+        "green-fluorite",
+
+      name:
+        "Green Fluorite",
+
+      cjPlatform:
+        "CJdropshipping",
+
+      cjSku:
+        "CJZS237829401AZ",
+
+      testMode:
+        true,
+
+      fulfillmentStatus:
+        "NOT_SUBMITTED"
+
+    }
+
+  };
+
+
+  /* =====================================================
+     LEGACY TEST SKU MAPPING
+     Allows existing test orders to continue working.
+     ===================================================== */
+
+  const LEGACY_SKU_MAPPING = {
+
+    "ONEERA-TEST-001":
+      "one-era-green-fluorite"
+
+  };
+
+
+  /* =====================================================
      GET ORDER
      ===================================================== */
 
@@ -34,11 +82,13 @@
           ORDER_KEY
         );
 
+
       if (!data) {
 
         return null;
 
       }
+
 
       return JSON.parse(data);
 
@@ -89,6 +139,163 @@
 
 
   /* =====================================================
+     RESOLVE PRODUCT MAPPING
+     ===================================================== */
+
+  function resolveProductMapping(item) {
+
+    if (!item) {
+
+      return null;
+
+    }
+
+
+    /*
+      1. Direct ONE ERA product ID
+    */
+
+    if (
+      item.product_id &&
+      PRODUCT_MAPPING[item.product_id]
+    ) {
+
+      return PRODUCT_MAPPING[
+        item.product_id
+      ];
+
+    }
+
+
+    /*
+      2. Direct ONE ERA SKU
+    */
+
+    if (
+      item.sku &&
+      PRODUCT_MAPPING[item.sku]
+    ) {
+
+      return PRODUCT_MAPPING[
+        item.sku
+      ];
+
+    }
+
+
+    /*
+      3. Legacy test SKU
+    */
+
+    if (
+      item.sku &&
+      LEGACY_SKU_MAPPING[item.sku]
+    ) {
+
+      const productId =
+        LEGACY_SKU_MAPPING[
+          item.sku
+        ];
+
+
+      return PRODUCT_MAPPING[
+        productId
+      ];
+
+    }
+
+
+    /*
+      4. No mapping
+    */
+
+    return null;
+
+  }
+
+
+  /* =====================================================
+     MAP ORDER ITEM
+     ===================================================== */
+
+  function mapOrderItem(item) {
+
+    const mapping =
+      resolveProductMapping(
+        item
+      );
+
+
+    /*
+      Product not mapped
+    */
+
+    if (!mapping) {
+
+      return {
+
+        product_id:
+          item.product_id ||
+          null,
+
+        original_sku:
+          item.sku ||
+          null,
+
+        cj_sku:
+          null,
+
+        quantity:
+          item.quantity || 1,
+
+        mapping_status:
+          "UNMAPPED",
+
+        test_mode:
+          true
+
+      };
+
+    }
+
+
+    /*
+      Product successfully mapped
+    */
+
+    return {
+
+      product_id:
+        mapping.oneEraProductId,
+
+      product_name:
+        mapping.name,
+
+      original_sku:
+        item.sku ||
+        mapping.oneEraProductId,
+
+      cj_sku:
+        mapping.cjSku,
+
+      quantity:
+        item.quantity || 1,
+
+      mapping_status:
+        "MAPPED",
+
+      cj_platform:
+        mapping.cjPlatform,
+
+      test_mode:
+        mapping.testMode
+
+    };
+
+  }
+
+
+  /* =====================================================
      CREATE FULFILLMENT
      ===================================================== */
 
@@ -103,6 +310,47 @@
     }
 
 
+    const originalItems =
+      Array.isArray(order.items)
+        ? order.items
+        : [];
+
+
+    /*
+      Map every order item
+    */
+
+    const mappedItems =
+      originalItems.map(
+        mapOrderItem
+      );
+
+
+    /*
+      Check mapping
+    */
+
+    const unmappedItems =
+      mappedItems.filter(
+        function (item) {
+
+          return (
+            item.mapping_status !==
+            "MAPPED"
+          );
+
+        }
+      );
+
+
+    const fulfillmentStatus =
+      unmappedItems.length > 0
+
+        ? "MAPPING_REQUIRED"
+
+        : "READY_FOR_FULFILLMENT";
+
+
     const fulfillment = {
 
       fulfillment_id:
@@ -115,7 +363,10 @@
         new Date().toISOString(),
 
       status:
-        "READY_FOR_FULFILLMENT",
+        fulfillmentStatus,
+
+      test_mode:
+        true,
 
       destination: {
 
@@ -128,7 +379,7 @@
       },
 
       items:
-        order.items || [],
+        mappedItems,
 
       shipping: {
 
@@ -186,10 +437,62 @@
     }
 
 
+    /*
+      TEST SAFETY CHECK
+    */
+
+    if (
+      fulfillment.test_mode !== true
+    ) {
+
+      throw new Error(
+        "Live fulfillment is disabled. TEST MODE only."
+      );
+
+    }
+
+
+    /*
+      Do not create CJ payload
+      when product mapping is incomplete.
+    */
+
+    const unmapped =
+      fulfillment.items.filter(
+        function (item) {
+
+          return (
+            item.mapping_status !==
+            "MAPPED"
+          );
+
+        }
+      );
+
+
+    if (unmapped.length > 0) {
+
+      throw new Error(
+        "One or more products are not mapped to a CJ SKU."
+      );
+
+    }
+
+
+    /*
+      Create TEST CJ payload
+    */
+
     const payload = {
+
+      test_mode:
+        true,
 
       platform:
         "ONE_ERA",
+
+      fulfillment_status:
+        "NOT_SUBMITTED",
 
       external_order_id:
         fulfillment.order_id,
@@ -208,19 +511,27 @@
           .currency,
 
       items:
+
         fulfillment.items.map(
 
           function (item) {
 
             return {
 
-              sku:
-                item.sku ||
-                item.product_id ||
-                "SKU-UNKNOWN",
+              one_era_product_id:
+                item.product_id,
+
+              product_name:
+                item.product_name,
+
+              cj_sku:
+                item.cj_sku,
 
               quantity:
-                item.quantity || 1
+                item.quantity,
+
+              mapping_status:
+                item.mapping_status
 
             };
 
@@ -231,7 +542,17 @@
       shipping_method:
         fulfillment
           .shipping
-          .method
+          .method,
+
+      /*
+        Explicit safety marker.
+      */
+
+      submission:
+        "TEST_ONLY",
+
+      cj_order_id:
+        null
 
     };
 
@@ -283,7 +604,7 @@
 
 
   /* =====================================================
-     UPDATE FULFILLMENT
+     UPDATE FULFILLMENT STATUS
      ===================================================== */
 
   function updateStatus(
@@ -322,6 +643,23 @@
 
 
   /* =====================================================
+     GET PRODUCT MAPPING
+     ===================================================== */
+
+  function getProductMapping(
+    productId
+  ) {
+
+    return (
+      PRODUCT_MAPPING[
+        productId
+      ] || null
+    );
+
+  }
+
+
+  /* =====================================================
      PUBLIC API
      ===================================================== */
 
@@ -340,13 +678,24 @@
       getFulfillment,
 
     updateStatus:
-      updateStatus
+      updateStatus,
+
+    getProductMapping:
+      getProductMapping
 
   };
 
 
   console.log(
     "ONE ERA Fulfillment: READY"
+  );
+
+  console.log(
+    "ONE ERA Product Mapping: READY"
+  );
+
+  console.log(
+    "Green Fluorite → CJZS237829401AZ"
   );
 
 
