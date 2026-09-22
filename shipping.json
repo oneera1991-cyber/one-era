@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "note": "Shipping rates are intentionally not hard-coded. Connect live fulfillment/rates after product weights, package dimensions, destination rules, and CJ route are confirmed.",
+  "default_service": "calculated_at_checkout",
+  "services": [
+    {
+      "id": "standard",
+      "name": "Standard Delivery",
+      "description": "Economy international delivery",
+      "rate_type": "live_rate",
+      "eta_type": "live_rate"
+    },
+    {
+      "id": "express",
+      "name": "Express Delivery",
+      "description": "Faster international delivery",
+      "rate_type": "live_rate",
+      "eta_type": "live_rate"
+    }
+  ],
+  "fulfillment": {
+    "provider": "CJ",
+    "mode": "external_fulfillment",
+    "tracking": true
+  },
+  "countries": [
+    "TH",
+    "GB",
+    "US",
+    "AU",
+    "ID",
+    "SG",
+    "HK"
+  ],
+  "checkout_fields": [
+    "country",
+    "postal_code",
+    "product_weight",
+    "package_dimensions",
+    "shipping_service",
+    "tracking",
+    "duties_and_taxes"
+  ]
+}
