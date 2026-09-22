@@ -18,7 +18,7 @@
 
 .checkout-grid{
   display:grid;
-  grid-template-columns:1fr 380px;
+  grid-template-columns:minmax(0,1fr) 380px;
   gap:60px;
 }
 
@@ -32,8 +32,14 @@
   margin-bottom:25px;
 }
 
+.section-title{
+  font-family:Georgia,serif;
+  font-size:22px;
+  margin:35px 0 20px;
+}
+
 .field{
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .field label{
@@ -50,70 +56,114 @@
   width:100%;
   box-sizing:border-box;
   padding:14px;
-
   border:1px solid var(--line);
   background:#fff;
-
+  color:#11100f;
   font:inherit;
+}
+
+.field input:focus,
+.field select:focus{
+  outline:none;
+  border-color:#11100f;
+}
+
+.field-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.country-note{
+  margin-top:8px;
+  font-size:11px;
+  line-height:1.6;
+  color:#70685F;
 }
 
 .order-summary{
   position:sticky;
   top:30px;
-
   border-top:1px solid var(--line);
   padding-top:25px;
+}
+
+.summary-heading{
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  opacity:.6;
+  margin-bottom:15px;
 }
 
 .summary-item{
   display:flex;
   justify-content:space-between;
   gap:20px;
-
-  padding:12px 0;
-
+  padding:13px 0;
   border-bottom:1px solid var(--line);
+  font-size:12px;
+}
 
+.summary-item-name{
+  line-height:1.5;
+}
+
+.summary-item-price{
+  white-space:nowrap;
+}
+
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
   font-size:12px;
 }
 
 .summary-total{
   display:flex;
   justify-content:space-between;
-
-  margin-top:20px;
+  margin-top:10px;
   padding-top:20px;
-
   border-top:1px solid var(--line);
+  font-size:19px;
+}
 
-  font-size:18px;
+.currency-note{
+  margin-top:12px;
+  font-size:10px;
+  line-height:1.6;
+  color:#70685F;
 }
 
 .test-notice{
   background:#f2eadf;
   padding:18px 20px;
-
   margin-bottom:30px;
-
   font-size:11px;
   line-height:1.7;
   color:#665f57;
 }
 
+.test-badge{
+  display:inline-block;
+  margin-bottom:8px;
+  padding:5px 8px;
+  background:#ead8d2;
+  color:#604c46;
+  font-size:8px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
 .create-order{
   width:100%;
-
   margin-top:25px;
-
   padding:17px;
-
   border:0;
-
   background:#11100f;
   color:#fff;
-
   cursor:pointer;
-
   font-size:10px;
   letter-spacing:.14em;
   text-transform:uppercase;
@@ -130,17 +180,11 @@
 
 .success{
   display:none;
-
   margin-top:25px;
-
   padding:20px;
-
   background:#edf1eb;
-
   color:#315447;
-
   font-size:12px;
-
   line-height:1.8;
 }
 
@@ -150,21 +194,48 @@
 
 .error{
   display:none;
-
   margin-top:20px;
-
   padding:15px;
-
   background:#f4e6e3;
-
   color:#713d36;
-
   font-size:12px;
+  line-height:1.7;
 }
 
 .empty{
   padding:60px 0;
   text-align:center;
+}
+
+.address-preview{
+  margin-top:20px;
+  padding:18px;
+  background:#fff;
+  border:1px solid var(--line);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.address-preview strong{
+  display:block;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.6;
+  margin-bottom:7px;
+}
+
+.shipping-method{
+  margin-top:20px;
+  padding:16px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-size:12px;
+}
+
+.shipping-method strong{
+  display:block;
+  margin-bottom:5px;
 }
 
 @media(max-width:800px){
@@ -175,6 +246,10 @@
 
   .order-summary{
     position:static;
+  }
+
+  .field-grid{
+    grid-template-columns:1fr;
   }
 
 }
@@ -211,10 +286,7 @@ ONE ERA
 <span>⌕</span>
 
 <a href="cart.html">
-
-Bag
-<span data-cart-count>0</span>
-
+Bag <span data-cart-count>0</span>
 </a>
 
 </div>
@@ -224,7 +296,6 @@ Bag
 </div>
 
 </header>
-
 
 
 <section class="page-hero">
@@ -244,22 +315,35 @@ Checkout.
 </section>
 
 
-
 <section class="checkout-section">
 
 <div class="container">
 
 <div class="test-notice">
 
-<strong>TEST MODE</strong>
+<div class="test-badge">
+TEST MODE
+</div>
 
 <br>
 
 This checkout creates a TEST ORDER only.
 
+<br>
+
 No real payment will be taken.
+
+<br>
+
 No real customer order will be submitted.
+
+<br>
+
 No CJ order will be created.
+
+<br>
+
+Shipping and currency shown here use TEST configuration.
 
 </div>
 
@@ -272,7 +356,6 @@ Loading…
 </div>
 
 </section>
-
 
 
 <footer class="footer">
@@ -292,536 +375,1595 @@ THE SPIRITUAL SOCIETY
 </footer>
 
 
-
 <script>
 
-const CART_KEY = "oneEraCart";
+/* =====================================================
+   ONE ERA
+   CHECKOUT
+   PHASE 4.7.5
+   TEST MODE
+   ===================================================== */
 
-const ORDER_KEY = "oneEraOrders";
 
+/* =====================================================
+   STORAGE
+   ===================================================== */
+
+const CART_KEY =
+  "oneEraCart";
+
+const ORDER_KEY =
+  "oneera_test_order";
+
+
+/* =====================================================
+   MARKET CONFIGURATION
+   =====================================================
+
+   TEST MODE ONLY.
+
+   These values are architecture placeholders.
+
+   Production:
+   - FX should come from a live FX provider.
+   - Shipping should come from CJ shipping quotation/API.
+   ===================================================== */
+
+const MARKET_CONFIG = {
+
+  TH: {
+    country: "TH",
+    name: "Thailand",
+    currency: "THB",
+    symbol: "฿",
+
+    /*
+      TEST FX:
+      1 THB = 1 THB
+    */
+    fxFromTHB: 1,
+
+    /*
+      TEST SHIPPING
+    */
+    shippingTHB: 60,
+
+    shippingLabel: "Standard Delivery",
+
+    locale: "th-TH"
+  },
+
+
+  US: {
+    country: "US",
+    name: "United States",
+    currency: "USD",
+    symbol: "$",
+
+    /*
+      TEST FX
+      1 THB = 0.029 USD
+    */
+    fxFromTHB: 0.029,
+
+    shippingTHB: 420,
+
+    shippingLabel: "Standard International Delivery",
+
+    locale: "en-US"
+  },
+
+
+  GB: {
+    country: "GB",
+    name: "United Kingdom",
+    currency: "GBP",
+    symbol: "£",
+
+    /*
+      TEST FX
+      1 THB = 0.021 GBP
+    */
+    fxFromTHB: 0.021,
+
+    shippingTHB: 520,
+
+    shippingLabel: "Standard International Delivery",
+
+    locale: "en-GB"
+  },
+
+
+  AU: {
+    country: "AU",
+    name: "Australia",
+    currency: "AUD",
+    symbol: "A$",
+
+    /*
+      TEST FX
+      1 THB = 0.043 AUD
+    */
+    fxFromTHB: 0.043,
+
+    shippingTHB: 480,
+
+    shippingLabel: "Standard International Delivery",
+
+    locale: "en-AU"
+  },
+
+
+  SG: {
+    country: "SG",
+    name: "Singapore",
+    currency: "SGD",
+    symbol: "S$",
+
+    /*
+      TEST FX
+      1 THB = 0.038 SGD
+    */
+    fxFromTHB: 0.038,
+
+    shippingTHB: 280,
+
+    shippingLabel: "Standard Delivery",
+
+    locale: "en-SG"
+  },
+
+
+  HK: {
+    country: "HK",
+    name: "Hong Kong",
+    currency: "HKD",
+    symbol: "HK$",
+
+    /*
+      TEST FX
+      1 THB = 0.23 HKD
+    */
+    fxFromTHB: 0.23,
+
+    shippingTHB: 250,
+
+    shippingLabel: "Standard Delivery",
+
+    locale: "en-HK"
+  },
+
+
+  ID: {
+    country: "ID",
+    name: "Indonesia",
+    currency: "IDR",
+    symbol: "Rp",
+
+    /*
+      TEST FX
+      1 THB = 480 IDR
+    */
+    fxFromTHB: 480,
+
+    shippingTHB: 350,
+
+    shippingLabel: "Standard International Delivery",
+
+    locale: "id-ID"
+  }
+
+};
+
+
+/* =====================================================
+   CART
+   ===================================================== */
 
 function getCart(){
 
-try{
+  try{
 
-const data =
-JSON.parse(
-localStorage.getItem(CART_KEY) || "[]"
-);
+    const data =
+      JSON.parse(
+        localStorage.getItem(CART_KEY) || "[]"
+      );
 
-return Array.isArray(data)
-? data
-: [];
+    return Array.isArray(data)
+      ? data
+      : [];
 
-}
+  }
 
-catch(error){
+  catch(error){
 
-return [];
+    console.error(
+      "ONE ERA: Cannot read cart",
+      error
+    );
 
-}
+    return [];
 
-}
-
-
-function getOrders(){
-
-try{
-
-const data =
-JSON.parse(
-localStorage.getItem(ORDER_KEY) || "[]"
-);
-
-return Array.isArray(data)
-? data
-: [];
-
-}
-
-catch(error){
-
-return [];
-
-}
+  }
 
 }
 
 
-function saveOrders(orders){
-
-localStorage.setItem(
-ORDER_KEY,
-JSON.stringify(orders)
-);
-
-}
-
+/* =====================================================
+   BAG COUNT
+   ===================================================== */
 
 function updateBagCount(){
 
-const cart = getCart();
+  const cart =
+    getCart();
 
-const count =
-cart.reduce(
-(total,item) =>
-total + Number(item.quantity || 0),
-0
-);
+  const count =
+    cart.reduce(
+      function(total,item){
 
-document
-.querySelectorAll("[data-cart-count]")
-.forEach(
-el => el.textContent = count
-);
+        return (
+          total +
+          Number(item.quantity || 0)
+        );
 
-}
-
-
-function renderCheckout(){
-
-const root =
-document.getElementById(
-"checkoutRoot"
-);
-
-const cart = getCart();
-
-updateBagCount();
+      },
+      0
+    );
 
 
-if(!cart.length){
+  document
+    .querySelectorAll("[data-cart-count]")
+    .forEach(function(el){
 
-root.innerHTML = `
+      el.textContent = count;
 
-<div class="empty">
-
-<h2>
-Your bag is empty.
-</h2>
-
-<p>
-Add an object before continuing to checkout.
-</p>
-
-<a href="shop.html">
-Return to shop →
-</a>
-
-</div>
-
-`;
-
-return;
+    });
 
 }
 
 
-let itemsHTML = "";
-
-
-cart.forEach(item => {
-
-itemsHTML += `
-
-<div class="summary-item">
-
-<span>
-
-${item.name}
-
-<br>
-
-<small>
-Qty ${item.quantity || 1}
-</small>
-
-</span>
-
-<span>
-${item.price?.display || "TEST PRICE"}
-</span>
-
-</div>
-
-`;
-
-});
-
-
-root.innerHTML = `
-
-<div class="checkout-grid">
-
-
-<div class="checkout-card">
-
-<h2>
-Test customer details
-</h2>
-
-
-<div class="field">
-
-<label>
-Name
-</label>
-
-<input
-id="customerName"
-type="text"
-placeholder="Test Customer"
-value="Test Customer"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Email
-</label>
-
-<input
-id="customerEmail"
-type="email"
-placeholder="test@example.com"
-value="test@example.com"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Country
-</label>
-
-<select id="customerCountry">
-
-<option value="TH">
-Thailand
-</option>
-
-<option value="US">
-United States
-</option>
-
-<option value="GB">
-United Kingdom
-</option>
-
-<option value="AU">
-Australia
-</option>
-
-<option value="SG">
-Singapore
-</option>
-
-<option value="HK">
-Hong Kong
-</option>
-
-<option value="ID">
-Indonesia
-</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Shipping address
-</label>
-
-<input
-id="customerAddress"
-type="text"
-placeholder="Test Address"
-value="TEST ADDRESS"
->
-
-</div>
-
-
-<button
-id="createOrder"
-class="create-order"
-type="button"
->
-
-Create Test Order
-
-</button>
-
-
-<div
-id="orderSuccess"
-class="success"
->
-
-</div>
-
-
-<div
-id="orderError"
-class="error"
->
-
-</div>
-
-</div>
-
-
-
-<div class="order-summary">
-
-<div class="eyebrow">
-ORDER SUMMARY
-</div>
-
-${itemsHTML}
-
-
-<div class="summary-total">
-
-<span>
-Total
-</span>
-
-<span>
-TEST MODE
-</span>
-
-</div>
-
-</div>
-
-
-</div>
-
-`;
-
-
-document
-.getElementById("createOrder")
-.addEventListener(
-"click",
-createTestOrder
-);
+/* =====================================================
+   FORMAT MONEY
+   ===================================================== */
+
+function formatMoney(
+  amount,
+  market
+){
+
+  return new Intl.NumberFormat(
+    market.locale,
+    {
+      style:"currency",
+      currency:market.currency,
+      maximumFractionDigits:
+        market.currency === "IDR" ? 0 : 2
+    }
+  ).format(amount);
 
 }
 
+
+/* =====================================================
+   GET BASE PRICE IN THB
+   =====================================================
+
+   Product price system currently supports
+   multiple structures.
+
+   Priority:
+
+   1. item.price_thb
+   2. item.price.amount when THB
+   3. item.price_thb from product mapping
+   4. 0 for TEST product
+   ===================================================== */
+
+function getBasePriceTHB(item){
+
+  if(
+    item.price_thb !== undefined
+  ){
+
+    return Number(
+      item.price_thb
+    ) || 0;
+
+  }
+
+
+  if(
+    item.price &&
+    typeof item.price === "object" &&
+    item.price.amount !== undefined
+  ){
+
+    if(
+      !item.price.currency ||
+      item.price.currency === "THB"
+    ){
+
+      return Number(
+        item.price.amount
+      ) || 0;
+
+    }
+
+  }
+
+
+  return 0;
+
+}
+
+
+/* =====================================================
+   CONVERT THB → MARKET CURRENCY
+   ===================================================== */
+
+function convertFromTHB(
+  amountTHB,
+  market
+){
+
+  return (
+    Number(amountTHB || 0) *
+    Number(market.fxFromTHB || 1)
+  );
+
+}
+
+
+/* =====================================================
+   CALCULATE CART
+   ===================================================== */
+
+function calculateCart(
+  cart,
+  market
+){
+
+  let subtotalTHB = 0;
+
+
+  cart.forEach(function(item){
+
+    const priceTHB =
+      getBasePriceTHB(item);
+
+    const quantity =
+      Number(item.quantity || 1);
+
+    subtotalTHB +=
+      priceTHB *
+      quantity;
+
+  });
+
+
+  const shippingTHB =
+    Number(
+      market.shippingTHB || 0
+    );
+
+
+  const totalTHB =
+    subtotalTHB +
+    shippingTHB;
+
+
+  return {
+
+    subtotalTHB:
+      subtotalTHB,
+
+    shippingTHB:
+      shippingTHB,
+
+    totalTHB:
+      totalTHB,
+
+    subtotal:
+      convertFromTHB(
+        subtotalTHB,
+        market
+      ),
+
+    shipping:
+      convertFromTHB(
+        shippingTHB,
+        market
+      ),
+
+    total:
+      convertFromTHB(
+        totalTHB,
+        market
+      )
+
+  };
+
+}
+
+
+/* =====================================================
+   GET SELECTED MARKET
+   ===================================================== */
+
+function getSelectedMarket(){
+
+  const select =
+    document.getElementById(
+      "customerCountry"
+    );
+
+
+  const country =
+    select
+      ? select.value
+      : "TH";
+
+
+  return (
+    MARKET_CONFIG[country] ||
+    MARKET_CONFIG.TH
+  );
+
+}
+
+
+/* =====================================================
+   RENDER SUMMARY
+   ===================================================== */
+
+function renderSummary(){
+
+  const cart =
+    getCart();
+
+  const market =
+    getSelectedMarket();
+
+
+  const summary =
+    document.getElementById(
+      "orderSummary"
+    );
+
+
+  const totals =
+    calculateCart(
+      cart,
+      market
+    );
+
+
+  let itemsHTML = "";
+
+
+  cart.forEach(function(item){
+
+    const quantity =
+      Number(item.quantity || 1);
+
+
+    const baseTHB =
+      getBasePriceTHB(item);
+
+
+    const itemTHB =
+      baseTHB *
+      quantity;
+
+
+    const itemPrice =
+      convertFromTHB(
+        itemTHB,
+        market
+      );
+
+
+    itemsHTML += `
+
+      <div class="summary-item">
+
+        <span class="summary-item-name">
+
+          ${item.name || "ONE ERA Object"}
+
+          <br>
+
+          <small>
+            Qty ${quantity}
+          </small>
+
+        </span>
+
+        <span class="summary-item-price">
+
+          ${
+            formatMoney(
+              itemPrice,
+              market
+            )
+          }
+
+        </span>
+
+      </div>
+
+    `;
+
+  });
+
+
+  summary.innerHTML = `
+
+    <div class="summary-heading">
+      ORDER SUMMARY
+    </div>
+
+    ${itemsHTML}
+
+    <div class="summary-line">
+
+      <span>
+        Subtotal
+      </span>
+
+      <span>
+        ${formatMoney(
+          totals.subtotal,
+          market
+        )}
+      </span>
+
+    </div>
+
+
+    <div class="summary-line">
+
+      <span>
+        ${market.shippingLabel}
+      </span>
+
+      <span>
+        ${formatMoney(
+          totals.shipping,
+          market
+        )}
+      </span>
+
+    </div>
+
+
+    <div class="summary-total">
+
+      <span>
+        Total
+      </span>
+
+      <strong>
+        ${formatMoney(
+          totals.total,
+          market
+        )}
+      </strong>
+
+    </div>
+
+
+    <div class="currency-note">
+
+      Currency:
+      <strong>
+        ${market.currency}
+      </strong>
+
+      ·
+
+      Destination:
+      <strong>
+        ${market.name}
+      </strong>
+
+      <br><br>
+
+      TEST MODE exchange rate and
+      shipping configuration.
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   ADDRESS PREVIEW
+   ===================================================== */
+
+function renderAddressPreview(){
+
+  const preview =
+    document.getElementById(
+      "addressPreview"
+    );
+
+
+  if(!preview){
+
+    return;
+
+  }
+
+
+  const name =
+    document.getElementById(
+      "customerName"
+    ).value.trim();
+
+
+  const address =
+    document.getElementById(
+      "customerAddress"
+    ).value.trim();
+
+
+  const city =
+    document.getElementById(
+      "customerCity"
+    ).value.trim();
+
+
+  const state =
+    document.getElementById(
+      "customerState"
+    ).value.trim();
+
+
+  const postal =
+    document.getElementById(
+      "customerPostal"
+    ).value.trim();
+
+
+  const market =
+    getSelectedMarket();
+
+
+  preview.innerHTML = `
+
+    <strong>
+      SHIPPING TO
+    </strong>
+
+    ${
+      name || "Test Customer"
+    }
+
+    <br>
+
+    ${
+      address || "Address"
+    }
+
+    <br>
+
+    ${
+      city || "City"
+    }
+
+    ${
+      state
+        ? ", " + state
+        : ""
+    }
+
+    ${
+      postal
+        ? " " + postal
+        : ""
+    }
+
+    <br>
+
+    ${
+      market.name
+    }
+
+  `;
+
+}
+
+
+/* =====================================================
+   CREATE TEST ORDER
+   ===================================================== */
 
 function createTestOrder(){
 
-const cart = getCart();
+  const cart =
+    getCart();
 
 
-if(!cart.length){
+  if(!cart.length){
 
-showError(
-"Your cart is empty."
-);
+    showError(
+      "Your cart is empty."
+    );
 
-return;
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "createOrder"
+    );
+
+
+  const customerName =
+    document.getElementById(
+      "customerName"
+    ).value.trim();
+
+
+  const customerEmail =
+    document.getElementById(
+      "customerEmail"
+    ).value.trim();
+
+
+  const customerPhone =
+    document.getElementById(
+      "customerPhone"
+    ).value.trim();
+
+
+  const country =
+    document.getElementById(
+      "customerCountry"
+    ).value;
+
+
+  const address =
+    document.getElementById(
+      "customerAddress"
+    ).value.trim();
+
+
+  const city =
+    document.getElementById(
+      "customerCity"
+    ).value.trim();
+
+
+  const state =
+    document.getElementById(
+      "customerState"
+    ).value.trim();
+
+
+  const postal =
+    document.getElementById(
+      "customerPostal"
+    ).value.trim();
+
+
+  if(!customerName){
+
+    showError(
+      "Please enter your full name."
+    );
+
+    return;
+
+  }
+
+
+  if(!customerEmail){
+
+    showError(
+      "Please enter your email."
+    );
+
+    return;
+
+  }
+
+
+  if(!customerPhone){
+
+    showError(
+      "Please enter your phone number."
+    );
+
+    return;
+
+  }
+
+
+  if(!address){
+
+    showError(
+      "Please enter your shipping address."
+    );
+
+    return;
+
+  }
+
+
+  if(!city){
+
+    showError(
+      "Please enter your city."
+    );
+
+    return;
+
+  }
+
+
+  if(!postal){
+
+    showError(
+      "Please enter your postal code."
+    );
+
+    return;
+
+  }
+
+
+  const market =
+    MARKET_CONFIG[country] ||
+    MARKET_CONFIG.TH;
+
+
+  const totals =
+    calculateCart(
+      cart,
+      market
+    );
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "Creating Test Order…";
+
+
+  /* =========================================
+     ORDER ID
+     ========================================= */
+
+  const date =
+    new Date()
+      .toISOString()
+      .slice(0,10)
+      .replace(/-/g,"");
+
+
+  const random =
+    Math.random()
+      .toString(36)
+      .substring(2,8)
+      .toUpperCase();
+
+
+  const orderId =
+    "OE-" +
+    date +
+    "-" +
+    random;
+
+
+  /* =========================================
+     ORDER OBJECT
+     ========================================= */
+
+  const order = {
+
+    order_id:
+      orderId,
+
+
+    created_at:
+      new Date().toISOString(),
+
+
+    market:
+      market.country,
+
+
+    currency:
+      market.currency,
+
+
+    customer: {
+
+      name:
+        customerName,
+
+      email:
+        customerEmail,
+
+      phone:
+        customerPhone
+
+    },
+
+
+    shipping_address: {
+
+      full_name:
+        customerName,
+
+      address_line1:
+        address,
+
+      city:
+        city,
+
+      state:
+        state,
+
+      postal_code:
+        postal,
+
+      country:
+        market.country
+
+    },
+
+
+    items:
+
+      cart.map(function(item){
+
+        return {
+
+          product_id:
+            item.productId ||
+            item.id ||
+            null,
+
+          slug:
+            item.slug ||
+            null,
+
+          name:
+            item.name ||
+            "ONE ERA Object",
+
+          sku:
+            item.sku ||
+            (
+              item.supplier &&
+              item.supplier.sku
+            ) ||
+            null,
+
+          quantity:
+            Number(
+              item.quantity || 1
+            ),
+
+          price:
+            getBasePriceTHB(
+              item
+            )
+
+        };
+
+      }),
+
+
+    subtotal:
+      totals.subtotal,
+
+
+    shipping:
+      totals.shipping,
+
+
+    taxes:
+      0,
+
+
+    duties:
+      0,
+
+
+    total:
+      totals.total,
+
+
+    shipping_cost_base_thb:
+      totals.shippingTHB,
+
+
+    subtotal_base_thb:
+      totals.subtotalTHB,
+
+
+    total_base_thb:
+      totals.totalTHB,
+
+
+    exchange_rate_from_thb:
+      market.fxFromTHB,
+
+
+    shipping_method:
+      "STANDARD",
+
+
+    payment_status:
+      "pending",
+
+
+    fulfillment_status:
+      "pending",
+
+
+    status:
+      "pending",
+
+
+    test_mode:
+      true,
+
+
+    pricing: {
+
+      currency:
+        market.currency,
+
+      fx_from_thb:
+        market.fxFromTHB,
+
+      subtotal:
+        totals.subtotal,
+
+      shipping:
+        totals.shipping,
+
+      total:
+        totals.total
+
+    },
+
+
+    fulfillment: {
+
+      provider:
+        "CJdropshipping",
+
+      mode:
+        "TEST",
+
+      status:
+        "pending",
+
+      submitted:
+        false
+
+    }
+
+  };
+
+
+  /* =========================================
+     SAVE TO THE SAME STORAGE USED BY
+     orders.js + fulfillment.js
+     ========================================= */
+
+  localStorage.setItem(
+
+    ORDER_KEY,
+
+    JSON.stringify(
+      order
+    )
+
+  );
+
+
+  /* =========================================
+     CLEAR CART
+     ========================================= */
+
+  localStorage.removeItem(
+    CART_KEY
+  );
+
+
+  updateBagCount();
+
+
+  /* =========================================
+     SUCCESS
+     ========================================= */
+
+  const success =
+    document.getElementById(
+      "orderSuccess"
+    );
+
+
+  success.style.display =
+    "block";
+
+
+  success.innerHTML = `
+
+    <strong>
+      Test order created ✓
+    </strong>
+
+    <br><br>
+
+    Order:
+    <strong>
+      ${orderId}
+    </strong>
+
+    <br><br>
+
+    Destination:
+    ${market.name}
+
+    <br>
+
+    Currency:
+    ${market.currency}
+
+    <br>
+
+    Total:
+    ${formatMoney(
+      totals.total,
+      market
+    )}
+
+    <br><br>
+
+    The order is stored locally
+    in TEST MODE.
+
+    <br><br>
+
+    <a href="orders.html">
+      View Order Control →
+    </a>
+
+  `;
+
+
+  button.textContent =
+    "Test Order Created ✓";
+
+
+  console.log(
+    "ONE ERA TEST ORDER:",
+    order
+  );
 
 }
 
 
-const button =
-document.getElementById(
-"createOrder"
-);
-
-
-button.disabled = true;
-
-button.textContent =
-"Creating Test Order…";
-
-
-const orders = getOrders();
-
-
-const orderNumber =
-"TEST-" +
-Date.now();
-
-
-const customer = {
-
-name:
-document.getElementById(
-"customerName"
-).value.trim(),
-
-email:
-document.getElementById(
-"customerEmail"
-).value.trim(),
-
-country:
-document.getElementById(
-"customerCountry"
-).value,
-
-address:
-document.getElementById(
-"customerAddress"
-).value.trim()
-
-};
-
-
-const order = {
-
-id:orderNumber,
-
-orderNumber:orderNumber,
-
-createdAt:
-new Date().toISOString(),
-
-status:"TEST",
-
-testMode:true,
-
-customer:customer,
-
-items:cart.map(item => ({
-
-productId:item.productId,
-
-slug:item.slug,
-
-name:item.name,
-
-quantity:Number(
-item.quantity || 1
-),
-
-price:item.price,
-
-supplier:item.supplier || null
-
-})),
-
-payment:{
-
-status:"TEST",
-
-method:"TEST"
-
-},
-
-shipping:{
-
-status:"TEST",
-
-country:
-customer.country
-
-},
-
-fulfillment:{
-
-provider:"CJdropshipping",
-
-status:"TEST",
-
-mode:"TEST",
-
-submitted:false
-
-}
-
-};
-
-
-orders.push(order);
-
-
-saveOrders(orders);
-
-
-/*
-  Clear cart after successful
-  test order creation
-*/
-
-localStorage.removeItem(
-CART_KEY
-);
-
-
-updateBagCount();
-
-
-const success =
-document.getElementById(
-"orderSuccess"
-);
-
-
-success.style.display =
-"block";
-
-
-success.innerHTML = `
-
-<strong>
-Test order created ✓
-</strong>
-
-<br><br>
-
-Order:
-<strong>
-${orderNumber}
-</strong>
-
-<br><br>
-
-The order is stored locally in TEST MODE.
-
-<br><br>
-
-<a href="orders.html">
-View Orders →
-</a>
-
-`;
-
-
-button.textContent =
-"Test Order Created ✓";
-
-
-}
-
+/* =====================================================
+   ERROR
+   ===================================================== */
 
 function showError(message){
 
-const error =
-document.getElementById(
-"orderError"
-);
+  const error =
+    document.getElementById(
+      "orderError"
+    );
 
-error.style.display =
-"block";
 
-error.textContent =
-message;
+  error.style.display =
+    "block";
+
+
+  error.textContent =
+    message;
 
 }
 
+
+/* =====================================================
+   RENDER CHECKOUT
+   ===================================================== */
+
+function renderCheckout(){
+
+  const root =
+    document.getElementById(
+      "checkoutRoot"
+    );
+
+
+  const cart =
+    getCart();
+
+
+  updateBagCount();
+
+
+  if(!cart.length){
+
+    root.innerHTML = `
+
+      <div class="empty">
+
+        <h2>
+          Your bag is empty.
+        </h2>
+
+        <p>
+          Add an object before
+          continuing to checkout.
+        </p>
+
+        <a href="shop.html">
+          Return to shop →
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  root.innerHTML = `
+
+    <div class="checkout-grid">
+
+
+      <div class="checkout-card">
+
+
+        <h2>
+          Shipping details
+        </h2>
+
+
+        <div class="section-title">
+          Contact
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Full Name
+          </label>
+
+          <input
+            id="customerName"
+            type="text"
+            autocomplete="name"
+            placeholder="Full name"
+            value="ONE ERA Test Customer"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Email
+          </label>
+
+          <input
+            id="customerEmail"
+            type="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            value="test@example.com"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Phone
+          </label>
+
+          <input
+            id="customerPhone"
+            type="tel"
+            autocomplete="tel"
+            placeholder="+66..."
+            value="+66 000 000 0000"
+          >
+
+        </div>
+
+
+        <div class="section-title">
+          Shipping address
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Country / Region
+          </label>
+
+          <select
+            id="customerCountry"
+            autocomplete="country"
+          >
+
+            <option value="TH">
+              Thailand
+            </option>
+
+            <option value="US">
+              United States
+            </option>
+
+            <option value="GB">
+              United Kingdom
+            </option>
+
+            <option value="AU">
+              Australia
+            </option>
+
+            <option value="SG">
+              Singapore
+            </option>
+
+            <option value="HK">
+              Hong Kong
+            </option>
+
+            <option value="ID">
+              Indonesia
+            </option>
+
+          </select>
+
+
+          <div class="country-note">
+
+            Currency and TEST shipping
+            calculation will update
+            automatically when the
+            destination changes.
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Address
+          </label>
+
+          <input
+            id="customerAddress"
+            type="text"
+            autocomplete="street-address"
+            placeholder="Street address"
+            value="TEST ADDRESS"
+          >
+
+        </div>
+
+
+        <div class="field-grid">
+
+
+          <div class="field">
+
+            <label>
+              City
+            </label>
+
+            <input
+              id="customerCity"
+              type="text"
+              autocomplete="address-level2"
+              placeholder="City"
+              value="Bangkok"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              State / Province
+            </label>
+
+            <input
+              id="customerState"
+              type="text"
+              autocomplete="address-level1"
+              placeholder="State / Province"
+              value="Bangkok"
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Postal Code
+          </label>
+
+          <input
+            id="customerPostal"
+            type="text"
+            autocomplete="postal-code"
+            placeholder="Postal code"
+            value="10110"
+          >
+
+        </div>
+
+
+        <div
+          id="addressPreview"
+          class="address-preview"
+        ></div>
+
+
+        <div class="shipping-method">
+
+          <strong>
+            Standard Delivery
+          </strong>
+
+          Shipping method is currently
+          calculated using the TEST market
+          configuration.
+
+          <br><br>
+
+          Production mode will use
+          the selected CJ shipping method
+          and live quotation.
+
+        </div>
+
+
+        <button
+          id="createOrder"
+          class="create-order"
+          type="button"
+        >
+
+          Create Test Order
+
+        </button>
+
+
+        <div
+          id="orderSuccess"
+          class="success"
+        ></div>
+
+
+        <div
+          id="orderError"
+          class="error"
+        ></div>
+
+
+      </div>
+
+
+      <div
+        id="orderSummary"
+        class="order-summary"
+      ></div>
+
+
+    </div>
+
+  `;
+
+
+  /* =========================================
+     INITIAL RENDER
+     ========================================= */
+
+  renderSummary();
+
+  renderAddressPreview();
+
+
+  /* =========================================
+     COUNTRY CHANGE
+     ========================================= */
+
+  document
+    .getElementById(
+      "customerCountry"
+    )
+    .addEventListener(
+      "change",
+      function(){
+
+        renderSummary();
+
+        renderAddressPreview();
+
+      }
+    );
+
+
+  /* =========================================
+     ADDRESS EVENTS
+     ========================================= */
+
+  [
+    "customerName",
+    "customerAddress",
+    "customerCity",
+    "customerState",
+    "customerPostal"
+  ]
+
+  .forEach(function(id){
+
+    document
+      .getElementById(id)
+      .addEventListener(
+        "input",
+        renderAddressPreview
+      );
+
+  });
+
+
+  /* =========================================
+     CREATE ORDER
+     ========================================= */
+
+  document
+    .getElementById(
+      "createOrder"
+    )
+    .addEventListener(
+      "click",
+      createTestOrder
+    );
+
+}
+
+
+/* =====================================================
+   START
+   ===================================================== */
 
 renderCheckout();
 
