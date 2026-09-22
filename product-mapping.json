@@ -1,0 +1,35 @@
+{
+  "one-era-green-fluorite": {
+    "productId": "one-era-green-fluorite",
+
+    "supplier": {
+      "platform": "CJdropshipping",
+      "sku": "CJZS237829401AZ"
+    },
+
+    "source": {
+      "type": "cj",
+      "productUrl": "https://cjdropshipping.com/product/crystal-rough-green-fluorite-cross-border-crystal-diffuser-rough-wool-aromatherapy-stone-black-tourmaline-crystal-crushed-stone-p-1923313316286001154.html?tabKey=customize"
+    },
+
+    "mapping": {
+      "supplierSku": "CJZS237829401AZ",
+      "oneEraProductId": "one-era-green-fluorite",
+      "oneEraSlug": "green-fluorite"
+    },
+
+    "mode": "TEST",
+
+    "orderMapping": {
+      "provider": "CJdropshipping",
+      "createRealOrder": false,
+      "sendToSupplier": false,
+      "paymentToSupplier": false
+    },
+
+    "fulfillmentMapping": {
+      "enabled": true,
+      "testOnly": true
+    }
+  }
+}
