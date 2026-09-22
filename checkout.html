@@ -1,127 +1,835 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE ERA — Checkout</title>
-  <style>
-    :root {
-      --obsidian:#11100F; --bone:#E8DFD2; --paper:#F5EFE7;
-      --line:rgba(17,16,15,.12); --muted:#70685f; --rose:#C88F9D;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bone);color:var(--obsidian);font-family:Arial,Helvetica,sans-serif}
-    header{padding:24px 5vw;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-    .logo{font-family:Georgia,serif;font-size:25px;letter-spacing:.12em}
-    nav a{color:inherit;text-decoration:none;margin-left:20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-    main{max-width:1000px;margin:auto;padding:70px 24px 100px}
-    .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
-    h1{font-family:Georgia,serif;font-size:clamp(50px,8vw,90px);font-weight:400;line-height:.95;margin:16px 0 45px}
-    .grid{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}
-    .card{background:var(--paper);border:1px solid var(--line);padding:28px}
-    h2{font-family:Georgia,serif;font-weight:400;font-size:30px;margin:0 0 22px}
-    .row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line)}
-    .row:last-child{border-bottom:0}
-    .muted{color:var(--muted)}
-    input,select{width:100%;padding:14px;margin-top:7px;border:1px solid var(--line);background:#fff;font:inherit}
-    .field{margin:17px 0}
-    .payment-option{display:flex;gap:12px;align-items:center;padding:16px;border:1px solid var(--line);margin-top:10px;background:#fff;cursor:pointer}
-    .payment-option input{width:auto;margin:0}
-    .notice{margin-top:20px;padding:16px;background:rgba(200,143,157,.10);border-left:3px solid var(--rose);line-height:1.55}
-    button{width:100%;margin-top:25px;padding:16px;border:0;background:var(--obsidian);color:var(--bone);font:inherit;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-    .small{font-size:12px;color:var(--muted);line-height:1.55;margin-top:14px}
-    @media(max-width:750px){.grid{grid-template-columns:1fr}}
-    footer{padding:30px 5vw;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
-  </style>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Checkout — ONE ERA</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+
+.checkout-section{
+  padding:70px 0;
+}
+
+.checkout-grid{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:60px;
+}
+
+.checkout-card{
+  border-top:1px solid var(--line);
+  padding-top:25px;
+}
+
+.checkout-card h2{
+  font-size:30px;
+  margin-bottom:25px;
+}
+
+.field{
+  margin-bottom:20px;
+}
+
+.field label{
+  display:block;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+  opacity:.65;
+}
+
+.field input,
+.field select{
+  width:100%;
+  box-sizing:border-box;
+  padding:14px;
+
+  border:1px solid var(--line);
+  background:#fff;
+
+  font:inherit;
+}
+
+.order-summary{
+  position:sticky;
+  top:30px;
+
+  border-top:1px solid var(--line);
+  padding-top:25px;
+}
+
+.summary-item{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+
+  padding:12px 0;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:12px;
+}
+
+.summary-total{
+  display:flex;
+  justify-content:space-between;
+
+  margin-top:20px;
+  padding-top:20px;
+
+  border-top:1px solid var(--line);
+
+  font-size:18px;
+}
+
+.test-notice{
+  background:#f2eadf;
+  padding:18px 20px;
+
+  margin-bottom:30px;
+
+  font-size:11px;
+  line-height:1.7;
+  color:#665f57;
+}
+
+.create-order{
+  width:100%;
+
+  margin-top:25px;
+
+  padding:17px;
+
+  border:0;
+
+  background:#11100f;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.create-order:hover{
+  opacity:.85;
+}
+
+.create-order:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.success{
+  display:none;
+
+  margin-top:25px;
+
+  padding:20px;
+
+  background:#edf1eb;
+
+  color:#315447;
+
+  font-size:12px;
+
+  line-height:1.8;
+}
+
+.success a{
+  color:#315447;
+}
+
+.error{
+  display:none;
+
+  margin-top:20px;
+
+  padding:15px;
+
+  background:#f4e6e3;
+
+  color:#713d36;
+
+  font-size:12px;
+}
+
+.empty{
+  padding:60px 0;
+  text-align:center;
+}
+
+@media(max-width:800px){
+
+  .checkout-grid{
+    grid-template-columns:1fr;
+  }
+
+  .order-summary{
+    position:static;
+  }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
-<header>
-  <div class="logo">ONE ERA</div>
-  <nav>
-    <a href="shop.html">Shop</a>
-    <a href="market.html">Market</a>
-  </nav>
+
+
+<header class="site-header">
+
+<div class="container nav">
+
+<a class="wordmark" href="index.html">
+ONE ERA
+</a>
+
+<nav class="nav-links">
+
+<a href="discover.html">Explore</a>
+<a href="practice.html">Practice</a>
+<a href="shop.html">Shop</a>
+<a href="learn.html">Learn</a>
+<a href="journal.html">Journal</a>
+<a href="about.html">The Society</a>
+
+</nav>
+
+<div class="nav-icons">
+
+<span>⌕</span>
+
+<a href="cart.html">
+
+Bag
+<span data-cart-count>0</span>
+
+</a>
+
+</div>
+
+<span class="mobile-menu">☰</span>
+
+</div>
+
 </header>
 
-<main>
-  <div class="eyebrow">ONE ERA · CHECKOUT</div>
-  <h1>Complete your order.</h1>
 
-  <div class="grid">
-    <section class="card">
-      <h2>Delivery</h2>
 
-      <div class="field">
-        <label>Email</label>
-        <input type="email" placeholder="you@example.com">
-      </div>
+<section class="page-hero">
 
-      <div class="field">
-        <label>Full name</label>
-        <input type="text" placeholder="Your name">
-      </div>
+<div class="container">
 
-      <div class="field">
-        <label>Country</label>
-        <input type="text" value="" data-checkout-market readonly>
-      </div>
+<div class="breadcrumb">
+Home / Bag / Checkout
+</div>
 
-      <div class="field">
-        <label>Address</label>
-        <input type="text" placeholder="Street address">
-      </div>
+<h1>
+Checkout.
+</h1>
 
-      <div class="field">
-        <label>Postal code</label>
-        <input type="text" placeholder="Postal code">
-      </div>
+</div>
 
-      <h2 style="margin-top:40px">Payment</h2>
+</section>
 
-      <div data-payment-methods>
-        Loading payment methods...
-      </div>
 
-      <div class="notice" data-payment-status>
-        Payment provider will be connected after the merchant account and payment gateway are selected.
-      </div>
 
-      <button type="button">Continue securely</button>
-    </section>
+<section class="checkout-section">
 
-    <aside class="card">
-      <h2>Your order</h2>
+<div class="container">
 
-      <div class="row">
-        <span class="muted">Market</span>
-        <strong data-checkout-market>TH</strong>
-      </div>
+<div class="test-notice">
 
-      <div class="row">
-        <span class="muted">Currency</span>
-        <strong data-checkout-currency>THB</strong>
-      </div>
+<strong>TEST MODE</strong>
 
-      <div class="row">
-        <span class="muted">Shipping</span>
-        <span>Calculated at checkout</span>
-      </div>
+<br>
 
-      <div class="row">
-        <span class="muted">Duties & taxes</span>
-        <span>Shown when applicable</span>
-      </div>
+This checkout creates a TEST ORDER only.
 
-      <p class="small">
-        Your final order total is determined from the selected market,
-        products, shipping service and applicable taxes or duties.
-      </p>
-    </aside>
-  </div>
-</main>
+No real payment will be taken.
+No real customer order will be submitted.
+No CJ order will be created.
 
-<footer>ONE ERA · THE SPIRITUAL SOCIETY</footer>
+</div>
 
-<script src="payment.js"></script>
+
+<div id="checkoutRoot">
+Loading…
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="wordmark">
+ONE ERA
+</div>
+
+<p>
+THE SPIRITUAL SOCIETY
+</p>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+const CART_KEY = "oneEraCart";
+
+const ORDER_KEY = "oneEraOrders";
+
+
+function getCart(){
+
+try{
+
+const data =
+JSON.parse(
+localStorage.getItem(CART_KEY) || "[]"
+);
+
+return Array.isArray(data)
+? data
+: [];
+
+}
+
+catch(error){
+
+return [];
+
+}
+
+}
+
+
+function getOrders(){
+
+try{
+
+const data =
+JSON.parse(
+localStorage.getItem(ORDER_KEY) || "[]"
+);
+
+return Array.isArray(data)
+? data
+: [];
+
+}
+
+catch(error){
+
+return [];
+
+}
+
+}
+
+
+function saveOrders(orders){
+
+localStorage.setItem(
+ORDER_KEY,
+JSON.stringify(orders)
+);
+
+}
+
+
+function updateBagCount(){
+
+const cart = getCart();
+
+const count =
+cart.reduce(
+(total,item) =>
+total + Number(item.quantity || 0),
+0
+);
+
+document
+.querySelectorAll("[data-cart-count]")
+.forEach(
+el => el.textContent = count
+);
+
+}
+
+
+function renderCheckout(){
+
+const root =
+document.getElementById(
+"checkoutRoot"
+);
+
+const cart = getCart();
+
+updateBagCount();
+
+
+if(!cart.length){
+
+root.innerHTML = `
+
+<div class="empty">
+
+<h2>
+Your bag is empty.
+</h2>
+
+<p>
+Add an object before continuing to checkout.
+</p>
+
+<a href="shop.html">
+Return to shop →
+</a>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+let itemsHTML = "";
+
+
+cart.forEach(item => {
+
+itemsHTML += `
+
+<div class="summary-item">
+
+<span>
+
+${item.name}
+
+<br>
+
+<small>
+Qty ${item.quantity || 1}
+</small>
+
+</span>
+
+<span>
+${item.price?.display || "TEST PRICE"}
+</span>
+
+</div>
+
+`;
+
+});
+
+
+root.innerHTML = `
+
+<div class="checkout-grid">
+
+
+<div class="checkout-card">
+
+<h2>
+Test customer details
+</h2>
+
+
+<div class="field">
+
+<label>
+Name
+</label>
+
+<input
+id="customerName"
+type="text"
+placeholder="Test Customer"
+value="Test Customer"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Email
+</label>
+
+<input
+id="customerEmail"
+type="email"
+placeholder="test@example.com"
+value="test@example.com"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Country
+</label>
+
+<select id="customerCountry">
+
+<option value="TH">
+Thailand
+</option>
+
+<option value="US">
+United States
+</option>
+
+<option value="GB">
+United Kingdom
+</option>
+
+<option value="AU">
+Australia
+</option>
+
+<option value="SG">
+Singapore
+</option>
+
+<option value="HK">
+Hong Kong
+</option>
+
+<option value="ID">
+Indonesia
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Shipping address
+</label>
+
+<input
+id="customerAddress"
+type="text"
+placeholder="Test Address"
+value="TEST ADDRESS"
+>
+
+</div>
+
+
+<button
+id="createOrder"
+class="create-order"
+type="button"
+>
+
+Create Test Order
+
+</button>
+
+
+<div
+id="orderSuccess"
+class="success"
+>
+
+</div>
+
+
+<div
+id="orderError"
+class="error"
+>
+
+</div>
+
+</div>
+
+
+
+<div class="order-summary">
+
+<div class="eyebrow">
+ORDER SUMMARY
+</div>
+
+${itemsHTML}
+
+
+<div class="summary-total">
+
+<span>
+Total
+</span>
+
+<span>
+TEST MODE
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+`;
+
+
+document
+.getElementById("createOrder")
+.addEventListener(
+"click",
+createTestOrder
+);
+
+}
+
+
+function createTestOrder(){
+
+const cart = getCart();
+
+
+if(!cart.length){
+
+showError(
+"Your cart is empty."
+);
+
+return;
+
+}
+
+
+const button =
+document.getElementById(
+"createOrder"
+);
+
+
+button.disabled = true;
+
+button.textContent =
+"Creating Test Order…";
+
+
+const orders = getOrders();
+
+
+const orderNumber =
+"TEST-" +
+Date.now();
+
+
+const customer = {
+
+name:
+document.getElementById(
+"customerName"
+).value.trim(),
+
+email:
+document.getElementById(
+"customerEmail"
+).value.trim(),
+
+country:
+document.getElementById(
+"customerCountry"
+).value,
+
+address:
+document.getElementById(
+"customerAddress"
+).value.trim()
+
+};
+
+
+const order = {
+
+id:orderNumber,
+
+orderNumber:orderNumber,
+
+createdAt:
+new Date().toISOString(),
+
+status:"TEST",
+
+testMode:true,
+
+customer:customer,
+
+items:cart.map(item => ({
+
+productId:item.productId,
+
+slug:item.slug,
+
+name:item.name,
+
+quantity:Number(
+item.quantity || 1
+),
+
+price:item.price,
+
+supplier:item.supplier || null
+
+})),
+
+payment:{
+
+status:"TEST",
+
+method:"TEST"
+
+},
+
+shipping:{
+
+status:"TEST",
+
+country:
+customer.country
+
+},
+
+fulfillment:{
+
+provider:"CJdropshipping",
+
+status:"TEST",
+
+mode:"TEST",
+
+submitted:false
+
+}
+
+};
+
+
+orders.push(order);
+
+
+saveOrders(orders);
+
+
+/*
+  Clear cart after successful
+  test order creation
+*/
+
+localStorage.removeItem(
+CART_KEY
+);
+
+
+updateBagCount();
+
+
+const success =
+document.getElementById(
+"orderSuccess"
+);
+
+
+success.style.display =
+"block";
+
+
+success.innerHTML = `
+
+<strong>
+Test order created ✓
+</strong>
+
+<br><br>
+
+Order:
+<strong>
+${orderNumber}
+</strong>
+
+<br><br>
+
+The order is stored locally in TEST MODE.
+
+<br><br>
+
+<a href="orders.html">
+View Orders →
+</a>
+
+`;
+
+
+button.textContent =
+"Test Order Created ✓";
+
+
+}
+
+
+function showError(message){
+
+const error =
+document.getElementById(
+"orderError"
+);
+
+error.style.display =
+"block";
+
+error.textContent =
+message;
+
+}
+
+
+renderCheckout();
+
+</script>
+
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
