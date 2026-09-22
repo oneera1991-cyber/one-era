@@ -1,14 +1,24 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
 
 <title>Product — ONE ERA</title>
 
-<link rel="stylesheet" href="styles.css">
+<link
+  rel="stylesheet"
+  href="styles.css"
+>
 
 <style>
+
 .pd{
   padding:70px 0;
 }
@@ -21,6 +31,7 @@
 
 .pd-art{
   aspect-ratio:1/1;
+
   background:
     radial-gradient(
       circle at 50% 35%,
@@ -112,6 +123,7 @@
   font-size:12px;
   color:#665f57;
   margin-top:20px;
+  line-height:1.7;
 }
 
 .test-badge{
@@ -125,17 +137,66 @@
   margin-bottom:15px;
 }
 
-.disabled{
-  opacity:.5;
-  pointer-events:none;
-}
-
 .ritual-list{
   padding-left:18px;
   color:#665f57;
   font-size:13px;
   line-height:1.9;
 }
+
+
+/* ==============================
+   COMMERCE
+============================== */
+
+.buy-area{
+  margin-top:25px;
+}
+
+.add-to-bag{
+  width:100%;
+  border:0;
+  padding:17px 20px;
+
+  background:#11100f;
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.add-to-bag:hover{
+  opacity:.85;
+}
+
+.add-to-bag:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.add-success{
+  display:none;
+
+  margin-top:15px;
+
+  padding:16px;
+
+  background:#edf1eb;
+
+  color:#315447;
+
+  font-size:12px;
+
+  line-height:1.7;
+}
+
+.add-success a{
+  color:#315447;
+}
+
 
 @media(max-width:750px){
 
@@ -145,61 +206,102 @@
   }
 
 }
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <header class="site-header">
 
   <div class="container nav">
 
-    <a class="wordmark" href="index.html">
+    <a
+      class="wordmark"
+      href="index.html"
+    >
       ONE ERA
     </a>
 
+
     <nav class="nav-links">
 
-      <a href="discover.html">Explore</a>
-      <a href="practice.html">Practice</a>
-      <a class="active-nav" href="shop.html">Shop</a>
-      <a href="learn.html">Learn</a>
-      <a href="journal.html">Journal</a>
-      <a href="about.html">The Society</a>
+      <a href="discover.html">
+        Explore
+      </a>
+
+      <a href="practice.html">
+        Practice
+      </a>
+
+      <a
+        class="active-nav"
+        href="shop.html"
+      >
+        Shop
+      </a>
+
+      <a href="learn.html">
+        Learn
+      </a>
+
+      <a href="journal.html">
+        Journal
+      </a>
+
+      <a href="about.html">
+        The Society
+      </a>
 
     </nav>
+
 
     <div class="nav-icons">
 
       <span>⌕</span>
 
       <a href="cart.html">
-        Bag <span data-cart-count>0</span>
+
+        Bag
+        <span data-cart-count>0</span>
+
       </a>
 
     </div>
 
-    <span class="mobile-menu">☰</span>
+
+    <span class="mobile-menu">
+      ☰
+    </span>
 
   </div>
 
 </header>
 
 
+
 <main>
 
 <section class="pd">
 
-<div class="container" id="productRoot">
+<div
+  class="container"
+  id="productRoot"
+>
 
-  <p>Loading…</p>
+  <p>
+    Loading…
+  </p>
 
 </div>
 
 </section>
 
 </main>
+
 
 
 <footer class="footer">
@@ -219,25 +321,287 @@
 </footer>
 
 
+
 <script>
+
+
+/*
+==================================================
+ONE ERA COMMERCE CORE
+==================================================
+
+Single Cart Storage:
+
+oneEraCart
+
+TEST MODE ONLY
+==================================================
+*/
+
+
+const CART_KEY = "oneEraCart";
+
+
+let currentProduct = null;
+
+
+/* ==============================================
+   GET CART
+============================================== */
+
+function getCart(){
+
+  try{
+
+    const stored =
+      localStorage.getItem(
+        CART_KEY
+      );
+
+
+    if(!stored){
+
+      return [];
+
+    }
+
+
+    const cart =
+      JSON.parse(stored);
+
+
+    return Array.isArray(cart)
+      ? cart
+      : [];
+
+  }
+
+  catch(error){
+
+    console.error(
+      "Cart read error:",
+      error
+    );
+
+    return [];
+
+  }
+
+}
+
+
+/* ==============================================
+   SAVE CART
+============================================== */
+
+function saveCart(cart){
+
+  localStorage.setItem(
+    CART_KEY,
+    JSON.stringify(cart)
+  );
+
+}
+
+
+/* ==============================================
+   BAG COUNT
+============================================== */
+
+function updateBagCount(){
+
+  const cart =
+    getCart();
+
+
+  const count =
+    cart.reduce(
+      function(total,item){
+
+        return total +
+          Number(
+            item.quantity || 0
+          );
+
+      },
+      0
+    );
+
+
+  document
+    .querySelectorAll(
+      "[data-cart-count]"
+    )
+    .forEach(
+      function(element){
+
+        element.textContent =
+          count;
+
+      }
+    );
+
+}
+
+
+/* ==============================================
+   ADD TO BAG
+============================================== */
+
+function addToBag(){
+
+  if(!currentProduct){
+
+    alert(
+      "Product is not ready yet."
+    );
+
+    return;
+
+  }
+
+
+  let cart =
+    getCart();
+
+
+  /*
+    Check existing product
+  */
+
+  const existing =
+    cart.find(
+      function(item){
+
+        return (
+          item.productId ===
+          currentProduct.id
+        );
+
+      }
+    );
+
+
+  if(existing){
+
+    existing.quantity =
+      Number(
+        existing.quantity || 0
+      ) + 1;
+
+  }
+
+  else{
+
+    cart.push({
+
+      productId:
+        currentProduct.id,
+
+      slug:
+        currentProduct.slug,
+
+      name:
+        currentProduct.name,
+
+      quantity:1,
+
+      price:
+        currentProduct.price || {
+          amount:0,
+          currency:"THB",
+          display:"TEST PRICE"
+        },
+
+      supplier:
+        currentProduct.supplier || null,
+
+      testMode:true
+
+    });
+
+  }
+
+
+  /*
+    Save
+  */
+
+  saveCart(cart);
+
+
+  /*
+    Update header
+  */
+
+  updateBagCount();
+
+
+  /*
+    Success message
+  */
+
+  const success =
+    document.getElementById(
+      "addSuccess"
+    );
+
+
+  if(success){
+
+    success.style.display =
+      "block";
+
+  }
+
+
+  /*
+    Button feedback
+  */
+
+  const button =
+    document.getElementById(
+      "addToBagButton"
+    );
+
+
+  if(button){
+
+    button.textContent =
+      "Added to bag ✓";
+
+  }
+
+}
+
+
+/* ==============================================
+   LOAD PRODUCT
+============================================== */
 
 async function loadProduct(){
 
-  const root = document.getElementById("productRoot");
+  const root =
+    document.getElementById(
+      "productRoot"
+    );
+
 
   try{
 
     /*
-      Support both:
+      Support:
 
       product.html?id=one-era-green-fluorite
-
-      and
 
       product.html?product=green-fluorite
     */
 
-    const params = new URLSearchParams(location.search);
+    const params =
+      new URLSearchParams(
+        location.search
+      );
+
 
     const requestedId =
       params.get("id") ||
@@ -248,9 +612,14 @@ async function loadProduct(){
       Load product database
     */
 
-    const response = await fetch("products.json", {
-      cache: "no-store"
-    });
+    const response =
+      await fetch(
+        "products.json",
+        {
+          cache:"no-store"
+        }
+      );
+
 
     if(!response.ok){
 
@@ -261,13 +630,19 @@ async function loadProduct(){
     }
 
 
-    const data = await response.json();
+    const data =
+      await response.json();
 
 
     /*
-      Product database format:
+      Support:
+
+      [...]
+
+      OR
+
       {
-        products: [...]
+        products:[]
       }
     */
 
@@ -287,24 +662,35 @@ async function loadProduct(){
 
 
     /*
-      Find product by:
-
-      1. ID
-      2. slug
+      Find product
     */
 
-    const product =
-      products.find(function(item){
+    currentProduct =
+      products.find(
+        function(item){
 
-        return (
-          item.id === requestedId ||
-          item.slug === requestedId
-        );
+          return (
+            item.id === requestedId ||
+            item.slug === requestedId
+          );
 
-      }) || products[0];
+        }
+      );
 
 
-    if(!product){
+    /*
+      Fallback to first product
+    */
+
+    if(!currentProduct){
+
+      currentProduct =
+        products[0];
+
+    }
+
+
+    if(!currentProduct){
 
       throw new Error(
         "No product found."
@@ -318,38 +704,52 @@ async function loadProduct(){
     */
 
     document.title =
-      product.name + " — ONE ERA";
+      currentProduct.name +
+      " — ONE ERA";
 
 
     /*
       Price
     */
 
-    let priceDisplay =
-      product.price &&
-      product.price.display
-        ? product.price.display
+    const priceDisplay =
+      currentProduct.price &&
+      currentProduct.price.display
+        ? currentProduct.price.display
         : "TEST PRICE";
 
 
     /*
-      Ritual instructions
+      Ritual
     */
 
     let ritualHTML = "";
 
+
     if(
-      product.ritual &&
-      Array.isArray(product.ritual.howToUse)
+      currentProduct.ritual &&
+      Array.isArray(
+        currentProduct.ritual.howToUse
+      )
     ){
 
       ritualHTML =
         "<ul class='ritual-list'>" +
 
-        product.ritual.howToUse
-          .map(function(step){
-            return "<li>" + step + "</li>";
-          })
+        currentProduct
+          .ritual
+          .howToUse
+          .map(
+            function(step){
+
+              return (
+                "<li>" +
+                step +
+                "</li>"
+              );
+
+            }
+          )
           .join("") +
 
         "</ul>";
@@ -358,12 +758,13 @@ async function loadProduct(){
 
 
     /*
-      Main Product Page
+      Render Product Page
     */
 
     root.innerHTML = `
 
       <div class="pd-grid">
+
 
         <div class="pd-art">
 
@@ -376,44 +777,100 @@ async function loadProduct(){
 
         <div class="pd-copy">
 
+
           <div class="test-badge">
             TEST MODE
           </div>
 
 
           <div class="eyebrow">
-            ${product.collection || product.category || ""}
+
+            ${
+              currentProduct.collection ||
+              currentProduct.category ||
+              ""
+            }
+
           </div>
 
 
           <h1>
-            ${product.name || ""}
+
+            ${
+              currentProduct.name ||
+              ""
+            }
+
           </h1>
 
 
           <p>
-            ${product.subtitle || product.shortDescription || ""}
+
+            ${
+              currentProduct.subtitle ||
+              currentProduct.shortDescription ||
+              ""
+            }
+
           </p>
 
 
           <div class="price">
+
             ${priceDisplay}
+
           </div>
 
 
-          <a
-            class="btn btn-dark"
-            href="cart.html"
-          >
-            Add to bag
-          </a>
+          <!-- =========================
+               REAL ADD TO BAG BUTTON
+          ========================== -->
+
+          <div class="buy-area">
+
+
+            <button
+              id="addToBagButton"
+              class="add-to-bag"
+              type="button"
+            >
+
+              Add to bag
+
+            </button>
+
+
+            <div
+              id="addSuccess"
+              class="add-success"
+            >
+
+              ✓ Added to your test bag.
+
+              <br><br>
+
+              <a href="cart.html">
+                View your bag →
+              </a>
+
+            </div>
+
+
+          </div>
 
 
           <div class="notice">
 
-            TEST MODE —
+            <strong>
+              TEST MODE
+            </strong>
+
+            <br>
+
             This product is connected to the
             ONE ERA product system for testing.
+
+            <br>
 
             No real payment,
             customer order,
@@ -427,30 +884,42 @@ async function loadProduct(){
 
             <div>
 
-              <b>Category</b>
-
-              ${product.category || "—"}
-
-            </div>
-
-
-            <div>
-
-              <b>Collection</b>
-
-              ${product.collection || "—"}
-
-            </div>
-
-
-            <div>
-
-              <b>Material</b>
+              <b>
+                Category
+              </b>
 
               ${
-                product.specifications &&
-                product.specifications.material
-                  ? product.specifications.material
+                currentProduct.category ||
+                "—"
+              }
+
+            </div>
+
+
+            <div>
+
+              <b>
+                Collection
+              </b>
+
+              ${
+                currentProduct.collection ||
+                "—"
+              }
+
+            </div>
+
+
+            <div>
+
+              <b>
+                Material
+              </b>
+
+              ${
+                currentProduct.specifications &&
+                currentProduct.specifications.material
+                  ? currentProduct.specifications.material
                   : "—"
               }
 
@@ -459,12 +928,14 @@ async function loadProduct(){
 
             <div>
 
-              <b>Weight</b>
+              <b>
+                Weight
+              </b>
 
               ${
-                product.specifications &&
-                product.specifications.weight
-                  ? product.specifications.weight
+                currentProduct.specifications &&
+                currentProduct.specifications.weight
+                  ? currentProduct.specifications.weight
                   : "—"
               }
 
@@ -473,12 +944,14 @@ async function loadProduct(){
 
             <div>
 
-              <b>Supplier</b>
+              <b>
+                Supplier
+              </b>
 
               ${
-                product.supplier &&
-                product.supplier.platform
-                  ? product.supplier.platform
+                currentProduct.supplier &&
+                currentProduct.supplier.platform
+                  ? currentProduct.supplier.platform
                   : "—"
               }
 
@@ -487,18 +960,25 @@ async function loadProduct(){
 
             <div>
 
-              <b>Status</b>
+              <b>
+                Status
+              </b>
 
-              ${product.status || "TEST"}
+              ${
+                currentProduct.status ||
+                "TEST"
+              }
 
             </div>
 
 
           </div>
 
+
         </div>
 
       </div>
+
 
 
       <div class="pd-tabs">
@@ -515,11 +995,13 @@ async function loadProduct(){
           </h3>
 
           <p>
+
             ${
-              product.description ||
-              product.shortDescription ||
+              currentProduct.description ||
+              currentProduct.shortDescription ||
               ""
             }
+
           </p>
 
         </div>
@@ -536,12 +1018,14 @@ async function loadProduct(){
           </h3>
 
           <p>
+
             ${
-              product.story &&
-              product.story.body
-                ? product.story.body
+              currentProduct.story &&
+              currentProduct.story.body
+                ? currentProduct.story.body
                 : "A ONE ERA object for exploration, ritual and reflection."
             }
+
           </p>
 
         </div>
@@ -578,20 +1062,22 @@ async function loadProduct(){
           <p>
 
             CJdropshipping SKU:
+
             ${
-              product.supplier &&
-              product.supplier.sku
-                ? product.supplier.sku
+              currentProduct.supplier &&
+              currentProduct.supplier.sku
+                ? currentProduct.supplier.sku
                 : "—"
             }
 
             <br><br>
 
             Fulfillment:
+
             ${
-              product.fulfillment &&
-              product.fulfillment.mode
-                ? product.fulfillment.mode
+              currentProduct.fulfillment &&
+              currentProduct.fulfillment.mode
+                ? currentProduct.fulfillment.mode
                 : "TEST"
             }
 
@@ -604,11 +1090,34 @@ async function loadProduct(){
 
     `;
 
+
+    /*
+      Attach button AFTER render
+    */
+
+    document
+      .getElementById(
+        "addToBagButton"
+      )
+      .addEventListener(
+        "click",
+        addToBag
+      );
+
+
+    /*
+      Initial bag count
+    */
+
+    updateBagCount();
+
   }
+
 
   catch(error){
 
     console.error(error);
+
 
     root.innerHTML = `
 
@@ -619,13 +1128,17 @@ async function loadProduct(){
         </strong>
 
         <p>
+
           ${error.message}
+
         </p>
 
         <p>
+
           Check that products.json exists
           in the same GitHub repository
           as product.html.
+
         </p>
 
       </div>
@@ -639,10 +1152,12 @@ async function loadProduct(){
 
 loadProduct();
 
+
 </script>
 
 
 <script src="script.js"></script>
+
 
 </body>
 
