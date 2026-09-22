@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Product — ONE ERA</title><meta name="description" content="ONE ERA — The Spiritual Society.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rose Quartz — ONE ERA</title>
+<meta name="description" content="Rose Quartz — a ONE ERA ritual object for reflection, tenderness and intention-setting.">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body class="">
+<body>
 
 <header class="site-header">
   <div class="container nav">
@@ -23,25 +25,136 @@
   </div>
 </header>
 
+<main>
+<section class="product-shell">
+  <div class="container">
+    <div class="breadcrumb"><a href="shop.html">Shop</a> / Crystals / Rose Quartz</div>
 
-<section class="section"><div class="container product-layout">
-<div class="product-image"><div class="product-object"></div></div>
-<div class="product-info"><div class="eyebrow">Crystal · Rose Quartz</div><h1>Rose Quartz</h1><div class="price-lg">£12.00</div><p class="desc">A polished rose quartz stone selected as a ritual object for reflection, tenderness and intention-setting.</p>
-<div class="notice">Knowledge · Belief · Practice: spiritual associations vary by tradition. ONE ERA does not promise supernatural or medical outcomes.</div>
-<label>Quantity</label><div class="quantity"><button>−</button><span>1</span><button>+</button></div>
-<button class="btn btn-dark" onclick="addToCart('Rose Quartz',12)">Add to bag</button>
-<div style="margin-top:45px"><div class="eyebrow">Practice</div><p>Hold the stone during a quiet moment. Notice what you are asking for, what you are willing to receive, and what you are ready to release.</p></div>
-</div></div></section>
+    <div class="product-layout product-layout-v2">
+      <div class="product-gallery">
+        <div class="product-main-image product-rose">
+          <span class="image-label">ONE ERA OBJECT · 01</span>
+          <div class="product-crystal"></div>
+          <div class="image-orbit"></div>
+        </div>
+        <div class="product-thumbs">
+          <button class="thumb active"><span></span></button>
+          <button class="thumb"><span></span></button>
+          <button class="thumb"><span></span></button>
+        </div>
+      </div>
 
+      <div class="product-info product-info-v2">
+        <div class="eyebrow">CRYSTALS · HEART / SOFTENING</div>
+        <h1>Rose Quartz</h1>
+        <div class="product-subtitle">A stone for returning to tenderness.</div>
+        <div class="price-lg">£12.00</div>
+
+        <p class="desc">
+          A polished rose quartz stone selected as a tactile ritual object for reflection,
+          self-kindness and intention-setting. Each stone is naturally varied in tone,
+          shape and markings.
+        </p>
+
+        <div class="product-buy">
+          <div class="quantity" data-quantity>
+            <button type="button" onclick="changeQty(-1)">−</button>
+            <span>1</span>
+            <button type="button" onclick="changeQty(1)">+</button>
+          </div>
+          <button class="btn btn-dark btn-add" onclick="addProductToCart()">Add to bag · £12.00</button>
+        </div>
+
+        <div class="shipping-note">
+          <span>WORLDWIDE SHIPPING</span>
+          <span>UK · US · THAILAND</span>
+        </div>
+
+        <div class="product-accordions">
+          <details open>
+            <summary>The object</summary>
+            <p>Natural rose quartz. Tumbled and polished. Because this is a natural mineral, no two pieces are identical.</p>
+          </details>
+          <details>
+            <summary>The tradition</summary>
+            <p>Rose quartz is commonly associated in modern crystal traditions with love, compassion and emotional softness. These are spiritual associations, not scientific claims.</p>
+          </details>
+          <details>
+            <summary>The practice</summary>
+            <p>Hold the stone for a few minutes. Breathe slowly. Ask: <em>What am I willing to receive? What am I ready to stop carrying?</em></p>
+          </details>
+          <details>
+            <summary>Shipping & care</summary>
+            <p>Ships from our fulfilment network. Keep dry, avoid harsh chemicals and store away from hard objects that may scratch the surface.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ritual-banner">
+  <div class="container ritual-grid">
+    <div>
+      <div class="eyebrow">ONE ERA PRACTICE</div>
+      <h2>Make the object<br><em>mean something.</em></h2>
+    </div>
+    <div>
+      <p class="ritual-lead">A spiritual object does not have to perform a miracle to become meaningful.</p>
+      <p>Use the stone as an anchor. Let touching it become the beginning of a pause — a small physical signal that you are paying attention.</p>
+      <a class="text-link" href="practice.html">Explore practices →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">KNOWLEDGE · BELIEF · PRACTICE</div>
+        <h2>Go deeper.</h2>
+      </div>
+      <p>ONE ERA separates what is documented, what belongs to spiritual tradition, and what we invite you to explore for yourself.</p>
+    </div>
+    <div class="three-note-grid">
+      <article><span>01</span><h3>Knowledge</h3><p>Mineral facts, origins and care — grounded information about the physical object.</p></article>
+      <article><span>02</span><h3>Belief</h3><p>The meanings and energetic associations people have given the stone across modern spiritual practice.</p></article>
+      <article><span>03</span><h3>Practice</h3><p>A simple ritual you can try without needing to believe everything first.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark related-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">CONTINUE EXPLORING</div>
+        <h2>Objects for the journey.</h2>
+      </div>
+      <a class="btn btn-light" href="shop.html">Shop all</a>
+    </div>
+    <div class="grid-3">
+      <a class="card dark-card" href="product.html">
+        <div class="card-img rose"><div class="placeholder-object"></div></div>
+        <div class="card-body"><div class="eyebrow">CRYSTAL</div><h3>Amethyst</h3><p>Clarity · contemplation · ritual</p><span class="price">£14.00</span></div>
+      </a>
+      <a class="card dark-card" href="product.html">
+        <div class="card-img dark"><div class="placeholder-object"></div></div>
+        <div class="card-body"><div class="eyebrow">INCENSE</div><h3>Clearing Smoke</h3><p>Air · attention · transition</p><span class="price">£16.00</span></div>
+      </a>
+      <a class="card dark-card" href="product.html">
+        <div class="card-img blue"><div class="placeholder-object"></div></div>
+        <div class="card-body"><div class="eyebrow">RITUAL</div><h3>Daily Intention Cards</h3><p>Reflection · focus · practice</p><span class="price">£18.00</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div>
-        <div class="wordmark">ONE ERA</div>
-        <p style="margin-top:15px">THE SPIRITUAL SOCIETY</p>
-        <p>Natural, but supernatural.</p>
-      </div>
+      <div><div class="wordmark">ONE ERA</div><p style="margin-top:15px">THE SPIRITUAL SOCIETY</p><p>Natural, but supernatural.</p></div>
       <div><h4>Explore</h4><a href="discover.html">Discover</a><a href="practice.html">Practice</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a></div>
       <div><h4>Shop</h4><a href="shop.html">All Objects</a><a href="collections.html">Collections</a><a href="shop.html">Crystals</a><a href="shop.html">Incense</a></div>
       <div><h4>Society</h4><a href="about.html">About ONE ERA</a><a href="about.html">Our Philosophy</a><a href="checkout.html">Shipping</a><a href="about.html">Contact</a></div>
@@ -51,5 +164,20 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+let currentQty = 1;
+function changeQty(delta){
+  currentQty = Math.max(1, currentQty + delta);
+  document.querySelector("[data-quantity] span").textContent = currentQty;
+}
+function addProductToCart(){
+  const c = getCart();
+  const found = c.find(i => i.name === "Rose Quartz");
+  if(found) found.qty += currentQty;
+  else c.push({name:"Rose Quartz", price:12, qty:currentQty});
+  saveCart(c);
+  alert("Rose Quartz added to your ritual.");
+}
+</script>
 </body>
 </html>

@@ -125,3 +125,58 @@ input,select{width:100%;border:1px solid var(--line);background:rgba(255,255,255
   .form-row{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}
   .footer-bottom{display:block}.footer-bottom span{display:block;margin-top:8px}
 }
+
+/* PHASE 2.3 — PRODUCT EXPERIENCE */
+.product-shell{background:var(--bone);padding:28px 0 90px}
+.product-layout-v2{padding:20px 0 0;align-items:start}
+.product-gallery{position:sticky;top:100px}
+.product-main-image{position:relative;aspect-ratio:1/1;background:linear-gradient(145deg,#ead6d2 0%,#b77f8c 38%,#352328 100%);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.product-main-image:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 48% 38%,rgba(255,255,255,.45),transparent 16%),radial-gradient(circle at 72% 75%,rgba(17,16,15,.45),transparent 35%)}
+.image-label{position:absolute;left:22px;top:20px;z-index:2;font-size:9px;letter-spacing:.18em;color:rgba(232,223,210,.85)}
+.product-crystal{position:relative;z-index:2;width:38%;height:38%;border-radius:45% 55% 48% 52%;transform:rotate(-14deg);background:radial-gradient(circle at 32% 25%,#f7e9e4 0,#d9a8b0 32%,#8b5865 68%,#39232a 100%);box-shadow:22px 35px 55px rgba(17,16,15,.42),inset -20px -22px 35px rgba(17,16,15,.22)}
+.product-crystal:after{content:"";position:absolute;inset:14% 22%;border-radius:50%;border:1px solid rgba(255,255,255,.28);transform:rotate(20deg)}
+.image-orbit{position:absolute;width:72%;height:72%;border:1px solid rgba(232,223,210,.35);border-radius:50%;box-shadow:0 0 0 65px rgba(232,223,210,.04)}
+.product-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.thumb{border:1px solid transparent;padding:0;background:none;aspect-ratio:1/1;cursor:pointer}
+.thumb.active{border-color:var(--obsidian)}
+.thumb span{display:block;width:100%;height:100%;background:linear-gradient(145deg,#d9aab4,#3b272d)}
+.thumb:nth-child(2) span{background:linear-gradient(145deg,#eadfd5,#88756c)}
+.thumb:nth-child(3) span{background:linear-gradient(145deg,#3c514a,#11100f)}
+.product-info-v2{padding:10px 0 0}
+.product-info-v2 h1{margin-top:14px}
+.product-subtitle{font-family:var(--serif);font-size:24px;margin-top:8px;opacity:.72}
+.product-buy{display:flex;gap:12px;align-items:stretch;margin:28px 0 12px}
+.product-buy .quantity{margin:0}
+.product-buy .btn-add{flex:1}
+.shipping-note{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.14em;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);opacity:.65}
+.product-accordions{margin-top:8px}
+.product-accordions details{border-bottom:1px solid var(--line);padding:18px 0}
+.product-accordions summary{list-style:none;cursor:pointer;font-family:var(--serif);font-size:24px}
+.product-accordions summary::-webkit-details-marker{display:none}
+.product-accordions summary:after{content:"+";float:right;font-family:var(--sans);font-size:16px;opacity:.5}
+.product-accordions details[open] summary:after{content:"−"}
+.product-accordions p{font-size:13px;max-width:620px;opacity:.7;margin:12px 0 0}
+.ritual-banner{background:var(--forest);color:var(--bone);padding:100px 0}
+.ritual-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.ritual-banner h2{font-size:clamp(50px,6vw,86px)}
+.ritual-banner h2 em{color:var(--rose);font-weight:400}
+.ritual-lead{font-family:var(--serif);font-size:28px;line-height:1.1}
+.ritual-banner p:not(.ritual-lead){opacity:.72;font-size:14px}
+.text-link{display:inline-block;margin-top:22px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid rgba(232,223,210,.45);padding-bottom:5px}
+.three-note-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.three-note-grid article{border-top:1px solid var(--line);padding:22px 0}
+.three-note-grid article span{font-size:10px;letter-spacing:.16em;opacity:.5}
+.three-note-grid h3{margin:18px 0 8px}
+.three-note-grid p{font-size:13px;opacity:.68}
+.dark-card{color:var(--bone);border-color:rgba(232,223,210,.14);background:rgba(255,255,255,.03)}
+.related-section .card-body p{color:var(--bone)}
+@media(max-width:900px){
+  .product-gallery{position:static}
+  .ritual-grid{grid-template-columns:1fr;gap:35px}
+}
+@media(max-width:560px){
+  .product-buy{display:grid;grid-template-columns:auto 1fr}
+  .product-subtitle{font-size:20px}
+  .shipping-note{display:block}.shipping-note span{display:block;margin:5px 0}
+  .three-note-grid{grid-template-columns:1fr}
+}
