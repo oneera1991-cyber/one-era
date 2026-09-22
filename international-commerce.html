@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>International Commerce — ONE ERA</title><link rel="stylesheet" href="styles.css">
+<style>
+.ic-hero{background:var(--obsidian);color:var(--bone);padding:90px 0}.ic-hero h1{max-width:900px;margin:15px 0}.ic-hero p{max-width:690px;color:#d8d0c8;line-height:1.8}
+.ic-section{padding:75px 0}.ic-section:nth-child(even){background:#f2eadf}
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}.market{border:1px solid rgba(17,16,15,.14);padding:24px;min-height:180px}.market .flag{font-size:30px}.market h3{margin:12px 0 5px;font-size:25px}.market p{font-size:12px;color:#6a625a;line-height:1.7}.market.primary{border-top:3px solid var(--rose)}
+.commerce-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:35px}.flow{padding:20px 12px;border-top:1px solid #aaa;font-size:12px}.flow b{display:block;font-family:var(--serif);font-size:20px;margin-bottom:7px}.flow span{color:#6a625a;line-height:1.5}
+.country-box{background:#fff;border:1px solid var(--line);padding:24px;margin-top:30px;display:flex;justify-content:space-between;align-items:center;gap:20px}.country-box select{background:var(--bone);border:1px solid var(--line);padding:12px;min-width:230px}
+@media(max-width:850px){.market-grid{grid-template-columns:repeat(2,1fr)}.commerce-flow{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.market-grid{grid-template-columns:1fr}.commerce-flow{grid-template-columns:1fr}.country-box{display:block}.country-box select{width:100%;margin-top:15px}}
+</style></head>
+<body>
+<header class="site-header"><div class="container nav">
+<a class="wordmark" href="index.html">ONE ERA</a>
+<nav class="nav-links"><a href="discover.html">Explore</a><a href="practice.html">Practice</a><a href="shop.html">Shop</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a><a href="about.html">The Society</a></nav>
+<div class="nav-icons"><span>⌕</span><a href="cart.html">Bag <span data-cart-count>0</span></a></div><span class="mobile-menu">☰</span></div></header>
+<main>
+<section class="ic-hero"><div class="container"><div class="eyebrow">PHASE 4 · INTERNATIONAL COMMERCE</div><h1>ONE ERA, wherever your practice takes you.</h1><p>One storefront with a local-feeling experience for our core markets today and a structure ready for Australia, Indonesia, Singapore and Hong Kong tomorrow.</p></div></section>
+
+<section class="ic-section"><div class="container"><div class="eyebrow">01 · MARKET ARCHITECTURE</div><h2>Seven markets. One ONE ERA.</h2><div class="market-grid" id="markets"></div></div></section>
+
+<section class="ic-section"><div class="container"><div class="eyebrow">02 · CUSTOMER EXPERIENCE</div><h2>Country first. Currency follows.</h2><p style="max-width:680px;color:#665f57;line-height:1.8">The customer selects where they want the order delivered. ONE ERA then uses that market's currency and destination-aware checkout language. The underlying catalogue stays the same.</p>
+<div class="country-box"><div><strong>Shipping destination</strong><div style="font-size:12px;color:#6a625a;margin-top:5px">This preference stays on the customer's device.</div></div><select data-country-select></select></div></div></section>
+
+<section class="ic-section"><div class="container"><div class="eyebrow">03 · ORDER FLOW</div><h2>From object to doorstep.</h2><div class="commerce-flow">
+<div class="flow"><b>01 · Discover</b><span>Browse, learn and choose an object.</span></div>
+<div class="flow"><b>02 · Market</b><span>Confirm delivery country and currency.</span></div>
+<div class="flow"><b>03 · Checkout</b><span>Address, shipping, payment and order review.</span></div>
+<div class="flow"><b>04 · Fulfil</b><span>Order passes to the selected fulfillment route.</span></div>
+<div class="flow"><b>05 · Arrive</b><span>Customer receives tracking and delivery updates.</span></div>
+</div></div></section>
+
+<section class="ic-section" style="background:var(--forest);color:var(--bone)"><div class="container"><div class="eyebrow">04 · OPERATING MODEL</div><h2>Designed for the Alibaba → CJ → customer workflow.</h2><p style="max-width:700px;color:#d6cec5;line-height:1.8">The website is being built so supplier sourcing and fulfillment can change without rebuilding the customer-facing store. Product data, market settings and fulfillment logic remain separate layers.</p><a class="btn btn-light" href="checkout.html">Preview checkout</a></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="wordmark">ONE ERA</div><p>THE SPIRITUAL SOCIETY</p></div><span style="display:none"><a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></footer>
+<script src="commerce.js"></script>
+<script>
+(async function(){
+ const r=await fetch('commerce.json');const d=await r.json();const root=document.getElementById('markets');
+ d.supported_countries.forEach(c=>{const el=document.createElement('div');el.className='market '+(c.market==='primary'?'primary':'');el.innerHTML='<div class="flag">'+c.flag+'</div><h3>'+c.name+'</h3><div>'+c.currency+' · '+c.symbol+'</div><p>'+ (c.market==='primary'?'Primary launch market':'Future-ready market')+'</p>';root.appendChild(el)});
+ const s=document.querySelector('[data-country-select]');d.supported_countries.forEach(c=>{const o=document.createElement('option');o.value=c.code;o.textContent=c.flag+' '+c.name+' — '+c.currency;s.appendChild(o)});
+ s.value=ONEERA_COMMERCE.getCountry();
+})();
+</script><script src="script.js"></script>
+</body></html>
