@@ -366,38 +366,7 @@ document
 
       const order =
         window.ONEERA_ORDERS
-          .createDemoOrder({
-
-            customer: {
-              name:"ONE ERA Test Customer",
-              email:"test@example.com"
-            },
-
-            shipping_address: {
-              country:
-                localStorage.getItem(
-                  "oneera_country"
-                ) || "TH"
-            },
-
-            items: [
-              {
-                product_id:"TEST-001",
-                quantity:1
-              }
-            ],
-
-            subtotal:100,
-
-            shipping:20,
-
-            taxes:0,
-
-            duties:0,
-
-            total:120
-
-          });
+          .createTestOrder();
 
 
       const result =
@@ -411,20 +380,41 @@ document
 
 
       result.innerHTML =
-        "<strong>Test order created</strong><br>" +
+
+        "<strong>Test order created</strong>" +
+
+        "<br><br>" +
+
         "Order ID: " +
+
         order.order_id +
+
         "<br>" +
+
         "Market: " +
+
         order.market +
+
         "<br>" +
+
         "Currency: " +
+
         order.currency +
+
         "<br>" +
-        "Status: " +
+
+        "Payment: " +
+
+        order.payment_status +
+
+        "<br>" +
+
+        "Fulfillment: " +
+
         order.fulfillment_status;
 
     }
+
   );
 
 </script>
