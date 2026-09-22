@@ -10,7 +10,7 @@
   content="width=device-width,initial-scale=1"
 >
 
-<title>Cart — ONE ERA</title>
+<title>Bag — ONE ERA</title>
 
 <meta
   name="description"
@@ -24,10 +24,14 @@
 
 <style>
 
-.cart-wrap{
+.cart-section{
+  padding:70px 0;
+}
+
+.cart-layout{
   display:grid;
   grid-template-columns:1fr 340px;
-  gap:50px;
+  gap:60px;
 }
 
 .cart-items{
@@ -36,122 +40,136 @@
 
 .cart-item{
   display:grid;
-  grid-template-columns:120px 1fr auto;
+  grid-template-columns:110px 1fr auto;
   gap:25px;
   padding:25px 0;
   border-bottom:1px solid var(--line);
-  align-items:center;
 }
 
 .cart-image{
-  width:120px;
-  aspect-ratio:1;
+  width:110px;
+  aspect-ratio:1/1;
+
   background:
     linear-gradient(
       145deg,
       #d7c8bf,
       #1c2c28
     );
+
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#f2eadf;
-  font-family:Georgia,serif;
-  font-size:14px;
-  text-align:center;
+
+  color:#fff;
+  font-size:8px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
 }
 
-.cart-info h3{
-  margin:5px 0 8px;
-  font-size:24px;
-}
-
-.cart-info p{
-  margin:0;
-  font-size:12px;
-  line-height:1.7;
-  color:#665f57;
+.cart-name{
+  font-size:22px;
+  margin-bottom:7px;
 }
 
 .cart-meta{
-  font-size:10px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  opacity:.55;
-}
-
-.cart-controls{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:15px;
-}
-
-.cart-controls button{
-  width:30px;
-  height:30px;
-  border:1px solid var(--line);
-  background:transparent;
-  cursor:pointer;
-}
-
-.cart-controls span{
-  min-width:25px;
-  text-align:center;
-  font-size:13px;
-}
-
-.remove{
-  margin-left:10px;
-  border:0 !important;
-  width:auto !important;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  opacity:.55;
+  font-size:11px;
+  color:#777;
+  line-height:1.7;
 }
 
 .cart-price{
-  text-align:right;
   font-size:14px;
+  margin-top:10px;
 }
 
-.cart-summary{
+.quantity{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+}
+
+.quantity button{
+  width:28px;
+  height:28px;
+
   border:1px solid var(--line);
-  padding:25px;
-  height:max-content;
+  background:transparent;
+
+  cursor:pointer;
 }
 
-.cart-summary h3{
-  margin-top:0;
-  font-size:24px;
+.quantity span{
+  min-width:20px;
+  text-align:center;
+  font-size:12px;
 }
 
-.summary-row{
+.remove{
+  margin-top:12px;
+
+  border:0;
+  background:none;
+
+  padding:0;
+
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  opacity:.55;
+}
+
+.remove:hover{
+  opacity:1;
+}
+
+.cart-total{
+  position:sticky;
+  top:30px;
+
+  border-top:1px solid var(--line);
+
+  padding-top:25px;
+}
+
+.total-row{
   display:flex;
   justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
+
+  padding:10px 0;
+
   font-size:13px;
 }
 
-.summary-total{
-  font-size:18px;
+.total-row.grand{
+  margin-top:15px;
   padding-top:20px;
-  border-bottom:0;
+
+  border-top:1px solid var(--line);
+
+  font-size:18px;
 }
 
 .checkout-btn{
   display:block;
+
   width:100%;
-  margin-top:20px;
-  padding:16px;
+
+  margin-top:25px;
+
+  padding:17px;
+
   background:#11100f;
-  color:white;
+  color:#fff;
+
   text-align:center;
-  text-decoration:none;
-  font-size:11px;
-  letter-spacing:.12em;
+
+  font-size:10px;
+  letter-spacing:.14em;
   text-transform:uppercase;
 }
 
@@ -160,46 +178,66 @@
 }
 
 .empty-cart{
-  padding:60px 20px;
+  padding:70px 0;
+
   border-top:1px solid var(--line);
+
   text-align:center;
 }
 
 .empty-cart h2{
-  font-family:Georgia,serif;
-  font-size:38px;
+  font-size:32px;
   margin-bottom:15px;
 }
 
 .empty-cart p{
-  color:#665f57;
+  color:#777;
   font-size:13px;
   line-height:1.8;
 }
 
-.empty-cart a{
+.continue-shopping{
   display:inline-block;
-  margin-top:20px;
+
+  margin-top:25px;
+
+  padding:14px 22px;
+
+  border:1px solid #11100f;
+
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
 }
 
 .test-notice{
-  margin-top:25px;
-  padding:15px;
+  margin-bottom:30px;
+
+  padding:16px 20px;
+
   background:#f2eadf;
-  font-size:11px;
-  line-height:1.7;
+
   color:#665f57;
+
+  font-size:11px;
+
+  line-height:1.7;
 }
 
 @media(max-width:800px){
 
-  .cart-wrap{
+  .cart-layout{
     grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .cart-total{
+    position:static;
   }
 
 }
 
-@media(max-width:600px){
+@media(max-width:550px){
 
   .cart-item{
     grid-template-columns:80px 1fr;
@@ -209,9 +247,8 @@
     width:80px;
   }
 
-  .cart-price{
+  .cart-item-total{
     grid-column:2;
-    text-align:left;
   }
 
 }
@@ -226,64 +263,67 @@
 
 <header class="site-header">
 
-  <div class="container nav">
+<div class="container nav">
 
-    <a
-      class="wordmark"
-      href="index.html"
-    >
-      ONE ERA
-    </a>
-
-
-    <nav class="nav-links">
-
-      <a href="discover.html">
-        Explore
-      </a>
-
-      <a href="practice.html">
-        Practice
-      </a>
-
-      <a href="shop.html">
-        Shop
-      </a>
-
-      <a href="learn.html">
-        Learn
-      </a>
-
-      <a href="journal.html">
-        Journal
-      </a>
-
-      <a href="about.html">
-        The Society
-      </a>
-
-    </nav>
+<a
+  class="wordmark"
+  href="index.html"
+>
+ONE ERA
+</a>
 
 
-    <div class="nav-icons">
+<nav class="nav-links">
 
-      <span>⌕</span>
+<a href="discover.html">
+Explore
+</a>
 
-      <a href="cart.html">
+<a href="practice.html">
+Practice
+</a>
 
-        Bag
-        <span data-cart-count>0</span>
+<a
+  class="active-nav"
+  href="shop.html"
+>
+Shop
+</a>
 
-      </a>
+<a href="learn.html">
+Learn
+</a>
 
-    </div>
+<a href="journal.html">
+Journal
+</a>
+
+<a href="about.html">
+The Society
+</a>
+
+</nav>
 
 
-    <span class="mobile-menu">
-      ☰
-    </span>
+<div class="nav-icons">
 
-  </div>
+<span>⌕</span>
+
+<a href="cart.html">
+
+Bag
+<span data-cart-count>0</span>
+
+</a>
+
+</div>
+
+
+<span class="mobile-menu">
+☰
+</span>
+
+</div>
 
 </header>
 
@@ -291,31 +331,50 @@
 
 <section class="page-hero">
 
-  <div class="container">
+<div class="container">
 
-    <div class="breadcrumb">
-      Home / Bag
-    </div>
+<div class="breadcrumb">
+Home / Bag
+</div>
 
-    <h1>
-      Your ritual bag.
-    </h1>
+<h1>
+Your ritual bag.
+</h1>
 
-  </div>
+</div>
 
 </section>
 
 
 
-<section class="section">
+<section class="cart-section">
 
-  <div class="container">
+<div class="container">
 
-    <div
-      id="cartRoot"
-    ></div>
 
-  </div>
+<div class="test-notice">
+
+<strong>
+TEST MODE
+</strong>
+
+<br>
+
+This bag is connected to the ONE ERA test commerce system.
+No real payment or order will be created.
+
+</div>
+
+
+
+<div id="cartRoot">
+
+Loading…
+
+</div>
+
+
+</div>
 
 </section>
 
@@ -323,119 +382,119 @@
 
 <footer class="footer">
 
-  <div class="container">
+<div class="container">
 
-    <div class="footer-grid">
+<div class="footer-grid">
 
-      <div>
+<div>
 
-        <div class="wordmark">
-          ONE ERA
-        </div>
+<div class="wordmark">
+ONE ERA
+</div>
 
-        <p style="margin-top:15px">
-          THE SPIRITUAL SOCIETY
-        </p>
+<p style="margin-top:15px">
+THE SPIRITUAL SOCIETY
+</p>
 
-        <p>
-          Natural, but supernatural.
-        </p>
+<p>
+Natural, but supernatural.
+</p>
 
-      </div>
-
-
-      <div>
-
-        <h4>
-          Explore
-        </h4>
-
-        <a href="discover.html">
-          Discover
-        </a>
-
-        <a href="practice.html">
-          Practice
-        </a>
-
-        <a href="learn.html">
-          Learn
-        </a>
-
-        <a href="journal.html">
-          Journal
-        </a>
-
-      </div>
+</div>
 
 
-      <div>
+<div>
 
-        <h4>
-          Shop
-        </h4>
+<h4>
+Explore
+</h4>
 
-        <a href="shop.html">
-          All Objects
-        </a>
+<a href="discover.html">
+Discover
+</a>
 
-        <a href="collections.html">
-          Collections
-        </a>
+<a href="practice.html">
+Practice
+</a>
 
-        <a href="shop.html">
-          Crystals
-        </a>
+<a href="learn.html">
+Learn
+</a>
 
-        <a href="shop.html">
-          Incense
-        </a>
+<a href="journal.html">
+Journal
+</a>
 
-      </div>
-
-
-      <div>
-
-        <h4>
-          Society
-        </h4>
-
-        <a href="about.html">
-          About ONE ERA
-        </a>
-
-        <a href="about.html">
-          Our Philosophy
-        </a>
-
-        <a href="checkout.html">
-          Shipping
-        </a>
-
-        <a href="about.html">
-          Contact
-        </a>
-
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="footer-bottom">
+<div>
 
-      <span>
-        © 2026 ONE ERA
-      </span>
+<h4>
+Shop
+</h4>
 
-      <span>
-        UK · USD · THB
-        &nbsp; | &nbsp;
-        Instagram · Pinterest · YouTube
-      </span>
+<a href="shop.html">
+All Objects
+</a>
 
-    </div>
+<a href="collections.html">
+Collections
+</a>
 
-  </div>
+<a href="shop.html">
+Crystals
+</a>
+
+<a href="shop.html">
+Incense
+</a>
+
+</div>
+
+
+<div>
+
+<h4>
+Society
+</h4>
+
+<a href="about.html">
+About ONE ERA
+</a>
+
+<a href="about.html">
+Our Philosophy
+</a>
+
+<a href="checkout.html">
+Shipping
+</a>
+
+<a href="about.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 ONE ERA
+</span>
+
+<span>
+UK · USD · THB
+&nbsp; | &nbsp;
+Instagram · Pinterest · YouTube
+</span>
+
+</div>
+
+</div>
 
 </footer>
 
@@ -443,23 +502,17 @@
 
 <script>
 
+
 /*
 ==================================================
-ONE ERA CART CORE
+ONE ERA CART
 ==================================================
 
-Storage key:
+Storage:
 
 oneEraCart
 
-This is the single cart storage used by:
-
-Product Page
-Cart
-Checkout
-Order
-
-TEST MODE ONLY
+TEST MODE
 ==================================================
 */
 
@@ -467,515 +520,473 @@ TEST MODE ONLY
 const CART_KEY = "oneEraCart";
 
 
-/* --------------------------------
-   GET CART
--------------------------------- */
-
 function getCart(){
 
-  try{
+try{
 
-    const stored =
-      localStorage.getItem(
-        CART_KEY
-      );
+const stored =
+localStorage.getItem(
+CART_KEY
+);
 
-    if(!stored){
 
-      return [];
-
-    }
-
-    const cart =
-      JSON.parse(stored);
-
-    return Array.isArray(cart)
-      ? cart
-      : [];
-
-  }catch(error){
-
-    console.error(
-      "ONE ERA cart error:",
-      error
-    );
-
-    return [];
-
-  }
-
+if(!stored){
+return [];
 }
 
 
-/* --------------------------------
-   SAVE CART
--------------------------------- */
+const cart =
+JSON.parse(stored);
+
+
+return Array.isArray(cart)
+? cart
+: [];
+
+}
+
+catch(error){
+
+console.error(error);
+
+return [];
+
+}
+
+}
+
 
 function saveCart(cart){
 
-  localStorage.setItem(
-    CART_KEY,
-    JSON.stringify(cart)
-  );
+localStorage.setItem(
+CART_KEY,
+JSON.stringify(cart)
+);
 
 }
 
 
-/* --------------------------------
-   UPDATE BAG COUNT
--------------------------------- */
+function updateHeaderCount(){
 
-function updateBagCount(){
-
-  const cart =
-    getCart();
+const cart =
+getCart();
 
 
-  const count =
-    cart.reduce(
-      (total,item) =>
-        total +
-        Number(
-          item.quantity || 0
-        ),
-      0
-    );
+const count =
+cart.reduce(
+function(total,item){
+
+return total +
+Number(item.quantity || 0);
+
+},
+0
+);
 
 
-  document
-    .querySelectorAll(
-      "[data-cart-count]"
-    )
-    .forEach(
-      element => {
+document
+.querySelectorAll(
+"[data-cart-count]"
+)
+.forEach(
+function(el){
 
-        element.textContent =
-          count;
+el.textContent =
+count;
 
-      }
-    );
+}
+);
 
 }
 
 
-/* --------------------------------
-   PRICE DISPLAY
--------------------------------- */
+/* ==============================================
+   FORMAT PRICE
+============================================== */
 
-function getPrice(item){
+function formatPrice(item){
 
-  if(
-    item.price &&
-    item.price.display
-  ){
+if(
+item.price &&
+item.price.display
+){
 
-    return item.price.display;
-
-  }
-
-
-  if(
-    item.price &&
-    item.price.amount !== undefined
-  ){
-
-    return (
-      item.price.currency +
-      " " +
-      item.price.amount
-    );
-
-  }
-
-
-  return "TEST PRICE";
+return item.price.display;
 
 }
 
 
-/* --------------------------------
+if(
+item.price &&
+item.price.amount !== undefined
+){
+
+return (
+item.price.amount +
+" " +
+(item.price.currency || "THB")
+);
+
+}
+
+
+return "TEST PRICE";
+
+}
+
+
+/* ==============================================
    RENDER CART
--------------------------------- */
+============================================== */
 
 function renderCart(){
 
-  const root =
-    document.getElementById(
-      "cartRoot"
-    );
+const root =
+document.getElementById(
+"cartRoot"
+);
 
 
-  const cart =
-    getCart();
+const cart =
+getCart();
 
 
-  updateBagCount();
+updateHeaderCount();
 
 
-  /* EMPTY */
+if(cart.length === 0){
 
-  if(cart.length === 0){
+root.innerHTML = `
 
-    root.innerHTML = `
+<div class="empty-cart">
 
-      <div class="empty-cart">
+<h2>
+Your bag is empty.
+</h2>
 
-        <div class="eyebrow">
-          YOUR BAG
-        </div>
+<p>
+There is nothing here yet.
+<br>
+Explore the collection and find
+something that belongs in your ritual.
+</p>
 
-        <h2>
-          Nothing here yet.
-        </h2>
+<a
+class="continue-shopping"
+href="shop.html"
+>
+Continue shopping
+</a>
 
-        <p>
-          Your ritual objects will appear here
-          when you choose something from the shop.
-        </p>
+</div>
 
-        <a
-          class="btn btn-dark"
-          href="shop.html"
-        >
-          Explore the shop
-        </a>
+`;
 
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  /* TOTAL QUANTITY */
-
-  const totalQuantity =
-    cart.reduce(
-      (total,item) =>
-        total +
-        Number(
-          item.quantity || 0
-        ),
-      0
-    );
-
-
-  root.innerHTML = `
-
-    <div class="cart-wrap">
-
-
-      <div>
-
-        <div class="cart-items">
-
-          ${cart.map(
-            (item,index) => `
-
-              <div
-                class="cart-item"
-                data-index="${index}"
-              >
-
-
-                <div class="cart-image">
-
-                  ONE ERA
-
-                </div>
-
-
-                <div class="cart-info">
-
-                  <div class="cart-meta">
-
-                    ${
-                      item.category ||
-                      "Ritual Object"
-                    }
-
-                  </div>
-
-
-                  <h3>
-
-                    ${
-                      item.name ||
-                      "ONE ERA Object"
-                    }
-
-                  </h3>
-
-
-                  <p>
-
-                    ${
-                      item.slug ||
-                      ""
-                    }
-
-                  </p>
-
-
-                  <div class="cart-controls">
-
-
-                    <button
-                      type="button"
-                      onclick="changeQuantity(
-                        ${index},
-                        -1
-                      )"
-                    >
-                      −
-                    </button>
-
-
-                    <span>
-
-                      ${
-                        item.quantity || 1
-                      }
-
-                    </span>
-
-
-                    <button
-                      type="button"
-                      onclick="changeQuantity(
-                        ${index},
-                        1
-                      )"
-                    >
-                      +
-                    </button>
-
-
-                    <button
-                      type="button"
-                      class="remove"
-                      onclick="removeItem(
-                        ${index}
-                      )"
-                    >
-                      Remove
-                    </button>
-
-
-                  </div>
-
-                </div>
-
-
-                <div class="cart-price">
-
-                  ${
-                    getPrice(item)
-                  }
-
-                </div>
-
-
-              </div>
-
-            `
-          ).join("")}
-
-        </div>
-
-
-        <div class="test-notice">
-
-          <strong>
-            TEST MODE
-          </strong>
-
-          <br>
-
-          This bag is currently part of the
-          ONE ERA test environment.
-
-          No payment is taken and no supplier
-          order is created from this page.
-
-        </div>
-
-      </div>
-
-
-
-      <aside class="cart-summary">
-
-        <div class="eyebrow">
-          ORDER SUMMARY
-        </div>
-
-        <h3>
-          Your bag
-        </h3>
-
-
-        <div class="summary-row">
-
-          <span>
-            Items
-          </span>
-
-          <span>
-            ${totalQuantity}
-          </span>
-
-        </div>
-
-
-        <div class="summary-row">
-
-          <span>
-            Subtotal
-          </span>
-
-          <span>
-            TEST
-          </span>
-
-        </div>
-
-
-        <div class="summary-row">
-
-          <span>
-            Shipping
-          </span>
-
-          <span>
-            Calculated at checkout
-          </span>
-
-        </div>
-
-
-        <div class="summary-row summary-total">
-
-          <strong>
-            Total
-          </strong>
-
-          <strong>
-            TEST
-          </strong>
-
-        </div>
-
-
-        <a
-          href="checkout.html"
-          class="checkout-btn"
-        >
-
-          Continue to checkout
-
-        </a>
-
-      </aside>
-
-
-    </div>
-
-  `;
+return;
 
 }
 
 
-/* --------------------------------
-   CHANGE QUANTITY
--------------------------------- */
+/* ==============================================
+   ITEMS
+============================================== */
+
+let itemsHTML = "";
+
+
+cart.forEach(
+function(item,index){
+
+itemsHTML += `
+
+<div class="cart-item">
+
+
+<div class="cart-image">
+
+ONE ERA
+
+</div>
+
+
+<div>
+
+
+<div class="cart-name">
+
+${item.name || "ONE ERA Object"}
+
+</div>
+
+
+<div class="cart-meta">
+
+${item.supplier &&
+item.supplier.platform
+? item.supplier.platform
+: "ONE ERA"}
+
+<br>
+
+TEST MODE
+
+</div>
+
+
+<div class="cart-price">
+
+${formatPrice(item)}
+
+</div>
+
+
+<div class="quantity">
+
+<button
+type="button"
+onclick="changeQuantity(${index},-1)"
+>
+−
+</button>
+
+
+<span>
+${item.quantity || 1}
+</span>
+
+
+<button
+type="button"
+onclick="changeQuantity(${index},1)"
+>
++
+</button>
+
+</div>
+
+
+<button
+class="remove"
+type="button"
+onclick="removeItem(${index})"
+>
+
+Remove
+
+</button>
+
+
+</div>
+
+
+<div class="cart-item-total">
+
+${item.quantity || 1} ×
+
+</div>
+
+
+</div>
+
+`;
+
+});
+
+
+/* ==============================================
+   TOTAL
+============================================== */
+
+root.innerHTML = `
+
+<div class="cart-layout">
+
+
+<div>
+
+<div class="cart-items">
+
+${itemsHTML}
+
+</div>
+
+</div>
+
+
+
+<div class="cart-total">
+
+<div class="eyebrow">
+SUMMARY
+</div>
+
+
+<div class="total-row">
+
+<span>
+Items
+</span>
+
+<span>
+${getItemCount(cart)}
+</span>
+
+</div>
+
+
+<div class="total-row">
+
+<span>
+Subtotal
+</span>
+
+<span>
+TEST MODE
+</span>
+
+</div>
+
+
+<div class="total-row">
+
+<span>
+Shipping
+</span>
+
+<span>
+Calculated at checkout
+</span>
+
+</div>
+
+
+<div class="total-row grand">
+
+<span>
+Total
+</span>
+
+<span>
+TEST MODE
+</span>
+
+</div>
+
+
+<a
+class="checkout-btn"
+href="checkout.html"
+>
+
+Proceed to checkout
+
+</a>
+
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* ==============================================
+   ITEM COUNT
+============================================== */
+
+function getItemCount(cart){
+
+return cart.reduce(
+function(total,item){
+
+return total +
+Number(item.quantity || 0);
+
+},
+0
+);
+
+}
+
+
+/* ==============================================
+   QUANTITY
+============================================== */
 
 function changeQuantity(
-  index,
-  change
+index,
+change
 ){
 
-  const cart =
-    getCart();
+const cart =
+getCart();
 
 
-  if(!cart[index]){
-
-    return;
-
-  }
+if(!cart[index]){
+return;
+}
 
 
-  const current =
-    Number(
-      cart[index].quantity || 1
-    );
+cart[index].quantity =
+Number(
+cart[index].quantity || 1
+) + change;
 
 
-  const next =
-    current + change;
+if(cart[index].quantity <= 0){
 
-
-  if(next <= 0){
-
-    cart.splice(
-      index,
-      1
-    );
-
-  }else{
-
-    cart[index].quantity =
-      next;
-
-  }
-
-
-  saveCart(cart);
-
-  renderCart();
+cart.splice(index,1);
 
 }
 
 
-/* --------------------------------
+saveCart(cart);
+
+renderCart();
+
+}
+
+
+/* ==============================================
    REMOVE
--------------------------------- */
+============================================== */
 
 function removeItem(index){
 
-  const cart =
-    getCart();
+const cart =
+getCart();
 
 
-  cart.splice(
-    index,
-    1
-  );
+if(!cart[index]){
+return;
+}
 
 
-  saveCart(cart);
+cart.splice(
+index,
+1
+);
 
-  renderCart();
+
+saveCart(cart);
+
+renderCart();
 
 }
 
 
-/* --------------------------------
+/* ==============================================
    START
--------------------------------- */
+============================================== */
 
 renderCart();
+
 
 </script>
 
 
-<!--
-  Keep the global script loaded for
-  the rest of the ONE ERA website.
--->
 <script src="script.js"></script>
 
 
