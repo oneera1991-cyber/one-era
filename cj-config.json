@@ -1,0 +1,43 @@
+{
+  "provider": "CJ",
+  "environment": "test",
+  "testMode": true,
+
+  "api": {
+    "enabled": false,
+    "baseUrl": "",
+    "apiKey": "",
+    "accessToken": ""
+  },
+
+  "order": {
+    "createRealOrder": false,
+    "createShipment": false,
+    "sendCustomerData": false
+  },
+
+  "market": {
+    "defaultCountry": "TH",
+    "supportedCountries": [
+      "TH",
+      "US",
+      "GB",
+      "AU",
+      "ID",
+      "SG",
+      "HK"
+    ]
+  },
+
+  "currency": {
+    "supported": [
+      "THB",
+      "USD",
+      "GBP",
+      "AUD",
+      "IDR",
+      "SGD",
+      "HKD"
+    ]
+  }
+}
