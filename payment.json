@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "status": "foundation",
+  "principle": "Payment methods are selected by market and checkout availability. No payment provider is hard-coded until the live merchant accounts are ready.",
+  "checkout": {
+    "currency_source": "market",
+    "shipping_source": "shipping",
+    "tax_display": "separate_when_required",
+    "guest_checkout": true,
+    "account_optional": true
+  },
+  "markets": {
+    "TH": {
+      "currency": "THB",
+      "methods": [
+        "card",
+        "local_method"
+      ]
+    },
+    "GB": {
+      "currency": "GBP",
+      "methods": [
+        "card",
+        "wallet"
+      ]
+    },
+    "US": {
+      "currency": "USD",
+      "methods": [
+        "card",
+        "wallet"
+      ]
+    },
+    "AU": {
+      "currency": "AUD",
+      "methods": [
+        "card",
+        "wallet"
+      ]
+    },
+    "ID": {
+      "currency": "IDR",
+      "methods": [
+        "card",
+        "local_method"
+      ]
+    },
+    "SG": {
+      "currency": "SGD",
+      "methods": [
+        "card",
+        "wallet",
+        "local_method"
+      ]
+    },
+    "HK": {
+      "currency": "HKD",
+      "methods": [
+        "card",
+        "wallet",
+        "local_method"
+      ]
+    }
+  },
+  "order_flow": [
+    "cart",
+    "market",
+    "shipping_address",
+    "shipping_method",
+    "tax_and_duties",
+    "payment",
+    "order_confirmation",
+    "fulfillment",
+    "tracking"
+  ]
+}

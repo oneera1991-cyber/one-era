@@ -1,23 +1,127 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Checkout — ONE ERA</title><link rel="stylesheet" href="styles.css"><style>
-.co{padding:60px 0}.co-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:55px}.co h1{font-size:55px;margin:12px 0 35px}.block{border-top:1px solid var(--line);padding:25px 0}.block h3{margin:0 0 18px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:8px;letter-spacing:.13em;text-transform:uppercase}.field input,.field select{padding:13px;border:1px solid var(--line);background:transparent;font:inherit}.summary{background:#f2eadf;padding:25px;position:sticky;top:25px}.summary-line{display:flex;justify-content:space-between;padding:10px 0;font-size:13px}.summary-total{border-top:1px solid #aaa;margin-top:12px;padding-top:18px;font-size:18px}.market-note{font-size:12px;line-height:1.6;color:#665f57;background:#f2eadf;padding:14px;margin-bottom:20px}
-@media(max-width:800px){.co-grid{grid-template-columns:1fr}.summary{position:static}.fields{grid-template-columns:1fr}}
-</style></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONE ERA — Checkout</title>
+  <style>
+    :root {
+      --obsidian:#11100F; --bone:#E8DFD2; --paper:#F5EFE7;
+      --line:rgba(17,16,15,.12); --muted:#70685f; --rose:#C88F9D;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bone);color:var(--obsidian);font-family:Arial,Helvetica,sans-serif}
+    header{padding:24px 5vw;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+    .logo{font-family:Georgia,serif;font-size:25px;letter-spacing:.12em}
+    nav a{color:inherit;text-decoration:none;margin-left:20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    main{max-width:1000px;margin:auto;padding:70px 24px 100px}
+    .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+    h1{font-family:Georgia,serif;font-size:clamp(50px,8vw,90px);font-weight:400;line-height:.95;margin:16px 0 45px}
+    .grid{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}
+    .card{background:var(--paper);border:1px solid var(--line);padding:28px}
+    h2{font-family:Georgia,serif;font-weight:400;font-size:30px;margin:0 0 22px}
+    .row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line)}
+    .row:last-child{border-bottom:0}
+    .muted{color:var(--muted)}
+    input,select{width:100%;padding:14px;margin-top:7px;border:1px solid var(--line);background:#fff;font:inherit}
+    .field{margin:17px 0}
+    .payment-option{display:flex;gap:12px;align-items:center;padding:16px;border:1px solid var(--line);margin-top:10px;background:#fff;cursor:pointer}
+    .payment-option input{width:auto;margin:0}
+    .notice{margin-top:20px;padding:16px;background:rgba(200,143,157,.10);border-left:3px solid var(--rose);line-height:1.55}
+    button{width:100%;margin-top:25px;padding:16px;border:0;background:var(--obsidian);color:var(--bone);font:inherit;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+    .small{font-size:12px;color:var(--muted);line-height:1.55;margin-top:14px}
+    @media(max-width:750px){.grid{grid-template-columns:1fr}}
+    footer{padding:30px 5vw;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+  </style>
+</head>
 <body>
-<header class="site-header"><div class="container nav"><a class="wordmark" href="index.html">ONE ERA</a><nav class="nav-links"><a href="shop.html">Shop</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a><a href="about.html">The Society</a></nav><div class="nav-icons"><a href="cart.html">Bag <span data-cart-count>0</span></a></div></div></header>
-<main class="co"><div class="container co-grid">
-<section class="co"><div class="eyebrow">ONE ERA · CHECKOUT</div><h1>Complete your order.</h1>
-<div class="market-note">Shipping destination: <strong data-country-label>Loading…</strong>. Prices and shipping will be shown in <strong data-currency-code>—</strong>. Final taxes, duties and delivery options will be calculated when the live fulfillment/payment layer is connected.</div>
-<form onsubmit="event.preventDefault();alert('Checkout interface ready. Payment integration comes next.');">
-<div class="block"><h3>Contact</h3><div class="fields"><div class="field full"><label>Email</label><input type="email" required placeholder="you@example.com"></div></div></div>
-<div class="block"><h3>Delivery</h3><div class="fields"><div class="field full"><label>Country / region</label><select data-country-select required></select></div><div class="field"><label>First name</label><input required></div><div class="field"><label>Last name</label><input required></div><div class="field full"><label>Address</label><input required></div><div class="field"><label>City</label><input required></div><div class="field"><label>State / province / region</label><input></div><div class="field"><label>Postal code</label><input required></div><div class="field"><label>Phone</label><input required></div></div></div>
-<div class="block"><h3>Shipping</h3><div style="font-size:13px;color:#665f57">Shipping options will appear here after destination-based rates are connected.</div></div>
-<div class="block"><h3>Payment</h3><div style="font-size:13px;color:#665f57">Secure payment provider will be connected in the commerce integration phase.</div></div>
-<button class="btn btn-dark" type="submit">Continue to payment</button>
-</form></section>
-<aside class="summary"><div class="eyebrow">ORDER SUMMARY</div><div class="summary-line"><span>Items</span><span>—</span></div><div class="summary-line"><span>Shipping</span><span>Calculated</span></div><div class="summary-line"><span>Taxes / duties</span><span>Destination dependent</span></div><div class="summary-line summary-total"><strong>Total</strong><strong>—</strong></div></aside>
-</div></main>
-<footer class="footer"><div class="container"><div class="wordmark">ONE ERA</div><p>THE SPIRITUAL SOCIETY</p></div><span style="display:none"><a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></footer>
-<script src="commerce.js"></script><script>document.addEventListener("oneera:countrychange",e=>{document.querySelectorAll("[data-country-label]").forEach(x=>x.textContent=e.detail.flag+" "+e.detail.name)});</script><script src="script.js"></script>
-</body></html>
+<header>
+  <div class="logo">ONE ERA</div>
+  <nav>
+    <a href="shop.html">Shop</a>
+    <a href="market.html">Market</a>
+  </nav>
+</header>
+
+<main>
+  <div class="eyebrow">ONE ERA · CHECKOUT</div>
+  <h1>Complete your order.</h1>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Delivery</h2>
+
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" placeholder="Your name">
+      </div>
+
+      <div class="field">
+        <label>Country</label>
+        <input type="text" value="" data-checkout-market readonly>
+      </div>
+
+      <div class="field">
+        <label>Address</label>
+        <input type="text" placeholder="Street address">
+      </div>
+
+      <div class="field">
+        <label>Postal code</label>
+        <input type="text" placeholder="Postal code">
+      </div>
+
+      <h2 style="margin-top:40px">Payment</h2>
+
+      <div data-payment-methods>
+        Loading payment methods...
+      </div>
+
+      <div class="notice" data-payment-status>
+        Payment provider will be connected after the merchant account and payment gateway are selected.
+      </div>
+
+      <button type="button">Continue securely</button>
+    </section>
+
+    <aside class="card">
+      <h2>Your order</h2>
+
+      <div class="row">
+        <span class="muted">Market</span>
+        <strong data-checkout-market>TH</strong>
+      </div>
+
+      <div class="row">
+        <span class="muted">Currency</span>
+        <strong data-checkout-currency>THB</strong>
+      </div>
+
+      <div class="row">
+        <span class="muted">Shipping</span>
+        <span>Calculated at checkout</span>
+      </div>
+
+      <div class="row">
+        <span class="muted">Duties & taxes</span>
+        <span>Shown when applicable</span>
+      </div>
+
+      <p class="small">
+        Your final order total is determined from the selected market,
+        products, shipping service and applicable taxes or duties.
+      </p>
+    </aside>
+  </div>
+</main>
+
+<footer>ONE ERA · THE SPIRITUAL SOCIETY</footer>
+
+<script src="payment.js"></script>
+</body>
+</html>
