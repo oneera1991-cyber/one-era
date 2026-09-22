@@ -1,0 +1,82 @@
+{
+  "default_country": "TH",
+  "supported_countries": [
+    {
+      "code": "TH",
+      "name": "Thailand",
+      "flag": "🇹🇭",
+      "currency": "THB",
+      "symbol": "฿",
+      "currency_name": "Thai Baht",
+      "locale": "th-TH",
+      "language": "English",
+      "market": "primary"
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "flag": "🇬🇧",
+      "currency": "GBP",
+      "symbol": "£",
+      "currency_name": "British Pound",
+      "locale": "en-GB",
+      "language": "English",
+      "market": "primary"
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "flag": "🇺🇸",
+      "currency": "USD",
+      "symbol": "$",
+      "currency_name": "US Dollar",
+      "locale": "en-US",
+      "language": "English",
+      "market": "primary"
+    },
+    {
+      "code": "AU",
+      "name": "Australia",
+      "flag": "🇦🇺",
+      "currency": "AUD",
+      "symbol": "A$",
+      "currency_name": "Australian Dollar",
+      "locale": "en-AU",
+      "language": "English",
+      "market": "future"
+    },
+    {
+      "code": "ID",
+      "name": "Indonesia",
+      "flag": "🇮🇩",
+      "currency": "IDR",
+      "symbol": "Rp",
+      "currency_name": "Indonesian Rupiah",
+      "locale": "id-ID",
+      "language": "English",
+      "market": "future"
+    },
+    {
+      "code": "SG",
+      "name": "Singapore",
+      "flag": "🇸🇬",
+      "currency": "SGD",
+      "symbol": "S$",
+      "currency_name": "Singapore Dollar",
+      "locale": "en-SG",
+      "language": "English",
+      "market": "future"
+    },
+    {
+      "code": "HK",
+      "name": "Hong Kong",
+      "flag": "🇭🇰",
+      "currency": "HKD",
+      "symbol": "HK$",
+      "currency_name": "Hong Kong Dollar",
+      "locale": "en-HK",
+      "language": "English",
+      "market": "future"
+    }
+  ]
+}
