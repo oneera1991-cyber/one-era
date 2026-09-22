@@ -1,34 +1,554 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Shop — ONE ERA</title><link rel="stylesheet" href="styles.css">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Shop — ONE ERA</title>
+
+<link rel="stylesheet" href="styles.css">
+
 <style>
-.shop-hero{background:var(--bone);padding:90px 0 70px}.shop-hero h1{margin:15px 0}.shop-hero p{max-width:650px;color:#655e56;line-height:1.8}.shop-tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}.shop-tools select{padding:10px;border:1px solid var(--line);background:transparent}.catalog{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.product-card{border:1px solid rgba(17,16,15,.12);background:#f2eadf}.product-art{aspect-ratio:1/1;background:linear-gradient(145deg,#d8c3bb,#26332f);position:relative}.product-art:after{content:"ONE ERA";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-10deg);font-family:var(--serif);font-size:24px;opacity:.22}.product-info{padding:18px}.product-info .eyebrow{font-size:8px}.product-info h3{font-size:22px;margin:8px 0}.product-info p{font-size:12px;color:#6b635b;margin:0 0 12px}.product-info .price{font-size:13px}.product-link{display:block}.status{font-size:8px;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-top:8px}
-@media(max-width:900px){.catalog{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.catalog{grid-template-columns:1fr}}
-</style></head>
-<body>
-<header class="site-header"><div class="container nav"><a class="wordmark" href="index.html">ONE ERA</a><nav class="nav-links"><a href="discover.html">Explore</a><a href="practice.html">Practice</a><a class="active-nav" href="shop.html">Shop</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a><a href="about.html">The Society</a></nav><div class="nav-icons"><span>⌕</span><a href="cart.html">Bag <span data-cart-count>0</span></a></div><span class="mobile-menu">☰</span></div></header>
-<main>
-<section class="shop-hero"><div class="container"><div class="eyebrow">ONE ERA · SHOP</div><h1>Objects for the journey.</h1><p>Crystals, incense, ritual tools and spiritual objects selected through the ONE ERA lens: what it is, where it comes from, how traditions use it, and how you might use it yourself.</p></div></section>
-<section class="shop-tools"><div class="container"><select id="categoryFilter"><option value="all">All objects</option></select></div></section>
-<section class="section"><div class="container"><div id="catalog" class="catalog"></div></div></section>
-</main>
-<footer class="footer"><div class="container"><div class="footer-grid"><div><div class="wordmark">ONE ERA</div><p style="margin-top:15px">THE SPIRITUAL SOCIETY</p><p>Natural, but supernatural.</p></div><div><h4>Explore</h4><a href="discover.html">Discover</a><a href="practice.html">Practice</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a></div><div><h4>Shop</h4><a href="collections.html">Collections</a><a href="shop.html">All Objects</a></div><div><h4>Society</h4><a href="about.html">The Society</a></div></div></div></footer>
-<script>
-async function loadCatalog(){
- const r=await fetch('products.json'); const data=await r.json();
- const select=document.getElementById('categoryFilter');
- data.categories.forEach(c=>{const o=document.createElement('option');o.value=c.slug;o.textContent=c.name;select.appendChild(o)});
- const root=document.getElementById('catalog');
- function render(filter='all'){
-  root.innerHTML='';
-  data.products.filter(p=>filter==='all'||p.category===filter).forEach(p=>{
-   const a=document.createElement('a');a.className='product-link';a.href='product.html?product='+encodeURIComponent(p.slug);
-   a.innerHTML='<article class="product-card"><div class="product-art"></div><div class="product-info"><div class="eyebrow">'+(p.collection||p.category)+'</div><h3>'+p.name+'</h3><p>'+((p.botanical)?p.botanical+' · ':'')+(p.ritual_state||'Spiritual object')+'</p><div class="price">$'+p.price_usd+' · £'+p.price_gbp+' · ฿'+p.price_thb+'</div><div class="status">'+p.status+'</div></div></article>';
-   root.appendChild(a);
-  });
- }
- select.addEventListener('change',e=>render(e.target.value));render();
+.shop-page{
+  padding:80px 0;
 }
-loadCatalog();
-</script><script src="script.js"></script>
-</body></html>
+
+.shop-intro{
+  max-width:760px;
+  margin-bottom:60px;
+}
+
+.shop-intro h1{
+  font-size:clamp(52px,7vw,100px);
+  line-height:.95;
+  margin:15px 0 25px;
+}
+
+.shop-intro p{
+  max-width:620px;
+  color:#665f57;
+  line-height:1.8;
+}
+
+.test-banner{
+  background:#f2eadf;
+  border-left:3px solid #c88f9d;
+  padding:18px 20px;
+  margin-bottom:50px;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.test-banner strong{
+  display:block;
+  margin-bottom:5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.product-card{
+  border-top:1px solid var(--line);
+  padding-top:18px;
+}
+
+.product-image{
+  width:100%;
+  aspect-ratio:1/1;
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(200,143,157,.65),
+      transparent 18%
+    ),
+    linear-gradient(
+      145deg,
+      #d7c8bf,
+      #1c2c28
+    );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.product-placeholder{
+  font-family:Georgia,serif;
+  font-size:28px;
+  color:#f3ece3;
+  opacity:.9;
+}
+
+.product-info{
+  padding:20px 0 10px;
+}
+
+.product-eyebrow{
+  font-size:9px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  opacity:.55;
+  margin-bottom:8px;
+}
+
+.product-info h2{
+  font-size:28px;
+  margin:0 0 10px;
+}
+
+.product-info p{
+  color:#665f57;
+  font-size:13px;
+  line-height:1.7;
+  margin:0 0 15px;
+}
+
+.product-price{
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+.product-status{
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.55;
+  margin-bottom:15px;
+}
+
+.product-link{
+  display:inline-block;
+  padding:12px 18px;
+  background:#11100f;
+  color:#fff;
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.product-link:hover{
+  opacity:.85;
+}
+
+.empty-state{
+  padding:50px 0;
+  border-top:1px solid var(--line);
+  color:#665f57;
+}
+
+.error-state{
+  padding:25px;
+  background:#f2eadf;
+  border-left:3px solid #c45b3c;
+  line-height:1.7;
+}
+
+@media(max-width:900px){
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .shop-page{
+    padding:55px 0;
+  }
+
+  .product-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="container nav">
+
+    <a class="wordmark" href="index.html">
+      ONE ERA
+    </a>
+
+    <nav class="nav-links">
+
+      <a href="discover.html">Explore</a>
+
+      <a href="practice.html">Practice</a>
+
+      <a class="active-nav" href="shop.html">Shop</a>
+
+      <a href="learn.html">Learn</a>
+
+      <a href="journal.html">Journal</a>
+
+      <a href="about.html">The Society</a>
+
+    </nav>
+
+    <div class="nav-icons">
+
+      <span>⌕</span>
+
+      <a href="cart.html">
+        Bag <span data-cart-count>0</span>
+      </a>
+
+    </div>
+
+    <span class="mobile-menu">☰</span>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<section class="shop-page">
+
+<div class="container">
+
+
+  <div class="shop-intro">
+
+    <div class="eyebrow">
+      ONE ERA · SHOP
+    </div>
+
+    <h1>
+      Objects for<br>
+      the unseen.
+    </h1>
+
+    <p>
+      Objects, materials and ritual tools selected for
+      curiosity, reflection and everyday practice.
+    </p>
+
+  </div>
+
+
+  <div class="test-banner">
+
+    <strong>TEST MODE</strong>
+
+    Products shown here are currently connected to the
+    ONE ERA test catalogue. No real payment or supplier
+    order is created.
+
+  </div>
+
+
+  <div id="shopStatus"></div>
+
+  <div
+    id="productGrid"
+    class="product-grid">
+  </div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+<div class="container">
+
+  <div class="wordmark">
+    ONE ERA
+  </div>
+
+  <p>
+    THE SPIRITUAL SOCIETY
+  </p>
+
+</div>
+
+</footer>
+
+
+<script>
+
+async function loadShop(){
+
+  const grid = document.getElementById("productGrid");
+  const status = document.getElementById("shopStatus");
+
+  try{
+
+    const response = await fetch("products.json");
+
+    if(!response.ok){
+
+      throw new Error(
+        "products.json returned HTTP " +
+        response.status
+      );
+
+    }
+
+    const data = await response.json();
+
+
+    /*
+      Support both possible structures:
+
+      1.
+      [
+        {...},
+        {...}
+      ]
+
+      2.
+      {
+        "products":[
+          {...}
+        ]
+      }
+    */
+
+    let products = [];
+
+    if(Array.isArray(data)){
+
+      products = data;
+
+    }else if(
+      data &&
+      Array.isArray(data.products)
+    ){
+
+      products = data.products;
+
+    }
+
+
+    /*
+      Only show products that are available
+      or explicitly marked as test products.
+    */
+
+    products = products.filter(function(product){
+
+      return (
+        product.available === true ||
+        product.testMode === true
+      );
+
+    });
+
+
+    if(products.length === 0){
+
+      grid.innerHTML = `
+        <div class="empty-state">
+          No products are currently available
+          in the ONE ERA test catalogue.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    grid.innerHTML = products.map(function(product){
+
+      const image =
+        product.images &&
+        product.images.length &&
+        product.images[0].url &&
+        !product.images[0].url.endsWith("/")
+
+          ? `
+            <img
+              src="${product.images[0].url}"
+              alt="${product.images[0].alt || product.name}"
+              loading="lazy"
+            >
+          `
+
+          : `
+            <div class="product-placeholder">
+              ONE ERA
+            </div>
+          `;
+
+
+      let price = "TEST PRICE";
+
+
+      if(
+        product.price &&
+        product.price.display
+      ){
+
+        price = product.price.display;
+
+      }
+
+
+      /*
+        Product Page expects:
+
+        product.html?product=green-fluorite
+      */
+
+      const slug =
+        product.slug ||
+        product.id;
+
+
+      return `
+
+        <article class="product-card">
+
+
+          <a
+            href="product.html?product=${encodeURIComponent(slug)}"
+            aria-label="View ${product.name}"
+          >
+
+            <div class="product-image">
+
+              ${image}
+
+            </div>
+
+          </a>
+
+
+          <div class="product-info">
+
+
+            <div class="product-eyebrow">
+
+              ${product.collection || ""}
+
+            </div>
+
+
+            <h2>
+
+              ${product.name || "Untitled Product"}
+
+            </h2>
+
+
+            <p>
+
+              ${
+                product.shortDescription ||
+                product.description ||
+                ""
+              }
+
+            </p>
+
+
+            <div class="product-price">
+
+              ${price}
+
+            </div>
+
+
+            ${
+              product.testMode === true
+
+                ? `
+                  <div class="product-status">
+                    TEST PRODUCT · CJ DROPSHIPPING
+                  </div>
+                `
+
+                : ""
+            }
+
+
+            <a
+              class="product-link"
+              href="product.html?product=${encodeURIComponent(slug)}"
+            >
+
+              View product
+
+            </a>
+
+
+          </div>
+
+
+        </article>
+
+      `;
+
+    }).join("");
+
+
+  }catch(error){
+
+    console.error(
+      "ONE ERA SHOP ERROR:",
+      error
+    );
+
+
+    status.innerHTML = `
+
+      <div class="error-state">
+
+        <strong>
+          SHOP COULD NOT LOAD
+        </strong>
+
+        <br><br>
+
+        ${error.message}
+
+        <br><br>
+
+        Make sure
+        <strong>products.json</strong>
+        exists in the same GitHub repository
+        as this page.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+loadShop();
+
+</script>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
