@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>ONE ERA — Order Control</title>
+
+
+<style>
+
+:root {
+
+  --obsidian: #11100F;
+
+  --bone: #E8DFD2;
+
+  --paper: #F5EFE7;
+
+  --white: #FFFFFF;
+
+  --line: rgba(17,16,15,.12);
+
+  --muted: #70685F;
+
+  --rose: #C88F9D;
+
+  --green: #315B45;
+
+  --orange: #9A5A32;
+
+}
+
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+
+body {
+
+  margin: 0;
+
+  background: var(--bone);
+
+  color: var(--obsidian);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+}
+
+
+header {
+
+  padding: 24px 5vw;
+
+  border-bottom:
+    1px solid var(--line);
+
+}
+
+
+.logo {
+
+  font-family: Georgia, serif;
+
+  font-size: 25px;
+
+  letter-spacing: .12em;
+
+}
+
+
+main {
+
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding:
+    60px 24px 100px;
+
+}
+
+
+.eyebrow {
+
+  font-size: 11px;
+
+  letter-spacing: .2em;
+
+  color: var(--muted);
+
+  text-transform: uppercase;
+
+}
+
+
+h1 {
+
+  font-family: Georgia, serif;
+
+  font-size:
+    clamp(48px, 8vw, 82px);
+
+  font-weight: 400;
+
+  line-height: .95;
+
+  margin:
+    18px 0 15px;
+
+}
+
+
+.intro {
+
+  color: var(--muted);
+
+  max-width: 650px;
+
+  line-height: 1.7;
+
+}
+
+
+.test-banner {
+
+  margin:
+    35px 0;
+
+  padding: 18px 20px;
+
+  background:
+    rgba(200,143,157,.10);
+
+  border-left:
+    3px solid var(--rose);
+
+  line-height: 1.7;
+
+}
+
+
+.panel {
+
+  background: var(--paper);
+
+  border:
+    1px solid var(--line);
+
+  padding: 28px;
+
+}
+
+
+.panel-title {
+
+  font-family: Georgia, serif;
+
+  font-size: 28px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.empty {
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+}
+
+
+.order-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1px;
+
+  background: var(--line);
+
+}
+
+
+.order-cell {
+
+  background: var(--white);
+
+  padding: 20px;
+
+}
+
+
+.label {
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: .14em;
+
+  color: var(--muted);
+
+  margin-bottom: 7px;
+
+}
+
+
+.value {
+
+  font-size: 15px;
+
+  word-break: break-word;
+
+}
+
+
+.order-id {
+
+  font-family:
+    monospace;
+
+  font-size: 14px;
+
+}
+
+
+.status {
+
+  display: inline-block;
+
+  padding:
+    6px 10px;
+
+  font-size: 10px;
+
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
+
+  background:
+    rgba(49,91,69,.10);
+
+  color: var(--green);
+
+}
+
+
+.status.pending {
+
+  background:
+    rgba(154,90,50,.10);
+
+  color: var(--orange);
+
+}
+
+
+.status.failed {
+
+  background:
+    rgba(160,50,50,.10);
+
+  color: #8A3030;
+
+}
+
+
+.controls {
+
+  margin-top: 28px;
+
+  padding-top: 28px;
+
+  border-top:
+    1px solid var(--line);
+
+}
+
+
+.controls h3 {
+
+  font-family: Georgia, serif;
+
+  font-size: 22px;
+
+  font-weight: 400;
+
+}
+
+
+select {
+
+  width: 100%;
+
+  padding: 14px;
+
+  margin-top: 8px;
+
+  border:
+    1px solid var(--line);
+
+  background: white;
+
+  color: var(--obsidian);
+
+  font-size: 14px;
+
+}
+
+
+.control-group {
+
+  margin-top: 20px;
+
+}
+
+
+button {
+
+  width: 100%;
+
+  padding: 16px;
+
+  margin-top: 20px;
+
+  border: none;
+
+  background: var(--obsidian);
+
+  color: var(--bone);
+
+  font-size: 12px;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+}
+
+
+button.secondary {
+
+  background:
+    transparent;
+
+  color: var(--obsidian);
+
+  border:
+    1px solid var(--obsidian);
+
+}
+
+
+button.danger {
+
+  color: #8A3030;
+
+  border-color: #8A3030;
+
+}
+
+
+#message {
+
+  display: none;
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  background: white;
+
+  border:
+    1px solid var(--line);
+
+  line-height: 1.6;
+
+}
+
+
+pre {
+
+  padding: 18px;
+
+  background: var(--obsidian);
+
+  color: var(--bone);
+
+  overflow-x: auto;
+
+  white-space: pre-wrap;
+
+  word-break: break-word;
+
+  font-size: 12px;
+
+}
+
+
+@media (
+  max-width: 700px
+) {
+
+  .order-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .panel {
+
+    padding: 20px;
+
+  }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+  <div class="logo">
+    ONE ERA
+  </div>
+
+</header>
+
+
+<main>
+
+
+  <div class="eyebrow">
+    ONE ERA · ORDER CONTROL
+  </div>
+
+
+  <h1>
+    Order<br>
+    Control.
+  </h1>
+
+
+  <p class="intro">
+
+    Internal order management for
+    ONE ERA.
+
+    <br><br>
+
+    This environment is currently
+    operating in TEST MODE.
+
+  </p>
+
+
+  <div class="test-banner">
+
+    <strong>
+      TEST MODE
+    </strong>
+
+    <br>
+
+    Changes made here affect only
+    the local test order stored in
+    this browser.
+
+    <br>
+
+    No real customer, payment,
+    CJ order or shipment is affected.
+
+  </div>
+
+
+  <section class="panel">
+
+
+    <div class="panel-title">
+      Current Order
+    </div>
+
+
+    <div id="orderContainer">
+
+
+      <div class="empty">
+
+        No test order found.
+
+        <br><br>
+
+        Create a test order from
+        <strong>
+          fulfillment.html
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+    <div
+      id="controls"
+      class="controls"
+      style="display:none;"
+    >
+
+
+      <h3>
+        Order Controls
+      </h3>
+
+
+      <!-- ORDER STATUS -->
+
+      <div class="control-group">
+
+        <div class="label">
+          Order Status
+        </div>
+
+
+        <select
+          id="orderStatus"
+        >
+
+          <option value="pending">
+            Pending
+          </option>
+
+          <option value="paid">
+            Paid
+          </option>
+
+          <option value="processing">
+            Processing
+          </option>
+
+          <option value="fulfilled">
+            Fulfilled
+          </option>
+
+          <option value="cancelled">
+            Cancelled
+          </option>
+
+          <option value="refunded">
+            Refunded
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- PAYMENT STATUS -->
+
+      <div class="control-group">
+
+        <div class="label">
+          Payment Status
+        </div>
+
+
+        <select
+          id="paymentStatus"
+        >
+
+          <option value="pending">
+            Pending
+          </option>
+
+          <option value="paid">
+            Paid
+          </option>
+
+          <option value="failed">
+            Failed
+          </option>
+
+          <option value="refunded">
+            Refunded
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- FULFILLMENT STATUS -->
+
+      <div class="control-group">
+
+        <div class="label">
+          Fulfillment Status
+        </div>
+
+
+        <select
+          id="fulfillmentStatus"
+        >
+
+          <option value="pending">
+            Pending
+          </option>
+
+          <option value="ready">
+            Ready
+          </option>
+
+          <option value="sent_to_cj">
+            Sent to CJ
+          </option>
+
+          <option value="accepted">
+            CJ Accepted
+          </option>
+
+          <option value="processing">
+            Processing
+          </option>
+
+          <option value="shipped">
+            Shipped
+          </option>
+
+          <option value="delivered">
+            Delivered
+          </option>
+
+          <option value="exception">
+            Exception
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        id="saveStatus"
+        type="button"
+      >
+
+        SAVE STATUS
+
+      </button>
+
+
+      <button
+        id="refresh"
+        class="secondary"
+        type="button"
+      >
+
+        REFRESH ORDER
+
+      </button>
+
+
+      <button
+        id="clearOrder"
+        class="secondary danger"
+        type="button"
+      >
+
+        CLEAR TEST ORDER
+
+      </button>
+
+
+    </div>
+
+
+    <div
+      id="message"
+    ></div>
+
+
+  </section>
+
+
+</main>
+
+
+<!-- =============================================
+     ORDER ENGINE
+     ============================================= -->
+
+<script src="orders.js"></script>
+
+
+<script>
+
+(function () {
+
+
+  "use strict";
+
+
+  console.log(
+    "ONE ERA Order Control loaded."
+  );
+
+
+  /* =========================================
+     ELEMENTS
+     ========================================= */
+
+
+  const orderContainer =
+    document.getElementById(
+      "orderContainer"
+    );
+
+
+  const controls =
+    document.getElementById(
+      "controls"
+    );
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  const orderStatus =
+    document.getElementById(
+      "orderStatus"
+    );
+
+
+  const paymentStatus =
+    document.getElementById(
+      "paymentStatus"
+    );
+
+
+  const fulfillmentStatus =
+    document.getElementById(
+      "fulfillmentStatus"
+    );
+
+
+  const saveButton =
+    document.getElementById(
+      "saveStatus"
+    );
+
+
+  const refreshButton =
+    document.getElementById(
+      "refresh"
+    );
+
+
+  const clearButton =
+    document.getElementById(
+      "clearOrder"
+    );
+
+
+  /* =========================================
+     STATUS CLASS
+     ========================================= */
+
+
+  function statusClass(
+    status
+  ) {
+
+    if (
+      status === "failed" ||
+      status === "cancelled" ||
+      status === "exception"
+    ) {
+
+      return "status failed";
+
+    }
+
+
+    if (
+      status === "pending"
+    ) {
+
+      return "status pending";
+
+    }
+
+
+    return "status";
+
+  }
+
+
+  /* =========================================
+     DISPLAY ORDER
+     ========================================= */
+
+
+  function renderOrder() {
+
+
+    if (
+      !window.ONEERA_ORDERS
+    ) {
+
+      orderContainer.innerHTML =
+
+        '<div class="empty">' +
+
+        '<strong>ERROR</strong>' +
+
+        '<br><br>' +
+
+        'orders.js could not be loaded.' +
+
+        '<br><br>' +
+
+        'Make sure orders.js exists ' +
+
+        'in the same GitHub repository.'
+
+        +
+
+        '</div>';
+
+
+      controls.style.display =
+        "none";
+
+
+      return;
+
+    }
+
+
+    const order =
+      window.ONEERA_ORDERS
+        .getOrder();
+
+
+    if (!order) {
+
+
+      orderContainer.innerHTML =
+
+        '<div class="empty">' +
+
+        'No test order found.' +
+
+        '<br><br>' +
+
+        'Create a test order from ' +
+
+        '<strong>fulfillment.html</strong>.' +
+
+        '</div>';
+
+
+      controls.style.display =
+        "none";
+
+
+      return;
+
+    }
+
+
+    controls.style.display =
+      "block";
+
+
+    orderContainer.innerHTML =
+
+
+      '<div class="order-grid">' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Order ID' +
+
+        '</div>' +
+
+        '<div class="value order-id">' +
+
+          order.order_id +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Created' +
+
+        '</div>' +
+
+        '<div class="value">' +
+
+          new Date(
+            order.created_at
+          ).toLocaleString() +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Customer' +
+
+        '</div>' +
+
+        '<div class="value">' +
+
+          (
+            order.customer &&
+            order.customer.name
+          ) ||
+
+          "—" +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Email' +
+
+        '</div>' +
+
+        '<div class="value">' +
+
+          (
+            order.customer &&
+            order.customer.email
+          ) ||
+
+          "—" +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Market' +
+
+        '</div>' +
+
+        '<div class="value">' +
+
+          (
+            order.market ||
+            "—"
+          ) +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Currency' +
+
+        '</div>' +
+
+        '<div class="value">' +
+
+          (
+            order.currency ||
+            "—"
+          ) +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Total' +
+
+        '</div>' +
+
+        '<div class="value">' +
+
+          (
+            order.currency ||
+            ""
+          ) +
+
+          " " +
+
+          (
+            order.total ??
+            "—"
+          ) +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Order Status' +
+
+        '</div>' +
+
+        '<div class="' +
+
+          statusClass(
+            order.status ||
+            "pending"
+          ) +
+
+        '">' +
+
+          (
+            order.status ||
+            "pending"
+          ) +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Payment Status' +
+
+        '</div>' +
+
+        '<div class="' +
+
+          statusClass(
+            order.payment_status
+          ) +
+
+        '">' +
+
+          (
+            order.payment_status ||
+            "pending"
+          ) +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Fulfillment Status' +
+
+        '</div>' +
+
+        '<div class="' +
+
+          statusClass(
+            order.fulfillment_status
+          ) +
+
+        '">' +
+
+          (
+            order.fulfillment_status ||
+            "pending"
+          ) +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '<div class="order-cell">' +
+
+        '<div class="label">' +
+
+          'Items' +
+
+        '</div>' +
+
+        '<div class="value">' +
+
+          (
+            order.items ?
+            order.items.length :
+            0
+          ) +
+
+          ' item(s)' +
+
+        '</div>' +
+
+      '</div>' +
+
+
+      '</div>';
+
+
+    /* =====================================
+       SELECT CURRENT VALUES
+       ===================================== */
+
+
+    orderStatus.value =
+
+      order.status ||
+      "pending";
+
+
+    paymentStatus.value =
+
+      order.payment_status ||
+      "pending";
+
+
+    fulfillmentStatus.value =
+
+      order.fulfillment_status ||
+      "pending";
+
+
+  }
+
+
+  /* =========================================
+     SAVE STATUS
+     ========================================= */
+
+
+  saveButton.addEventListener(
+
+    "click",
+
+    function () {
+
+
+      const order =
+        window.ONEERA_ORDERS
+          .getOrder();
+
+
+      if (!order) {
+
+        return;
+
+      }
+
+
+      order.status =
+        orderStatus.value;
+
+
+      order.payment_status =
+        paymentStatus.value;
+
+
+      order.fulfillment_status =
+        fulfillmentStatus.value;
+
+
+      window.ONEERA_ORDERS
+        .saveOrder(
+          order
+        );
+
+
+      message.style.display =
+        "block";
+
+
+      message.innerHTML =
+
+        '<strong>✓ STATUS UPDATED</strong>' +
+
+        '<br><br>' +
+
+        'Order ' +
+
+        order.order_id +
+
+        ' has been updated in TEST MODE.';
+
+
+      renderOrder();
+
+
+      console.log(
+        "ONE ERA order updated:",
+        order
+      );
+
+
+    }
+
+  );
+
+
+  /* =========================================
+     REFRESH
+     ========================================= */
+
+
+  refreshButton.addEventListener(
+
+    "click",
+
+    function () {
+
+      renderOrder();
+
+    }
+
+  );
+
+
+  /* =========================================
+     CLEAR TEST ORDER
+     ========================================= */
+
+
+  clearButton.addEventListener(
+
+    "click",
+
+    function () {
+
+
+      const confirmed =
+
+        window.confirm(
+
+          "Clear the ONE ERA test order?"
+
+        );
+
+
+      if (!confirmed) {
+
+        return;
+
+      }
+
+
+      window.ONEERA_ORDERS
+        .clearOrder();
+
+
+      message.style.display =
+        "block";
+
+
+      message.innerHTML =
+
+        '<strong>TEST ORDER CLEARED</strong>';
+
+
+      renderOrder();
+
+
+    }
+
+  );
+
+
+  /* =========================================
+     INITIAL LOAD
+     ========================================= */
+
+
+  renderOrder();
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
