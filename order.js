@@ -1,7 +1,8 @@
 /* =====================================================
-   ONE ERA — PHASE 4.4
-   ORDER ENGINE
-   Standalone Demo Version
+   ONE ERA
+   PHASE 4.6
+   ORDER CONTROL CENTER
+   TEST MODE
    ===================================================== */
 
 (function () {
@@ -9,148 +10,65 @@
   "use strict";
 
 
-  /* -----------------------------------------------------
-     CONFIG
-     ----------------------------------------------------- */
+  /* =====================================================
+     STORAGE
+     ===================================================== */
 
-  const ORDER_STORAGE_KEY =
-    "oneera_demo_orders";
-
-
-  /* -----------------------------------------------------
-     MARKET / CURRENCY
-     ----------------------------------------------------- */
-
-  const currencies = {
-
-    TH: "THB",
-    GB: "GBP",
-    US: "USD",
-    AU: "AUD",
-    ID: "IDR",
-    SG: "SGD",
-    HK: "HKD"
-
-  };
+  const ORDER_KEY =
+    "oneera_test_order";
 
 
-  /* -----------------------------------------------------
-     GET MARKET
-     ----------------------------------------------------- */
+  /* =====================================================
+     GET ORDER
+     ===================================================== */
 
-  function getMarket() {
-
-    return (
-      localStorage.getItem(
-        "oneera_country"
-      ) || "TH"
-    );
-
-  }
-
-
-  /* -----------------------------------------------------
-     GET CURRENCY
-     ----------------------------------------------------- */
-
-  function getCurrency() {
-
-    const market =
-      getMarket();
-
-    return (
-      currencies[market] || "THB"
-    );
-
-  }
-
-
-  /* -----------------------------------------------------
-     GENERATE ORDER ID
-     ----------------------------------------------------- */
-
-  function generateOrderId() {
-
-    const now =
-      new Date();
-
-    const date =
-      now
-        .toISOString()
-        .slice(0, 10)
-        .replace(/-/g, "");
-
-
-    const random =
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
-
-
-    return (
-      "OE-" +
-      date +
-      "-" +
-      random
-    );
-
-  }
-
-
-  /* -----------------------------------------------------
-     GET ORDERS
-     ----------------------------------------------------- */
-
-  function getOrders() {
+  function getOrder() {
 
     try {
 
-      const stored =
+      const data =
         localStorage.getItem(
-          ORDER_STORAGE_KEY
+          ORDER_KEY
         );
 
 
-      if (!stored) {
+      if (!data) {
 
-        return [];
+        return null;
 
       }
 
 
-      return JSON.parse(
-        stored
-      );
+      return JSON.parse(data);
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
       console.error(
-        "ONE ERA: Could not read orders.",
+        "ONE ERA: Cannot read order",
         error
       );
 
-      return [];
+      return null;
 
     }
 
   }
 
 
-  /* -----------------------------------------------------
-     SAVE ORDERS
-     ----------------------------------------------------- */
+  /* =====================================================
+     SAVE ORDER
+     ===================================================== */
 
-  function saveOrders(
-    orders
-  ) {
+  function saveOrder(order) {
 
     localStorage.setItem(
 
-      ORDER_STORAGE_KEY,
+      ORDER_KEY,
 
       JSON.stringify(
-        orders
+        order
       )
 
     );
@@ -158,95 +76,37 @@
   }
 
 
-  /* -----------------------------------------------------
-     CREATE TEST ORDER
-     ----------------------------------------------------- */
+  /* =====================================================
+     UPDATE ORDER STATUS
+     ===================================================== */
 
-  function createTestOrder() {
+  function updateOrderStatus(
+    status
+  ) {
 
-    const order = {
-
-      order_id:
-        generateOrderId(),
-
-      created_at:
-        new Date().toISOString(),
-
-      market:
-        getMarket(),
-
-      currency:
-        getCurrency(),
-
-      customer: {
-
-        name:
-          "ONE ERA Test Customer",
-
-        email:
-          "test@example.com"
-
-      },
-
-      shipping_address: {
-
-        country:
-          getMarket()
-
-      },
-
-      items: [
-
-        {
-
-          product_id:
-            "TEST-001",
-
-          quantity:
-            1
-
-        }
-
-      ],
-
-      subtotal:
-        100,
-
-      shipping:
-        20,
-
-      taxes:
-        0,
-
-      duties:
-        0,
-
-      total:
-        120,
-
-      payment_status:
-        "paid",
-
-      fulfillment_status:
-        "pending",
-
-      tracking_number:
-        null
-
-    };
+    const order =
+      getOrder();
 
 
-    const orders =
-      getOrders();
+    if (!order) {
+
+      return null;
+
+    }
 
 
-    orders.push(
+    order.status =
+      status;
+
+
+    /*
+      Keep the original fulfillment
+      status separate.
+    */
+
+
+    saveOrder(
       order
-    );
-
-
-    saveOrders(
-      orders
     );
 
 
@@ -255,70 +115,54 @@
   }
 
 
-  /* -----------------------------------------------------
-     FIND ORDER
-     ----------------------------------------------------- */
+  /* =====================================================
+     UPDATE PAYMENT STATUS
+     ===================================================== */
 
-  function getOrderById(
-    orderId
+  function updatePaymentStatus(
+    status
   ) {
-
-    const orders =
-      getOrders();
-
-
-    return orders.find(
-
-      function (order) {
-
-        return (
-          order.order_id ===
-          orderId
-        );
-
-      }
-
-    ) || null;
-
-  }
-
-
-  /* -----------------------------------------------------
-     UPDATE ORDER
-     ----------------------------------------------------- */
-
-  function updateOrderStatus(
-
-    orderId,
-
-    status,
-
-    trackingNumber
-
-  ) {
-
-    const orders =
-      getOrders();
-
 
     const order =
-      orders.find(
-
-        function (item) {
-
-          return (
-            item.order_id ===
-            orderId
-          );
-
-        }
-
-      );
+      getOrder();
 
 
     if (!order) {
 
-      return false;
+      return null;
+
+    }
+
+
+    order.payment_status =
+      status;
+
+
+    saveOrder(
+      order
+    );
+
+
+    return order;
+
+  }
+
+
+  /* =====================================================
+     UPDATE FULFILLMENT STATUS
+     ===================================================== */
+
+  function updateFulfillmentStatus(
+    status
+  ) {
+
+    const order =
+      getOrder();
+
+
+    if (!order) {
+
+      return null;
 
     }
 
@@ -327,75 +171,55 @@
       status;
 
 
-    if (
-      trackingNumber
-    ) {
-
-      order.tracking_number =
-        trackingNumber;
-
-    }
-
-
-    saveOrders(
-      orders
+    saveOrder(
+      order
     );
 
 
-    return true;
+    return order;
 
   }
 
 
-  /* -----------------------------------------------------
-     CLEAR TEST ORDERS
-     ----------------------------------------------------- */
+  /* =====================================================
+     CLEAR TEST ORDER
+     ===================================================== */
 
-  function clearOrders() {
+  function clearOrder() {
 
     localStorage.removeItem(
-      ORDER_STORAGE_KEY
+      ORDER_KEY
     );
 
   }
 
 
-  /* -----------------------------------------------------
+  /* =====================================================
      PUBLIC API
-     ----------------------------------------------------- */
+     ===================================================== */
 
   window.ONEERA_ORDERS = {
 
-    getMarket:
-      getMarket,
+    getOrder:
+      getOrder,
 
-    getCurrency:
-      getCurrency,
-
-    generateOrderId:
-      generateOrderId,
-
-    getOrders:
-      getOrders,
-
-    createTestOrder:
-      createTestOrder,
-
-    getOrderById:
-      getOrderById,
+    saveOrder:
+      saveOrder,
 
     updateOrderStatus:
       updateOrderStatus,
 
-    clearOrders:
-      clearOrders
+    updatePaymentStatus:
+      updatePaymentStatus,
+
+    updateFulfillmentStatus:
+      updateFulfillmentStatus,
+
+    clearOrder:
+      clearOrder
 
   };
 
-
-  /* -----------------------------------------------------
-     CONFIRM SCRIPT LOADED
-     ----------------------------------------------------- */
 
   console.log(
     "ONE ERA Orders: READY"
