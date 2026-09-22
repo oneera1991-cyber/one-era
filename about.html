@@ -2,48 +2,125 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About — ONE ERA</title><meta name="description" content="ONE ERA — The Spiritual Society.">
+<title>The Society — ONE ERA</title>
+<meta name="description" content="ONE ERA — The Spiritual Society. A society for people who believe there is more than what we can see.">
 <link rel="stylesheet" href="styles.css">
+<style>
+.society-hero{background:var(--obsidian);color:var(--bone);padding:120px 0 105px;position:relative;overflow:hidden}
+.society-hero:before{content:"";position:absolute;width:560px;height:560px;border:1px solid rgba(200,143,157,.24);border-radius:50%;right:-130px;top:-150px;box-shadow:0 0 0 100px rgba(200,143,157,.025),0 0 0 200px rgba(83,111,134,.018)}
+.society-hero .container{position:relative;z-index:2}
+.society-hero h1{max-width:900px;margin:20px 0 25px}
+.society-hero h1 em{color:var(--rose);font-style:italic}
+.society-hero p{max-width:650px;color:#d4ccc2;font-size:17px;line-height:1.8}
+.society-statement{padding:105px 0;background:var(--bone)}
+.statement-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:start}
+.statement-grid h2{font-size:clamp(42px,5vw,68px)}
+.statement-grid p{line-height:1.85;color:#5f5952}
+.principles{background:#f2eadf;padding:100px 0}
+.principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:45px}
+.principle{padding:30px;min-height:270px;border:1px solid rgba(17,16,15,.13)}
+.principle h3{margin:13px 0 12px}
+.principle p{font-size:14px;line-height:1.7;color:#655e56}
+.principle:nth-child(2){background:var(--forest);color:var(--bone);border-color:transparent}
+.principle:nth-child(2) p{color:#d7d0c7}
+.society-voice{background:var(--rose);color:var(--obsidian);padding:100px 0}
+.voice-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:90px;align-items:center}
+.voice-grid h2{font-size:clamp(45px,6vw,78px)}
+.voice-grid blockquote{margin:0;font-family:var(--serif);font-size:clamp(30px,4vw,52px);line-height:1.05}
+.boundary{background:var(--obsidian);color:var(--bone);padding:100px 0}
+.boundary-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.boundary h2{font-size:clamp(40px,5vw,64px)}
+.boundary p{color:#d2cbc1;line-height:1.8}
+.boundary-list{display:grid;gap:12px}
+.boundary-item{padding:18px 0;border-top:1px solid rgba(232,223,210,.18);display:grid;grid-template-columns:160px 1fr;gap:20px}
+.boundary-item strong{font-family:var(--serif);font-size:25px;font-weight:500}
+.boundary-item span{color:#cfc7bd;font-size:14px;line-height:1.6}
+.join-society{background:var(--bone);padding:90px 0}
+.join-box{border:1px solid rgba(17,16,15,.18);padding:55px;display:flex;justify-content:space-between;align-items:end;gap:40px}
+.join-box h2{font-size:clamp(40px,5vw,62px)}
+.join-box p{max-width:430px;color:#615a53;line-height:1.7}
+@media(max-width:800px){.statement-grid,.voice-grid,.boundary-grid{grid-template-columns:1fr}.principle-grid{grid-template-columns:1fr}.join-box{display:block;padding:35px}}
+</style>
 </head>
-<body class="">
-
+<body>
 <header class="site-header">
   <div class="container nav">
     <a class="wordmark" href="index.html">ONE ERA</a>
     <nav class="nav-links">
-      <a href="discover.html">Explore</a>
-      <a href="practice.html">Practice</a>
-      <a href="shop.html">Shop</a>
-      <a href="learn.html">Learn</a>
-      <a href="journal.html">Journal</a>
-      <a href="about.html">The Society</a>
+      <a href="discover.html">Explore</a><a href="practice.html">Practice</a><a href="shop.html">Shop</a>
+      <a href="learn.html">Learn</a><a href="journal.html">Journal</a><a href="about.html">The Society</a>
     </nav>
     <div class="nav-icons"><span>⌕</span><a href="cart.html">Bag <span data-cart-count>0</span></a></div>
     <span class="mobile-menu">☰</span>
   </div>
 </header>
 
+<main>
+<section class="society-hero">
+  <div class="container">
+    <div class="eyebrow">WELCOME TO THE SOCIETY</div>
+    <h1>For people who believe there is <em>more.</em></h1>
+    <p>ONE ERA is a modern spiritual society — a place to learn, practice, explore and find objects that make the unseen tangible.</p>
+  </div>
+</section>
 
-<section class="page-hero"><div class="container"><div class="breadcrumb">Home / The Society</div><h1>There is more than what we can see.</h1><p>ONE ERA is a spiritual society built around curiosity, practice and the objects that help us explore the unseen.</p></div></section>
-<section class="section"><div class="container" style="max-width:900px"><div class="eyebrow">Our philosophy</div><div class="quote" style="margin-top:18px">We don't ask you to believe everything. We ask you to stay curious.</div><p style="margin-top:30px">ONE ERA brings together knowledge, belief and practice across crystals, Reiki, chakras, meditation, manifestation, ritual and related spiritual traditions. We distinguish tradition from belief and belief from evidence, so exploration can remain open without pretending certainty where there is none.</p><div class="grid-3" style="margin-top:55px"><div><div class="eyebrow">01</div><h3>Knowledge</h3><p>Learn where ideas come from and how traditions describe them.</p></div><div><div class="eyebrow">02</div><h3>Practice</h3><p>Try rituals as intentional practices of attention and reflection.</p></div><div><div class="eyebrow">03</div><h3>Objects</h3><p>Choose physical tools that make a practice tangible.</p></div></div></div></section>
+<section class="society-statement">
+  <div class="container statement-grid">
+    <div><div class="eyebrow">Our belief</div><h2>We leave room for mystery.</h2></div>
+    <div>
+      <p>There are traditions we can study, practices we can experience, beliefs we can hold, and questions that may never have one answer.</p>
+      <p>ONE ERA exists in that space. We take spiritual subjects seriously without demanding certainty. We respect tradition without turning it into costume. And we make room for people who are curious about what cannot always be seen.</p>
+    </div>
+  </div>
+</section>
 
+<section class="principles">
+  <div class="container">
+    <div class="eyebrow">How we think</div>
+    <h2 style="margin-top:12px">Three ways into ONE ERA.</h2>
+    <div class="principle-grid">
+      <div class="principle"><div class="eyebrow">01</div><h3>Knowledge</h3><p>We study origins, traditions, language and context. When something is a belief rather than established fact, we say so.</p></div>
+      <div class="principle"><div class="eyebrow">02</div><h3>Practice</h3><p>We turn ideas into experiences: meditation, ritual, reflection, intention and other practices that can be explored for yourself.</p></div>
+      <div class="principle"><div class="eyebrow">03</div><h3>Objects</h3><p>Crystals, incense, candles, cards and ritual tools are physical companions to a practice — not promises of guaranteed outcomes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="society-voice">
+  <div class="container voice-grid">
+    <div><div class="eyebrow">The ONE ERA voice</div><h2>Spiritual.<br>Not vague.</h2></div>
+    <blockquote>“We can be open to mystery without pretending that every mystery has already been solved.”</blockquote>
+  </div>
+</section>
+
+<section class="boundary">
+  <div class="container boundary-grid">
+    <div><div class="eyebrow">Our language</div><h2>Wonder with a point of view.</h2><p>Our job is not to tell you what to believe. It is to give you enough context to explore with intention.</p></div>
+    <div class="boundary-list">
+      <div class="boundary-item"><strong>Tradition</strong><span>We identify the spiritual or cultural tradition when relevant, rather than presenting one practice as universal.</span></div>
+      <div class="boundary-item"><strong>Belief</strong><span>We distinguish spiritual beliefs and interpretations from claims that have not been established as fact.</span></div>
+      <div class="boundary-item"><strong>Practice</strong><span>We offer rituals as practices for attention, reflection and personal meaning, not guaranteed results.</span></div>
+      <div class="boundary-item"><strong>Objects</strong><span>We describe what an object is, how traditions use it, and what role it can play in a personal practice.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="join-society">
+  <div class="container join-box">
+    <div><div class="eyebrow">Enter the world</div><h2>Come curious.<br>Stay open.</h2></div>
+    <div><p>Explore the knowledge library, find a practice, read the Journal or discover objects for your own ritual space.</p><a class="btn btn-dark" href="discover.html">Enter ONE ERA</a></div>
+  </div>
+</section>
+</main>
 
 <footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="wordmark">ONE ERA</div>
-        <p style="margin-top:15px">THE SPIRITUAL SOCIETY</p>
-        <p>Natural, but supernatural.</p>
-      </div>
-      <div><h4>Explore</h4><a href="discover.html">Discover</a><a href="practice.html">Practice</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a></div>
-      <div><h4>Shop</h4><a href="shop.html">All Objects</a><a href="collections.html">Collections</a><a href="shop.html">Crystals</a><a href="shop.html">Incense</a></div>
-      <div><h4>Society</h4><a href="about.html">About ONE ERA</a><a href="about.html">Our Philosophy</a><a href="checkout.html">Shipping</a><a href="about.html">Contact</a></div>
-    </div>
-    <div class="footer-bottom"><span>© 2026 ONE ERA</span><span>UK · USD · THB &nbsp; | &nbsp; Instagram · Pinterest · YouTube</span></div>
-  </div>
+  <div class="container"><div class="footer-grid">
+    <div><div class="wordmark">ONE ERA</div><p style="margin-top:15px">THE SPIRITUAL SOCIETY</p><p>Natural, but supernatural.</p></div>
+    <div><h4>Explore</h4><a href="discover.html">Discover</a><a href="practice.html">Practice</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a></div>
+    <div><h4>Shop</h4><a href="shop.html">All Objects</a><a href="collections.html">Collections</a><a href="shop.html">Crystals</a><a href="shop.html">Incense</a></div>
+    <div><h4>Society</h4><a href="about.html">The Society</a><a href="checkout.html">Shipping</a><a href="about.html">Contact</a></div>
+  </div><div class="footer-bottom"><span>© 2026 ONE ERA</span><span>UK · USD · THB</span></div></div>
 </footer>
-
 <script src="script.js"></script>
 </body>
 </html>
