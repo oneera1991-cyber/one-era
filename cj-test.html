@@ -1,235 +1,1342 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ONE ERA — CJ Adapter Test</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    ONE ERA — CJ Adapter Test
+  </title>
+
 
   <style>
-    body {
-      margin: 0;
-      background: #e8dfd2;
-      color: #11100f;
-      font-family: Arial, sans-serif;
+
+    :root {
+
+      --obsidian: #11100F;
+      --bone: #E8DFD2;
+      --paper: #F7F1E8;
+      --white: #FFFFFF;
+
+      --rose: #C88F9D;
+      --forest: #315B45;
+
+      --muted: #70685F;
+
+      --line:
+        rgba(17,16,15,.14);
+
     }
+
+
+    * {
+
+      box-sizing:
+        border-box;
+
+    }
+
+
+    body {
+
+      margin: 0;
+
+      background:
+        var(--bone);
+
+      color:
+        var(--obsidian);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    }
+
 
     header {
-      padding: 24px 5%;
-      border-bottom: 1px solid rgba(17,16,15,.15);
-      font-family: Georgia, serif;
-      font-size: 24px;
-      letter-spacing: .12em;
+
+      padding:
+        24px 5vw;
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        24px;
+
+      letter-spacing:
+        .12em;
+
     }
+
 
     main {
-      max-width: 900px;
-      margin: 70px auto;
-      padding: 0 24px;
+
+      max-width:
+        950px;
+
+      margin:
+        70px auto;
+
+      padding:
+        0 24px 100px;
+
     }
+
 
     .eyebrow {
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      opacity: .6;
+
+      font-size:
+        11px;
+
+      letter-spacing:
+        .2em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--muted);
+
     }
+
 
     h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(48px, 8vw, 88px);
-      font-weight: normal;
-      line-height: .95;
-      margin: 15px 0 30px;
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(
+          48px,
+          8vw,
+          88px
+        );
+
+      font-weight:
+        normal;
+
+      line-height:
+        .95;
+
+      margin:
+        15px 0 30px;
+
     }
+
+
+    .intro {
+
+      max-width:
+        680px;
+
+      color:
+        var(--muted);
+
+      line-height:
+        1.7;
+
+    }
+
 
     .notice {
-      padding: 22px;
-      background: #f2ebe1;
-      border-left: 3px solid #c88f9d;
-      margin-bottom: 30px;
-      line-height: 1.6;
+
+      padding:
+        22px;
+
+      background:
+        rgba(
+          200,
+          143,
+          157,
+          .12
+        );
+
+      border-left:
+        3px solid var(--rose);
+
+      margin:
+        30px 0;
+
+      line-height:
+        1.6;
+
     }
 
-    button {
-      width: 100%;
-      padding: 18px;
-      border: 0;
-      background: #11100f;
-      color: #fff;
-      font-size: 13px;
-      letter-spacing: .12em;
-      cursor: pointer;
-      margin-bottom: 30px;
-    }
-
-    button:hover {
-      opacity: .9;
-    }
 
     .panel {
-      background: #f7f1e8;
-      padding: 25px;
-      margin-top: 20px;
+
+      background:
+        var(--paper);
+
+      padding:
+        28px;
+
+      margin-top:
+        25px;
+
+      border:
+        1px solid var(--line);
+
     }
+
 
     .panel h2 {
-      font-family: Georgia, serif;
-      font-weight: normal;
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-weight:
+        normal;
+
+      font-size:
+        28px;
+
+      margin-top:
+        0;
+
     }
 
-    pre {
-      white-space: pre-wrap;
-      word-break: break-word;
-      background: #11100f;
-      color: #e8dfd2;
-      padding: 20px;
-      overflow-x: auto;
-      line-height: 1.5;
-      font-size: 13px;
+
+    .market-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(
+            0,
+            1fr
+          )
+        );
+
+      gap:
+        15px;
+
     }
+
+
+    .market-option {
+
+      position:
+        relative;
+
+    }
+
+
+    .market-option input {
+
+      position:
+        absolute;
+
+      opacity:
+        0;
+
+      pointer-events:
+        none;
+
+    }
+
+
+    .market-option label {
+
+      display:
+        block;
+
+      padding:
+        18px;
+
+      background:
+        var(--white);
+
+      border:
+        1px solid var(--line);
+
+      cursor:
+        pointer;
+
+      transition:
+        .2s ease;
+
+    }
+
+
+    .market-option label:hover {
+
+      border-color:
+        var(--obsidian);
+
+    }
+
+
+    .market-option input:checked
+    + label {
+
+      border:
+        2px solid var(--obsidian);
+
+      background:
+        rgba(
+          49,
+          91,
+          69,
+          .07
+        );
+
+    }
+
+
+    .country {
+
+      font-size:
+        16px;
+
+      margin-bottom:
+        5px;
+
+    }
+
+
+    .currency {
+
+      font-size:
+        11px;
+
+      letter-spacing:
+        .12em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    button {
+
+      width:
+        100%;
+
+      padding:
+        18px;
+
+      margin-top:
+        25px;
+
+      border:
+        0;
+
+      background:
+        var(--obsidian);
+
+      color:
+        var(--white);
+
+      font-size:
+        12px;
+
+      letter-spacing:
+        .14em;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    button:hover {
+
+      opacity:
+        .9;
+
+    }
+
+
+    .result {
+
+      margin-top:
+        25px;
+
+      padding:
+        18px;
+
+      display:
+        none;
+
+      background:
+        var(--white);
+
+      border:
+        1px solid var(--line);
+
+      line-height:
+        1.6;
+
+    }
+
 
     .success {
-      color: #173c35;
-      font-weight: bold;
-      margin-bottom: 15px;
+
+      color:
+        var(--forest);
+
+      font-weight:
+        bold;
+
     }
 
+
     .error {
-      color: #9d302b;
-      font-weight: bold;
-      margin-bottom: 15px;
+
+      color:
+        #9D302B;
+
+      font-weight:
+        bold;
+
     }
+
+
+    pre {
+
+      margin:
+        0;
+
+      padding:
+        22px;
+
+      background:
+        var(--obsidian);
+
+      color:
+        var(--bone);
+
+      overflow-x:
+        auto;
+
+      white-space:
+        pre-wrap;
+
+      word-break:
+        break-word;
+
+      line-height:
+        1.6;
+
+      font-size:
+        12px;
+
+    }
+
+
+    .market-summary {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
+      gap:
+        1px;
+
+      background:
+        var(--line);
+
+      margin-bottom:
+        25px;
+
+    }
+
+
+    .summary-item {
+
+      background:
+        var(--white);
+
+      padding:
+        18px;
+
+    }
+
+
+    .summary-label {
+
+      font-size:
+        10px;
+
+      letter-spacing:
+        .14em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--muted);
+
+      margin-bottom:
+        7px;
+
+    }
+
+
+    .summary-value {
+
+      font-size:
+        18px;
+
+    }
+
+
+    @media (
+      max-width: 700px
+    ) {
+
+      .market-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .market-summary {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      main {
+
+        margin-top:
+          45px;
+
+      }
+
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
   ONE ERA
+
 </header>
+
 
 <main>
 
+
   <div class="eyebrow">
-    ONE ERA · PHASE 4.7
+
+    ONE ERA · PHASE 4.7.4
+
   </div>
+
 
   <h1>
+
     CJ Adapter<br>
-    Test.
+
+    Multi-Market Test.
+
   </h1>
 
+
+  <p class="intro">
+
+    Test how ONE ERA converts different
+    international markets into a standardized
+    CJ fulfillment payload.
+
+    <br><br>
+
+    This test covers Thailand, United States,
+    United Kingdom, Australia, Indonesia,
+    Singapore and Hong Kong.
+
+  </p>
+
+
   <div class="notice">
-    <strong>TEST MODE</strong><br>
-    This page does not contact CJ, does not create a real CJ order,
-    does not create a shipment, and does not charge money.
+
+    <strong>
+      TEST MODE
+    </strong>
+
+    <br>
+
+    Nothing on this page connects to CJ.
+
+    <br>
+
+    No real order is created.
+
+    No shipment is created.
+
+    No payment is processed.
+
+    No customer data is sent externally.
+
   </div>
 
-  <button id="generateButton">
-    GENERATE CJ TEST PAYLOAD
-  </button>
 
-  <div id="result"></div>
+  <!-- =========================================
+       MARKET SELECTOR
+       ========================================= -->
 
-  <div class="panel">
-    <h2>ONE ERA → CJ</h2>
 
-    <pre id="payload">
+  <section class="panel">
+
+
+    <h2>
+
+      Select Market
+
+    </h2>
+
+
+    <div class="market-grid">
+
+
+      <!-- THAILAND -->
+
+      <div class="market-option">
+
+        <input
+          type="radio"
+          name="market"
+          id="market-th"
+          value="TH"
+          data-currency="THB"
+          checked
+        >
+
+        <label for="market-th">
+
+          <div class="country">
+
+            🇹🇭 Thailand
+
+          </div>
+
+          <div class="currency">
+
+            TH · THB
+
+          </div>
+
+        </label>
+
+      </div>
+
+
+      <!-- UNITED STATES -->
+
+      <div class="market-option">
+
+        <input
+          type="radio"
+          name="market"
+          id="market-us"
+          value="US"
+          data-currency="USD"
+        >
+
+        <label for="market-us">
+
+          <div class="country">
+
+            🇺🇸 United States
+
+          </div>
+
+          <div class="currency">
+
+            US · USD
+
+          </div>
+
+        </label>
+
+      </div>
+
+
+      <!-- UNITED KINGDOM -->
+
+      <div class="market-option">
+
+        <input
+          type="radio"
+          name="market"
+          id="market-gb"
+          value="GB"
+          data-currency="GBP"
+        >
+
+        <label for="market-gb">
+
+          <div class="country">
+
+            🇬🇧 United Kingdom
+
+          </div>
+
+          <div class="currency">
+
+            GB · GBP
+
+          </div>
+
+        </label>
+
+      </div>
+
+
+      <!-- AUSTRALIA -->
+
+      <div class="market-option">
+
+        <input
+          type="radio"
+          name="market"
+          id="market-au"
+          value="AU"
+          data-currency="AUD"
+        >
+
+        <label for="market-au">
+
+          <div class="country">
+
+            🇦🇺 Australia
+
+          </div>
+
+          <div class="currency">
+
+            AU · AUD
+
+          </div>
+
+        </label>
+
+      </div>
+
+
+      <!-- INDONESIA -->
+
+      <div class="market-option">
+
+        <input
+          type="radio"
+          name="market"
+          id="market-id"
+          value="ID"
+          data-currency="IDR"
+        >
+
+        <label for="market-id">
+
+          <div class="country">
+
+            🇮🇩 Indonesia
+
+          </div>
+
+          <div class="currency">
+
+            ID · IDR
+
+          </div>
+
+        </label>
+
+      </div>
+
+
+      <!-- SINGAPORE -->
+
+      <div class="market-option">
+
+        <input
+          type="radio"
+          name="market"
+          id="market-sg"
+          value="SG"
+          data-currency="SGD"
+        >
+
+        <label for="market-sg">
+
+          <div class="country">
+
+            🇸🇬 Singapore
+
+          </div>
+
+          <div class="currency">
+
+            SG · SGD
+
+          </div>
+
+        </label>
+
+      </div>
+
+
+      <!-- HONG KONG -->
+
+      <div class="market-option">
+
+        <input
+          type="radio"
+          name="market"
+          id="market-hk"
+          value="HK"
+          data-currency="HKD"
+        >
+
+        <label for="market-hk">
+
+          <div class="country">
+
+            🇭🇰 Hong Kong
+
+          </div>
+
+          <div class="currency">
+
+            HK · HKD
+
+          </div>
+
+        </label>
+
+      </div>
+
+
+    </div>
+
+
+    <button
+      id="generateButton"
+      type="button"
+    >
+
+      GENERATE CJ TEST PAYLOAD
+
+    </button>
+
+
+  </section>
+
+
+  <!-- =========================================
+       RESULT
+       ========================================= -->
+
+
+  <section
+    id="resultPanel"
+    class="panel"
+    style="display:none;"
+  >
+
+
+    <h2>
+
+      Market Mapping
+
+    </h2>
+
+
+    <div
+      id="marketSummary"
+      class="market-summary"
+    >
+
+
+      <div class="summary-item">
+
+        <div class="summary-label">
+
+          Market
+
+        </div>
+
+        <div
+          id="summaryMarket"
+          class="summary-value"
+        >
+
+          —
+
+        </div>
+
+      </div>
+
+
+      <div class="summary-item">
+
+        <div class="summary-label">
+
+          Currency
+
+        </div>
+
+        <div
+          id="summaryCurrency"
+          class="summary-value"
+        >
+
+          —
+
+        </div>
+
+      </div>
+
+
+      <div class="summary-item">
+
+        <div class="summary-label">
+
+          Shipping Country
+
+        </div>
+
+        <div
+          id="summaryCountry"
+          class="summary-value"
+        >
+
+          —
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div
+      id="result"
+      class="result"
+    ></div>
+
+
+    <h2>
+
+      CJ Test Payload
+
+    </h2>
+
+
+    <pre
+      id="payload"
+    >
+
 No payload generated yet.
+
     </pre>
-  </div>
+
+
+  </section>
+
 
 </main>
 
+
+<!-- =========================================
+     CJ ADAPTER
+     ========================================= -->
+
+<script src="cj-adapter.js"></script>
+
+
 <script>
 
-  const result =
-    document.getElementById("result");
+(function () {
 
-  const payload =
-    document.getElementById("payload");
+  "use strict";
+
 
   const button =
-    document.getElementById("generateButton");
+    document.getElementById(
+      "generateButton"
+    );
 
 
-  function showError(message) {
+  const resultPanel =
+    document.getElementById(
+      "resultPanel"
+    );
 
-    result.innerHTML =
-      '<div class="error">✕ ' +
-      message +
-      '</div>';
+
+  const result =
+    document.getElementById(
+      "result"
+    );
+
+
+  const payload =
+    document.getElementById(
+      "payload"
+    );
+
+
+  const summaryMarket =
+    document.getElementById(
+      "summaryMarket"
+    );
+
+
+  const summaryCurrency =
+    document.getElementById(
+      "summaryCurrency"
+    );
+
+
+  const summaryCountry =
+    document.getElementById(
+      "summaryCountry"
+    );
+
+
+  function getSelectedMarket() {
+
+
+    const selected =
+
+      document.querySelector(
+        'input[name="market"]:checked'
+      );
+
+
+    if (!selected) {
+
+      return null;
+
+    }
+
+
+    return {
+
+      country:
+        selected.value,
+
+      currency:
+        selected.dataset.currency
+
+    };
 
   }
 
 
-  function showSuccess(message) {
+  function createTestOrder(
+    market
+  ) {
 
-    result.innerHTML =
-      '<div class="success">✓ ' +
-      message +
-      '</div>';
+
+    /*
+      We intentionally create a temporary
+      test order for the selected market.
+
+      This does NOT replace the real
+      ONE ERA test order in localStorage.
+    */
+
+
+    return {
+
+      order_id:
+        "OE-MARKET-TEST-" +
+        market.country,
+
+      created_at:
+        new Date().toISOString(),
+
+      market:
+        market.country,
+
+      currency:
+        market.currency,
+
+      status:
+        "paid",
+
+      payment_status:
+        "paid",
+
+      fulfillment_status:
+        "pending",
+
+      customer: {
+
+        name:
+          "ONE ERA Market Test",
+
+        email:
+          "test@oneera.example"
+
+      },
+
+      customer_name:
+        "ONE ERA Market Test",
+
+      customer_email:
+        "test@oneera.example",
+
+      items: [
+
+        {
+
+          product_id:
+            "TEST-PRODUCT-001",
+
+          name:
+            "ONE ERA Test Product",
+
+          quantity:
+            1,
+
+          price:
+            10
+
+        }
+
+      ],
+
+      subtotal:
+        10,
+
+      shipping:
+        0,
+
+      total:
+        10,
+
+      shipping_address: {
+
+        country:
+          market.country
+
+      }
+
+    };
 
   }
 
 
   button.addEventListener(
+
     "click",
+
     function () {
 
+
       try {
+
 
         if (
           typeof window.ONEERA_CJ ===
           "undefined"
         ) {
 
-          showError(
-            "CJ Adapter could not be loaded."
-          );
+
+          resultPanel.style.display =
+            "block";
+
+
+          result.innerHTML =
+
+            '<div class="error">' +
+
+            '✕ CJ Adapter could not be loaded.' +
+
+            '</div>';
+
 
           return;
 
         }
 
 
-        const data =
+        const market =
+          getSelectedMarket();
+
+
+        if (!market) {
+
+
+          resultPanel.style.display =
+            "block";
+
+
+          result.innerHTML =
+
+            '<div class="error">' +
+
+            '✕ Please select a market.' +
+
+            '</div>';
+
+
+          return;
+
+        }
+
+
+        /*
+          Create temporary market test order
+        */
+
+        const testOrder =
+          createTestOrder(
+            market
+          );
+
+
+        /*
+          Send it through the same
+          CJ Adapter used by ONE ERA.
+        */
+
+        const cjPayload =
           window.ONEERA_CJ
-            .generateTestPayload();
+            .createCJPayload(
+              testOrder
+            );
+
+
+        /*
+          Show result
+        */
+
+        resultPanel.style.display =
+          "block";
+
+
+        result.innerHTML =
+
+          '<div class="success">' +
+
+          '✓ CJ TEST PAYLOAD GENERATED' +
+
+          '</div>' +
+
+          'ONE ERA successfully mapped ' +
+
+          market.country +
+
+          ' → ' +
+
+          market.currency +
+
+          ' → ' +
+
+          cjPayload.shipping.country;
+
+
+        summaryMarket.textContent =
+          cjPayload.market;
+
+
+        summaryCurrency.textContent =
+          cjPayload.currency;
+
+
+        summaryCountry.textContent =
+          cjPayload.shipping.country;
 
 
         payload.textContent =
+
           JSON.stringify(
-            data,
+            cjPayload,
             null,
             2
           );
 
 
-        showSuccess(
-          "CJ TEST PAYLOAD GENERATED"
+        console.log(
+          "ONE ERA CJ TEST:",
+          cjPayload
         );
 
 
-      } catch (error) {
+      }
 
-        console.error(error);
+      catch (error) {
 
-        showError(
-          error.message ||
-          "Unable to generate CJ payload."
+
+        console.error(
+          "ONE ERA CJ TEST ERROR:",
+          error
         );
+
+
+        resultPanel.style.display =
+          "block";
+
+
+        result.innerHTML =
+
+          '<div class="error">' +
+
+          '✕ ' +
+
+          (
+            error.message ||
+            "Unable to generate CJ payload."
+          ) +
+
+          '</div>';
+
 
       }
 
     }
+
   );
+
+
+})();
 
 </script>
 
 
-<script src="cj-adapter.js"></script>
-
 </body>
+
 </html>
