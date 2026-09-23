@@ -17,12 +17,12 @@
       "shortDescription": "A natural Green Fluorite stone for scent rituals and quiet spaces.",
 
       "price": {
-        "amount": 0,
+        "amount": 500,
         "currency": "THB",
-        "display": "TEST PRICE"
+        "display": "500"
       },
 
-      "price_thb": 0,
+      "price_thb": 500,
       "price_usd": 0,
       "price_gbp": 0,
 
