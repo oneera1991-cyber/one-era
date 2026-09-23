@@ -1,241 +1,83 @@
 /* =========================================================
-   ONE ERA — SITE ENGINE
-   Categories + Cart + CJ Product API + Shop Filtering
+   ONE ERA — SITE DATA
+   Central configuration for product categories
    ========================================================= */
 
+const ONE_ERA_CATEGORIES = {
+  smoke: {
+    name: "Smoke & Sacred Botanicals",
+    eyebrow: "01 · SMOKE",
+    description:
+      "Incense, sacred botanicals, resins and objects of smoke ritual.",
+    keywords: [
+      "incense",
+      "incense stick",
+      "sage",
+      "agarwood",
+      "palo santo"
+    ]
+  },
 
-/* =========================================================
-   ONE ERA — CONFIG
-   ========================================================= */
+  crystals: {
+    name: "Crystals & Earth",
+    eyebrow: "02 · EARTH",
+    description:
+      "Crystals, minerals, stones and objects connected to the earth.",
+    keywords: [
+      "crystal",
+      "quartz",
+      "amethyst",
+      "obsidian"
+    ]
+  },
 
-const ONE_ERA_CONFIG = {
+  divination: {
+    name: "Divination",
+    eyebrow: "03 · DIVINATION",
+    description:
+      "Tarot, oracle, pendulums, runes and tools for symbolic inquiry.",
+    keywords: [
+      "tarot",
+      "oracle",
+      "pendulum",
+      "rune"
+    ]
+  },
 
-  API_BASE:
-    "https://one-era-api.oneera1991.workers.dev/products",
-
-  MAX_PAGES_PER_KEYWORD: 8,
-
-  PAGE_SIZE: 20,
-
-  CATEGORIES: {
-
-    smoke: {
-      name: "Smoke & Sacred Botanicals",
-      eyebrow: "01 · SMOKE",
-
-      description:
-        "Incense, sacred botanicals, resins and objects of smoke ritual.",
-
-      keywords: [
-        "incense",
-        "incense stick",
-        "agarwood incense",
-        "oud incense",
-        "sandalwood incense",
-        "sage incense",
-        "palo santo",
-        "resin incense"
-      ],
-
-      positiveTerms: [
-        "incense",
-        "agarwood",
-        "oud",
-        "sandalwood",
-        "palo santo",
-        "sage",
-        "resin",
-        "frankincense",
-        "myrrh",
-        "bakhoor"
-      ],
-
-      negativeTerms: [
-        "chair",
-        "sofa",
-        "recliner",
-        "bookshelf",
-        "shelf",
-        "table",
-        "cabinet",
-        "furniture",
-        "clothing",
-        "dress",
-        "shoes",
-        "toy",
-        "phone case"
-      ],
-
-      url:
-        "shop.html?category=smoke"
-    },
-
-
-    crystals: {
-      name: "Crystals & Earth",
-      eyebrow: "02 · EARTH",
-
-      description:
-        "Crystals, minerals, stones and objects connected to the earth.",
-
-      keywords: [
-        "crystal",
-        "quartz",
-        "amethyst",
-        "obsidian",
-        "fluorite",
-        "citrine",
-        "rose quartz",
-        "moonstone"
-      ],
-
-      positiveTerms: [
-        "crystal",
-        "quartz",
-        "amethyst",
-        "obsidian",
-        "fluorite",
-        "citrine",
-        "moonstone",
-        "tourmaline",
-        "agate",
-        "jasper",
-        "selenite",
-        "calcite",
-        "stone",
-        "mineral"
-      ],
-
-      negativeTerms: [
-        "chair",
-        "sofa",
-        "recliner",
-        "bookshelf",
-        "shelf",
-        "table",
-        "cabinet",
-        "clothing",
-        "dress",
-        "shoes",
-        "toy",
-        "phone case"
-      ],
-
-      url:
-        "shop.html?category=crystals"
-    },
-
-
-    divination: {
-      name: "Divination",
-      eyebrow: "03 · DIVINATION",
-
-      description:
-        "Tarot, oracle, pendulums, runes and tools for symbolic inquiry.",
-
-      keywords: [
-        "tarot",
-        "oracle cards",
-        "oracle",
-        "pendulum",
-        "rune",
-        "divination"
-      ],
-
-      positiveTerms: [
-        "tarot",
-        "oracle",
-        "pendulum",
-        "rune",
-        "divination",
-        "fortune telling",
-        "spiritual cards",
-        "tarot deck"
-      ],
-
-      negativeTerms: [
-        "chair",
-        "sofa",
-        "recliner",
-        "bookshelf",
-        "shelf",
-        "table",
-        "cabinet",
-        "clothing",
-        "dress",
-        "shoes",
-        "toy",
-        "phone case"
-      ],
-
-      url:
-        "shop.html?category=divination"
-    },
-
-
-    ritual: {
-      name: "Ritual & Altar",
-      eyebrow: "04 · RITUAL",
-
-      description:
-        "Objects for sacred space, ritual practice and intentional living.",
-
-      keywords: [
-        "incense burner",
-        "incense holder",
-        "altar",
-        "ritual",
-        "candle holder",
-        "offering bowl",
-        "ritual tools"
-      ],
-
-      positiveTerms: [
-        "incense burner",
-        "incense holder",
-        "altar",
-        "ritual",
-        "candle holder",
-        "offering bowl",
-        "offering",
-        "altar tool",
-        "ritual tool",
-        "ceremonial"
-      ],
-
-      negativeTerms: [
-        "chair",
-        "sofa",
-        "recliner",
-        "bookshelf",
-        "shelf",
-        "table",
-        "cabinet",
-        "clothing",
-        "dress",
-        "shoes",
-        "toy",
-        "phone case"
-      ],
-
-      url:
-        "shop.html?category=ritual"
-    }
-
+  ritual: {
+    name: "Ritual & Altar",
+    eyebrow: "04 · RITUAL",
+    description:
+      "Objects for sacred space, ritual practice and intentional living.",
+    keywords: [
+      "incense burner",
+      "altar",
+      "ritual",
+      "candle holder",
+      "offering bowl"
+    ]
   }
-
 };
 
 
 /* =========================================================
-   DOM READY
+   ONE ERA — SITE INITIALIZATION
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
   updateCartCount();
 
-  initializeShop();
+  /*
+    Only run the shop loader when the page
+    actually contains the product grid.
+  */
+
+  const productGrid = document.getElementById("productGrid");
+
+  if (productGrid) {
+    loadShopProducts();
+  }
 
 });
 
@@ -255,29 +97,40 @@ function updateCartCount() {
 
   try {
 
-    cart =
-      JSON.parse(
-        localStorage.getItem("oneEraCart")
-      ) || [];
+    const storedCart =
+      localStorage.getItem("oneEraCart");
+
+    if (storedCart) {
+      cart = JSON.parse(storedCart);
+    }
 
   } catch (error) {
+
+    console.warn(
+      "ONE ERA: Could not read cart.",
+      error
+    );
 
     cart = [];
 
   }
 
-  const count =
-    cart.reduce(
-      (total, item) => {
+  if (!Array.isArray(cart)) {
+    cart = [];
+  }
 
-        return total +
-          (Number(item.quantity) || 1);
+  const count = cart.reduce(function (total, item) {
 
-      },
-      0
+    return total + (
+      Number(item.quantity) > 0
+        ? Number(item.quantity)
+        : 1
     );
 
-  elements.forEach(element => {
+  }, 0);
+
+
+  elements.forEach(function (element) {
 
     element.textContent = count;
 
@@ -287,109 +140,228 @@ function updateCartCount() {
 
 
 /* =========================================================
-   CATEGORY HELPERS
+   CATEGORY
    ========================================================= */
 
 function getCategoryFromURL() {
 
   const params =
-    new URLSearchParams(
-      window.location.search
-    );
+    new URLSearchParams(window.location.search);
 
-  return params.get("category");
+  const category =
+    params.get("category");
+
+  if (!category) {
+    return null;
+  }
+
+  return category.toLowerCase();
 
 }
 
 
 function getCurrentCategory() {
 
-  const key =
+  const categoryKey =
     getCategoryFromURL();
 
-  if (!key) return null;
+  if (!categoryKey) {
+    return null;
+  }
 
   return (
-    ONE_ERA_CONFIG.CATEGORIES[key]
-    || null
+    ONE_ERA_CATEGORIES[categoryKey] ||
+    null
   );
 
 }
 
 
 /* =========================================================
-   SHOP INITIALIZATION
+   PRODUCTS
    ========================================================= */
 
-async function initializeShop() {
+async function loadProducts() {
 
-  const grid =
-    document.getElementById(
-      "productGrid"
+  const response =
+    await fetch("products.json", {
+      cache: "no-store"
+    });
+
+  if (!response.ok) {
+
+    throw new Error(
+      "products.json could not be loaded. HTTP " +
+      response.status
     );
-
-  if (!grid) {
-
-    return;
 
   }
 
+  const data =
+    await response.json();
+
+
+  /*
+    Support:
+
+    {
+      "products": [...]
+    }
+
+    and:
+
+    [...]
+  */
+
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (
+    data &&
+    Array.isArray(data.products)
+  ) {
+    return data.products;
+  }
+
+  throw new Error(
+    "Invalid products.json format."
+  );
+
+}
+
+
+/* =========================================================
+   SHOP
+   ========================================================= */
+
+async function loadShopProducts() {
+
+  const grid =
+    document.getElementById("productGrid");
+
   const status =
-    document.getElementById(
-      "shopStatus"
-    );
-
-  const category =
-    getCurrentCategory();
+    document.getElementById("shopStatus");
 
 
-  updateShopHeader(category);
-
-
-  if (status) {
-
-    status.innerHTML = `
-      <div class="test-banner">
-        <strong>LOADING ONE ERA</strong>
-        Searching the current product catalogue...
-      </div>
-    `;
-
+  if (!grid) {
+    return;
   }
 
 
   try {
 
-    let products;
+    /*
+      Show loading state
+    */
 
+    grid.innerHTML = `
+      <div class="empty-state">
+        Loading ONE ERA objects...
+      </div>
+    `;
+
+
+    /*
+      Load catalogue
+    */
+
+    let products =
+      await loadProducts();
+
+
+    /*
+      Only show products that are:
+
+      available = true
+
+      OR
+
+      testMode = true
+    */
+
+    products =
+      products.filter(function (product) {
+
+        return (
+          product &&
+          (
+            product.available === true ||
+            product.testMode === true
+          )
+        );
+
+      });
+
+
+    /*
+      Read category from URL
+    */
+
+    const category =
+      getCategoryFromURL();
+
+
+    /*
+      Filter category if one exists
+    */
 
     if (category) {
 
       products =
-        await loadCategoryProducts(
-          category
-        );
+        products.filter(function (product) {
 
-    } else {
+          if (!product.category) {
+            return false;
+          }
 
-      products =
-        await loadShopAll();
+          return (
+            String(product.category)
+              .toLowerCase()
+              .trim()
+            === category
+          );
+
+        });
+
+    }
+
+
+    /*
+      Update shop heading when category exists
+    */
+
+    updateShopCategoryHeading(category);
+
+
+    /*
+      No products
+    */
+
+    if (!products.length) {
+
+      grid.innerHTML = `
+        <div class="empty-state">
+          No ONE ERA objects are currently
+          available in this collection.
+        </div>
+      `;
+
+      return;
 
     }
 
 
-    renderProducts(
-      products,
-      grid,
-      category
-    );
+    /*
+      Render products
+    */
 
+    grid.innerHTML =
+      products.map(function (product) {
 
-    if (status) {
+        return createProductCard(product);
 
-      status.innerHTML = "";
-
-    }
+      }).join("");
 
 
   } catch (error) {
@@ -406,7 +378,6 @@ async function initializeShop() {
     if (status) {
 
       status.innerHTML = `
-
         <div class="error-state">
 
           <strong>
@@ -415,560 +386,21 @@ async function initializeShop() {
 
           <br><br>
 
-          ${escapeHTML(
-            error.message
-          )}
+          ${escapeHTML(error.message)}
 
           <br><br>
 
-          Please try again.
+          Please make sure
+          <strong>products.json</strong>
+          exists in the same GitHub repository
+          as this page.
 
         </div>
-
       `;
 
     }
 
   }
-
-}
-
-
-/* =========================================================
-   SHOP HEADER
-   ========================================================= */
-
-function updateShopHeader(category) {
-
-  const eyebrow =
-    document.querySelector(
-      ".shop-intro .eyebrow"
-    );
-
-  const heading =
-    document.querySelector(
-      ".shop-intro h1"
-    );
-
-  const description =
-    document.querySelector(
-      ".shop-intro p"
-    );
-
-
-  if (!category) {
-
-    return;
-
-  }
-
-
-  if (eyebrow) {
-
-    eyebrow.textContent =
-      "ONE ERA · " +
-      category.eyebrow
-        .split("·")[1]
-        .trim();
-
-  }
-
-
-  if (heading) {
-
-    heading.innerHTML =
-      escapeHTML(category.name)
-        .replace(
-          " & ",
-          " &<br>"
-        );
-
-  }
-
-
-  if (description) {
-
-    description.textContent =
-      category.description;
-
-  }
-
-}
-
-
-/* =========================================================
-   LOAD CATEGORY PRODUCTS
-   ========================================================= */
-
-async function loadCategoryProducts(category) {
-
-  const productMap =
-    new Map();
-
-
-  for (
-    const keyword of category.keywords
-  ) {
-
-    const products =
-      await searchAllPages(
-        keyword
-      );
-
-
-    products.forEach(
-      product => {
-
-        if (!product) return;
-
-
-        const id =
-          getProductUniqueId(
-            product
-          );
-
-
-        if (!id) return;
-
-
-        if (
-          isRelevantProduct(
-            product,
-            category
-          )
-        ) {
-
-          productMap.set(
-            id,
-            product
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  return Array.from(
-    productMap.values()
-  );
-
-}
-
-
-/* =========================================================
-   LOAD SHOP ALL
-   ========================================================= */
-
-async function loadShopAll() {
-
-  /*
-    Shop All currently uses a broad spiritual
-    product search instead of requesting the
-    entire CJ catalogue.
-
-    This keeps the first version manageable
-    and prevents thousands of unrelated products.
-  */
-
-  const keywords = [
-
-    "incense",
-
-    "crystal",
-
-    "tarot",
-
-    "oracle",
-
-    "pendulum",
-
-    "ritual",
-
-    "altar"
-
-  ];
-
-
-  const productMap =
-    new Map();
-
-
-  for (
-    const keyword of keywords
-  ) {
-
-    const products =
-      await searchAllPages(
-        keyword
-      );
-
-
-    products.forEach(
-      product => {
-
-        if (!product) return;
-
-
-        const id =
-          getProductUniqueId(
-            product
-          );
-
-
-        if (!id) return;
-
-
-        productMap.set(
-          id,
-          product
-        );
-
-      }
-    );
-
-  }
-
-
-  return Array.from(
-    productMap.values()
-  );
-
-}
-
-
-/* =========================================================
-   SEARCH API — ALL PAGES
-   ========================================================= */
-
-async function searchAllPages(keyword) {
-
-  const results = [];
-
-
-  for (
-    let page = 1;
-    page <=
-      ONE_ERA_CONFIG.MAX_PAGES_PER_KEYWORD;
-    page++
-  ) {
-
-    const url =
-      ONE_ERA_CONFIG.API_BASE +
-      "?keyword=" +
-      encodeURIComponent(
-        keyword
-      ) +
-      "&page=" +
-      page +
-      "&size=" +
-      ONE_ERA_CONFIG.PAGE_SIZE;
-
-
-    const response =
-      await fetch(url);
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        "API request failed: HTTP " +
-        response.status
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-
-    const products =
-      extractProducts(
-        data
-      );
-
-
-    results.push(
-      ...products
-    );
-
-
-    const pageNumber =
-      Number(
-        data?.data?.pageNumber ??
-        data?.pageNumber ??
-        page
-      );
-
-
-    const totalPages =
-      Number(
-        data?.data?.totalPages ??
-        data?.totalPages ??
-        page
-      );
-
-
-    if (
-      pageNumber >= totalPages
-    ) {
-
-      break;
-
-    }
-
-
-    if (
-      products.length === 0
-    ) {
-
-      break;
-
-    }
-
-  }
-
-
-  return results;
-
-}
-
-
-/* =========================================================
-   EXTRACT PRODUCTS FROM API RESPONSE
-   ========================================================= */
-
-function extractProducts(data) {
-
-  if (
-    Array.isArray(data)
-  ) {
-
-    return data;
-
-  }
-
-
-  if (
-    Array.isArray(
-      data?.data
-    )
-  ) {
-
-    return data.data;
-
-  }
-
-
-  if (
-    Array.isArray(
-      data?.data?.list
-    )
-  ) {
-
-    return data.data.list;
-
-  }
-
-
-  if (
-    Array.isArray(
-      data?.data?.content
-    )
-  ) {
-
-    return data.data.content;
-
-  }
-
-
-  if (
-    Array.isArray(
-      data?.list
-    )
-  ) {
-
-    return data.list;
-
-  }
-
-
-  return [];
-
-}
-
-
-/* =========================================================
-   PRODUCT ID
-   ========================================================= */
-
-function getProductUniqueId(product) {
-
-  return (
-    product.id ||
-    product.pid ||
-    product.productId ||
-    product.product_id ||
-    product.sku ||
-    product.slug ||
-    product.name
-  );
-
-}
-
-
-/* =========================================================
-   PRODUCT TEXT
-   ========================================================= */
-
-function getProductSearchText(product) {
-
-  const values = [
-
-    product.name,
-
-    product.productName,
-
-    product.title,
-
-    product.description,
-
-    product.shortDescription,
-
-    product.categoryName,
-
-    product.category,
-
-    product.collection
-
-  ];
-
-
-  return values
-
-    .filter(Boolean)
-
-    .join(" ")
-
-    .toLowerCase();
-
-}
-
-
-/* =========================================================
-   RELEVANCE FILTER
-   ========================================================= */
-
-function isRelevantProduct(
-  product,
-  category
-) {
-
-  const text =
-    getProductSearchText(
-      product
-    );
-
-
-  if (!text) {
-
-    return false;
-
-  }
-
-
-  /*
-    Remove obvious unrelated products.
-  */
-
-  const hasNegative =
-    category.negativeTerms.some(
-      term =>
-        text.includes(
-          term.toLowerCase()
-        )
-    );
-
-
-  if (hasNegative) {
-
-    return false;
-
-  }
-
-
-  /*
-    Product must contain at least
-    one meaningful spiritual term.
-  */
-
-  const hasPositive =
-    category.positiveTerms.some(
-      term =>
-        text.includes(
-          term.toLowerCase()
-        )
-    );
-
-
-  return hasPositive;
-
-}
-
-
-/* =========================================================
-   RENDER PRODUCTS
-   ========================================================= */
-
-function renderProducts(
-  products,
-  grid,
-  category
-) {
-
-  if (
-    !products ||
-    products.length === 0
-  ) {
-
-    grid.innerHTML = `
-
-      <div class="empty-state">
-
-        ${
-          category
-            ? `
-              No products currently match
-              this ONE ERA category.
-            `
-            : `
-              No products are currently
-              available in the ONE ERA catalogue.
-            `
-        }
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  grid.innerHTML =
-    products
-      .map(
-        product =>
-          createProductCard(
-            product,
-            category
-          )
-      )
-      .join("");
 
 }
 
@@ -977,85 +409,138 @@ function renderProducts(
    PRODUCT CARD
    ========================================================= */
 
-function createProductCard(
-  product,
-  category
-) {
-
-  const id =
-    getProductUniqueId(
-      product
-    );
-
+function createProductCard(product) {
 
   const slug =
     product.slug ||
     product.id ||
-    product.productId ||
-    id;
+    "";
 
 
   const name =
     product.name ||
-    product.productName ||
     product.title ||
-    "ONE ERA Object";
+    "Untitled Product";
+
+
+  const collection =
+    product.collection ||
+    "";
 
 
   const description =
     product.shortDescription ||
     product.description ||
-    "A selected object for spiritual practice.";
+    "";
 
 
-  const imageURL =
-    getProductImage(
-      product
-    );
+  /*
+    Product image
+  */
+
+  let imageHTML = `
+    <div class="product-placeholder">
+      ONE ERA
+    </div>
+  `;
 
 
-  const price =
-    getProductPrice(
-      product
-    );
+  if (
+    product.images &&
+    Array.isArray(product.images) &&
+    product.images.length
+  ) {
+
+    const firstImage =
+      product.images[0];
 
 
-  const collection =
-    category
-      ? category.eyebrow
-      : (
-          product.collection ||
-          "ONE ERA · OBJECT"
-        );
+    let imageURL = "";
 
 
-  const imageHTML =
-    imageURL
+    if (typeof firstImage === "string") {
 
-      ? `
+      imageURL = firstImage;
+
+    } else if (
+      firstImage &&
+      firstImage.url
+    ) {
+
+      imageURL = firstImage.url;
+
+    }
+
+
+    if (imageURL) {
+
+      const alt =
+        (
+          firstImage &&
+          typeof firstImage === "object" &&
+          firstImage.alt
+        )
+          ? firstImage.alt
+          : name;
+
+
+      imageHTML = `
         <img
-          src="${escapeAttribute(
-            imageURL
-          )}"
-          alt="${escapeAttribute(
-            name
-          )}"
+          src="${escapeAttribute(imageURL)}"
+          alt="${escapeAttribute(alt)}"
           loading="lazy"
         >
-      `
-
-      : `
-        <div class="product-placeholder">
-          ONE ERA
-        </div>
       `;
 
+    }
+
+  }
+
+
+  /*
+    Price
+  */
+
+  let price =
+    "TEST PRICE";
+
+
+  if (
+    product.price &&
+    product.price.display
+  ) {
+
+    price =
+      product.price.display;
+
+  }
+
+
+  /*
+    Test product label
+  */
+
+  let testStatus = "";
+
+
+  if (product.testMode === true) {
+
+    testStatus = `
+      <div class="product-status">
+        TEST PRODUCT
+      </div>
+    `;
+
+  }
+
+
+  /*
+    Product URL
+  */
 
   const productURL =
     "product.html?product=" +
-    encodeURIComponent(
-      slug
-    );
+    encodeURIComponent(slug);
 
 
   return `
@@ -1064,9 +549,7 @@ function createProductCard(
 
       <a
         href="${productURL}"
-        aria-label="View ${escapeAttribute(
-          name
-        )}"
+        aria-label="View ${escapeAttribute(name)}"
       >
 
         <div class="product-image">
@@ -1082,45 +565,33 @@ function createProductCard(
 
         <div class="product-eyebrow">
 
-          ${escapeHTML(
-            collection
-          )}
+          ${escapeHTML(collection)}
 
         </div>
 
 
         <h2>
 
-          ${escapeHTML(
-            name
-          )}
+          ${escapeHTML(name)}
 
         </h2>
 
 
         <p>
 
-          ${escapeHTML(
-            description
-          )}
+          ${escapeHTML(description)}
 
         </p>
 
 
         <div class="product-price">
 
-          ${escapeHTML(
-            price
-          )}
+          ${escapeHTML(price)}
 
         </div>
 
 
-        <div class="product-status">
-
-          ONE ERA · TEST CATALOGUE
-
-        </div>
+        ${testStatus}
 
 
         <a
@@ -1142,175 +613,118 @@ function createProductCard(
 
 
 /* =========================================================
-   PRODUCT IMAGE
+   SHOP CATEGORY HEADING
    ========================================================= */
 
-function getProductImage(product) {
+function updateShopCategoryHeading(category) {
 
-  if (
-    Array.isArray(
-      product.images
-    )
-  ) {
-
-    for (
-      const image of product.images
-    ) {
-
-      if (
-        typeof image === "string" &&
-        image.startsWith("http")
-      ) {
-
-        return image;
-
-      }
+  if (!category) {
+    return;
+  }
 
 
-      if (
-        image &&
-        typeof image.url === "string" &&
-        image.url.startsWith("http")
-      ) {
+  const categoryData =
+    ONE_ERA_CATEGORIES[category];
 
-        return image.url;
 
-      }
+  if (!categoryData) {
+    return;
+  }
 
-    }
+
+  const intro =
+    document.querySelector(".shop-intro");
+
+
+  if (!intro) {
+    return;
+  }
+
+
+  const eyebrow =
+    intro.querySelector(".eyebrow");
+
+
+  const heading =
+    intro.querySelector("h1");
+
+
+  const description =
+    intro.querySelector("p");
+
+
+  if (eyebrow) {
+
+    eyebrow.textContent =
+      "ONE ERA · " +
+      categoryData.eyebrow;
 
   }
 
 
-  const imageFields = [
+  if (heading) {
 
-    product.image,
+    heading.innerHTML =
+      categoryData.name.replace(
+        " & ",
+        " &<br>"
+      );
 
-    product.imageUrl,
-
-    product.productImage,
-
-    product.mainImage,
-
-    product.img
-
-  ];
+  }
 
 
-  return (
-    imageFields.find(
-      value =>
-        typeof value === "string" &&
-        value.startsWith("http")
-    ) || null
-  );
+  if (description) {
+
+    description.textContent =
+      categoryData.description;
+
+  }
 
 }
 
 
 /* =========================================================
-   PRODUCT PRICE
-   ========================================================= */
-
-function getProductPrice(product) {
-
-  if (
-    product.price &&
-    typeof product.price === "object"
-  ) {
-
-    if (
-      product.price.display
-    ) {
-
-      return String(
-        product.price.display
-      );
-
-    }
-
-
-    if (
-      product.price.amount
-    ) {
-
-      return String(
-        product.price.amount
-      );
-
-    }
-
-  }
-
-
-  if (
-    product.price !== undefined &&
-    product.price !== null
-  ) {
-
-    return String(
-      product.price
-    );
-
-  }
-
-
-  if (
-    product.salePrice
-  ) {
-
-    return String(
-      product.salePrice
-    );
-
-  }
-
-
-  return "TEST PRICE";
-
-}
-
-
-/* =========================================================
-   SECURITY HELPERS
+   HTML SAFETY HELPERS
    ========================================================= */
 
 function escapeHTML(value) {
 
-  return String(value ?? "")
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 }
 
 
 function escapeAttribute(value) {
 
-  return escapeHTML(
-    value
-  );
+  return escapeHTML(value);
 
 }
+
+
+/* =========================================================
+   PUBLIC HELPERS
+   ========================================================= */
+
+window.ONE_ERA = {
+
+  categories:
+    ONE_ERA_CATEGORIES,
+
+  getCategoryFromURL:
+    getCategoryFromURL,
+
+  getCurrentCategory:
+    getCurrentCategory,
+
+  loadProducts:
+    loadProducts,
+
+  updateCartCount:
+    updateCartCount
+
+};
