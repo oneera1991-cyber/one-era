@@ -606,12 +606,28 @@ count;
 
 function formatPrice(item){
 
-if(
-item.price &&
-item.price.display
-){
+  let priceTHB = 0;
 
-return item.price.display;
+  if(item.price_thb !== undefined){
+
+    priceTHB =
+      Number(item.price_thb) || 0;
+
+  }
+
+  else if(
+    item.price &&
+    item.price.amount !== undefined
+  ){
+
+    priceTHB =
+      Number(item.price.amount) || 0;
+
+  }
+
+  return window.ONE_ERA.formatONEERAPrice(
+    priceTHB
+  );
 
 }
 
