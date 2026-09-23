@@ -712,11 +712,15 @@ async function loadProduct(){
       Price
     */
 
-    const priceDisplay =
-      currentProduct.price &&
-      currentProduct.price.display
-        ? currentProduct.price.display
-        : "TEST PRICE";
+    const priceTHB =
+  currentProduct.price_thb ||
+  currentProduct.price?.amount ||
+  0;
+
+const priceDisplay =
+  window.ONE_ERA.formatONEERAPrice(
+    priceTHB
+  );
 
 
     /*
