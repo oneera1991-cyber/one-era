@@ -1,4 +1,199 @@
 /* =========================================================
+   ONE ERA — CURRENCY SYSTEM
+   ========================================================= */
+
+const ONE_ERA_CURRENCIES = {
+
+  THB: {
+    code: "THB",
+    symbol: "฿",
+    name: "Thai Baht",
+    rate: 1,
+    decimals: 0,
+    locale: "th-TH"
+  },
+
+  USD: {
+    code: "USD",
+    symbol: "$",
+    name: "US Dollar",
+    rate: 0.029,
+    decimals: 2,
+    locale: "en-US"
+  },
+
+  GBP: {
+    code: "GBP",
+    symbol: "£",
+    name: "British Pound",
+    rate: 0.021,
+    decimals: 2,
+    locale: "en-GB"
+  },
+
+  HKD: {
+    code: "HKD",
+    symbol: "HK$",
+    name: "Hong Kong Dollar",
+    rate: 0.227,
+    decimals: 2,
+    locale: "en-HK"
+  }
+
+};
+
+
+const ONE_ERA_CURRENCY_KEY =
+  "oneEraCurrency";
+
+
+function getSelectedCurrency() {
+
+  const saved =
+    localStorage.getItem(
+      ONE_ERA_CURRENCY_KEY
+    );
+
+  if (
+    saved &&
+    ONE_ERA_CURRENCIES[saved]
+  ) {
+
+    return ONE_ERA_CURRENCIES[saved];
+
+  }
+
+  return ONE_ERA_CURRENCIES.THB;
+
+}
+
+
+function setCurrency(currencyCode) {
+
+  if (
+    !ONE_ERA_CURRENCIES[currencyCode]
+  ) {
+
+    return;
+
+  }
+
+  localStorage.setItem(
+    ONE_ERA_CURRENCY_KEY,
+    currencyCode
+  );
+
+  window.location.reload();
+
+}
+
+
+function convertTHB(amountTHB) {
+
+  const currency =
+    getSelectedCurrency();
+
+  return (
+    Number(amountTHB || 0) *
+    currency.rate
+  );
+
+}
+
+
+function formatONEERAPrice(amountTHB) {
+
+  const currency =
+    getSelectedCurrency();
+
+  const converted =
+    convertTHB(amountTHB);
+
+  return new Intl.NumberFormat(
+    currency.locale,
+    {
+      style: "currency",
+      currency: currency.code,
+      minimumFractionDigits:
+        currency.decimals,
+      maximumFractionDigits:
+        currency.decimals
+    }
+  ).format(converted);
+
+}
+
+
+function createCurrencySelector() {
+
+  const currency =
+    getSelectedCurrency();
+
+  const options =
+    Object.values(
+      ONE_ERA_CURRENCIES
+    )
+    .map(function(item) {
+
+      return `
+        <option
+          value="${item.code}"
+          ${item.code === currency.code ? "selected" : ""}
+        >
+          ${item.code}
+        </option>
+      `;
+
+    })
+    .join("");
+
+
+  return `
+
+    <select
+      class="one-era-currency"
+      aria-label="Select currency"
+      onchange="setCurrency(this.value)"
+    >
+
+      ${options}
+
+    </select>
+
+  `;
+
+}
+
+
+function initializeCurrencySelector() {
+
+  const existing =
+    document.querySelector(
+      ".one-era-currency"
+    );
+
+  if (existing) {
+    return;
+  }
+
+  const navIcons =
+    document.querySelector(
+      ".nav-icons"
+    );
+
+  if (!navIcons) {
+    return;
+  }
+
+  navIcons.insertAdjacentHTML(
+    "afterbegin",
+    createCurrencySelector()
+  );
+
+}
+
+
+/* =========================================================
    ONE ERA — SITE DATA
    Central configuration for product categories
    ========================================================= */
@@ -65,6 +260,8 @@ const ONE_ERA_CATEGORIES = {
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  initializeCurrencySelector();
 
   updateCartCount();
 
@@ -715,11 +912,23 @@ window.ONE_ERA = {
   categories:
     ONE_ERA_CATEGORIES,
 
+  currencies:
+    ONE_ERA_CURRENCIES,
+
   getCategoryFromURL:
     getCategoryFromURL,
 
   getCurrentCategory:
     getCurrentCategory,
+
+  getSelectedCurrency:
+    getSelectedCurrency,
+
+  convertTHB:
+    convertTHB,
+
+  formatONEERAPrice:
+    formatONEERAPrice,
 
   loadProducts:
     loadProducts,
