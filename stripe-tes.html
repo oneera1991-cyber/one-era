@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>Stripe Test — ONE ERA</title>
+
+<link
+  rel="stylesheet"
+  href="styles.css"
+>
+
+<style>
+
+.stripe-test{
+  padding:80px 0;
+}
+
+.stripe-test-card{
+  max-width:600px;
+  margin:0 auto;
+  border-top:1px solid var(--line);
+  padding-top:30px;
+}
+
+.stripe-test-card h1{
+  font-size:48px;
+  margin:15px 0 20px;
+}
+
+.stripe-test-card p{
+  color:#665f57;
+  line-height:1.8;
+}
+
+.test-product{
+  margin:30px 0;
+  padding:25px;
+  background:#f2eadf;
+}
+
+.test-product strong{
+  display:block;
+  margin-bottom:8px;
+}
+
+.test-button{
+  width:100%;
+  padding:17px;
+  border:0;
+  background:#11100f;
+  color:#fff;
+  cursor:pointer;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.test-button:hover{
+  opacity:.85;
+}
+
+.test-button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.result{
+  margin-top:25px;
+  padding:18px;
+  background:#edf1eb;
+  color:#315447;
+  font-size:12px;
+  line-height:1.8;
+  word-break:break-word;
+}
+
+.error{
+  margin-top:25px;
+  padding:18px;
+  background:#f4e6e3;
+  color:#713d36;
+  font-size:12px;
+  line-height:1.8;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+<div class="container nav">
+
+<a
+  class="wordmark"
+  href="index.html"
+>
+ONE ERA
+</a>
+
+<nav class="nav-links">
+
+<a href="discover.html">
+Explore
+</a>
+
+<a href="practice.html">
+Practice
+</a>
+
+<a href="shop.html">
+Shop
+</a>
+
+<a href="learn.html">
+Learn
+</a>
+
+<a href="journal.html">
+Journal
+</a>
+
+<a href="about.html">
+The Society
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+<section class="stripe-test">
+
+<div class="container">
+
+<div class="stripe-test-card">
+
+<div class="eyebrow">
+ONE ERA · PAYMENT TEST
+</div>
+
+<h1>
+Stripe Test.
+</h1>
+
+<p>
+
+This page is only for testing the
+ONE ERA Stripe connection.
+
+No real payment will be taken.
+
+</p>
+
+
+<div class="test-product">
+
+<strong>
+ONE ERA Test Product
+</strong>
+
+฿100.00
+
+<br><br>
+
+Stripe Test Mode only.
+
+</div>
+
+
+<button
+  id="payButton"
+  class="test-button"
+  type="button"
+>
+
+Continue to Stripe
+
+</button>
+
+
+<div
+  id="result"
+></div>
+
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* ==========================================
+   ONE ERA STRIPE TEST
+========================================== */
+
+
+/*
+  Replace this with your actual
+  Cloudflare Worker URL.
+*/
+
+const STRIPE_API =
+  "https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev";
+
+
+const button =
+  document.getElementById(
+    "payButton"
+  );
+
+
+const result =
+  document.getElementById(
+    "result"
+  );
+
+
+button.addEventListener(
+  "click",
+  async function(){
+
+    button.disabled = true;
+
+    button.textContent =
+      "Connecting to Stripe…";
+
+    result.innerHTML = "";
+
+
+    try{
+
+      const response =
+        await fetch(
+          STRIPE_API,
+          {
+            method:"POST",
+
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+
+              test:true
+
+            })
+
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      if(
+        !response.ok ||
+        !data.success
+      ){
+
+        throw new Error(
+          data.error ||
+          "Stripe Checkout could not be created."
+        );
+
+      }
+
+
+      if(!data.checkoutUrl){
+
+        throw new Error(
+          "Stripe did not return a checkout URL."
+        );
+
+      }
+
+
+      result.innerHTML = `
+
+        <div class="result">
+
+          Stripe Checkout Session created ✓
+
+          <br><br>
+
+          Redirecting to Stripe…
+
+        </div>
+
+      `;
+
+
+      /*
+        Open Stripe Checkout
+      */
+
+      window.location.href =
+        data.checkoutUrl;
+
+
+    }
+
+    catch(error){
+
+      console.error(
+        "ONE ERA STRIPE TEST:",
+        error
+      );
+
+
+      result.innerHTML = `
+
+        <div class="error">
+
+          <strong>
+            Stripe Test Failed
+          </strong>
+
+          <br><br>
+
+          ${error.message}
+
+        </div>
+
+      `;
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Try Again";
+
+    }
+
+  });
+
+</script>
+
+
+</body>
+
+</html>
