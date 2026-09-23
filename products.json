@@ -119,6 +119,336 @@
         "mode": "TEST",
         "status": "not_connected"
       }
+    },
+
+
+    {
+      "id": "one-era-incense-ceramic-holder",
+      "slug": "incense-ceramic-holder",
+      "name": "Incense Ceramic Holder",
+      "title": "Incense Ceramic Holder",
+      "subtitle": "A simple ceramic object for smoke ritual and quiet spaces.",
+      "brand": "ONE ERA",
+
+      "category": "Smoke",
+      "collection": "The Unseen",
+      "type": "ritual-object",
+
+      "description": "A ceramic incense holder selected as an object for smoke rituals, meditation and quiet everyday spaces.",
+
+      "shortDescription": "A ceramic incense holder for smoke ritual and quiet spaces.",
+
+      "price": {
+        "amount": 0,
+        "currency": "THB",
+        "display": "TEST PRICE"
+      },
+
+      "price_thb": 0,
+      "price_usd": 0,
+      "price_gbp": 0,
+
+      "status": "test",
+      "testMode": true,
+      "available": true,
+
+      "inventory": {
+        "source": "CJdropshipping",
+        "status": "test",
+        "quantity": null
+      },
+
+      "supplier": {
+        "platform": "CJdropshipping",
+        "sku": "CJYD205731501AZ",
+        "sourceUrl": "https://cjdropshipping.com/product/incense-ceramic-censer-home-decoration-tea-room-living-room-office-incense-holder-ceramic-decoration-p-2406100902111600600.html"
+      },
+
+      "specifications": {
+        "material": "Ceramic",
+        "weight": "320 g",
+        "size": "150 × 150 × 100 mm",
+        "packageSize": "150 × 150 × 100 mm"
+      },
+
+      "ritual": {
+        "purpose": [
+          "Smoke",
+          "Space",
+          "Presence"
+        ],
+
+        "howToUse": [
+          "Place the holder on a stable heat-resistant surface.",
+          "Place an incense stick into the holder.",
+          "Light the incense and allow the smoke to fill the space.",
+          "Use the moment as a pause before beginning your practice."
+        ],
+
+        "note": "For incense use only. Always use on a stable, heat-resistant surface."
+      },
+
+      "story": {
+        "headline": "A vessel for the moment smoke enters the room.",
+        "body": "A simple ceramic form selected for incense rituals, quiet spaces and moments of pause."
+      },
+
+      "images": [],
+
+      "tags": [
+        "incense",
+        "incense holder",
+        "ceramic",
+        "smoke",
+        "ritual",
+        "meditation",
+        "altar"
+      ],
+
+      "markets": {
+        "TH": {
+          "enabled": true,
+          "currency": "THB"
+        },
+        "US": {
+          "enabled": true,
+          "currency": "USD"
+        },
+        "UK": {
+          "enabled": true,
+          "currency": "GBP"
+        },
+        "HK": {
+          "enabled": true,
+          "currency": "HKD"
+        }
+      },
+
+      "fulfillment": {
+        "provider": "CJdropshipping",
+        "mode": "TEST",
+        "status": "not_connected"
+      }
+    },
+
+
+    {
+      "id": "one-era-tarot-tapestry",
+      "slug": "tarot-tapestry",
+      "name": "Tarot Tapestry",
+      "title": "Tarot Tapestry",
+      "subtitle": "A symbolic wall object for contemplation and divination spaces.",
+      "brand": "ONE ERA",
+
+      "category": "Divination",
+      "collection": "The Unseen",
+      "type": "ritual-object",
+
+      "description": "A black and white tarot-inspired textile selected as a visual object for contemplation, symbolic inquiry and personal spaces.",
+
+      "shortDescription": "A tarot-inspired wall tapestry for symbolic spaces and contemplation.",
+
+      "price": {
+        "amount": 0,
+        "currency": "THB",
+        "display": "TEST PRICE"
+      },
+
+      "price_thb": 0,
+      "price_usd": 0,
+      "price_gbp": 0,
+
+      "status": "test",
+      "testMode": true,
+      "available": true,
+
+      "inventory": {
+        "source": "CJdropshipping",
+        "status": "test",
+        "quantity": null
+      },
+
+      "supplier": {
+        "platform": "CJdropshipping",
+        "sku": "CJZS115880701AZ",
+        "sourceUrl": "https://cjdropshipping.com/product/black-tarot-cards-tapestry-wall-hanging-moon-star-medieval-europe-divination-hippie-tapiz-tapestry-for-home-decor-p-1400647864312532992.html"
+      },
+
+      "specifications": {
+        "material": "Polyester",
+        "weight": "80–554 g",
+        "size": "95 × 73 cm and other variants",
+        "packageSize": "300 × 200 × 20 mm"
+      },
+
+      "ritual": {
+        "purpose": [
+          "Symbolism",
+          "Reflection",
+          "Space"
+        ],
+
+        "howToUse": [
+          "Hang the tapestry in a quiet personal space.",
+          "Use the imagery as a visual prompt for reflection.",
+          "Pair with journaling, tarot or other symbolic practices.",
+          "Let the image become part of your ritual environment."
+        ],
+
+        "note": "This product is a decorative textile and is presented by ONE ERA as a symbolic object."
+      },
+
+      "story": {
+        "headline": "A symbol placed where reflection begins.",
+        "body": "A tarot-inspired textile selected as a visual anchor for spaces dedicated to contemplation, symbolism and personal inquiry."
+      },
+
+      "images": [],
+
+      "tags": [
+        "tarot",
+        "divination",
+        "tapestry",
+        "symbolism",
+        "oracle",
+        "ritual",
+        "wall decor"
+      ],
+
+      "markets": {
+        "TH": {
+          "enabled": true,
+          "currency": "THB"
+        },
+        "US": {
+          "enabled": true,
+          "currency": "USD"
+        },
+        "UK": {
+          "enabled": true,
+          "currency": "GBP"
+        },
+        "HK": {
+          "enabled": true,
+          "currency": "HKD"
+        }
+      },
+
+      "fulfillment": {
+        "provider": "CJdropshipping",
+        "mode": "TEST",
+        "status": "not_connected"
+      }
+    },
+
+
+    {
+      "id": "one-era-printed-yoga-mat",
+      "slug": "printed-yoga-mat",
+      "name": "Printed Yoga Mat",
+      "title": "Printed Yoga Mat",
+      "subtitle": "A patterned surface for movement, grounding and everyday ritual.",
+      "brand": "ONE ERA",
+
+      "category": "Ritual",
+      "collection": "The Unseen",
+      "type": "ritual-object",
+
+      "description": "A printed round textile mat selected as a surface for movement, grounding, stretching and personal practice.",
+
+      "shortDescription": "A patterned mat for movement, grounding and everyday practice.",
+
+      "price": {
+        "amount": 0,
+        "currency": "THB",
+        "display": "TEST PRICE"
+      },
+
+      "price_thb": 0,
+      "price_usd": 0,
+      "price_gbp": 0,
+
+      "status": "test",
+      "testMode": true,
+      "available": true,
+
+      "inventory": {
+        "source": "CJdropshipping",
+        "status": "test",
+        "quantity": null
+      },
+
+      "supplier": {
+        "platform": "CJdropshipping",
+        "sku": "CJYDYYST00004-default",
+        "sourceUrl": "https://cjdropshipping.com/product/printed-round-beach-towels-and-yoga-mat-p-1BF8B1FE-92AD-44B7-B881-55B63B5F9370.html"
+      },
+
+      "specifications": {
+        "material": "Cloth",
+        "weight": "220 g",
+        "size": "Round",
+        "packageSize": "300 × 200 × 100 mm"
+      },
+
+      "ritual": {
+        "purpose": [
+          "Movement",
+          "Grounding",
+          "Practice"
+        ],
+
+        "howToUse": [
+          "Place the mat in a clear and comfortable space.",
+          "Use it for stretching, movement or quiet practice.",
+          "Begin with a few moments of stillness.",
+          "Return to the space whenever you need a moment to reconnect."
+        ],
+
+        "note": "This product is presented as a practice object rather than a spiritual claim."
+      },
+
+      "story": {
+        "headline": "A surface for returning to the body.",
+        "body": "A patterned textile surface selected for movement, stretching and quiet practices that bring attention back to the present moment."
+      },
+
+      "images": [],
+
+      "tags": [
+        "yoga",
+        "ritual",
+        "movement",
+        "grounding",
+        "meditation",
+        "practice",
+        "mat"
+      ],
+
+      "markets": {
+        "TH": {
+          "enabled": true,
+          "currency": "THB"
+        },
+        "US": {
+          "enabled": true,
+          "currency": "USD"
+        },
+        "UK": {
+          "enabled": true,
+          "currency": "GBP"
+        },
+        "HK": {
+          "enabled": true,
+          "currency": "HKD"
+        }
+      },
+
+      "fulfillment": {
+        "provider": "CJdropshipping",
+        "mode": "TEST",
+        "status": "not_connected"
+      }
     }
   ]
 }
