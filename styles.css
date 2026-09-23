@@ -268,3 +268,29 @@ linear-gradient(120deg,#11100f,#1b2925 55%,#261d21)}
   .practice-number{font-size:45px}
   .steps{grid-template-columns:1fr 1fr;gap:18px}
 }
+
+/* =========================================================
+   ONE ERA — CURRENCY SELECTOR
+   ========================================================= */
+
+.one-era-currency {
+
+  border: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  font: inherit;
+
+  font-size: 10px;
+
+  letter-spacing: .08em;
+
+  cursor: pointer;
+
+  padding: 4px 2px;
+
+  outline: none;
+
+}
