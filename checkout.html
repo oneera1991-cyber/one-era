@@ -1,16 +1,7 @@
 <!doctype html>
-<html lang="en">
 
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Checkout — ONE ERA</title>
-
-<link rel="stylesheet" href="styles.css">
-
-<style>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Checkout — ONE ERA</title><link rel="stylesheet" href="styles.css"><style>
 
 .checkout-section{
   padding:70px 0;
@@ -254,134 +245,50 @@
 
 }
 
-</style>
-
-</head>
-
-
-<body>
-
-
-<header class="site-header">
-
-<div class="container nav">
-
-<a class="wordmark" href="index.html">
+</style></head><body><header class="site-header"><div class="container nav"><a class="wordmark" href="index.html">
 ONE ERA
-</a>
-
-<nav class="nav-links">
-
-<a href="discover.html">Explore</a>
+</a><nav class="nav-links"><a href="discover.html">Explore</a>
 <a href="practice.html">Practice</a>
 <a href="shop.html">Shop</a>
 <a href="learn.html">Learn</a>
 <a href="journal.html">Journal</a>
 <a href="about.html">The Society</a>
 
-</nav>
-
-<div class="nav-icons">
-
-<span>⌕</span>
+</nav><div class="nav-icons"><span>⌕</span>
 
 <a href="cart.html">
 Bag <span data-cart-count>0</span>
-</a>
+</a></div><span class="mobile-menu">☰</span>
 
-</div>
-
-<span class="mobile-menu">☰</span>
-
-</div>
-
-</header>
-
-
-<section class="page-hero">
-
-<div class="container">
-
-<div class="breadcrumb">
+</div></header><section class="page-hero"><div class="container"><div class="breadcrumb">
 Home / Bag / Checkout
-</div>
-
-<h1>
+</div><h1>
 Checkout.
-</h1>
-
-</div>
-
-</section>
-
-
-<section class="checkout-section">
-
-<div class="container">
-
-<div class="test-notice">
-
-<div class="test-badge">
+</h1></div></section><section class="checkout-section"><div class="container"><div class="test-notice"><div class="test-badge">
 TEST MODE
-</div>
+</div><br>This checkout creates a TEST ORDER only.
 
-<br>
+<br>No real payment will be taken.
 
-This checkout creates a TEST ORDER only.
+<br>No real customer order will be submitted.
 
-<br>
+<br>No CJ order will be created.
 
-No real payment will be taken.
+<br>Shipping and currency shown here use TEST configuration.
 
-<br>
-
-No real customer order will be submitted.
-
-<br>
-
-No CJ order will be created.
-
-<br>
-
-Shipping and currency shown here use TEST configuration.
-
-</div>
-
-
-<div id="checkoutRoot">
+</div><div id="checkoutRoot">
 Loading…
-</div>
-
-
-</div>
-
-</section>
-
-
-<footer class="footer">
-
-<div class="container">
-
-<div class="wordmark">
+</div></div></section><footer class="footer"><div class="container"><div class="wordmark">
 ONE ERA
-</div>
-
-<p>
+</div><p>
 THE SPIRITUAL SOCIETY
-</p>
-
-</div>
-
-</footer>
-
-
-<script>
+</p></div></footer><script>
 
 /* =====================================================
    ONE ERA
    CHECKOUT
-   PHASE 4.7.5
    TEST MODE
+   SHIPPING COUNTRIES LOCKED
    ===================================================== */
 
 
@@ -400,157 +307,80 @@ const ORDER_KEY =
    MARKET CONFIGURATION
    =====================================================
 
-   TEST MODE ONLY.
+   CURRENT TEST MARKETS:
 
-   These values are architecture placeholders.
+   TH = Thailand
+   US = United States
+   GB = United Kingdom
 
-   Production:
-   - FX should come from a live FX provider.
-   - Shipping should come from CJ shipping quotation/API.
+   Later:
+   Replace TEST shipping with CJ live quotation.
    ===================================================== */
 
 const MARKET_CONFIG = {
 
   TH: {
+
     country: "TH",
+
     name: "Thailand",
+
     currency: "THB",
+
     symbol: "฿",
 
-    /*
-      TEST FX:
-      1 THB = 1 THB
-    */
     fxFromTHB: 1,
 
-    /*
-      TEST SHIPPING
-    */
     shippingTHB: 60,
 
     shippingLabel: "Standard Delivery",
 
     locale: "th-TH"
+
   },
 
 
   US: {
+
     country: "US",
+
     name: "United States",
+
     currency: "USD",
+
     symbol: "$",
 
-    /*
-      TEST FX
-      1 THB = 0.029 USD
-    */
     fxFromTHB: 0.029,
 
     shippingTHB: 420,
 
-    shippingLabel: "Standard International Delivery",
+    shippingLabel:
+      "Standard International Delivery",
 
     locale: "en-US"
+
   },
 
 
   GB: {
+
     country: "GB",
+
     name: "United Kingdom",
+
     currency: "GBP",
+
     symbol: "£",
 
-    /*
-      TEST FX
-      1 THB = 0.021 GBP
-    */
     fxFromTHB: 0.021,
 
     shippingTHB: 520,
 
-    shippingLabel: "Standard International Delivery",
+    shippingLabel:
+      "Standard International Delivery",
 
     locale: "en-GB"
-  },
 
-
-  AU: {
-    country: "AU",
-    name: "Australia",
-    currency: "AUD",
-    symbol: "A$",
-
-    /*
-      TEST FX
-      1 THB = 0.043 AUD
-    */
-    fxFromTHB: 0.043,
-
-    shippingTHB: 480,
-
-    shippingLabel: "Standard International Delivery",
-
-    locale: "en-AU"
-  },
-
-
-  SG: {
-    country: "SG",
-    name: "Singapore",
-    currency: "SGD",
-    symbol: "S$",
-
-    /*
-      TEST FX
-      1 THB = 0.038 SGD
-    */
-    fxFromTHB: 0.038,
-
-    shippingTHB: 280,
-
-    shippingLabel: "Standard Delivery",
-
-    locale: "en-SG"
-  },
-
-
-  HK: {
-    country: "HK",
-    name: "Hong Kong",
-    currency: "HKD",
-    symbol: "HK$",
-
-    /*
-      TEST FX
-      1 THB = 0.23 HKD
-    */
-    fxFromTHB: 0.23,
-
-    shippingTHB: 250,
-
-    shippingLabel: "Standard Delivery",
-
-    locale: "en-HK"
-  },
-
-
-  ID: {
-    country: "ID",
-    name: "Indonesia",
-    currency: "IDR",
-    symbol: "Rp",
-
-    /*
-      TEST FX
-      1 THB = 480 IDR
-    */
-    fxFromTHB: 480,
-
-    shippingTHB: 350,
-
-    shippingLabel: "Standard International Delivery",
-
-    locale: "id-ID"
   }
 
 };
@@ -633,13 +463,21 @@ function formatMoney(
 ){
 
   return new Intl.NumberFormat(
+
     market.locale,
+
     {
       style:"currency",
-      currency:market.currency,
+
+      currency:
+        market.currency,
+
       maximumFractionDigits:
-        market.currency === "IDR" ? 0 : 2
+        market.currency === "THB"
+          ? 0
+          : 2
     }
+
   ).format(amount);
 
 }
@@ -647,17 +485,6 @@ function formatMoney(
 
 /* =====================================================
    GET BASE PRICE IN THB
-   =====================================================
-
-   Product price system currently supports
-   multiple structures.
-
-   Priority:
-
-   1. item.price_thb
-   2. item.price.amount when THB
-   3. item.price_thb from product mapping
-   4. 0 for TEST product
    ===================================================== */
 
 function getBasePriceTHB(item){
@@ -699,7 +526,7 @@ function getBasePriceTHB(item){
 
 
 /* =====================================================
-   CONVERT THB → MARKET CURRENCY
+   CONVERT THB → MARKET
    ===================================================== */
 
 function convertFromTHB(
@@ -736,8 +563,7 @@ function calculateCart(
       Number(item.quantity || 1);
 
     subtotalTHB +=
-      priceTHB *
-      quantity;
+      priceTHB * quantity;
 
   });
 
@@ -755,14 +581,11 @@ function calculateCart(
 
   return {
 
-    subtotalTHB:
-      subtotalTHB,
+    subtotalTHB,
 
-    shippingTHB:
-      shippingTHB,
+    shippingTHB,
 
-    totalTHB:
-      totalTHB,
+    totalTHB,
 
     subtotal:
       convertFromTHB(
@@ -832,6 +655,13 @@ function renderSummary(){
     );
 
 
+  if(!summary){
+
+    return;
+
+  }
+
+
   const totals =
     calculateCart(
       cart,
@@ -853,8 +683,7 @@ function renderSummary(){
 
 
     const itemTHB =
-      baseTHB *
-      quantity;
+      baseTHB * quantity;
 
 
     const itemPrice =
@@ -1220,8 +1049,18 @@ function createTestOrder(){
 
 
   const market =
-    MARKET_CONFIG[country] ||
-    MARKET_CONFIG.TH;
+    MARKET_CONFIG[country];
+
+
+  if(!market){
+
+    showError(
+      "This destination is not currently supported."
+    );
+
+    return;
+
+  }
 
 
   const totals =
@@ -1238,10 +1077,6 @@ function createTestOrder(){
   button.textContent =
     "Creating Test Order…";
 
-
-  /* =========================================
-     ORDER ID
-     ========================================= */
 
   const date =
     new Date()
@@ -1264,27 +1099,19 @@ function createTestOrder(){
     random;
 
 
-  /* =========================================
-     ORDER OBJECT
-     ========================================= */
-
   const order = {
 
     order_id:
       orderId,
 
-
     created_at:
       new Date().toISOString(),
-
 
     market:
       market.country,
 
-
     currency:
       market.currency,
-
 
     customer: {
 
@@ -1298,7 +1125,6 @@ function createTestOrder(){
         customerPhone
 
     },
-
 
     shipping_address: {
 
@@ -1321,7 +1147,6 @@ function createTestOrder(){
         market.country
 
     },
-
 
     items:
 
@@ -1364,62 +1189,47 @@ function createTestOrder(){
 
       }),
 
-
     subtotal:
       totals.subtotal,
-
 
     shipping:
       totals.shipping,
 
-
     taxes:
       0,
-
 
     duties:
       0,
 
-
     total:
       totals.total,
-
 
     shipping_cost_base_thb:
       totals.shippingTHB,
 
-
     subtotal_base_thb:
       totals.subtotalTHB,
-
 
     total_base_thb:
       totals.totalTHB,
 
-
     exchange_rate_from_thb:
       market.fxFromTHB,
-
 
     shipping_method:
       "STANDARD",
 
-
     payment_status:
       "pending",
-
 
     fulfillment_status:
       "pending",
 
-
     status:
       "pending",
 
-
     test_mode:
       true,
-
 
     pricing: {
 
@@ -1440,7 +1250,6 @@ function createTestOrder(){
 
     },
 
-
     fulfillment: {
 
       provider:
@@ -1460,11 +1269,6 @@ function createTestOrder(){
   };
 
 
-  /* =========================================
-     SAVE TO THE SAME STORAGE USED BY
-     orders.js + fulfillment.js
-     ========================================= */
-
   localStorage.setItem(
 
     ORDER_KEY,
@@ -1476,10 +1280,6 @@ function createTestOrder(){
   );
 
 
-  /* =========================================
-     CLEAR CART
-     ========================================= */
-
   localStorage.removeItem(
     CART_KEY
   );
@@ -1487,10 +1287,6 @@ function createTestOrder(){
 
   updateBagCount();
 
-
-  /* =========================================
-     SUCCESS
-     ========================================= */
 
   const success =
     document.getElementById(
@@ -1571,9 +1367,15 @@ function showError(message){
     );
 
 
+  if(!error){
+
+    return;
+
+  }
+
+
   error.style.display =
     "block";
-
 
   error.textContent =
     message;
@@ -1657,7 +1459,6 @@ function renderCheckout(){
             type="text"
             autocomplete="name"
             placeholder="Full name"
-            value="ONE ERA Test Customer"
           >
 
         </div>
@@ -1674,7 +1475,6 @@ function renderCheckout(){
             type="email"
             autocomplete="email"
             placeholder="you@example.com"
-            value="test@example.com"
           >
 
         </div>
@@ -1691,7 +1491,6 @@ function renderCheckout(){
             type="tel"
             autocomplete="tel"
             placeholder="+66..."
-            value="+66 000 000 0000"
           >
 
         </div>
@@ -1725,31 +1524,20 @@ function renderCheckout(){
               United Kingdom
             </option>
 
-            <option value="AU">
-              Australia
-            </option>
-
-            <option value="SG">
-              Singapore
-            </option>
-
-            <option value="HK">
-              Hong Kong
-            </option>
-
-            <option value="ID">
-              Indonesia
-            </option>
-
           </select>
 
 
           <div class="country-note">
 
+            ONE ERA currently ships to
+            Thailand, United States and
+            United Kingdom only.
+
+            <br><br>
+
             Currency and TEST shipping
-            calculation will update
-            automatically when the
-            destination changes.
+            calculation update automatically
+            when the destination changes.
 
           </div>
 
@@ -1767,7 +1555,6 @@ function renderCheckout(){
             type="text"
             autocomplete="street-address"
             placeholder="Street address"
-            value="TEST ADDRESS"
           >
 
         </div>
@@ -1787,7 +1574,6 @@ function renderCheckout(){
               type="text"
               autocomplete="address-level2"
               placeholder="City"
-              value="Bangkok"
             >
 
           </div>
@@ -1804,7 +1590,6 @@ function renderCheckout(){
               type="text"
               autocomplete="address-level1"
               placeholder="State / Province"
-              value="Bangkok"
             >
 
           </div>
@@ -1824,7 +1609,6 @@ function renderCheckout(){
             type="text"
             autocomplete="postal-code"
             placeholder="Postal code"
-            value="10110"
           >
 
         </div>
@@ -1842,15 +1626,15 @@ function renderCheckout(){
             Standard Delivery
           </strong>
 
-          Shipping method is currently
-          calculated using the TEST market
+          Shipping is currently calculated
+          using the ONE ERA TEST market
           configuration.
 
           <br><br>
 
-          Production mode will use
-          the selected CJ shipping method
-          and live quotation.
+          Production mode will replace this
+          with the selected CJ shipping method
+          and live shipping quotation.
 
         </div>
 
@@ -1892,18 +1676,10 @@ function renderCheckout(){
   `;
 
 
-  /* =========================================
-     INITIAL RENDER
-     ========================================= */
-
   renderSummary();
 
   renderAddressPreview();
 
-
-  /* =========================================
-     COUNTRY CHANGE
-     ========================================= */
 
   document
     .getElementById(
@@ -1920,10 +1696,6 @@ function renderCheckout(){
       }
     );
 
-
-  /* =========================================
-     ADDRESS EVENTS
-     ========================================= */
 
   [
     "customerName",
@@ -1945,10 +1717,6 @@ function renderCheckout(){
   });
 
 
-  /* =========================================
-     CREATE ORDER
-     ========================================= */
-
   document
     .getElementById(
       "createOrder"
@@ -1967,11 +1735,4 @@ function renderCheckout(){
 
 renderCheckout();
 
-</script>
-
-
-<script src="script.js"></script>
-
-</body>
-
-</html>
+</script><script src="script.js"></script></body></html>
