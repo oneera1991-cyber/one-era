@@ -1,259 +1,1683 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
 <title>ONE ERA — The Spiritual Society</title>
-<meta name="description" content="ONE ERA — a spiritual society for people who believe there is more than what we can see.">
-<link rel="stylesheet" href="styles.css">
+
+<meta
+  name="description"
+  content="ONE ERA — a spiritual society for people who believe there is more than what we can see."
+>
+
+<link
+  rel="stylesheet"
+  href="styles.css"
+>
+
 <style>
-/* PHASE 2.1 — HOMEPAGE ART DIRECTION */
+
+/* ==================================================
+   ONE ERA — HOMEPAGE
+   HERO + EDITORIAL HOMEPAGE
+================================================== */
+
 :root{
-  --obs:#11100f;--bone:#e8dfd2;--forest:#173c35;--rose:#c88f9d;
-  --blue:#536f86;--flame:#c45b3c;--sage:#718a78;--ochre:#c4a052;
+  --obs:#11100f;
+  --bone:#e8dfd2;
+  --forest:#173c35;
+  --rose:#c88f9d;
+  --blue:#536f86;
+  --flame:#c45b3c;
+  --sage:#718a78;
+  --ochre:#c4a052;
 }
-.home-hero{min-height:calc(100vh - 76px);background:var(--obs);color:var(--bone);position:relative;overflow:hidden;display:flex;align-items:flex-end}
-.home-hero:before{content:"";position:absolute;inset:-20%;background:
- radial-gradient(circle at 72% 34%,rgba(200,143,157,.42),transparent 18%),
- radial-gradient(circle at 57% 55%,rgba(83,111,134,.30),transparent 22%),
- radial-gradient(circle at 25% 80%,rgba(196,160,82,.17),transparent 20%);
- filter:blur(22px)}
-.stars{position:absolute;inset:0;opacity:.7;background-image:radial-gradient(#e8dfd2 1px,transparent 1px);background-size:71px 71px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
-.hero-orbit{position:absolute;width:min(52vw,650px);height:min(52vw,650px);right:7%;top:9%;border:1px solid rgba(232,223,210,.28);border-radius:50%}
-.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border:1px solid rgba(200,143,157,.32);border-radius:50%;inset:10%}
-.hero-orbit:after{inset:22%;border-color:rgba(196,160,82,.26)}
-.hero-core{position:absolute;right:20%;top:27%;width:130px;height:130px;border-radius:50%;
- background:radial-gradient(circle at 35% 30%,#e8dfd2,#c88f9d 26%,#536f86 58%,#11100f 74%);
- box-shadow:0 0 90px rgba(200,143,157,.32)}
-.home-hero .hero-content{position:relative;z-index:2;padding:100px 0 92px;max-width:820px}
-.home-hero .eyebrow{letter-spacing:.22em;color:#d6c9bb}
-.home-hero h1{font-size:clamp(4rem,8.5vw,8.7rem);line-height:.86;letter-spacing:-.055em;max-width:900px;margin:22px 0 30px;font-weight:500}
-.home-hero h1 em{font-style:italic;color:var(--rose)}
-.home-hero .hero-sub{max-width:570px;font-size:1.05rem;line-height:1.75;color:#d8d0c8}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
-.btn-rose{background:var(--rose);color:var(--obs)}
-.btn-outline-light{border:1px solid rgba(232,223,210,.55);color:var(--bone);background:transparent}
-.manifesto{background:var(--bone);color:var(--obs);padding:110px 0}
-.manifesto-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:end}
-.manifesto h2{font-size:clamp(3rem,6vw,6rem);line-height:.92;font-weight:500;letter-spacing:-.04em;margin:0}
-.manifesto h2 span{color:var(--flame);font-style:italic}
-.manifesto-copy{font-size:1.05rem;line-height:1.8;max-width:480px}
-.manifesto-rule{height:1px;background:rgba(17,16,15,.18);margin:55px 0 22px}
-.portal{background:var(--forest);color:var(--bone);padding:95px 0}
-.portal-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:38px}
-.portal-head h2{font-size:clamp(2.8rem,5vw,5rem);line-height:.95;font-weight:500;margin:8px 0 0}
-.portal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.portal-card{min-height:330px;position:relative;overflow:hidden;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(232,223,210,.15);transition:transform .3s ease}
-.portal-card:hover{transform:translateY(-5px)}
-.portal-card:nth-child(1){background:radial-gradient(circle at 70% 20%,rgba(200,143,157,.65),transparent 30%),linear-gradient(150deg,#392a30,#11100f)}
-.portal-card:nth-child(2){background:radial-gradient(circle at 25% 25%,rgba(113,138,120,.65),transparent 30%),linear-gradient(150deg,#31544a,#11100f)}
-.portal-card:nth-child(3){background:radial-gradient(circle at 65% 30%,rgba(83,111,134,.8),transparent 30%),linear-gradient(150deg,#253d4e,#11100f)}
-.portal-card:nth-child(4){background:radial-gradient(circle at 35% 25%,rgba(196,160,82,.6),transparent 28%),linear-gradient(150deg,#594735,#11100f)}
-.portal-card h3{font-size:2rem;font-weight:500;margin:7px 0}
-.portal-card p{font-size:.88rem;line-height:1.55;color:#d6cec4;margin:0;max-width:230px}
-.portal-card .eyebrow{color:#d9c5c9}
-.featured{padding:105px 0;background:#f2eadf}
-.featured-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px;gap:25px}
-.featured-head h2{font-size:clamp(2.7rem,5vw,5rem);line-height:.95;font-weight:500;margin:8px 0}
-.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.product-card{color:var(--obs)}
-.product-visual{aspect-ratio:4/5;position:relative;overflow:hidden;margin-bottom:17px}
-.product-visual:after{content:"";position:absolute;inset:8%;border:1px solid rgba(17,16,15,.16)}
-.pv-1{background:radial-gradient(circle at 50% 40%,#f5d5dc 0 11%,transparent 12%),linear-gradient(145deg,#b99198,#352c2d)}
-.pv-2{background:radial-gradient(circle at 52% 44%,#d8e1d8 0 12%,transparent 13%),linear-gradient(145deg,#718a78,#15221f)}
-.pv-3{background:radial-gradient(circle at 50% 42%,#e0b68e 0 10%,transparent 11%),linear-gradient(145deg,#c45b3c,#281716)}
-.pv-4{background:radial-gradient(circle at 50% 42%,#a8c4d4 0 11%,transparent 12%),linear-gradient(145deg,#536f86,#171b20)}
-.product-card h3{font-family:inherit;font-size:1.08rem;margin:0 0 4px}
-.product-card p{margin:0 0 8px;color:#6d655e;font-size:.9rem}
-.product-card .price{font-weight:600}
-.editorial{background:var(--obs);color:var(--bone);display:grid;grid-template-columns:1fr 1fr;min-height:620px}
-.editorial-art{position:relative;min-height:500px;overflow:hidden;background:
- radial-gradient(circle at 52% 40%,rgba(200,143,157,.65),transparent 12%),
- radial-gradient(circle at 45% 44%,rgba(83,111,134,.48),transparent 30%),
- linear-gradient(145deg,#090909,#18251f)}
-.editorial-art:before{content:"";position:absolute;width:420px;height:420px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(23deg);border:1px solid rgba(232,223,210,.34);border-radius:48% 52% 55% 45%}
-.editorial-art:after{content:"✦";position:absolute;left:50%;top:50%;transform:translate(-50%,-54%);font-size:7rem;color:var(--rose);text-shadow:0 0 50px rgba(200,143,157,.5)}
-.editorial-copy{padding:100px 10vw 90px;display:flex;flex-direction:column;justify-content:center}
-.editorial-copy h2{font-size:clamp(3rem,5vw,5.5rem);line-height:.9;font-weight:500;margin:15px 0 26px}
-.editorial-copy h2 em{color:var(--rose);font-style:italic}
-.editorial-copy p{max-width:470px;line-height:1.8;color:#d1c8bd}
-.journal{padding:105px 0;background:var(--bone)}
-.journal-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:38px}
-.journal-head h2{font-size:clamp(2.8rem,5vw,5rem);font-weight:500;line-height:.95;margin:8px 0}
-.journal-grid{display:grid;grid-template-columns:1.3fr .85fr .85fr;gap:16px}
-.j-card{min-height:390px;padding:27px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:var(--bone)}
-.j-card:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(17,16,15,.88),rgba(17,16,15,.02) 65%)}
-.j-card>*{position:relative}
-.j-card.large{background:linear-gradient(135deg,#4b2c35,#11100f)}
-.j-card.two{background:linear-gradient(135deg,#345148,#11100f)}
-.j-card.three{background:linear-gradient(135deg,#465c72,#11100f)}
-.j-card h3{font-size:1.8rem;font-weight:500;max-width:360px;margin:8px 0}
-.j-card p{color:#d9d1c7;line-height:1.55;margin:0;max-width:390px}
-.join{background:var(--rose);color:var(--obs);padding:88px 0}
-.join-inner{display:flex;justify-content:space-between;align-items:end;gap:40px}
-.join h2{font-size:clamp(3rem,6vw,6rem);line-height:.88;font-weight:500;margin:0;max-width:700px}
-.join p{max-width:400px;line-height:1.7}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.home-hero{
+  min-height:calc(100vh - 76px);
+
+  position:relative;
+  overflow:hidden;
+
+  display:flex;
+  align-items:flex-end;
+
+  color:var(--bone);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17,16,15,.90) 0%,
+      rgba(17,16,15,.72) 28%,
+      rgba(17,16,15,.38) 55%,
+      rgba(17,16,15,.08) 100%
+    ),
+    url("images/hero-one-era.png")
+    center center
+    / cover
+    no-repeat;
+}
+
+
+/* subtle cinematic darkening */
+
+.home-hero::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.12) 0%,
+      rgba(0,0,0,0) 45%,
+      rgba(0,0,0,.30) 100%
+    );
+
+  pointer-events:none;
+}
+
+
+/* HERO CONTENT */
+
+.home-hero .hero-content{
+  position:relative;
+  z-index:2;
+
+  padding:100px 0 92px;
+
+  max-width:820px;
+}
+
+
+.home-hero .eyebrow{
+  letter-spacing:.22em;
+  color:#d6c9bb;
+}
+
+
+.home-hero h1{
+  font-size:clamp(4rem,8.5vw,8.7rem);
+
+  line-height:.86;
+
+  letter-spacing:-.055em;
+
+  max-width:900px;
+
+  margin:22px 0 30px;
+
+  font-weight:500;
+}
+
+
+.home-hero h1 em{
+  font-style:italic;
+  color:var(--rose);
+}
+
+
+.home-hero .hero-sub{
+  max-width:570px;
+
+  font-size:1.05rem;
+
+  line-height:1.75;
+
+  color:#d8d0c8;
+}
+
+
+.hero-actions{
+  display:flex;
+
+  gap:12px;
+
+  flex-wrap:wrap;
+
+  margin-top:34px;
+}
+
+
+.btn-rose{
+  background:var(--rose);
+  color:var(--obs);
+}
+
+
+.btn-outline-light{
+  border:1px solid rgba(232,223,210,.55);
+
+  color:var(--bone);
+
+  background:transparent;
+}
+
+
+/* ==================================================
+   MANIFESTO
+================================================== */
+
+.manifesto{
+  background:var(--bone);
+
+  color:var(--obs);
+
+  padding:110px 0;
+}
+
+
+.manifesto-grid{
+  display:grid;
+
+  grid-template-columns:1.15fr .85fr;
+
+  gap:80px;
+
+  align-items:end;
+}
+
+
+.manifesto h2{
+  font-size:clamp(3rem,6vw,6rem);
+
+  line-height:.92;
+
+  font-weight:500;
+
+  letter-spacing:-.04em;
+
+  margin:0;
+}
+
+
+.manifesto h2 span{
+  color:var(--flame);
+
+  font-style:italic;
+}
+
+
+.manifesto-copy{
+  font-size:1.05rem;
+
+  line-height:1.8;
+
+  max-width:480px;
+}
+
+
+.manifesto-rule{
+  height:1px;
+
+  background:rgba(17,16,15,.18);
+
+  margin:55px 0 22px;
+}
+
+
+/* ==================================================
+   PRACTICE PORTAL
+================================================== */
+
+.portal{
+  background:var(--forest);
+
+  color:var(--bone);
+
+  padding:95px 0;
+}
+
+
+.portal-head{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:30px;
+
+  align-items:end;
+
+  margin-bottom:38px;
+}
+
+
+.portal-head h2{
+  font-size:clamp(2.8rem,5vw,5rem);
+
+  line-height:.95;
+
+  font-weight:500;
+
+  margin:8px 0 0;
+}
+
+
+.portal-grid{
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:12px;
+}
+
+
+.portal-card{
+  min-height:330px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:24px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:flex-end;
+
+  border:1px solid rgba(232,223,210,.15);
+
+  transition:transform .3s ease;
+}
+
+
+.portal-card:hover{
+  transform:translateY(-5px);
+}
+
+
+.portal-card:nth-child(1){
+  background:
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(200,143,157,.65),
+      transparent 30%
+    ),
+    linear-gradient(150deg,#392a30,#11100f);
+}
+
+
+.portal-card:nth-child(2){
+  background:
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(113,138,120,.65),
+      transparent 30%
+    ),
+    linear-gradient(150deg,#31544a,#11100f);
+}
+
+
+.portal-card:nth-child(3){
+  background:
+    radial-gradient(
+      circle at 65% 30%,
+      rgba(83,111,134,.8),
+      transparent 30%
+    ),
+    linear-gradient(150deg,#253d4e,#11100f);
+}
+
+
+.portal-card:nth-child(4){
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(196,160,82,.6),
+      transparent 28%
+    ),
+    linear-gradient(150deg,#594735,#11100f);
+}
+
+
+.portal-card h3{
+  font-size:2rem;
+
+  font-weight:500;
+
+  margin:7px 0;
+}
+
+
+.portal-card p{
+  font-size:.88rem;
+
+  line-height:1.55;
+
+  color:#d6cec4;
+
+  margin:0;
+
+  max-width:230px;
+}
+
+
+.portal-card .eyebrow{
+  color:#d9c5c9;
+}
+
+
+/* ==================================================
+   FEATURED
+================================================== */
+
+.featured{
+  padding:105px 0;
+
+  background:#f2eadf;
+}
+
+
+.featured-head{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  margin-bottom:40px;
+
+  gap:25px;
+}
+
+
+.featured-head h2{
+  font-size:clamp(2.7rem,5vw,5rem);
+
+  line-height:.95;
+
+  font-weight:500;
+
+  margin:8px 0;
+}
+
+
+.product-grid{
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:18px;
+}
+
+
+.product-card{
+  color:var(--obs);
+}
+
+
+.product-visual{
+  aspect-ratio:4/5;
+
+  position:relative;
+
+  overflow:hidden;
+
+  margin-bottom:17px;
+}
+
+
+.product-visual:after{
+  content:"";
+
+  position:absolute;
+
+  inset:8%;
+
+  border:1px solid rgba(17,16,15,.16);
+}
+
+
+.pv-1{
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      #f5d5dc 0 11%,
+      transparent 12%
+    ),
+    linear-gradient(145deg,#b99198,#352c2d);
+}
+
+
+.pv-2{
+  background:
+    radial-gradient(
+      circle at 52% 44%,
+      #d8e1d8 0 12%,
+      transparent 13%
+    ),
+    linear-gradient(145deg,#718a78,#15221f);
+}
+
+
+.pv-3{
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      #e0b68e 0 10%,
+      transparent 11%
+    ),
+    linear-gradient(145deg,#c45b3c,#281716);
+}
+
+
+.pv-4{
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      #a8c4d4 0 11%,
+      transparent 12%
+    ),
+    linear-gradient(145deg,#536f86,#171b20);
+}
+
+
+.product-card h3{
+  font-family:inherit;
+
+  font-size:1.08rem;
+
+  margin:0 0 4px;
+}
+
+
+.product-card p{
+  margin:0 0 8px;
+
+  color:#6d655e;
+
+  font-size:.9rem;
+}
+
+
+.product-card .price{
+  font-weight:600;
+}
+
+
+/* ==================================================
+   EDITORIAL
+================================================== */
+
+.editorial{
+  background:var(--obs);
+
+  color:var(--bone);
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  min-height:620px;
+}
+
+
+.editorial-art{
+  position:relative;
+
+  min-height:500px;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 52% 40%,
+      rgba(200,143,157,.65),
+      transparent 12%
+    ),
+    radial-gradient(
+      circle at 45% 44%,
+      rgba(83,111,134,.48),
+      transparent 30%
+    ),
+    linear-gradient(145deg,#090909,#18251f);
+}
+
+
+.editorial-art:before{
+  content:"";
+
+  position:absolute;
+
+  width:420px;
+
+  height:420px;
+
+  left:50%;
+
+  top:50%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(23deg);
+
+  border:1px solid rgba(232,223,210,.34);
+
+  border-radius:48% 52% 55% 45%;
+}
+
+
+.editorial-art:after{
+  content:"✦";
+
+  position:absolute;
+
+  left:50%;
+
+  top:50%;
+
+  transform:
+    translate(-50%,-54%);
+
+  font-size:7rem;
+
+  color:var(--rose);
+
+  text-shadow:
+    0 0 50px rgba(200,143,157,.5);
+}
+
+
+.editorial-copy{
+  padding:100px 10vw 90px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+}
+
+
+.editorial-copy h2{
+  font-size:clamp(3rem,5vw,5.5rem);
+
+  line-height:.9;
+
+  font-weight:500;
+
+  margin:15px 0 26px;
+}
+
+
+.editorial-copy h2 em{
+  color:var(--rose);
+
+  font-style:italic;
+}
+
+
+.editorial-copy p{
+  max-width:470px;
+
+  line-height:1.8;
+
+  color:#d1c8bd;
+}
+
+
+/* ==================================================
+   JOURNAL
+================================================== */
+
+.journal{
+  padding:105px 0;
+
+  background:var(--bone);
+}
+
+
+.journal-head{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  margin-bottom:38px;
+}
+
+
+.journal-head h2{
+  font-size:clamp(2.8rem,5vw,5rem);
+
+  font-weight:500;
+
+  line-height:.95;
+
+  margin:8px 0;
+}
+
+
+.journal-grid{
+  display:grid;
+
+  grid-template-columns:1.3fr .85fr .85fr;
+
+  gap:16px;
+}
+
+
+.j-card{
+  min-height:390px;
+
+  padding:27px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:flex-end;
+
+  position:relative;
+
+  overflow:hidden;
+
+  color:var(--bone);
+}
+
+
+.j-card:before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(17,16,15,.88),
+      rgba(17,16,15,.02) 65%
+    );
+}
+
+
+.j-card>*{
+  position:relative;
+}
+
+
+.j-card.large{
+  background:
+    linear-gradient(135deg,#4b2c35,#11100f);
+}
+
+
+.j-card.two{
+  background:
+    linear-gradient(135deg,#345148,#11100f);
+}
+
+
+.j-card.three{
+  background:
+    linear-gradient(135deg,#465c72,#11100f);
+}
+
+
+.j-card h3{
+  font-size:1.8rem;
+
+  font-weight:500;
+
+  max-width:360px;
+
+  margin:8px 0;
+}
+
+
+.j-card p{
+  color:#d9d1c7;
+
+  line-height:1.55;
+
+  margin:0;
+
+  max-width:390px;
+}
+
+
+/* ==================================================
+   JOIN
+================================================== */
+
+.join{
+  background:var(--rose);
+
+  color:var(--obs);
+
+  padding:88px 0;
+}
+
+
+.join-inner{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  gap:40px;
+}
+
+
+.join h2{
+  font-size:clamp(3rem,6vw,6rem);
+
+  line-height:.88;
+
+  font-weight:500;
+
+  margin:0;
+
+  max-width:700px;
+}
+
+
+.join p{
+  max-width:400px;
+
+  line-height:1.7;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
 @media(max-width:900px){
- .portal-grid,.product-grid{grid-template-columns:repeat(2,1fr)}
- .manifesto-grid,.editorial{grid-template-columns:1fr}
- .editorial-art{min-height:420px}
- .journal-grid{grid-template-columns:1fr}
- .join-inner{display:block}
+
+  .portal-grid,
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+
+  .manifesto-grid,
+  .editorial{
+    grid-template-columns:1fr;
+  }
+
+
+  .editorial-art{
+    min-height:420px;
+  }
+
+
+  .journal-grid{
+    grid-template-columns:1fr;
+  }
+
+
+  .join-inner{
+    display:block;
+  }
+
+
+  .join-inner > div:last-child{
+    margin-top:35px;
+  }
+
 }
+
+
+/* ==================================================
+   MOBILE HERO
+================================================== */
+
 @media(max-width:600px){
- .home-hero .hero-content{padding:90px 0 65px}
- .home-hero h1{font-size:4rem}
- .hero-orbit{width:100vw;height:100vw;right:-35%;top:8%}
- .hero-core{right:22%;top:24%;width:90px;height:90px}
- .portal-grid,.product-grid{grid-template-columns:1fr 1fr;gap:9px}
- .portal-card{min-height:250px;padding:17px}
- .portal-card h3{font-size:1.45rem}
- .manifesto,.featured,.journal{padding:75px 0}
+
+  .home-hero{
+
+    min-height:
+      calc(100svh - 68px);
+
+    align-items:flex-end;
+
+    background-position:
+      63% center;
+
+    background-size:cover;
+
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(17,16,15,.88) 0%,
+        rgba(17,16,15,.62) 45%,
+        rgba(17,16,15,.18) 100%
+      ),
+      url("images/hero-one-era.png");
+  }
+
+
+  .home-hero .hero-content{
+
+    padding:
+      80px 0
+      55px;
+
+    max-width:100%;
+  }
+
+
+  .home-hero h1{
+
+    font-size:
+      clamp(3.2rem,15vw,4.8rem);
+
+    line-height:.88;
+
+    letter-spacing:-.045em;
+
+    margin:
+      18px 0
+      24px;
+  }
+
+
+  .home-hero .hero-sub{
+
+    max-width:330px;
+
+    font-size:.92rem;
+
+    line-height:1.65;
+  }
+
+
+  .hero-actions{
+
+    margin-top:26px;
+
+    gap:9px;
+  }
+
+
+  .hero-actions .btn{
+
+    font-size:9px;
+
+    padding:
+      13px 16px;
+  }
+
+
+  .portal-grid,
+  .product-grid{
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap:9px;
+  }
+
+
+  .portal-card{
+
+    min-height:250px;
+
+    padding:17px;
+  }
+
+
+  .portal-card h3{
+
+    font-size:1.45rem;
+  }
+
+
+  .manifesto,
+  .featured,
+  .journal{
+
+    padding:75px 0;
+  }
+
+
+  .editorial-copy{
+
+    padding:
+      75px 30px;
+  }
+
+
+  .journal-grid{
+
+    gap:10px;
+  }
+
+
+  .j-card{
+
+    min-height:330px;
+
+    padding:20px;
+  }
+
 }
+
+
+/* ==================================================
+   SMALL MOBILE
+================================================== */
+
+@media(max-width:380px){
+
+  .home-hero h1{
+
+    font-size:
+      3rem;
+  }
+
+
+  .home-hero .hero-sub{
+
+    font-size:.86rem;
+  }
+
+
+  .hero-actions{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+
+
+  .hero-actions .btn{
+
+    width:auto;
+  }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
 <header class="site-header">
-  <div class="container nav">
-    <a class="wordmark" href="index.html">ONE ERA</a>
-    <nav class="nav-links">
-      <a href="discover.html">Explore</a>
-      <a href="practice.html">Practice</a>
-      <a href="shop.html">Shop</a>
-      <a href="learn.html">Learn</a>
-      <a href="journal.html">Journal</a>
-      <a href="about.html">The Society</a>
-    </nav>
-    <div class="nav-icons"><span>⌕</span><a href="cart.html">Bag <span data-cart-count>0</span></a></div>
-    <span class="mobile-menu">☰</span>
-  </div>
-</header>
 
-<main>
-<section class="home-hero">
-  <div class="stars"></div><div class="hero-orbit"></div><div class="hero-core"></div>
-  <div class="container hero-content">
-    <div class="eyebrow">ONE ERA · THE SPIRITUAL SOCIETY</div>
-    <h1>There is <em>more</em><br>than what we can see.</h1>
-    <p class="hero-sub">A society for people who believe the visible world is only part of the story. Explore spiritual traditions, practices and objects with curiosity — and find what speaks to you.</p>
-    <div class="hero-actions">
-      <a class="btn btn-rose" href="discover.html">Enter ONE ERA</a>
-      <a class="btn btn-outline-light" href="shop.html">Explore the shop</a>
-    </div>
-  </div>
-</section>
+<div class="container nav">
 
-<section class="manifesto">
-  <div class="container manifesto-grid">
-    <div>
-      <div class="eyebrow">Our point of view</div>
-      <h2>Come curious.<br><span>Stay open.</span></h2>
-    </div>
-    <div class="manifesto-copy">
-      <p>We don't ask you to believe everything. We invite you to look closer — at ancient traditions, modern practices, the natural world, and the parts of ourselves we cannot always explain.</p>
-      <div class="manifesto-rule"></div>
-      <div class="eyebrow">KNOWLEDGE · BELIEF · PRACTICE</div>
-    </div>
-  </div>
-</section>
+<a
+  class="wordmark"
+  href="index.html"
+>
+ONE ERA
+</a>
 
-<section class="portal">
-  <div class="container">
-    <div class="portal-head">
-      <div><div class="eyebrow">Enter through a doorway</div><h2>Find your practice.</h2></div>
-      <a class="btn btn-outline-light" href="practice.html">View all practices</a>
-    </div>
-    <div class="portal-grid">
-      <a class="portal-card" href="practice.html"><div class="eyebrow">01 · OBJECT</div><h3>Crystals</h3><p>Minerals, symbolism, intention and the traditions around them.</p></a>
-      <a class="portal-card" href="practice.html"><div class="eyebrow">02 · ENERGY</div><h3>Reiki</h3><p>Explore energy work, touch, presence and the practice of stillness.</p></a>
-      <a class="portal-card" href="practice.html"><div class="eyebrow">03 · BODY</div><h3>Chakras</h3><p>A map used across modern spiritual practice to explore body and awareness.</p></a>
-      <a class="portal-card" href="practice.html"><div class="eyebrow">04 · INTENTION</div><h3>Manifestation</h3><p>Turn desire into attention, reflection and deliberate action.</p></a>
-    </div>
-  </div>
-</section>
 
-<section class="featured">
-  <div class="container">
-    <div class="featured-head">
-      <div><div class="eyebrow">Objects for the journey</div><h2>Chosen with intention.</h2></div>
-      <a class="btn btn-dark" href="shop.html">Shop all</a>
-    </div>
-    
-    <div class="product-grid">
+<nav class="nav-links">
 
-  <a class="product-card" href="shop.html?category=smoke">
-    <div class="product-visual pv-1"></div>
-    <div class="eyebrow">01 · SMOKE</div>
-    <h3>Smoke & Sacred Botanicals</h3>
-    <p>Incense · Botanicals · Resins · Sacred Smoke</p>
-  </a>
+<a href="discover.html">
+Explore
+</a>
 
-  <a class="product-card" href="shop.html?category=earth">
-    <div class="product-visual pv-2"></div>
-    <div class="eyebrow">02 · EARTH</div>
-    <h3>Crystals & Earth</h3>
-    <p>Crystals · Minerals · Stones · Earth Objects</p>
-  </a>
+<a href="practice.html">
+Practice
+</a>
 
-  <a class="product-card" href="shop.html?category=divination">
-    <div class="product-visual pv-3"></div>
-    <div class="eyebrow">03 · DIVINATION</div>
-    <h3>Divination</h3>
-    <p>Tarot · Oracle · Pendulum · Runes</p>
-  </a>
+<a href="shop.html">
+Shop
+</a>
 
-  <a class="product-card" href="shop.html?category=ritual">
-    <div class="product-visual pv-4"></div>
-    <div class="eyebrow">04 · RITUAL</div>
-    <h3>Ritual & Altar</h3>
-    <p>Altar · Ritual Tools · Sacred Objects</p>
-  </a>
+<a href="learn.html">
+Learn
+</a>
+
+<a href="journal.html">
+Journal
+</a>
+
+<a href="about.html">
+The Society
+</a>
+
+</nav>
+
+
+<div class="nav-icons">
+
+<span>⌕</span>
+
+<a href="cart.html">
+
+Bag
+<span data-cart-count>0</span>
+
+</a>
 
 </div>
-  </div>
+
+
+<span class="mobile-menu">
+☰
+</span>
+
+</div>
+
+</header>
+
+
+<!-- ==================================================
+     MAIN
+================================================== -->
+
+<main>
+
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="home-hero">
+
+<div class="container hero-content">
+
+<div class="eyebrow">
+ONE ERA · THE SPIRITUAL SOCIETY
+</div>
+
+
+<h1>
+There is <em>more</em><br>
+than what we can see.
+</h1>
+
+
+<p class="hero-sub">
+A society for people who believe the visible world is only part of the story. Explore spiritual traditions, practices and objects with curiosity — and find what speaks to you.
+</p>
+
+
+<div class="hero-actions">
+
+<a
+  class="btn btn-rose"
+  href="discover.html"
+>
+Enter ONE ERA
+</a>
+
+
+<a
+  class="btn btn-outline-light"
+  href="shop.html"
+>
+Explore the shop
+</a>
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- ==================================================
+     MANIFESTO
+================================================== -->
+
+<section class="manifesto">
+
+<div class="container manifesto-grid">
+
+<div>
+
+<div class="eyebrow">
+Our point of view
+</div>
+
+
+<h2>
+Come curious.<br>
+<span>Stay open.</span>
+</h2>
+
+</div>
+
+
+<div class="manifesto-copy">
+
+<p>
+We don't ask you to believe everything. We invite you to look closer — at ancient traditions, modern practices, the natural world, and the parts of ourselves we cannot always explain.
+</p>
+
+
+<div class="manifesto-rule"></div>
+
+
+<div class="eyebrow">
+KNOWLEDGE · BELIEF · PRACTICE
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     PRACTICE PORTAL
+================================================== -->
+
+<section class="portal">
+
+<div class="container">
+
+<div class="portal-head">
+
+<div>
+
+<div class="eyebrow">
+Enter through a doorway
+</div>
+
+<h2>
+Find your practice.
+</h2>
+
+</div>
+
+
+<a
+  class="btn btn-outline-light"
+  href="practice.html"
+>
+View all practices
+</a>
+
+</div>
+
+
+<div class="portal-grid">
+
+
+<a
+  class="portal-card"
+  href="practice.html"
+>
+
+<div class="eyebrow">
+01 · OBJECT
+</div>
+
+<h3>
+Crystals
+</h3>
+
+<p>
+Minerals, symbolism, intention and the traditions around them.
+</p>
+
+</a>
+
+
+<a
+  class="portal-card"
+  href="practice.html"
+>
+
+<div class="eyebrow">
+02 · ENERGY
+</div>
+
+<h3>
+Reiki
+</h3>
+
+<p>
+Explore energy work, touch, presence and the practice of stillness.
+</p>
+
+</a>
+
+
+<a
+  class="portal-card"
+  href="practice.html"
+>
+
+<div class="eyebrow">
+03 · BODY
+</div>
+
+<h3>
+Chakras
+</h3>
+
+<p>
+A map used across modern spiritual practice to explore body and awareness.
+</p>
+
+</a>
+
+
+<a
+  class="portal-card"
+  href="practice.html"
+>
+
+<div class="eyebrow">
+04 · INTENTION
+</div>
+
+<h3>
+Manifestation
+</h3>
+
+<p>
+Turn desire into attention, reflection and deliberate action.
+</p>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     FEATURED COLLECTION
+================================================== -->
+
+<section class="featured">
+
+<div class="container">
+
+
+<div class="featured-head">
+
+<div>
+
+<div class="eyebrow">
+Objects for the journey
+</div>
+
+<h2>
+Chosen with intention.
+</h2>
+
+</div>
+
+
+<a
+  class="btn btn-dark"
+  href="shop.html"
+>
+Shop all
+</a>
+
+</div>
+
+
+<div class="product-grid">
+
+
+<a
+  class="product-card"
+  href="shop.html?category=smoke"
+>
+
+<div class="product-visual pv-1"></div>
+
+<div class="eyebrow">
+01 · SMOKE
+</div>
+
+<h3>
+Smoke & Sacred Botanicals
+</h3>
+
+<p>
+Incense · Botanicals · Resins · Sacred Smoke
+</p>
+
+</a>
+
+
+<a
+  class="product-card"
+  href="shop.html?category=earth"
+>
+
+<div class="product-visual pv-2"></div>
+
+<div class="eyebrow">
+02 · EARTH
+</div>
+
+<h3>
+Crystals & Earth
+</h3>
+
+<p>
+Crystals · Minerals · Stones · Earth Objects
+</p>
+
+</a>
+
+
+<a
+  class="product-card"
+  href="shop.html?category=divination"
+>
+
+<div class="product-visual pv-3"></div>
+
+<div class="eyebrow">
+03 · DIVINATION
+</div>
+
+<h3>
+Divination
+</h3>
+
+<p>
+Tarot · Oracle · Pendulum · Runes
+</p>
+
+</a>
+
+
+<a
+  class="product-card"
+  href="shop.html?category=ritual"
+>
+
+<div class="product-visual pv-4"></div>
+
+<div class="eyebrow">
+04 · RITUAL
+</div>
+
+<h3>
+Ritual & Altar
+</h3>
+
+<p>
+Altar · Ritual Tools · Sacred Objects
+</p>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     EDITORIAL
+================================================== -->
 
 <section class="editorial">
-  <div class="editorial-art"></div>
-  <div class="editorial-copy">
-    <div class="eyebrow">The ONE ERA approach</div>
-    <h2>Spiritual,<br><em>without the noise.</em></h2>
-    <p>We separate what is known, what is believed, and what is practiced. We respect the traditions we borrow from — while leaving room for personal experience, uncertainty and discovery.</p>
-    <div style="margin-top:30px"><a class="btn btn-rose" href="learn.html">Enter the library</a></div>
-  </div>
+
+
+<div class="editorial-art"></div>
+
+
+<div class="editorial-copy">
+
+<div class="eyebrow">
+The ONE ERA approach
+</div>
+
+
+<h2>
+Spiritual,<br>
+<em>without the noise.</em>
+</h2>
+
+
+<p>
+We separate what is known, what is believed, and what is practiced. We respect the traditions we borrow from — while leaving room for personal experience, uncertainty and discovery.
+</p>
+
+
+<div style="margin-top:30px">
+
+<a
+  class="btn btn-rose"
+  href="learn.html"
+>
+Enter the library
+</a>
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- ==================================================
+     JOURNAL
+================================================== -->
 
 <section class="journal">
-  <div class="container">
-    <div class="journal-head">
-      <div><div class="eyebrow">From the journal</div><h2>Read deeper.</h2></div>
-      <a class="btn" href="journal.html">All journal</a>
-    </div>
-    <div class="journal-grid">
-      <a class="j-card large" href="journal.html"><div class="eyebrow">RITUAL · 6 MIN READ</div><h3>What does it mean to create a sacred space?</h3><p>A room doesn't become sacred because of an object. It becomes sacred through attention.</p></a>
-      <a class="j-card two" href="journal.html"><div class="eyebrow">CRYSTALS · 5 MIN READ</div><h3>How people work with crystals</h3><p>Tradition, symbolism and personal ritual.</p></a>
-      <a class="j-card three" href="journal.html"><div class="eyebrow">PRACTICE · 7 MIN READ</div><h3>A beginner's guide to meditation</h3><p>Start with five quiet minutes.</p></a>
-    </div>
-  </div>
+
+<div class="container">
+
+
+<div class="journal-head">
+
+<div>
+
+<div class="eyebrow">
+From the journal
+</div>
+
+<h2>
+Read deeper.
+</h2>
+
+</div>
+
+
+<a
+  class="btn"
+  href="journal.html"
+>
+All journal
+</a>
+
+</div>
+
+
+<div class="journal-grid">
+
+
+<a
+  class="j-card large"
+  href="journal.html"
+>
+
+<div class="eyebrow">
+RITUAL · 6 MIN READ
+</div>
+
+<h3>
+What does it mean to create a sacred space?
+</h3>
+
+<p>
+A room doesn't become sacred because of an object. It becomes sacred through attention.
+</p>
+
+</a>
+
+
+<a
+  class="j-card two"
+  href="journal.html"
+>
+
+<div class="eyebrow">
+CRYSTALS · 5 MIN READ
+</div>
+
+<h3>
+How people work with crystals
+</h3>
+
+<p>
+Tradition, symbolism and personal ritual.
+</p>
+
+</a>
+
+
+<a
+  class="j-card three"
+  href="journal.html"
+>
+
+<div class="eyebrow">
+PRACTICE · 7 MIN READ
+</div>
+
+<h3>
+A beginner's guide to meditation
+</h3>
+
+<p>
+Start with five quiet minutes.
+</p>
+
+</a>
+
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- ==================================================
+     JOIN
+================================================== -->
 
 <section class="join">
-  <div class="container join-inner">
-    <div>
-      <div class="eyebrow">THE SOCIETY</div>
-      <h2>There is more to explore.</h2>
-    </div>
-    <div>
-      <p>Join the ONE ERA circle for new rituals, deeper reads, new objects and occasional things worth knowing.</p>
-      <a class="btn btn-dark" href="about.html">Discover the society</a>
-    </div>
-  </div>
+
+<div class="container join-inner">
+
+<div>
+
+<div class="eyebrow">
+THE SOCIETY
+</div>
+
+<h2>
+There is more to explore.
+</h2>
+
+</div>
+
+
+<div>
+
+<p>
+Join the ONE ERA circle for new rituals, deeper reads, new objects and occasional things worth knowing.
+</p>
+
+
+<a
+  class="btn btn-dark"
+  href="about.html"
+>
+Discover the society
+</a>
+
+</div>
+
+</div>
+
 </section>
+
+
 </main>
 
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
 <footer class="site-footer">
-  <div class="container"><div><strong>ONE ERA</strong><p>The Spiritual Society.</p></div><div class="footer-links"><a href="shop.html">Shop</a><a href="learn.html">Learn</a><a href="practice.html">Practice</a><a href="about.html">The Society</a></div></div>
+
+<div class="container">
+
+<div>
+
+<strong>
+ONE ERA
+</strong>
+
+<p>
+The Spiritual Society.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="shop.html">
+Shop
+</a>
+
+<a href="learn.html">
+Learn
+</a>
+
+<a href="practice.html">
+Practice
+</a>
+
+<a href="about.html">
+The Society
+</a>
+
+</div>
+
+</div>
+
 </footer>
+
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
