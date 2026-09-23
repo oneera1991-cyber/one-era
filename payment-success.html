@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>Payment Complete — ONE ERA</title>
+
+<link
+  rel="stylesheet"
+  href="styles.css"
+>
+
+<style>
+
+.payment-success{
+  min-height:65vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:80px 20px;
+}
+
+.success-card{
+  width:100%;
+  max-width:620px;
+  text-align:center;
+  border-top:1px solid var(--line);
+  padding-top:40px;
+}
+
+.success-mark{
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+.success-card h1{
+  font-family:Georgia,serif;
+  font-size:48px;
+  margin:0 0 20px;
+}
+
+.success-card p{
+  color:#665f57;
+  line-height:1.8;
+}
+
+.order-box{
+  margin:35px 0;
+  padding:22px;
+  background:#f2eadf;
+  text-align:left;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.order-box strong{
+  display:block;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.6;
+  margin-bottom:5px;
+}
+
+.home-button{
+  display:inline-block;
+  padding:15px 25px;
+  background:#11100f;
+  color:#fff;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.home-button:hover{
+  opacity:.85;
+}
+
+.test-note{
+  margin-top:25px;
+  font-size:10px;
+  color:#8a8178;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+<div class="container nav">
+
+<a
+  class="wordmark"
+  href="index.html"
+>
+ONE ERA
+</a>
+
+<nav class="nav-links">
+
+<a href="discover.html">
+Explore
+</a>
+
+<a href="practice.html">
+Practice
+</a>
+
+<a href="shop.html">
+Shop
+</a>
+
+<a href="learn.html">
+Learn
+</a>
+
+<a href="journal.html">
+Journal
+</a>
+
+<a href="about.html">
+The Society
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+<section class="payment-success">
+
+<div class="success-card">
+
+<div class="success-mark">
+✓
+</div>
+
+<div class="eyebrow">
+ONE ERA · PAYMENT
+</div>
+
+<h1>
+Payment Complete.
+</h1>
+
+<p>
+
+Thank you for your order.
+
+Your payment has been received
+in Stripe Test Mode.
+
+</p>
+
+
+<div class="order-box">
+
+<strong>
+Stripe Checkout Session
+</strong>
+
+<div id="sessionId">
+Loading…
+</div>
+
+</div>
+
+
+<a
+  href="shop.html"
+  class="home-button"
+>
+Continue Shopping
+</a>
+
+
+<div class="test-note">
+
+TEST MODE — No real payment was taken.
+
+</div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="wordmark">
+ONE ERA
+</div>
+
+<p>
+THE SPIRITUAL SOCIETY
+</p>
+
+</div>
+
+</footer>
+
+
+<script>
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const sessionId =
+  params.get(
+    "session_id"
+  );
+
+
+const sessionElement =
+  document.getElementById(
+    "sessionId"
+  );
+
+
+if(sessionId){
+
+  sessionElement.textContent =
+    sessionId;
+
+}
+else{
+
+  sessionElement.textContent =
+    "No session ID found.";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
