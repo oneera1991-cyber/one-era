@@ -43,8 +43,7 @@ const ONE_ERA_CURRENCIES = {
 };
 
 
-const ONE_ERA_CURRENCY_KEY =
-  "oneEraCurrency";
+const ONE_ERA_CURRENCY_KEY = "oneEraCurrency";
 
 
 function getSelectedCurrency() {
@@ -58,13 +57,10 @@ function getSelectedCurrency() {
     saved &&
     ONE_ERA_CURRENCIES[saved]
   ) {
-
     return ONE_ERA_CURRENCIES[saved];
-
   }
 
   return ONE_ERA_CURRENCIES.THB;
-
 }
 
 
@@ -73,9 +69,7 @@ function setCurrency(currencyCode) {
   if (
     !ONE_ERA_CURRENCIES[currencyCode]
   ) {
-
     return;
-
   }
 
   localStorage.setItem(
@@ -124,6 +118,10 @@ function formatONEERAPrice(amountTHB) {
 }
 
 
+/* =========================================================
+   CURRENCY SELECTOR
+   ========================================================= */
+
 function createCurrencySelector() {
 
   const currency =
@@ -149,17 +147,13 @@ function createCurrencySelector() {
 
 
   return `
-
     <select
       class="one-era-currency"
       aria-label="Select currency"
       onchange="setCurrency(this.value)"
     >
-
       ${options}
-
     </select>
-
   `;
 
 }
@@ -195,10 +189,10 @@ function initializeCurrencySelector() {
 
 /* =========================================================
    ONE ERA — SITE DATA
-   Central configuration for product categories
    ========================================================= */
 
 const ONE_ERA_CATEGORIES = {
+
   smoke: {
     name: "Smoke & Sacred Botanicals",
     eyebrow: "01 · SMOKE",
@@ -252,31 +246,33 @@ const ONE_ERA_CATEGORIES = {
       "offering bowl"
     ]
   }
+
 };
 
 
 /* =========================================================
-   ONE ERA — SITE INITIALIZATION
+   SITE INITIALIZATION
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
 
-  initializeCurrencySelector();
+    initializeCurrencySelector();
 
-  updateCartCount();
+    updateCartCount();
 
-  /*
-    Only run the shop loader when the page
-    actually contains the product grid.
-  */
+    const productGrid =
+      document.getElementById(
+        "productGrid"
+      );
 
-  const productGrid = document.getElementById("productGrid");
+    if (productGrid) {
+      loadShopProducts();
+    }
 
-  if (productGrid) {
-    loadShopProducts();
   }
-
-});
+);
 
 
 /* =========================================================
@@ -286,16 +282,22 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateCartCount() {
 
   const elements =
-    document.querySelectorAll("[data-cart-count]");
+    document.querySelectorAll(
+      "[data-cart-count]"
+    );
 
-  if (!elements.length) return;
+  if (!elements.length) {
+    return;
+  }
 
   let cart = [];
 
   try {
 
     const storedCart =
-      localStorage.getItem("oneEraCart");
+      localStorage.getItem(
+        "oneEraCart"
+      );
 
     if (storedCart) {
       cart = JSON.parse(storedCart);
@@ -316,22 +318,33 @@ function updateCartCount() {
     cart = [];
   }
 
-  const count = cart.reduce(function (total, item) {
+  const count =
+    cart.reduce(
+      function(total, item) {
 
-    return total + (
-      Number(item.quantity) > 0
-        ? Number(item.quantity)
-        : 1
+        const quantity =
+          Number(item.quantity);
+
+        return total +
+          (
+            quantity > 0
+              ? quantity
+              : 1
+          );
+
+      },
+      0
     );
 
-  }, 0);
 
+  elements.forEach(
+    function(element) {
 
-  elements.forEach(function (element) {
+      element.textContent =
+        count;
 
-    element.textContent = count;
-
-  });
+    }
+  );
 
 }
 
@@ -343,7 +356,9 @@ function updateCartCount() {
 function getCategoryFromURL() {
 
   const params =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+      window.location.search
+    );
 
   const category =
     params.get("category");
@@ -381,9 +396,12 @@ function getCurrentCategory() {
 async function loadProducts() {
 
   const response =
-    await fetch("products.json", {
-      cache: "no-store"
-    });
+    await fetch(
+      "products.json",
+      {
+        cache: "no-store"
+      }
+    );
 
   if (!response.ok) {
 
@@ -398,21 +416,10 @@ async function loadProducts() {
     await response.json();
 
 
-  /*
-    Support:
-
-    {
-      "products": [...]
-    }
-
-    and:
-
-    [...]
-  */
-
   if (Array.isArray(data)) {
     return data;
   }
+
 
   if (
     data &&
@@ -421,8 +428,28 @@ async function loadProducts() {
     return data.products;
   }
 
+
   throw new Error(
     "Invalid products.json format."
+  );
+
+}
+
+
+/* =========================================================
+   LIVE PRODUCT FILTER
+   ========================================================= */
+
+function isLiveProduct(product) {
+
+  if (!product) {
+    return false;
+  }
+
+  return (
+    product.available === true &&
+    product.status === "active" &&
+    product.testMode !== true
   );
 
 }
@@ -435,10 +462,14 @@ async function loadProducts() {
 async function loadShopProducts() {
 
   const grid =
-    document.getElementById("productGrid");
+    document.getElementById(
+      "productGrid"
+    );
 
   const status =
-    document.getElementById("shopStatus");
+    document.getElementById(
+      "shopStatus"
+    );
 
 
   if (!grid) {
@@ -448,10 +479,6 @@ async function loadShopProducts() {
 
   try {
 
-    /*
-      Show loading state
-    */
-
     grid.innerHTML = `
       <div class="empty-state">
         Loading ONE ERA objects...
@@ -459,81 +486,58 @@ async function loadShopProducts() {
     `;
 
 
-    /*
-      Load catalogue
-    */
-
     let products =
       await loadProducts();
 
 
     /*
-      Only show products that are:
+      LIVE CATALOGUE ONLY
 
+      Products must be:
       available = true
-
-      OR
-
-      testMode = true
+      status = active
+      testMode = false
     */
 
     products =
-      products.filter(function (product) {
+      products.filter(
+        isLiveProduct
+      );
 
-        return (
-          product &&
-          (
-            product.available === true ||
-            product.testMode === true
-          )
-        );
-
-      });
-
-
-    /*
-      Read category from URL
-    */
 
     const category =
       getCategoryFromURL();
 
 
-    /*
-      Filter category if one exists
-    */
-
     if (category) {
 
       products =
-        products.filter(function (product) {
+        products.filter(
+          function(product) {
 
-          if (!product.category) {
-            return false;
-          }
+            if (!product.category) {
+              return false;
+            }
 
-          return (
-            String(product.category)
+            return (
+              String(
+                product.category
+              )
               .toLowerCase()
               .trim()
-            === category
-          );
+              === category
+            );
 
-        });
+          }
+        );
 
     }
 
 
-    /*
-      Update shop heading when category exists
-    */
+    updateShopCategoryHeading(
+      category
+    );
 
-    updateShopCategoryHeading(category);
-
-
-    /*
-      No products
-    */
 
     if (!products.length) {
 
@@ -549,16 +553,18 @@ async function loadShopProducts() {
     }
 
 
-    /*
-      Render products
-    */
-
     grid.innerHTML =
-      products.map(function (product) {
+      products
+        .map(
+          function(product) {
 
-        return createProductCard(product);
+            return createProductCard(
+              product
+            );
 
-      }).join("");
+          }
+        )
+        .join("");
 
 
   } catch (error) {
@@ -583,7 +589,9 @@ async function loadShopProducts() {
 
           <br><br>
 
-          ${escapeHTML(error.message)}
+          ${escapeHTML(
+            error.message
+          )}
 
           <br><br>
 
@@ -631,9 +639,9 @@ function createProductCard(product) {
     "";
 
 
-  /*
-    Product image
-  */
+  /* -------------------------------------------------------
+     IMAGE
+     ------------------------------------------------------- */
 
   let imageHTML = `
     <div class="product-placeholder">
@@ -655,16 +663,20 @@ function createProductCard(product) {
     let imageURL = "";
 
 
-    if (typeof firstImage === "string") {
+    if (
+      typeof firstImage === "string"
+    ) {
 
-      imageURL = firstImage;
+      imageURL =
+        firstImage;
 
     } else if (
       firstImage &&
       firstImage.url
     ) {
 
-      imageURL = firstImage.url;
+      imageURL =
+        firstImage.url;
 
     }
 
@@ -683,8 +695,12 @@ function createProductCard(product) {
 
       imageHTML = `
         <img
-          src="${escapeAttribute(imageURL)}"
-          alt="${escapeAttribute(alt)}"
+          src="${escapeAttribute(
+            imageURL
+          )}"
+          alt="${escapeAttribute(
+            alt
+          )}"
           loading="lazy"
         >
       `;
@@ -694,50 +710,36 @@ function createProductCard(product) {
   }
 
 
-  /*
-    Price
-  */
+  /* -------------------------------------------------------
+     PRICE
+     ------------------------------------------------------- */
 
-  let price =
-    "TEST PRICE";
-
-
-  if (
-    product.price &&
-    product.price.display
-  ) {
-
-    price =
-      product.price.display;
-
-  }
+  const amountTHB =
+    Number(
+      product.price_thb ||
+      (
+        product.price &&
+        product.price.amount
+      ) ||
+      0
+    );
 
 
-  /*
-    Test product label
-  */
-
-  let testStatus = "";
-
-
-  if (product.testMode === true) {
-
-    testStatus = `
-      <div class="product-status">
-        TEST PRODUCT
-      </div>
-    `;
-
-  }
+  const price =
+    formatONEERAPrice(
+      amountTHB
+    );
 
 
-  /*
-    Product URL
-  */
+  /* -------------------------------------------------------
+     PRODUCT URL
+     ------------------------------------------------------- */
 
   const productURL =
     "product.html?product=" +
-    encodeURIComponent(slug);
+    encodeURIComponent(
+      slug
+    );
 
 
   return `
@@ -746,7 +748,9 @@ function createProductCard(product) {
 
       <a
         href="${productURL}"
-        aria-label="View ${escapeAttribute(name)}"
+        aria-label="View ${escapeAttribute(
+          name
+        )}"
       >
 
         <div class="product-image">
@@ -762,33 +766,34 @@ function createProductCard(product) {
 
         <div class="product-eyebrow">
 
-          ${escapeHTML(collection)}
+          ${escapeHTML(
+            collection
+          )}
 
         </div>
 
 
         <h2>
-
-          ${escapeHTML(name)}
-
+          ${escapeHTML(
+            name
+          )}
         </h2>
 
 
         <p>
-
-          ${escapeHTML(description)}
-
+          ${escapeHTML(
+            description
+          )}
         </p>
 
 
         <div class="product-price">
 
-          ${escapeHTML(price)}
+          ${escapeHTML(
+            price
+          )}
 
         </div>
-
-
-        ${testStatus}
 
 
         <a
@@ -813,7 +818,9 @@ function createProductCard(product) {
    SHOP CATEGORY HEADING
    ========================================================= */
 
-function updateShopCategoryHeading(category) {
+function updateShopCategoryHeading(
+  category
+) {
 
   if (!category) {
     return;
@@ -821,7 +828,9 @@ function updateShopCategoryHeading(category) {
 
 
   const categoryData =
-    ONE_ERA_CATEGORIES[category];
+    ONE_ERA_CATEGORIES[
+      category
+    ];
 
 
   if (!categoryData) {
@@ -830,7 +839,9 @@ function updateShopCategoryHeading(category) {
 
 
   const intro =
-    document.querySelector(".shop-intro");
+    document.querySelector(
+      ".shop-intro"
+    );
 
 
   if (!intro) {
@@ -839,15 +850,21 @@ function updateShopCategoryHeading(category) {
 
 
   const eyebrow =
-    intro.querySelector(".eyebrow");
+    intro.querySelector(
+      ".eyebrow"
+    );
 
 
   const heading =
-    intro.querySelector("h1");
+    intro.querySelector(
+      "h1"
+    );
 
 
   const description =
-    intro.querySelector("p");
+    intro.querySelector(
+      "p"
+    );
 
 
   if (eyebrow) {
@@ -862,7 +879,10 @@ function updateShopCategoryHeading(category) {
   if (heading) {
 
     heading.innerHTML =
-      categoryData.name.replace(
+      escapeHTML(
+        categoryData.name
+      )
+      .replace(
         " & ",
         " &<br>"
       );
@@ -881,30 +901,53 @@ function updateShopCategoryHeading(category) {
 
 
 /* =========================================================
-   HTML SAFETY HELPERS
+   HTML SAFETY
    ========================================================= */
 
-function escapeHTML(value) {
+function escapeHTML(
+  value
+) {
 
-  return String(value || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+  return String(
+    value || ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 
-function escapeAttribute(value) {
+function escapeAttribute(
+  value
+) {
 
-  return escapeHTML(value);
+  return escapeHTML(
+    value
+  );
 
 }
 
 
 /* =========================================================
-   PUBLIC HELPERS
+   PUBLIC API
    ========================================================= */
 
 window.ONE_ERA = {
