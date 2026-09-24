@@ -320,7 +320,7 @@
 
 </footer>
 
-
+<script src="script.js"></script>
 
 <script>
 
@@ -713,9 +713,11 @@ async function loadProduct(){
     */
 
     const priceTHB =
-  currentProduct.price_thb ||
-  currentProduct.price?.amount ||
-  0;
+  Number(
+    currentProduct.price_thb ??
+    currentProduct.price?.amount ??
+    0
+  );
 
 const priceDisplay =
   window.ONE_ERA.formatONEERAPrice(
@@ -782,11 +784,6 @@ const priceDisplay =
         <div class="pd-copy">
 
 
-          <div class="test-badge">
-            TEST MODE
-          </div>
-
-
           <div class="eyebrow">
 
             ${
@@ -849,7 +846,7 @@ const priceDisplay =
               class="add-success"
             >
 
-              ✓ Added to your test bag.
+              ✓ Added to your bag.
 
               <br><br>
 
@@ -863,24 +860,6 @@ const priceDisplay =
           </div>
 
 
-          <div class="notice">
-
-            <strong>
-              TEST MODE
-            </strong>
-
-            <br>
-
-            This product is connected to the
-            ONE ERA product system for testing.
-
-            <br>
-
-            No real payment,
-            customer order,
-            or CJ order will be created.
-
-          </div>
 
 
           <div class="pd-meta">
@@ -1158,9 +1137,6 @@ loadProduct();
 
 
 </script>
-
-
-<script src="script.js"></script>
 
 
 </body>
