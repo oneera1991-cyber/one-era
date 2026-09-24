@@ -1,139 +1,1393 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
 <title>Bag — ONE ERA</title>
-<link rel="stylesheet" href="styles.css">
+
+<link
+  rel="stylesheet"
+  href="styles.css"
+>
+
 <style>
-.cart-section{padding:70px 0}.cart-layout{display:grid;grid-template-columns:1fr 340px;gap:60px}.cart-items{border-top:1px solid var(--line)}
-.cart-item{display:grid;grid-template-columns:110px 1fr auto;gap:25px;padding:25px 0;border-bottom:1px solid var(--line)}
-.cart-image{width:110px;aspect-ratio:1;background:linear-gradient(145deg,#d7c8bf,#1c2c28);display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px;letter-spacing:.12em}
-.cart-name{font-size:22px;margin-bottom:7px}.cart-meta{font-size:11px;color:#777;line-height:1.7}.cart-price{font-size:14px;margin-top:10px}
-.quantity{display:flex;align-items:center;gap:12px;margin-top:18px}.quantity button{width:28px;height:28px;border:1px solid var(--line);background:transparent;cursor:pointer}.quantity span{min-width:20px;text-align:center}
-.remove{margin-top:12px;border:0;background:none;padding:0;font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;opacity:.55}
-.cart-total{position:sticky;top:30px;border-top:1px solid var(--line);padding-top:25px}.total-row{display:flex;justify-content:space-between;padding:10px 0;font-size:13px}
-.total-row.grand{margin-top:15px;padding-top:20px;border-top:1px solid var(--line);font-size:18px}.checkout-btn{display:block;width:100%;margin-top:25px;padding:17px;background:#11100f;color:#fff;text-align:center;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
-.empty-cart{padding:70px 0;border-top:1px solid var(--line);text-align:center}.empty-cart h2{font-size:32px;margin-bottom:15px}.empty-cart p{color:#777;font-size:13px;line-height:1.8}
-.continue-shopping{display:inline-block;margin-top:25px;padding:14px 22px;border:1px solid #11100f;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
-.currency-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:25px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}.currency-bar select{padding:9px 30px 9px 10px;border:1px solid var(--line);background:#fff;font:inherit}
-.currency-note{margin-top:14px;font-size:10px;line-height:1.6;color:#777}
-@media(max-width:800px){.cart-layout{grid-template-columns:1fr;gap:40px}.cart-total{position:static}}@media(max-width:550px){.cart-item{grid-template-columns:80px 1fr}.cart-image{width:80px}.cart-item-total{grid-column:2}}
+
+.cart-section{
+  padding:70px 0;
+}
+
+.cart-layout{
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:60px;
+}
+
+.cart-items{
+  border-top:1px solid var(--line);
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:110px 1fr auto;
+  gap:25px;
+  padding:25px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.cart-image{
+  width:110px;
+  aspect-ratio:1;
+
+  background:
+    linear-gradient(
+      145deg,
+      #d7c8bf,
+      #1c2c28
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+  font-size:8px;
+  letter-spacing:.12em;
+}
+
+.cart-name{
+  font-size:22px;
+  margin-bottom:7px;
+}
+
+.cart-meta{
+  font-size:11px;
+  color:#777;
+  line-height:1.7;
+}
+
+.cart-price{
+  font-size:14px;
+  margin-top:10px;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+}
+
+.quantity button{
+  width:28px;
+  height:28px;
+
+  border:1px solid var(--line);
+  background:transparent;
+
+  cursor:pointer;
+}
+
+.quantity span{
+  min-width:20px;
+  text-align:center;
+}
+
+.remove{
+  margin-top:12px;
+
+  border:0;
+  background:none;
+
+  padding:0;
+
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+  opacity:.55;
+}
+
+.cart-item-total{
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.cart-total{
+  position:sticky;
+  top:30px;
+
+  border-top:1px solid var(--line);
+
+  padding-top:25px;
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+
+  padding:10px 0;
+
+  font-size:13px;
+}
+
+.total-row.grand{
+  margin-top:15px;
+
+  padding-top:20px;
+
+  border-top:1px solid var(--line);
+
+  font-size:18px;
+}
+
+.checkout-btn{
+  display:block;
+
+  width:100%;
+
+  margin-top:25px;
+
+  padding:17px;
+
+  background:#11100f;
+  color:#fff;
+
+  text-align:center;
+
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.empty-cart{
+  padding:70px 0;
+
+  border-top:1px solid var(--line);
+
+  text-align:center;
+}
+
+.empty-cart h2{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.empty-cart p{
+  color:#777;
+  font-size:13px;
+  line-height:1.8;
+}
+
+.continue-shopping{
+  display:inline-block;
+
+  margin-top:25px;
+
+  padding:14px 22px;
+
+  border:1px solid #11100f;
+
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.currency-bar{
+  display:flex;
+
+  justify-content:flex-end;
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:25px;
+
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.currency-bar select{
+  padding:9px 30px 9px 10px;
+
+  border:1px solid var(--line);
+
+  background:#fff;
+
+  font:inherit;
+
+  cursor:pointer;
+}
+
+.currency-note{
+  margin-top:14px;
+
+  font-size:10px;
+  line-height:1.6;
+
+  color:#777;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:800px){
+
+  .cart-layout{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .cart-total{
+    position:static;
+  }
+
+}
+
+@media(max-width:550px){
+
+  .cart-item{
+    grid-template-columns:80px 1fr;
+  }
+
+  .cart-image{
+    width:80px;
+  }
+
+  .cart-item-total{
+    grid-column:2;
+  }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
-<header class="site-header"><div class="container nav">
-<a class="wordmark" href="index.html">ONE ERA</a>
-<nav class="nav-links">
-<a href="discover.html">Explore</a><a href="practice.html">Practice</a><a class="active-nav" href="shop.html">Shop</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a><a href="about.html">The Society</a>
-</nav>
-<div class="nav-icons"><span>⌕</span><a href="cart.html">Bag <span data-cart-count>0</span></a></div>
-<span class="mobile-menu">☰</span>
-</div></header>
 
-<section class="page-hero"><div class="container"><div class="breadcrumb">Home / Bag</div><h1>Your ritual bag.</h1></div></section>
 
-<section class="cart-section"><div class="container">
-<div class="currency-bar">
-<label for="cartCurrency">Currency</label>
-<select id="cartCurrency">
-<option value="THB">THB — ฿</option>
-<option value="USD">USD — $</option>
-<option value="GBP">GBP — £</option>
-<option value="HKD">HKD — HK$</option>
-</select>
-</div>
-<div id="cartRoot">Loading…</div>
-</div></section>
+<header class="site-header">
 
-<footer class="footer"><div class="container"><div class="footer-grid">
-<div><div class="wordmark">ONE ERA</div><p style="margin-top:15px">THE SPIRITUAL SOCIETY</p><p>Natural, but supernatural.</p></div>
-<div><h4>Explore</h4><a href="discover.html">Discover</a><a href="practice.html">Practice</a><a href="learn.html">Learn</a><a href="journal.html">Journal</a></div>
-<div><h4>Shop</h4><a href="shop.html">All Objects</a><a href="collections.html">Collections</a><a href="shop.html">Crystals</a><a href="shop.html">Incense</a></div>
-<div><h4>Society</h4><a href="about.html">About ONE ERA</a><a href="about.html">Our Philosophy</a><a href="checkout.html">Shipping</a><a href="about.html">Contact</a></div>
-</div><div class="footer-bottom"><span>© 2026 ONE ERA</span><span>UK · USD · THB · HKD</span></div></div></footer>
+  <div class="container nav">
+
+    <a
+      class="wordmark"
+      href="index.html"
+    >
+      ONE ERA
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="discover.html">
+        Explore
+      </a>
+
+      <a href="practice.html">
+        Practice
+      </a>
+
+      <a
+        class="active-nav"
+        href="shop.html"
+      >
+        Shop
+      </a>
+
+      <a href="learn.html">
+        Learn
+      </a>
+
+      <a href="journal.html">
+        Journal
+      </a>
+
+      <a href="about.html">
+        The Society
+      </a>
+
+    </nav>
+
+
+    <div class="nav-icons">
+
+      <span>⌕</span>
+
+      <a href="cart.html">
+
+        Bag
+        <span data-cart-count>0</span>
+
+      </a>
+
+    </div>
+
+
+    <span class="mobile-menu">
+      ☰
+    </span>
+
+  </div>
+
+</header>
+
+
+
+<section class="page-hero">
+
+  <div class="container">
+
+    <div class="breadcrumb">
+      Home / Bag
+    </div>
+
+    <h1>
+      Your ritual bag.
+    </h1>
+
+  </div>
+
+</section>
+
+
+
+<section class="cart-section">
+
+  <div class="container">
+
+
+    <div class="currency-bar">
+
+      <label for="cartCurrency">
+        Currency
+      </label>
+
+      <select id="cartCurrency">
+
+        <option value="THB">
+          THB — ฿
+        </option>
+
+        <option value="USD">
+          USD — $
+        </option>
+
+        <option value="GBP">
+          GBP — £
+        </option>
+
+        <option value="HKD">
+          HKD — HK$
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div id="cartRoot">
+
+      Loading…
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+
+      <div>
+
+        <div class="wordmark">
+          ONE ERA
+        </div>
+
+        <p style="margin-top:15px">
+          THE SPIRITUAL SOCIETY
+        </p>
+
+        <p>
+          Natural, but supernatural.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Explore
+        </h4>
+
+        <a href="discover.html">
+          Discover
+        </a>
+
+        <a href="practice.html">
+          Practice
+        </a>
+
+        <a href="learn.html">
+          Learn
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Shop
+        </h4>
+
+        <a href="shop.html">
+          All Objects
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="shop.html">
+          Crystals
+        </a>
+
+        <a href="shop.html">
+          Incense
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Society
+        </h4>
+
+        <a href="about.html">
+          About ONE ERA
+        </a>
+
+        <a href="about.html">
+          Our Philosophy
+        </a>
+
+        <a href="checkout.html">
+          Shipping
+        </a>
+
+        <a href="about.html">
+          Contact
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 ONE ERA
+      </span>
+
+      <span>
+        UK · USD · THB · HKD
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
 
 <script>
-const CART_KEY="oneEraCart";
-const CURRENCY_KEY="oneEraCurrency";
 
-const CURRENCY={
-THB:{code:"THB",locale:"th-TH",rate:1,decimals:0},
-USD:{code:"USD",locale:"en-US",rate:.029,decimals:2},
-GBP:{code:"GBP",locale:"en-GB",rate:.021,decimals:2},
-HKD:{code:"HKD",locale:"en-HK",rate:.227,decimals:2}
+/* =========================================================
+   ONE ERA — CART
+   ========================================================= */
+
+const CART_KEY =
+  "oneEraCart";
+
+const CURRENCY_KEY =
+  "oneEraCurrency";
+
+
+/* =========================================================
+   CURRENCY
+   ========================================================= */
+
+const CURRENCY = {
+
+  THB:{
+    code:"THB",
+    locale:"th-TH",
+    rate:1,
+    decimals:0
+  },
+
+  USD:{
+    code:"USD",
+    locale:"en-US",
+    rate:0.029,
+    decimals:2
+  },
+
+  GBP:{
+    code:"GBP",
+    locale:"en-GB",
+    rate:0.021,
+    decimals:2
+  },
+
+  HKD:{
+    code:"HKD",
+    locale:"en-HK",
+    rate:0.227,
+    decimals:2
+  }
+
 };
 
-let products=[];
+
+let products = [];
+
+
+/* =========================================================
+   CART STORAGE
+   ========================================================= */
 
 function getCart(){
-try{const x=JSON.parse(localStorage.getItem(CART_KEY)||"[]");return Array.isArray(x)?x:[]}
-catch(e){return[]}
-}
-function saveCart(x){localStorage.setItem(CART_KEY,JSON.stringify(x))}
-function currency(){const x=localStorage.getItem(CURRENCY_KEY);return CURRENCY[x]?x:"THB"}
-function money(thb){
-const c=CURRENCY[currency()];
-return new Intl.NumberFormat(c.locale,{style:"currency",currency:c.code,minimumFractionDigits:c.decimals,maximumFractionDigits:c.decimals}).format(Number(thb||0)*c.rate)
-}
-function productFor(item){
-return products.find(p=>p.id===item.productId||p.id===item.id||p.slug===item.slug)||null
-}
-function priceTHB(item){
-const p=productFor(item);
-if(p&&Number(p.price_thb)>0)return Number(p.price_thb);
-if(p&&p.price&&p.price.currency==="THB"&&Number(p.price.amount)>0)return Number(p.price.amount);
-if(Number(item.price_thb)>0)return Number(item.price_thb);
-if(item.price&&(!item.price.currency||item.price.currency==="THB")&&Number(item.price.amount)>0)return Number(item.price.amount);
-return 0
-}
-function count(cart){return cart.reduce((n,x)=>n+Number(x.quantity||0),0)}
-function updateCount(){document.querySelectorAll("[data-cart-count]").forEach(e=>e.textContent=count(getCart()))}
 
-function changeQuantity(i,d){
-const c=getCart();if(!c[i])return;
-c[i].quantity=Number(c[i].quantity||1)+d;
-if(c[i].quantity<=0)c.splice(i,1);
-saveCart(c);render()
-}
-function removeItem(i){
-const c=getCart();if(!c[i])return;c.splice(i,1);saveCart(c);render()
-}
-window.changeQuantity=changeQuantity;window.removeItem=removeItem;
+  try{
 
-function esc(x){return String(x).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+    const stored =
+      localStorage.getItem(
+        CART_KEY
+      );
 
-function render(){
-const root=document.getElementById("cartRoot"),cart=getCart();
-updateCount();
-document.getElementById("cartCurrency").value=currency();
+    if(!stored){
+      return [];
+    }
 
-if(!cart.length){
-root.innerHTML='<div class="empty-cart"><h2>Your bag is empty.</h2><p>There is nothing here yet.<br>Explore the collection and find something that belongs in your ritual.</p><a class="continue-shopping" href="shop.html">Continue shopping</a></div>';
-return
+    const cart =
+      JSON.parse(stored);
+
+    return Array.isArray(cart)
+      ? cart
+      : [];
+
+  }
+
+  catch(error){
+
+    console.error(
+      "ONE ERA cart read error:",
+      error
+    );
+
+    return [];
+
+  }
+
 }
 
-let items="",subtotal=0;
-cart.forEach((item,i)=>{
-const q=Number(item.quantity||1),unit=priceTHB(item),line=unit*q;subtotal+=line;
-items+=`<div class="cart-item"><div class="cart-image">ONE ERA</div><div><div class="cart-name">${esc(item.name||"ONE ERA Object")}</div><div class="cart-meta">ONE ERA</div><div class="cart-price">${money(unit)}</div><div class="quantity"><button type="button" onclick="changeQuantity(${i},-1)">−</button><span>${q}</span><button type="button" onclick="changeQuantity(${i},1)">+</button></div><button class="remove" type="button" onclick="removeItem(${i})">Remove</button></div><div class="cart-item-total">${money(line)}</div></div>`
-});
 
-root.innerHTML=`<div class="cart-layout"><div><div class="cart-items">${items}</div></div><div class="cart-total"><div class="eyebrow">SUMMARY</div><div class="total-row"><span>Items</span><span>${count(cart)}</span></div><div class="total-row"><span>Subtotal</span><span>${money(subtotal)}</span></div><div class="total-row"><span>Shipping</span><span>Calculated at checkout</span></div><div class="total-row grand"><span>Total</span><strong>${money(subtotal)}</strong></div><div class="currency-note">Prices are displayed in the selected currency. Shipping will be calculated at checkout.</div><a class="checkout-btn" href="checkout.html">Proceed to checkout</a></div></div>`
+function saveCart(cart){
+
+  localStorage.setItem(
+    CART_KEY,
+    JSON.stringify(cart)
+  );
+
 }
 
-document.getElementById("cartCurrency").addEventListener("change",e=>{localStorage.setItem(CURRENCY_KEY,e.target.value);render()});
 
-async function start(){
-try{
-const r=await fetch("products.json",{cache:"no-store"});
-const d=await r.json();
-products=Array.isArray(d)?d:(Array.isArray(d.products)?d.products:[]);
-}catch(e){products=[]}
-render()
+/* =========================================================
+   CURRENCY
+   ========================================================= */
+
+function getCurrencyCode(){
+
+  const saved =
+    localStorage.getItem(
+      CURRENCY_KEY
+    );
+
+  if(
+    saved &&
+    CURRENCY[saved]
+  ){
+
+    return saved;
+
+  }
+
+  return "THB";
+
 }
-start();
+
+
+function getCurrency(){
+
+  return CURRENCY[
+    getCurrencyCode()
+  ];
+
+}
+
+
+function formatPrice(amountTHB){
+
+  const currency =
+    getCurrency();
+
+  const converted =
+    Number(amountTHB || 0) *
+    currency.rate;
+
+  return new Intl.NumberFormat(
+    currency.locale,
+    {
+      style:"currency",
+      currency:currency.code,
+
+      minimumFractionDigits:
+        currency.decimals,
+
+      maximumFractionDigits:
+        currency.decimals
+    }
+  ).format(converted);
+
+}
+
+
+/* =========================================================
+   PRODUCT LOOKUP
+   ========================================================= */
+
+function getProductForCartItem(item){
+
+  return products.find(
+    function(product){
+
+      return (
+        product.id === item.productId ||
+        product.id === item.id ||
+        product.slug === item.slug
+      );
+
+    }
+  ) || null;
+
+}
+
+
+/* =========================================================
+   PRODUCT PRICE
+   ========================================================= */
+
+function getPriceTHB(item){
+
+  const product =
+    getProductForCartItem(item);
+
+
+  /*
+    PRODUCTS.JSON IS THE SOURCE OF TRUTH
+  */
+
+  if(product){
+
+    if(
+      typeof product.price_thb === "number"
+    ){
+
+      return product.price_thb;
+
+    }
+
+
+    if(
+      product.price &&
+      product.price.currency === "THB" &&
+      Number.isFinite(
+        Number(product.price.amount)
+      )
+    ){
+
+      return Number(
+        product.price.amount
+      );
+
+    }
+
+  }
+
+
+  /*
+    Backward compatibility
+    for old cart items
+  */
+
+  if(
+    Number.isFinite(
+      Number(item.price_thb)
+    )
+  ){
+
+    return Number(
+      item.price_thb
+    );
+
+  }
+
+
+  if(
+    item.price &&
+    (
+      !item.price.currency ||
+      item.price.currency === "THB"
+    )
+  ){
+
+    return Number(
+      item.price.amount || 0
+    );
+
+  }
+
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   CART COUNT
+   ========================================================= */
+
+function getCartCount(cart){
+
+  return cart.reduce(
+    function(total,item){
+
+      const quantity =
+        Number(item.quantity);
+
+      return total +
+        (
+          quantity > 0
+            ? quantity
+            : 0
+        );
+
+    },
+    0
+  );
+
+}
+
+
+function updateCartCount(){
+
+  const cart =
+    getCart();
+
+  const count =
+    getCartCount(cart);
+
+  document
+    .querySelectorAll(
+      "[data-cart-count]"
+    )
+    .forEach(
+      function(element){
+
+        element.textContent =
+          count;
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   CHANGE QUANTITY
+   ========================================================= */
+
+function changeQuantity(
+  index,
+  difference
+){
+
+  const cart =
+    getCart();
+
+
+  if(!cart[index]){
+    return;
+  }
+
+
+  const current =
+    Number(
+      cart[index].quantity || 1
+    );
+
+
+  const next =
+    current + difference;
+
+
+  if(next <= 0){
+
+    cart.splice(
+      index,
+      1
+    );
+
+  }
+
+  else{
+
+    cart[index].quantity =
+      next;
+
+  }
+
+
+  saveCart(cart);
+
+  renderCart();
+
+}
+
+
+window.changeQuantity =
+  changeQuantity;
+
+
+/* =========================================================
+   REMOVE
+   ========================================================= */
+
+function removeItem(index){
+
+  const cart =
+    getCart();
+
+
+  if(!cart[index]){
+    return;
+  }
+
+
+  cart.splice(
+    index,
+    1
+  );
+
+
+  saveCart(cart);
+
+  renderCart();
+
+}
+
+
+window.removeItem =
+  removeItem;
+
+
+/* =========================================================
+   HTML ESCAPE
+   ========================================================= */
+
+function escapeHTML(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /[&<>"']/g,
+    function(match){
+
+      return {
+
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+
+      }[match];
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   RENDER CART
+   ========================================================= */
+
+function renderCart(){
+
+  const root =
+    document.getElementById(
+      "cartRoot"
+    );
+
+
+  const cart =
+    getCart();
+
+
+  updateCartCount();
+
+
+  const currencySelect =
+    document.getElementById(
+      "cartCurrency"
+    );
+
+
+  currencySelect.value =
+    getCurrencyCode();
+
+
+  /*
+    EMPTY CART
+  */
+
+  if(!cart.length){
+
+    root.innerHTML = `
+
+      <div class="empty-cart">
+
+        <h2>
+          Your bag is empty.
+        </h2>
+
+        <p>
+
+          There is nothing here yet.<br>
+
+          Explore the collection and find
+          something that belongs in your ritual.
+
+        </p>
+
+        <a
+          class="continue-shopping"
+          href="shop.html"
+        >
+          Continue shopping
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let itemsHTML = "";
+
+  let subtotalTHB = 0;
+
+
+  /*
+    RENDER ITEMS
+  */
+
+  cart.forEach(
+    function(item,index){
+
+      const quantity =
+        Number(
+          item.quantity || 1
+        );
+
+
+      const unitPriceTHB =
+        getPriceTHB(item);
+
+
+      const lineTotalTHB =
+        unitPriceTHB *
+        quantity;
+
+
+      subtotalTHB +=
+        lineTotalTHB;
+
+
+      const product =
+        getProductForCartItem(item);
+
+
+      const name =
+        (
+          product &&
+          (
+            product.name ||
+            product.title
+          )
+        ) ||
+        item.name ||
+        "ONE ERA Object";
+
+
+      const collection =
+        (
+          product &&
+          product.collection
+        ) ||
+        "ONE ERA";
+
+
+      itemsHTML += `
+
+        <div class="cart-item">
+
+
+          <div class="cart-image">
+
+            ONE ERA
+
+          </div>
+
+
+          <div>
+
+
+            <div class="cart-name">
+
+              ${escapeHTML(name)}
+
+            </div>
+
+
+            <div class="cart-meta">
+
+              ${escapeHTML(collection)}
+
+            </div>
+
+
+            <div class="cart-price">
+
+              ${formatPrice(unitPriceTHB)}
+
+            </div>
+
+
+            <div class="quantity">
+
+              <button
+                type="button"
+                aria-label="Decrease quantity"
+                onclick="changeQuantity(${index},-1)"
+              >
+                −
+              </button>
+
+
+              <span>
+                ${quantity}
+              </span>
+
+
+              <button
+                type="button"
+                aria-label="Increase quantity"
+                onclick="changeQuantity(${index},1)"
+              >
+                +
+              </button>
+
+            </div>
+
+
+            <button
+              class="remove"
+              type="button"
+              onclick="removeItem(${index})"
+            >
+              Remove
+            </button>
+
+
+          </div>
+
+
+          <div class="cart-item-total">
+
+            ${formatPrice(lineTotalTHB)}
+
+          </div>
+
+
+        </div>
+
+      `;
+
+    }
+  );
+
+
+  /*
+    CART TOTAL
+  */
+
+  root.innerHTML = `
+
+    <div class="cart-layout">
+
+
+      <div>
+
+        <div class="cart-items">
+
+          ${itemsHTML}
+
+        </div>
+
+      </div>
+
+
+      <div class="cart-total">
+
+
+        <div class="eyebrow">
+          SUMMARY
+        </div>
+
+
+        <div class="total-row">
+
+          <span>
+            Items
+          </span>
+
+          <span>
+            ${getCartCount(cart)}
+          </span>
+
+        </div>
+
+
+        <div class="total-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <span>
+            ${formatPrice(subtotalTHB)}
+          </span>
+
+        </div>
+
+
+        <div class="total-row">
+
+          <span>
+            Shipping
+          </span>
+
+          <span>
+            Calculated at checkout
+          </span>
+
+        </div>
+
+
+        <div class="total-row grand">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            ${formatPrice(subtotalTHB)}
+          </strong>
+
+        </div>
+
+
+        <div class="currency-note">
+
+          Prices are displayed in the selected
+          currency.
+
+          <br>
+
+          Shipping will be calculated separately
+          at checkout.
+
+        </div>
+
+
+        <a
+          class="checkout-btn"
+          href="checkout.html"
+        >
+          Proceed to checkout
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   CURRENCY SELECTOR
+   ========================================================= */
+
+document
+  .getElementById(
+    "cartCurrency"
+  )
+  .addEventListener(
+    "change",
+    function(event){
+
+      const selected =
+        event.target.value;
+
+
+      if(
+        CURRENCY[selected]
+      ){
+
+        localStorage.setItem(
+          CURRENCY_KEY,
+          selected
+        );
+
+      }
+
+
+      renderCart();
+
+    }
+  );
+
+
+/* =========================================================
+   LOAD PRODUCTS
+   ========================================================= */
+
+async function initializeCart(){
+
+  try{
+
+    const response =
+      await fetch(
+        "products.json",
+        {
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "products.json could not be loaded."
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    products =
+      Array.isArray(data)
+        ? data
+        : (
+            data &&
+            Array.isArray(data.products)
+              ? data.products
+              : []
+          );
+
+
+  }
+
+  catch(error){
+
+    console.error(
+      "ONE ERA product loading error:",
+      error
+    );
+
+    products = [];
+
+  }
+
+
+  renderCart();
+
+}
+
+
+initializeCart();
+
 </script>
+
+
 <script src="script.js"></script>
+
+
 </body>
+
 </html>
