@@ -1,14 +1,34 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
 
 <title>Shop — ONE ERA</title>
 
-<link rel="stylesheet" href="styles.css">
+<meta
+  name="description"
+  content="ONE ERA — Objects, materials and ritual tools for curiosity, reflection and everyday practice."
+>
+
+<link
+  rel="stylesheet"
+  href="styles.css"
+>
 
 <style>
+
+/* =====================================================
+   ONE ERA SHOP
+   LIVE CATALOGUE
+   ===================================================== */
+
 .shop-page{
   padding:80px 0;
 }
@@ -30,22 +50,10 @@
   line-height:1.8;
 }
 
-.test-banner{
-  background:#f2eadf;
-  border-left:3px solid #c88f9d;
-  padding:18px 20px;
-  margin-bottom:50px;
-  font-size:13px;
-  line-height:1.7;
-}
 
-.test-banner strong{
-  display:block;
-  margin-bottom:5px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  font-size:11px;
-}
+/* =====================================================
+   PRODUCT GRID
+   ===================================================== */
 
 .product-grid{
   display:grid;
@@ -58,9 +66,16 @@
   padding-top:18px;
 }
 
+.product-image-link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+
 .product-image{
   width:100%;
   aspect-ratio:1/1;
+
   background:
     radial-gradient(
       circle at 50% 40%,
@@ -72,9 +87,11 @@
       #d7c8bf,
       #1c2c28
     );
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   overflow:hidden;
 }
 
@@ -90,6 +107,8 @@
   font-size:28px;
   color:#f3ece3;
   opacity:.9;
+  text-align:center;
+  padding:20px;
 }
 
 .product-info{
@@ -132,38 +151,82 @@
 .product-link{
   display:inline-block;
   padding:12px 18px;
+
   background:#11100f;
   color:#fff;
+
   text-decoration:none;
+
   font-size:11px;
   letter-spacing:.08em;
   text-transform:uppercase;
+
+  transition:opacity .2s ease;
 }
 
 .product-link:hover{
   opacity:.85;
 }
 
-.empty-state{
+
+/* =====================================================
+   STATES
+   ===================================================== */
+
+.loading-state{
+  grid-column:1/-1;
+
   padding:50px 0;
+
   border-top:1px solid var(--line);
+
   color:#665f57;
+
+  font-size:13px;
+}
+
+.empty-state{
+  grid-column:1/-1;
+
+  padding:50px 0;
+
+  border-top:1px solid var(--line);
+
+  color:#665f57;
+
+  line-height:1.8;
 }
 
 .error-state{
+  grid-column:1/-1;
+
   padding:25px;
+
   background:#f2eadf;
+
   border-left:3px solid #c45b3c;
+
   line-height:1.7;
+
+  color:#665f57;
 }
 
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
 @media(max-width:900px){
+
   .product-grid{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
+
 @media(max-width:600px){
+
   .shop-page{
     padding:55px 0;
   }
@@ -171,53 +234,93 @@
   .product-grid{
     grid-template-columns:1fr;
   }
+
+  .shop-intro{
+    margin-bottom:45px;
+  }
+
 }
+
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="site-header">
 
   <div class="container nav">
 
-    <a class="wordmark" href="index.html">
+    <a
+      class="wordmark"
+      href="index.html"
+    >
       ONE ERA
     </a>
 
+
     <nav class="nav-links">
 
-      <a href="discover.html">Explore</a>
+      <a href="discover.html">
+        Explore
+      </a>
 
-      <a href="practice.html">Practice</a>
+      <a href="practice.html">
+        Practice
+      </a>
 
-      <a class="active-nav" href="shop.html">Shop</a>
+      <a
+        class="active-nav"
+        href="shop.html"
+      >
+        Shop
+      </a>
 
-      <a href="learn.html">Learn</a>
+      <a href="learn.html">
+        Learn
+      </a>
 
-      <a href="journal.html">Journal</a>
+      <a href="journal.html">
+        Journal
+      </a>
 
-      <a href="about.html">The Society</a>
+      <a href="about.html">
+        The Society
+      </a>
 
     </nav>
+
 
     <div class="nav-icons">
 
       <span>⌕</span>
 
       <a href="cart.html">
-        Bag <span data-cart-count>0</span>
+        Bag
+        <span data-cart-count>0</span>
       </a>
 
     </div>
 
-    <span class="mobile-menu">☰</span>
+
+    <span class="mobile-menu">
+      ☰
+    </span>
 
   </div>
 
 </header>
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main>
 
@@ -226,16 +329,20 @@
 <div class="container">
 
 
+  <!-- SHOP INTRO -->
+
   <div class="shop-intro">
 
     <div class="eyebrow">
       ONE ERA · SHOP
     </div>
 
+
     <h1>
       Objects for<br>
       the unseen.
     </h1>
+
 
     <p>
       Objects, materials and ritual tools selected for
@@ -245,22 +352,17 @@
   </div>
 
 
-  <div class="test-banner">
-
-    <strong>TEST MODE</strong>
-
-    Products shown here are currently connected to the
-    ONE ERA test catalogue. No real payment or supplier
-    order is created.
-
-  </div>
-
-
-  <div id="shopStatus"></div>
+  <!-- PRODUCT GRID -->
 
   <div
     id="productGrid"
-    class="product-grid">
+    class="product-grid"
+  >
+
+    <div class="loading-state">
+      Loading the collection…
+    </div>
+
   </div>
 
 
@@ -270,6 +372,10 @@
 
 </main>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer class="footer">
 
@@ -288,7 +394,467 @@
 </footer>
 
 
+<!-- =====================================================
+     SHOP SYSTEM
+===================================================== -->
+
+<script>
+
+const CART_KEY = "oneEraCart";
+
+
+/* =====================================================
+   CART COUNT
+===================================================== */
+
+function getCart(){
+
+  try{
+
+    const stored =
+      localStorage.getItem(
+        CART_KEY
+      );
+
+
+    const cart =
+      JSON.parse(
+        stored || "[]"
+      );
+
+
+    return Array.isArray(cart)
+      ? cart
+      : [];
+
+  }
+
+  catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function updateBagCount(){
+
+  const cart =
+    getCart();
+
+
+  const count =
+    cart.reduce(
+      function(total,item){
+
+        return (
+          total +
+          Number(
+            item.quantity || 0
+          )
+        );
+
+      },
+      0
+    );
+
+
+  document
+    .querySelectorAll(
+      "[data-cart-count]"
+    )
+    .forEach(
+      function(element){
+
+        element.textContent =
+          count;
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(
+    value || ""
+  ).replace(
+    /[&<>"']/g,
+    function(char){
+
+      return {
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+
+      }[char];
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+function formatPrice(product){
+
+  const amount =
+    Number(
+      product.price_thb ||
+      (
+        product.price &&
+        product.price.amount
+      ) ||
+      0
+    );
+
+
+  return new Intl.NumberFormat(
+    "en-TH",
+    {
+      style:"currency",
+      currency:"THB",
+      minimumFractionDigits:0,
+      maximumFractionDigits:0
+    }
+  ).format(
+    amount
+  );
+
+}
+
+
+/* =====================================================
+   PRODUCT IMAGE
+===================================================== */
+
+function renderProductImage(product){
+
+  let image = null;
+
+
+  if(
+    Array.isArray(product.images) &&
+    product.images.length > 0
+  ){
+
+    image =
+      product.images[0];
+
+  }
+
+
+  if(
+    image &&
+    typeof image === "string"
+  ){
+
+    return `
+
+      <img
+        src="${escapeHTML(image)}"
+        alt="${escapeHTML(
+          product.name
+        )}"
+        loading="lazy"
+      >
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="product-placeholder">
+      ONE ERA
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   LOAD SHOP
+===================================================== */
+
+async function loadShop(){
+
+  const grid =
+    document.getElementById(
+      "productGrid"
+    );
+
+
+  try{
+
+    const response =
+      await fetch(
+        "products.json",
+        {
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "products.json could not be loaded."
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    const products =
+      Array.isArray(data)
+        ? data
+        : data.products;
+
+
+    if(!Array.isArray(products)){
+
+      throw new Error(
+        "Invalid products.json structure."
+      );
+
+    }
+
+
+    /*
+      Only show products that are
+      available for sale.
+    */
+
+    const availableProducts =
+      products.filter(
+        function(product){
+
+          return (
+            product.available !== false &&
+            product.status !== "inactive"
+          );
+
+        }
+      );
+
+
+    if(!availableProducts.length){
+
+      grid.innerHTML = `
+
+        <div class="empty-state">
+
+          No objects are currently
+          available.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    grid.innerHTML =
+      availableProducts
+        .map(
+          function(product){
+
+            const productId =
+              product.id ||
+              product.slug;
+
+
+            const name =
+              product.name ||
+              product.title ||
+              "ONE ERA Object";
+
+
+            const description =
+              product.shortDescription ||
+              product.subtitle ||
+              "";
+
+
+            const category =
+              product.category ||
+              "Object";
+
+
+            return `
+
+              <article
+                class="product-card"
+              >
+
+
+                <a
+                  class="product-image-link"
+                  href="product.html?id=${encodeURIComponent(
+                    productId
+                  )}"
+                  aria-label="View ${escapeHTML(
+                    name
+                  )}"
+                >
+
+                  <div class="product-image">
+
+                    ${renderProductImage(
+                      product
+                    )}
+
+                  </div>
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                  <div class="product-eyebrow">
+
+                    ${escapeHTML(
+                      category
+                    )}
+
+                  </div>
+
+
+                  <h2>
+
+                    ${escapeHTML(
+                      name
+                    )}
+
+                  </h2>
+
+
+                  <p>
+
+                    ${escapeHTML(
+                      description
+                    )}
+
+                  </p>
+
+
+                  <div class="product-price">
+
+                    ${formatPrice(
+                      product
+                    )}
+
+                  </div>
+
+
+                  <div class="product-status">
+
+                    Available
+
+                  </div>
+
+
+                  <a
+                    class="product-link"
+                    href="product.html?id=${encodeURIComponent(
+                      productId
+                    )}"
+                  >
+
+                    View object
+
+                  </a>
+
+
+                </div>
+
+              </article>
+
+            `;
+
+          }
+        )
+        .join("");
+
+
+  }
+
+  catch(error){
+
+    console.error(
+      "ONE ERA Shop Error:",
+      error
+    );
+
+
+    grid.innerHTML = `
+
+      <div class="error-state">
+
+        <strong>
+          COLLECTION COULD NOT BE LOADED
+        </strong>
+
+        <br><br>
+
+        ${escapeHTML(
+          error.message
+        )}
+
+        <br><br>
+
+        Please make sure
+        <strong>
+          products.json
+        </strong>
+        is in the same GitHub repository
+        as shop.html.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+updateBagCount();
+
+loadShop();
+
+</script>
+
+
+<!-- GLOBAL SITE SCRIPT -->
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
