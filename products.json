@@ -1,234 +1,229 @@
 {
-"products": [
-{
-"id": "one-era-green-fluorite",
-"slug": "green-fluorite",
-"name": "Green Fluorite",
-"title": "Green Fluorite",
-"subtitle": "A natural stone for scent, space and reflection.",
-"brand": "ONE ERA",
+  "products": [
+    {
+      "id": "one-era-green-fluorite",
+      "slug": "green-fluorite",
+      "name": "Green Fluorite",
+      "title": "Green Fluorite",
+      "subtitle": "A natural stone for scent, space and reflection.",
+      "brand": "ONE ERA",
 
-  "category": "Crystals",
-  "collection": "The Unseen",
-  "type": "ritual-object",
+      "category": "Crystals",
+      "collection": "The Unseen",
+      "type": "ritual-object",
 
-  "description": "Natural Green Fluorite selected as a tactile object for scent rituals, quiet spaces and personal reflection.",
+      "description": "Natural Green Fluorite selected as a tactile object for scent rituals, quiet spaces and personal reflection.",
 
-  "shortDescription": "A natural Green Fluorite stone for scent rituals and quiet spaces.",
+      "shortDescription": "A natural Green Fluorite stone for scent rituals and quiet spaces.",
 
-  "price": {
-    "amount": 199,
-    "currency": "THB",
-    "display": "199"
-  },
+      "price": {
+        "amount": 199,
+        "currency": "THB",
+        "display": "฿199"
+      },
 
-  "price_thb": 199,
-  "price_usd": 0,
-  "price_gbp": 0,
+      "price_thb": 199,
 
-  "status": "active",
-  "testMode": false,
-  "available": true,
+      "status": "active",
+      "testMode": false,
+      "available": true,
 
-  "inventory": {
-    "source": "CJdropshipping",
-    "status": "test",
-    "quantity": null
-  },
+      "inventory": {
+        "source": "CJdropshipping",
+        "status": "live",
+        "quantity": null
+      },
 
-  "supplier": {
-    "platform": "CJdropshipping",
-    "sku": "CJZS237829401AZ",
-    "sourceUrl": "https://cjdropshipping.com/product/crystal-rough-green-fluorite-cross-border-crystal-diffuser-rough-wool-aromatherapy-stone-black-tourmaline-crystal-crushed-stone-p-1923313316286001154.html?tabKey=customize"
-  },
+      "supplier": {
+        "platform": "CJdropshipping",
+        "sku": "CJZS237829401AZ",
+        "sourceUrl": "https://cjdropshipping.com/product/crystal-rough-green-fluorite-cross-border-crystal-diffuser-rough-wool-aromatherapy-stone-black-tourmaline-crystal-crushed-stone-p-1923313316286001154.html?tabKey=customize"
+      },
 
-  "specifications": {
-    "material": "Natural Green Fluorite",
-    "weight": "100 g",
-    "size": "12 cm",
-    "packageSize": "20 × 20 × 10 mm"
-  },
+      "specifications": {
+        "material": "Natural Green Fluorite",
+        "weight": "100 g",
+        "size": "12 cm",
+        "packageSize": "20 × 20 × 10 mm"
+      },
 
-  "ritual": {
-    "purpose": [
-      "Scent",
-      "Space",
-      "Reflection"
-    ],
+      "ritual": {
+        "purpose": [
+          "Scent",
+          "Space",
+          "Reflection"
+        ],
 
-    "howToUse": [
-      "Place the stone in a quiet space.",
-      "Add a few drops of essential oil to the surface.",
-      "Allow the scent to diffuse naturally.",
-      "Use the moment as an invitation to pause and reflect."
-    ],
+        "howToUse": [
+          "Place the stone in a quiet space.",
+          "Add a few drops of essential oil to the surface.",
+          "Allow the scent to diffuse naturally.",
+          "Use the moment as an invitation to pause and reflect."
+        ],
 
-    "note": "Natural stones vary in colour, shape and texture. Each piece is unique."
-  },
+        "note": "Natural stones vary in colour, shape and texture. Each piece is unique."
+      },
 
-  "story": {
-    "headline": "A stone for the space between scent and stillness.",
-    "body": "Green Fluorite brings together stone, scent and ritual in one simple object. Use it as a quiet sensory anchor while reading, meditating, journaling or simply slowing down."
-  },
+      "story": {
+        "headline": "A stone for the space between scent and stillness.",
+        "body": "Green Fluorite brings together stone, scent and ritual in one simple object. Use it as a quiet sensory anchor while reading, meditating, journaling or simply slowing down."
+      },
 
-  "images": [],
+      "images": [],
 
-  "tags": [
-    "green fluorite",
-    "crystal",
-    "aromatherapy",
-    "ritual",
-    "meditation",
-    "natural stone",
-    "spiritual objects"
-  ],
+      "tags": [
+        "green fluorite",
+        "crystal",
+        "aromatherapy",
+        "ritual",
+        "meditation",
+        "natural stone",
+        "spiritual objects"
+      ],
 
-  "markets": {
-    "TH": {
-      "enabled": true,
-      "currency": "THB"
+      "markets": {
+        "TH": {
+          "enabled": true,
+          "currency": "THB"
+        },
+        "US": {
+          "enabled": true,
+          "currency": "USD"
+        },
+        "UK": {
+          "enabled": true,
+          "currency": "GBP"
+        },
+        "HK": {
+          "enabled": true,
+          "currency": "HKD"
+        },
+        "AU": {
+          "enabled": false,
+          "currency": "AUD"
+        },
+        "SG": {
+          "enabled": false,
+          "currency": "SGD"
+        },
+        "ID": {
+          "enabled": false,
+          "currency": "IDR"
+        }
+      },
+
+      "fulfillment": {
+        "provider": "CJdropshipping",
+        "mode": "LIVE",
+        "status": "not_connected"
+      }
     },
-    "US": {
-      "enabled": true,
-      "currency": "USD"
-    },
-    "UK": {
-      "enabled": true,
-      "currency": "GBP"
-    },
-    "AU": {
-      "enabled": false,
-      "currency": "AUD"
-    },
-    "SG": {
-      "enabled": false,
-      "currency": "SGD"
-    },
-    "HK": {
-      "enabled": true,
-      "currency": "HKD"
-    },
-    "ID": {
-      "enabled": false,
-      "currency": "IDR"
+
+    {
+      "id": "one-era-incense-ceramic-holder",
+      "slug": "incense-ceramic-holder",
+      "name": "Incense Ceramic Holder",
+      "title": "Incense Ceramic Holder",
+      "subtitle": "A simple ceramic object for smoke ritual and quiet spaces.",
+      "brand": "ONE ERA",
+
+      "category": "Smoke",
+      "collection": "The Unseen",
+      "type": "ritual-object",
+
+      "description": "A ceramic incense holder selected as an object for smoke rituals, meditation and quiet everyday spaces.",
+
+      "shortDescription": "A ceramic incense holder for smoke ritual and quiet spaces.",
+
+      "price": {
+        "amount": 490,
+        "currency": "THB",
+        "display": "฿490"
+      },
+
+      "price_thb": 490,
+
+      "status": "active",
+      "testMode": false,
+      "available": true,
+
+      "inventory": {
+        "source": "CJdropshipping",
+        "status": "live",
+        "quantity": null
+      },
+
+      "supplier": {
+        "platform": "CJdropshipping",
+        "sku": "CJYD205731501AZ",
+        "sourceUrl": "https://cjdropshipping.com/product/incense-ceramic-censer-home-decoration-tea-room-living-room-office-incense-holder-ceramic-decoration-p-2406100902111600600.html"
+      },
+
+      "specifications": {
+        "material": "Ceramic",
+        "weight": "320 g",
+        "size": "150 × 150 × 100 mm",
+        "packageSize": "150 × 150 × 100 mm"
+      },
+
+      "ritual": {
+        "purpose": [
+          "Smoke",
+          "Space",
+          "Presence"
+        ],
+
+        "howToUse": [
+          "Place the holder on a stable heat-resistant surface.",
+          "Place an incense stick into the holder.",
+          "Light the incense and allow the smoke to fill the space.",
+          "Use the moment as a pause before beginning your practice."
+        ],
+
+        "note": "For incense use only. Always use on a stable, heat-resistant surface."
+      },
+
+      "story": {
+        "headline": "A vessel for the moment smoke enters the room.",
+        "body": "A simple ceramic form selected for incense rituals, quiet spaces and moments of pause."
+      },
+
+      "images": [],
+
+      "tags": [
+        "incense",
+        "incense holder",
+        "ceramic",
+        "smoke",
+        "ritual",
+        "meditation",
+        "altar"
+      ],
+
+      "markets": {
+        "TH": {
+          "enabled": true,
+          "currency": "THB"
+        },
+        "US": {
+          "enabled": true,
+          "currency": "USD"
+        },
+        "UK": {
+          "enabled": true,
+          "currency": "GBP"
+        },
+        "HK": {
+          "enabled": true,
+          "currency": "HKD"
+        }
+      },
+
+      "fulfillment": {
+        "provider": "CJdropshipping",
+        "mode": "LIVE",
+        "status": "not_connected"
+      }
     }
-  },
-
-  "fulfillment": {
-    "provider": "CJdropshipping",
-    "mode": "LIVE",
-    "status": "not_connected"
-  }
-},
-
-{
-  "id": "one-era-incense-ceramic-holder",
-  "slug": "incense-ceramic-holder",
-  "name": "Incense Ceramic Holder",
-  "title": "Incense Ceramic Holder",
-  "subtitle": "A simple ceramic object for smoke ritual and quiet spaces.",
-  "brand": "ONE ERA",
-
-  "category": "Smoke",
-  "collection": "The Unseen",
-  "type": "ritual-object",
-
-  "description": "A ceramic incense holder selected as an object for smoke rituals, meditation and quiet everyday spaces.",
-
-  "shortDescription": "A ceramic incense holder for smoke ritual and quiet spaces.",
-
- "price": {
-  "amount": 490,
-  "currency": "THB",
-  "display": "490"
-},
-
-  "price_thb": 490,
-  "price_usd": 0,
-  "price_gbp": 0,
-
-  "status": "active",
-  "testMode": false,
-  "available": true,
-
-  "inventory": {
-    "source": "CJdropshipping",
-    "status": "test",
-    "quantity": null
-  },
-
-  "supplier": {
-    "platform": "CJdropshipping",
-    "sku": "CJYD205731501AZ",
-    "sourceUrl": "https://cjdropshipping.com/product/incense-ceramic-censer-home-decoration-tea-room-living-room-office-incense-holder-ceramic-decoration-p-2406100902111600600.html"
-  },
-
-  "specifications": {
-    "material": "Ceramic",
-    "weight": "320 g",
-    "size": "150 × 150 × 100 mm",
-    "packageSize": "150 × 150 × 100 mm"
-  },
-
-  "ritual": {
-    "purpose": [
-      "Smoke",
-      "Space",
-      "Presence"
-    ],
-
-    "howToUse": [
-      "Place the holder on a stable heat-resistant surface.",
-      "Place an incense stick into the holder.",
-      "Light the incense and allow the smoke to fill the space.",
-      "Use the moment as a pause before beginning your practice."
-    ],
-
-    "note": "For incense use only. Always use on a stable, heat-resistant surface."
-  },
-
-  "story": {
-    "headline": "A vessel for the moment smoke enters the room.",
-    "body": "A simple ceramic form selected for incense rituals, quiet spaces and moments of pause."
-  },
-
-  "images": [],
-
-  "tags": [
-    "incense",
-    "incense holder",
-    "ceramic",
-    "smoke",
-    "ritual",
-    "meditation",
-    "altar"
-  ],
-
-  "markets": {
-    "TH": {
-      "enabled": true,
-      "currency": "THB"
-    },
-    "US": {
-      "enabled": true,
-      "currency": "USD"
-    },
-    "UK": {
-      "enabled": true,
-      "currency": "GBP"
-    },
-    "HK": {
-      "enabled": true,
-      "currency": "HKD"
-    }
-  },
-
-  "fulfillment": {
-    "provider": "CJdropshipping",
-    "mode": "LIVE",
-    "status": "not_connected"
-  }
-}
-
-]
+  ]
 }
