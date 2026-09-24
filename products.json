@@ -17,17 +17,17 @@
   "shortDescription": "A natural Green Fluorite stone for scent rituals and quiet spaces.",
 
   "price": {
-    "amount": 500,
+    "amount": 199,
     "currency": "THB",
-    "display": "500"
+    "display": "199"
   },
 
-  "price_thb": 500,
+  "price_thb": 199,
   "price_usd": 0,
   "price_gbp": 0,
 
-  "status": "test",
-  "testMode": true,
+  "status": "active",
+  "testMode": false,
   "available": true,
 
   "inventory": {
@@ -116,7 +116,7 @@
 
   "fulfillment": {
     "provider": "CJdropshipping",
-    "mode": "TEST",
+    "mode": "LIVE",
     "status": "not_connected"
   }
 },
@@ -137,18 +137,18 @@
 
   "shortDescription": "A ceramic incense holder for smoke ritual and quiet spaces.",
 
-  "price": {
-    "amount": 0,
-    "currency": "THB",
-    "display": "TEST PRICE"
-  },
+ "price": {
+  "amount": 490,
+  "currency": "THB",
+  "display": "490"
+},
 
-  "price_thb": 0,
+  "price_thb": 490,
   "price_usd": 0,
   "price_gbp": 0,
 
-  "status": "test",
-  "testMode": true,
+  "status": "active",
+  "testMode": false,
   "available": true,
 
   "inventory": {
@@ -225,7 +225,7 @@
 
   "fulfillment": {
     "provider": "CJdropshipping",
-    "mode": "TEST",
+    "mode": "LIVE",
     "status": "not_connected"
   }
 }
